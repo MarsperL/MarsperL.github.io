@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>专注时钟</title>
+  <link rel="stylesheet" href="time10/style.css">
+	<link rel="stylesheet" href="time/yiyan.css">
+	<link rel="stylesheet" href="time/youjian.css">
+</head>
+
+<body>
+	 <!-- 右键菜单 -->
+	<ul id="rightMenu"  style="width: 100px;">
+		<li id="open">开启常亮</li>
+		<li id="close">关闭常亮</li>
+		<li>#2</li>
+		<li>#3</li>
+	</ul>
+  <object data="background/liuxing/NewFile.html" class="liuxing-object"></object>
+
+ <div class="view-fullscreen" id="clock" >
+    <p id="date" class="date "></p>
+    <div class="cancel-fullscreen"><p id="time" class="time "></p></div>
+    
+  </div>
+
+  <script>
+    var week = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+    var timerID = setInterval(updateTime, 1000); // 每隔1秒执行一次
+    updateTime();
+
+    function updateTime() {
+      var cd = new Date();
+      document.getElementById("time").innerHTML = zeroPadding(cd.getHours(), 2) + ':' + zeroPadding(cd.getMinutes(),
+        2) + ':' + zeroPadding(cd.getSeconds(), 2);
+      document.getElementById("date").innerHTML = zeroPadding(cd.getFullYear(), 4) + '-' + zeroPadding(cd.getMonth() +
+        1, 2) + '-' + zeroPadding(cd.getDate(), 2) + ' ' + week[cd.getDay()];
+    };
+
+    function zeroPadding(num, digit) {
+      var zero = '';
+      for (var i = 0; i < digit; i++) {
+        zero += '0';
+      }
+      return (zero + num).slice(-digit);
+    }
+  </script>
+	<!-- 一言 -->
+<div class="poem-wrap yiyan" onclick="location.href='time10.html'">
+   <p id="hitokoto_text">loading...</p>
+</div>
+<script src="time/quanping.js"></script>
+<script src="time/yiyan.js"></script>
+<script src="time/NoSleep.min.js"></script>
+<script src="time/NoSleepWindow.js"></script>
+<script src="time/youjian.js"></script>
+</body>
+
+</html>

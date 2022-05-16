@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>专注时钟</title>
+    <link rel="stylesheet" href="time11/index.css">
+    <link rel="stylesheet" href="time/yiyan.css">
+    <link rel="stylesheet" href="time/youjian.css">
+</head>
+
+<body>
+  <!-- 右键菜单 -->
+	<ul id="rightMenu" style="width: 100px;">
+		<li id="open">开启常亮</li>
+		<li id="close">关闭常亮</li>
+		<li>#2</li>
+		<li>#3</li>
+	</ul>
+    <div class="container view-fullscreen">
+        <div class="clock cancel-fullscreen">
+            <div class="circle">
+                <ul class="scale">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <ul class="number">
+                    <li>12</li>
+                    <li>3</li>
+                    <li>6</li>
+                    <li>9</li>
+                </ul>
+            </div>
+
+            <div class="hour"></div>
+            <div class="min"></div>
+            <div class="sec"></div>
+        </div>
+    </div>
+    
+      <div class="fanqie">
+  <object data="fanqie/NewFile.html" class="fanqie-object"></object>
+  </div>
+    
+    <!-- 一言 -->
+<div class="poem-wrap yiyan" onclick="location.href='time.2.html'">
+   <p id="hitokoto_text">loading...</p>
+</div>
+    <script src="time/yiyan.js"></script>
+<script src="time/quanping.js"></script>
+    <script src="time11/index.js"></script>
+    <script src="time/youjian.js"></script>
+    <script src="time/NoSleep.min.js"></script>
+	<script src="time/NoSleepWindow.js"></script>
+</body>
+
+</html>

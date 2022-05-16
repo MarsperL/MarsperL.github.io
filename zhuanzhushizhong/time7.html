@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>专注时钟</title>
+    <link rel="stylesheet" href="time7/NewFile.css">
+    <link rel="stylesheet" href="time/yiyan.css">
+</head>
+<body>
+<div class="view-fullscreen">
+	<div class="clock cancel-fullscreen">
+        <div class="hour">
+            <div class="hr" id="hr"></div>
+        </div>
+        <div class="min">
+            <div class="mn" id="mn"></div>
+        </div>
+        <div class="sec">
+            <div class="sc" id="sc"></div>
+        </div>
+    </div>
+</div>
+    
+    <div class="toggleClass" onclick="toggleClass()"></div>
+    <!-- 一言 -->
+<div class="poem-wrap yiyan" onclick="location.href='time7.html'">
+   <p id="hitokoto_text">loading...</p>
+</div>
+    <script type="text/javascript">
+        function toggleClass(){
+            const body = document.querySelector('body');
+            body.classList.toggle('light');
+        }
+
+        const deg = 6;
+        const hr = document.querySelector('#hr');
+        const mn = document.querySelector('#mn');
+        const sc = document.querySelector('#sc');
+        setInterval(() => {
+            let day = new Date();
+            let hh = day.getHours() * 30;
+            let mm = day.getMinutes() * deg;
+            let ss = day.getSeconds() * deg;
+            hr.style.transform = `rotateZ(${hh+(mm/12)}deg)`;
+            mn.style.transform = `rotateZ(${mm}deg)`;
+            sc.style.transform = `rotateZ(${ss}deg)`;
+
+        })
+
+    </script>
+    <script src="time/yiyan.js"></script>
+    <script src="time/quanping.js"></script>
+</body>
+</html>

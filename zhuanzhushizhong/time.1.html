@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+    <title>专注时钟</title>
+    <link rel="stylesheet" href="time/time.1/NewFile.css">
+    <link rel="stylesheet" href="time/style1.css">
+    <link rel="stylesheet" href="time/yiyan.css">
+    <link rel="stylesheet" href="time/youjian.css">
+    <link rel="stylesheet" href="time/time.1/global.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-box" >
+            <ul>
+                <li class="item active d-contextmenu-item"  onclick="location.href='time.10.html'">
+                   翻页(蓝)
+                </li>
+                <li class="item" onclick="location.href='time.2.html'">
+                   	刻度时钟
+                </li>
+                <li class="item" onclick="location.href='time.10.html'">
+                    荧光蓝
+                </li>
+                <li class="item">
+                   #1
+                </li>
+                <li class="item">
+                  #2
+                </li>
+                <li class="item">
+                  #3
+                </li>
+                <li class="item">
+                  #4
+                </li>
+            </ul>
+        </div>
+        <div class="right-box" >
+         <!-- 导航栏 -->
+         <div class="daohang">
+         <div class="nav" id="nav">
+		<div class="nav-left"><span class="nav-button"><a class="on" href="javascript:;">任务</a></span></div>
+		<div class="nav-right">
+			<ul>
+				<li><span class="nav-button"><a href="javascript:;">设置</a></span></li>
+			</ul>
+		</div>
+	</div>
+	<div style="position:absolute; top:2%; right: 2%;">
+			<audio id="music2"  loop="loop">
+			<source src="time/media/yu.mp3">
+			</audio>
+		<a href="javascript:playPause();"><img src="time/img/stop1.png" id="music_btn2" ></a>
+	</div>
+         </div>
+	
+	<!-- 导航栏结束 -->
+        <!-- 右键菜单 -->
+	<ul id="rightMenu" style="width: 100px;">
+		<li id="open">开启常亮</li>
+		<li id="close">关闭常亮</li>
+		<li>#2</li>
+		<li>#3</li>
+	</ul>
+        
+        <div class="view-fullscreen">
+        <div class="top clock cancel-fullscreen">
+		<div class="flip" >
+			<div class="digital front" data-number="0"></div>
+			<div class="digital back" data-number="1"></div>
+		</div>
+		<div class="flip">
+			<div class="digital front" data-number="0"></div>
+			<div class="digital back" data-number="1"></div>
+		</div>
+		<em class="divider">:</em>
+		<div class="flip">
+			<div class="digital front" data-number="0"></div>
+			<div class="digital back" data-number="1"></div>
+		</div>
+		<div class="flip">
+			<div class="digital front" data-number="0"></div>
+			<div class="digital back" data-number="1"></div>
+		</div>
+		<em class="divider">:</em>
+		<div class="flip">
+			<div class="digital front" data-number="0"></div>
+			<div class="digital back" data-number="1"></div>
+		</div>
+		<div class="flip">
+			<div class="digital front" data-number="0"></div>
+			<div class="digital back" data-number="1"></div>
+		</div>
+            </div>
+        </div>
+    
+            
+            <div class="middle">
+           
+            	<!-- 主面板 -->
+	<div class="panle" id="panle">
+		<!-- 任务界面 -->
+		<div id="main">
+		<h1>专注时刻</h1>
+			<div class="button" id="newMission-btn"><span>来一个番茄</span></div>
+			<div id="addMission" class="noClick">
+				<div class="addMission-nav">
+					<div class="addMission-nav-title">新增番茄钟</div>
+					<div class="addMission-nav-close" id="addMission-nav-close">×</div>
+				</div>
+				<div class="addMission-main">
+					<div class="addMission-main-1">
+						<label for="missionName">任务名称：</label>
+						<input type="text" id="missionName" placeholder="我的番茄时钟">
+					</div>
+					<div class="addMission-main-1">
+						<label for="missionName">预估番茄数：<strong id="missionCount">1</strong></label>
+						<span class="addMission-main-button">
+							<span class="addMission-main-button-sub" id="addMission-main-button-sub">-</span>
+							<span class="addMission-main-button-add" id="addMission-main-button-add">+</span>
+						</span>
+					</div>
+					<div class="addMission-main-1">
+						<ul>
+							<li>总计时间：</li>
+							<li>任务时间：</li>
+							<li>休息时间：</li>
+						</ul>
+						<ul>
+							<li id="li-totalTime"></li>
+							<li id="li-missionTime"></li>
+							<li id="li-restTime"></li>
+						</ul>
+					</div>
+					
+				</div>
+				<div class="addMission-foot">
+					<span class="addMission-foot-button">
+						<span class="addMission-foot-button-cancel" id="addMission-foot-button-cancel">取消</span>
+						<span class="addMission-foot-button-confirm" id="addMission-foot-button-confirm">确定</span>
+					</span>
+				</div>
+			</div>
+		</div>
+		<!-- 任务界面结束 -->
+
+		<!-- 设置界面 -->
+		<div id="set" class="hidden">
+			<div class="menu">
+				<ul>
+					<li><div class="button on"><span>基本设置</span></div></li>
+					<li><div class="button"><span>声音设置</span></div></li>
+					<li><div class="button"><span>显示设置</span></div></li>
+					<li><div class="button"><span>桌面设置</span></div></li>
+					<li><div class="button"><span>其他设置</span></div></li>
+				</ul>
+			</div>
+			<div class="menu-set" id="menu-set">
+				<div id="base">
+					<ul class="menu-set-item">
+						<li>窗口最前</li>
+						<li>点击完成时，自动进入休息时间</li>
+						<li>番茄钟时间（分钟）</li>
+						<li>休息时间（分钟）</li>
+					</ul>
+					<ul class="menu-set-radio">
+						<li>
+							<div class="radio">
+								<ul class="radio-ul">
+									<li class="radio-on">ON</li>
+									<li></li>
+									<li class="radio-off">OFF</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<div class="radio">
+								<ul class="radio-ul">
+									<li class="radio-on">ON</li>
+									<li></li>
+									<li class="radio-off">OFF</li>
+								</ul>
+							</div>
+						</li>
+						<li><input class="text" type="text" placeholder="25" /></li>
+						<li><input class="text" type="text" placeholder="5" /></li>
+					</ul>
+				</div>
+				<div id="sound" class="hidden">
+					<ul class="menu-set-item">
+						<li>声音提醒</li>
+						<li>滴答声</li>
+						<li>任务声音</li>
+						<li>休息声音</li>
+					</ul>
+					<ul class="menu-set-radio">
+						<li>
+							<div class="radio">
+								<ul class="radio-ul">
+									<li class="radio-on">ON</li>
+									<li></li>
+									<li class="radio-off">OFF</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<div class="radio">
+								<ul class="radio-ul">
+									<li class="radio-on">ON</li>
+									<li></li>
+									<li class="radio-off">OFF</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<span class="filename">time/media/audio_work.mp3</span>
+							<input type="file" class="file">
+							<span class="button-file">选择文件</span>
+							<span class="button-default">默认</span>
+						</li>
+						<li>
+							<span class="filename">time/media/audio_rest.mp3</span>
+							<input type="file" class="file">
+							<span class="button-file">选择文件</span>
+							<span class="button-default">默认</span>
+						</li>
+					</ul>
+				</div>
+				<div id="layout" class="hidden">
+					<ul class="menu-set-item">
+						<li>迷你黑色模式</li>
+					</ul>
+					<ul class="menu-set-radio">
+						<li>
+							<div class="radio">
+								<ul class="radio-ul">
+									<li class="radio-on">ON</li>
+									<li></li>
+									<li class="radio-off">OFF</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div id="desktop" class="hidden">
+					<ul class="menu-set-item">
+						<li>桌面提醒</li>
+					</ul>
+					<ul class="menu-set-radio">
+						<li>
+							<div class="radio">
+								<ul class="radio-ul">
+									<li class="radio-on">ON</li>
+									<li></li>
+									<li class="radio-off">OFF</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div id="other" class="hidden">
+					<ul class="menu-set-item">
+						<li>手动模式</li>
+					</ul>
+					<ul class="menu-set-radio">
+						<li>
+							<div class="radio">
+								<ul class="radio-ul">
+									<li class="radio-on">ON</li>
+									<li></li>
+									<li class="radio-off">OFF</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+					<div class="comment">
+						（当时间结束时，不会自动进入下一个时间，等待用户确认。无法与[完成时，自动进入休息时间]同时开启）
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 设置界面结束 -->
+
+	</div>
+            </div>
+            <div class="handler"></div>
+        </div>
+     
+<div class="poem-wrap yiyan" onclick="location.href='time.1.html'">
+   <p id="hitokoto_text">loading...</p>
+</div>
+    </div>
+    <script src="time/music.js"></script>
+	<script src="time/NoSleep.min.js"></script>
+	<script src="time/NoSleepWindow.js"></script>
+    <script src="time/time.1/global.js"></script>
+    <script src="time/time.1/120.js"></script>
+	<script src="time/script.js"></script>
+	<script src="time/quanping.js"></script>
+	<script src="time/yiyan.js"></script>
+	<script src="time/youjian.js"></script>
+</body>
+
+</html>

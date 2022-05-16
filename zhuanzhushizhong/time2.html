@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="Zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>专注时钟</title>
+  <link rel="stylesheet" href="time2/css/flipclock.css">
+  <link rel="stylesheet" href="time2/css/style.css">
+  <link rel="stylesheet" href="time/yiyan.css">
+</head>
+<body>
+<object data="background/liuxing2/NewFile.html" class="liuxing-object"></object>
+<div class="hour view-fullscreen ">
+	<div class="clock cancel-fullscreen">
+	</div></div>
+	<!-- 一言 -->
+<div class="poem-wrap yiyan" onclick="location.href='time2.html'">
+   <p id="hitokoto_text">loading...</p>
+</div>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="time2/js/flipclock.js"></script>
+	<script type="text/javascript">
+		var clock = $('.clock').FlipClock({
+			clockFace: 'TwelveHourClock'
+		});
+	</script>
+	<script src="time/quanping.js"></script>
+	<script src="time/yiyan.js"></script>
+</body>
+</html>

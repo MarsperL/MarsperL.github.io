@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" href="time/yiyan.css">
+<title></title>
+<style>
+body {
+	background-color: #000000;
+	overflow: hidden;
+}
+.container {
+	width: auto;
+	height: auto;
+	position: absolute;
+	left:33%;
+	top: 30%;
+}
+@font-face {
+	font-family: 'CLOCK2017L';
+	src: url('./CLOCK2017L.TTF') format('truetype');
+	-webkit-font-smoothing: 'antialiased';
+}
+
+@
+keyframes touches {from { background-position:200%0;
+	
+}
+
+to {
+	background-position: 0 0;
+}
+
+}
+@
+-webkit-keyframes touches {from { background-position:200%0;
+	
+}
+
+to {
+	background-position: 0 0;
+}
+
+}
+.clock {
+	width: auto;
+	height: auto;
+	font-size: 150px;
+	font-family: 'ActionJackson';
+	font-weight: 100;
+	animation: touches 3s linear infinite;
+	-webkit-animation: touches 3s linear infinite;
+	color: green;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.clock.theme-blue {
+	background-image: linear-gradient(55deg, #49789C 0%, #2C7EDB 30%, #0ABAA7 40%, #01cc9a 45%
+		, #3cdfb7 50%, #01cc9a 55%, #0ABAA7 60%, #2C7EDB 70%, #49789C 100%);
+}
+
+.clock.theme-orange {
+	background-image: linear-gradient(55deg, #f74320 0%, #fc5220 30%, #fc6336 40%, #fec532 45%
+		, #fdcc4d 50%, #fec532 55%, #fc6336 60%, #fc5220 70%, #f74320 100%);
+}
+
+.clock.theme-purple {
+	background-image: linear-gradient(55deg, #A942D4 0%, #843AD4 30%, #7260D4 40%, #315285 45%
+		, #BAD5FF 50%, #315285 55%, #7260D4 60%, #843AD4 70%, #A942D4 100%);
+}
+
+.clock.theme-1 {
+	background-image: linear-gradient(55deg, #fb3 0%, #fc5220 30%, #fc6336 40%, #fec532 45%,
+		#fb3 50%, #fec532 55%, #fc6336 60%, #fc5220 70%, #fb3 100%);
+}
+.time_s {
+	font-size: 50px;
+}
+.liuxing-object{
+	width:100%;
+	height:100vh;
+	z-index:-1;
+	
+}
+</style>
+</head>
+<body>
+<object data="background/bianse.html" class="liuxing-object"></object>
+	<div class="container view-fullscreen">
+	
+		<div class="clock theme-orange cancel-fullscreen" ></div>
+
+		<div class="panel">
+			<div class="theme-purple">
+				<div class="list"></div>
+			</div>
+			<div class="pointer"></div>
+		</div>
+	</div>
+<!-- 一言 -->
+<div class="poem-wrap yiyan" onclick="location.href='time8.html'">
+   <p id="hitokoto_text">loading...</p>
+</div>
+	<script> 
+        window.setInterval('run()', 1000);
+        setListItem();
+        
+        function run(){
+            var time = new Date();
+            var time_h = time.getHours();
+            var time_m = time.getMinutes();
+            var time_s = time.getSeconds();
+            if(time_m.toString().length == 1) time_m = "0" + time_m;
+            if(time_s.toString().length == 1) time_s = "0" + time_s;
+            /* var time = time_h+":"+time_m+"<span class='time_s'>"+time_s+"</span>"; */
+            var time = time_h+":"+time_m+":"+time_s+"</span>";
+            var now_m = (time_h * 60) + parseInt(time_m) + (time_s / 60);
+            
+            document.querySelector('.clock').innerHTML = time;
+            document.querySelector('.list').style.cssText = "transform: translateY(-"+(now_m / 1440) * 100 +"%) translateY(30px);-webkit-transform: translateY(-"+(now_m / 1440) * 100 +"%) translateY(30px);";
+        }
+    </script>
+    <script src="time/yiyan.js"></script>
+    <script src="time/quanping.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>专注时钟</title>
+<link rel="stylesheet" href="time/style.css">
+<link rel="stylesheet" href="time/yiyan.css">
+<link rel="stylesheet" href="time/youjian.css">
+</head>
+<body class="click_btn" style="overflow: hidden" >
+	<div class="view-fullscreen">
+		<div class="clock cancel-fullscreen"  >
+		<div class="flip">
+			<div class="digital front" data-number="0"></div>
+			<div class="digital back" data-number="1"></div>
+		</div>
+		<div class="flip">
+			<div class="digital front" data-number="0"></div>
+			<div class="digital back" data-number="1"></div>
+		</div>
+		<em class="divider">:</em>
+		<div class="flip">
+			<div class="digital front" data-number="0"></div>
+			<div class="digital back" data-number="1"></div>
+		</div>
+		<div class="flip">
+			<div class="digital front" data-number="0"></div>
+			<div class="digital back" data-number="1"></div>
+		</div>
+		<em class="divider">:</em>
+		<div class="flip">
+			<div class="digital front" data-number="0"></div>
+			<div class="digital back" data-number="1"></div>
+		</div>
+		<div class="flip">
+			<div class="digital front" data-number="0"></div>
+			<div class="digital back" data-number="1"></div>
+		</div>
+	</div>
+	</div>
+	
+	    
+<!-- 一言 -->
+<div class="poem-wrap yiyan" onclick="location.href='time.html'">
+   <p id="hitokoto_text">loading...</p>
+</div>
+
+	<!-- partial -->
+	<script src="time/script.js"></script>
+	<!-- 右键菜单 -->
+	<ul id="rightMenu" style="width: 100px;">
+		<li id="open">开启常亮</li>
+		<li id="close">关闭常亮</li>
+		<li class="rigntMenu_zi_home">切换样式
+			<ul class="rigntMenu_zi_zi">
+				<li onclick="location.href='time.html'">翻页(24h)</li>
+				<li onclick="location.href='time2.html'">翻页(12h)</li>
+				<li onclick="location.href='time3.html'">数字(圆)</li>
+				<li onclick="location.href='time8.html'">渐变</li>
+				<li onclick="location.href='time6.html'">滚轮</li>
+				<li onclick="location.href='time10.html'">流星</li>
+				<li onclick="location.href='time4.html'">荧光蓝</li>
+				<li onclick="location.href='time5.html'">深色(数字)</li>
+				<li onclick="location.href='time7.html'">深色(时钟)</li>
+				<li onclick="location.href='time9.html'">简约时钟</li>
+			</ul>
+		</li>
+		<li>#2</li>
+		<li>#3</li>
+	</ul>
+	<!--不休眠  -->
+	<script src="time/NoSleep.min.js"></script>
+	<script src="time/NoSleepWindow.js"></script>
+		<script src="time/yiyan.js"></script>
+	<script src="time/quanping.js"></script>
+	<script src="time/youjian.js"></script>
+</body>
+</html>
