@@ -9,7 +9,6 @@ document.oncontextmenu = function (e) { return false; }
 			//显示我们自己定义的右键菜单
 			//1.找到菜单
 			//提取到函数外面作为全局变量
-	e.preventDefault();
 			//兼容Event对象
 			e = e || window.event;
 
