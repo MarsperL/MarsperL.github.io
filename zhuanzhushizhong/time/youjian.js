@@ -1,13 +1,13 @@
  window.onload = function(){
   var menu = document.getElementById('rightMenu');
-  document.body.oncontextmenu = function(e){ // 自定义body元素的鼠标事件处理函数
+  document.documentElement.oncontextmenu = function(e){ // 自定义body元素的鼠标事件处理函数
     var e = e || window.event;
     e.preventDefault(); //阻止系统右键菜单 IE8-不支持
     // 显示自定义的菜单调整位置
     let scrollTop =
-        document.documentElement.scrollTop || document.body.scrollTop;// 获取垂直滚动条位置
+        document.documentElement.scrollTop || document.documentElement.scrollTop;// 获取垂直滚动条位置
     let scrollLeft =
-        document.documentElement.scrollLeft || document.body.scrollLeft;// 获取水平滚动条位置
+        documen.documentElement.scrollLeft || document.documentElement.scrollLeft;// 获取水平滚动条位置
     menu.style.display = 'block';
     menu.style.left = e.clientX + scrollLeft + 'px';
     menu.style.top = e.clientY + scrollTop + 'px';
