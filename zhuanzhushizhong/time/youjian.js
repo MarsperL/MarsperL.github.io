@@ -1,3 +1,6 @@
+document.oncontextmenu = function(){
+  return false;
+}
 //提取到函数外面作为全局变量
 		var rm = document.getElementById("rightMenu");
 
