@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-ico" href="icon.png"/>
+<title>词音</title>
+<style>
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background-image: url("3.jpg");
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+	backdrop-filter: blur(50px); /* 毛玻璃效果*/
+	overflow: hidden;
+}
+
+.yinyue{
+	height:auto;
+	width:auto;
+	position:absolute;
+	left: 175px;
+	top: 0px;
+}
+.song {
+	height: 600px;
+	width: 400px;
+	position: absolute;
+	text-align: center;
+	left: 80px;
+	line-height: 2em;
+	overflow-y:scroll; 
+	color: #FFFFFF;
+	font-family: "宋体"; 
+}
+.song a{
+	text-decoration: none;
+	font-weight:bold;
+}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/ 
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+/*定义滚动条轨道*/ 
+::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 10px;
+}
+/*定义滑块 内阴影+圆角*/ 
+::-webkit-scrollbar-thumb {
+    background-color: #c2c2c2;
+    height:5px;
+    border-radius: 10px;  
+}
+.a {
+	position: absolute;
+	right: 100px;
+	width: 850px;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.b {
+	width: 500px;
+	height: 500px;
+	transition: .4s;
+	background-size: cover;
+}
+
+.c {
+	width: 200px;
+	height: 500px;
+	display: flex;
+	/* 纵向布局 */
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.d {
+	position: relative;
+	width: 200px;
+	height: 90px;
+	right: 0;
+	transition: .5s;
+	overflow: hidden;
+}
+
+.d img {
+	position: absolute;
+	width: 200px;
+	/* 小图片上移 */
+	transform: translate(0, -50px);
+	transition: .5s;
+	right: 0;
+}
+
+.d.dd {
+	opacity: 0;
+	right: 250px;
+}
+
+.d:hover img {
+	opacity: 0;
+	right: 250px;
+}
+</style>
+</head>
+<body>
+	<div class="yinyue"><embed  width=280 height=52 src="https://music.163.com/outchain/player?type=2&id=385965&auto=0&height=32"/></div>
+	<div class="song">
+		<h1>知足</h1>
+		<p>
+			歌手:<a href="https://baike.baidu.com/item/%E4%BA%94%E6%9C%88%E5%A4%A9/17011?fr=aladdin">
+				五月天</a>
+		</p>
+		<p>专辑名:<a href="https://music.163.com/#/album?id=38247" style="color: #12a182">知足 最真杰作选</a></p>
+		<p><a href="https://music.163.com/#/song?id=385965" style="color: #2b73af">知足</a> - <a href="https://music.163.com/#/artist?id=13193" style="color:#ce5777">五月天(Mayday)</a></p>
+		<p>词：阿信</p>
+		<p>
+			曲：阿信 <br>编曲：五月天 <br>怎么去拥有一道彩虹<br> 怎么去拥抱一夏天的风<br> 天上的星星笑地上的人<br>
+			总是不能懂不能觉得足够<br> 如果我爱上你的笑容<br> 要怎么收藏要怎么拥有<br> 如果你快乐不是为我<br>
+			会不会放手其实才是拥有<br> 当一阵风吹来风筝飞上天空<br> 为了你而祈祷而祝福而感动<br>
+			终于你身影消失在人海尽头<br> 才发现笑着哭最痛<br> 那年你和我那个山丘<br> 那样的唱着那一年的歌<br>
+			那样的回忆那么足够<br> 足够我天天都品尝着寂寞<br> 当一阵风吹来风筝飞上天空<br>
+			为了你而祈祷而祝福而感动<br> 终于你身影消失在人海尽头<br> 才发现笑着哭最痛<br>
+			当一阵风吹来风筝飞上天空<br> 为了你而祈祷而祝福而感动<br> 终于你身影消失在人海尽头<br>
+			才发现笑着哭最痛 wo<br> 如果我爱上你的笑容<br> 要怎么收藏要怎么拥有<br>
+			如果你快乐再不是为我<br> 会不会放手其实才是拥有<br> 知足的快乐叫我忍受心痛<br>
+			知足的快乐叫我忍受心痛
+		</p>
+	</div>
+	<div class="a">
+		<div class="b"></div>
+		<div class="c">
+			<div class="d dd">
+				<img src="1.jpg" alt="">
+			</div>
+			<div class="d">
+				<img src="2.jpg" alt="">
+			</div>
+			<div class="d">
+				<img src="3.jpg" alt="">
+			</div>
+			<div class="d">
+				<img src="4.jpg" alt="">
+			</div>
+			<div class="d">
+				<img src="5.jpg" alt="">
+			</div>
+		</div>
+	</div>
+	<script>
+        // 获取左边大图的元素
+        let b = document.querySelector(".b")
+        // 获取右边小图的所有元素
+        let d = document.getElementsByClassName("d")
+        let time
+        let index = 0
+        // 设置一个重置函数
+        let a = function(){
+            for(let i = 0;i < d.length; i++){
+                d[i].className = "d"
+            }
+        }
+        // 设置一个选中函数
+        let aa = function(){
+            // 先代入重置函数
+            a()
+            d[index].className = "d dd"
+        }
+        // 设置启动轮播图的时间函数
+        function ts(){
+            time = setInterval(function(){
+                aa()
+                index++
+                b.style.backgroundImage = "url('"+[index]+".jpg')"
+                if(index == 5){
+                    index=0
+                }
+            },3000);
+        }
+        for(let i = 0;i < d.length;i++){
+            // 鼠标移动到当前小图片上时触发
+            d[i].onmousemove = function(){
+                // 鼠标移动到当前小图片时右边大图片变成当前的小图片
+                b.style.backgroundImage = "url('"+[i + 1]+".jpg')"
+                // 鼠标移动到小图片上面时关闭定时器并重置定时，
+                // 鼠标移开后再继续执行
+                a()
+                clearInterval(time)
+                index = i + 1
+                ts()
+            }
+        }
+        // 执行轮播图
+        ts()
+    </script>
+</body>
+</html>
