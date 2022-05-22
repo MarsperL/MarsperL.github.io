@@ -12,3 +12,9 @@
 [网页预览](https://marsperl.github.io/zhuanzhushizhong/time.html)  
 
 [项目直达](https://github.com/MarsperL/HTML5/tree/main/zhuanzhushizhong)
+
+个人博客项目：
+
+[网页预览](https://marsperl.github.io/blog/blog.html)
+
+[项目直达](https://github.com/MarsperL/MarsperL.github.io/tree/main/blog)
