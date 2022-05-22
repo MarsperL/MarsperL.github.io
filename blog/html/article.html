@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ml-update="aware" style="background: unset;">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+	name="viewport">
+<link rel="shortcut icon" href="../img/icon.png">
+<meta name="theme-color" content="#31363b">
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<meta name="robots"
+	content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link media="all"
+	href="../css/autoptimize_566c92d2e4b07cb729b4cc6960a34389.css"
+	rel="stylesheet">
+<link rel="stylesheet" href="../css/sakura.css" media="all">
+<link rel="stylesheet" href="../css/yiyan.css">
+<script type="text/javascript" src="../js/yiyan.js"></script>
+</head>
+<body
+	class="post-template-default single single-post postid-772 single-format-standard chinese-font serif mdui-loaded"
+	style="background-image: url(&quot;&quot;); width: 100%; height: 100%;">
+	<script type="text/javascript" color="0,225,255" opacity="0.7"
+			zindex="-2" count="100"
+			src="../js/canvas-nest.js" defer=""></script>
+	<div class="scrollbar" id="bar" style="width: 0%; background: orange;"></div>
+	<section id="main-container">
+		<div id="page" class="site wrapper ">
+			<div>
+				<h1 class="fes-title" style="margin-top: 5px; text-align: center;">
+					<i class="fa" aria-hidden="true" id="hitokoto_text"
+						onclick="location.href='article.html'"></i>
+				</h1>
+
+			</div>
+			<div class="pattern-center single-center">
+				<div class="pattern-attachment-img lazyload"
+					style="background-image: url(&quot;https://view.amogu.cn/images/2021/11/21/hAIL.png&quot;);"
+					data-src="https://view.amogu.cn/images/2021/11/21/hAIL.png"></div>
+				<header class="pattern-header single-header">
+					<h1 class="entry-title">PHP邮件自定义发送API接口带多种邮件模板</h1>
+					<p class="entry-census">
+						<span><a href="../blog.html"><img src="../img/icon.png"></a></span><span><a
+							href="../blog.html">随风飘舞的云</a></span><span class="bull">·</span>2022-03-29<span
+							class="bull">·</span>425 次阅读
+					</p>
+				</header>
+			</div>
+			<div id="content" class="site-content"
+				style="background-color: rgba(255, 255, 255, 0.8);">
+				<div id="primary" class="content-area">
+					<main id="main" class="site-main" role="main">
+						<article id="post-772"
+							class="post-772 post type-post status-publish format-standard has-post-thumbnail hentry category-code tag-php">
+							<div class="entry-content">
+								<p>可以用于对接不支持邮件推送的系统如”哪吒探针“，使其能够发送邮件告警，也可以用做其他用途，附带多种邮件模板请自行参照源码的注释修改。</p>
+								<h3 id="toc-head-1">安装</h3>
+								<p>需要 PHP &gt; 7.2，上传至你网站目录的任意位置，根据注释修改成你邮箱服务商的 SMTP 信息即可使用。</p>
+								<p>
+									<a data-fancybox="gallery" data-caption="" class="fancybox"><img
+										src="../img/xing.jpg" target="_blank" rel="nofollow"
+										class="fancybox"></a>
+								</p>
+								<h3 id="toc-head-2">请求示例</h3>
+								<pre class="highlight-wrap" autocomplete="off" autocorrect="off"
+									autocapitalize="off" spellcheck="false" contenteditable="false"
+									design="by Mashiro">
+									<code class="language-bash hljs" data-rel="BASH" id="hljs-0">https://你的域名/mail-api/?address=收件邮箱&amp;nickname=发件人昵称&amp;title=邮件标题&amp;content=邮件内容
+</code>
+									<a class="copy-code" href="javascript:"
+										data-clipboard-target="#hljs-0" title="拷贝代码"><i
+										class="fa fa-clipboard" aria-hidden="true"></i></a>
+								</pre>
+								<h3 id="toc-head-3">邮件模板</h3>
+								<p>
+									参照
+									<code>邮件模板使用示例</code>
+									自行修改，然后替换到
+									<code>&lt;&lt;&lt;EOF</code>
+									和
+									<code>EOF</code>
+									之间即可，当然这些邮件模板你也可以用到其他系统中，比如
+									<code>WordPess</code>
+									。下面是一些模板的展示图：
+								</p>
+								<ol>
+									<li>theme_1
+										<p>
+											<img class="lazyload" src="../img/xing.jpg"
+												onerror="imgError(this)" alt="">
+										</p>
+										<noscript>
+											<img src="../img/xing.jpg" alt="" />
+											</p>
+										</noscript>
+									</li>
+									<li><p>theme_2</p>
+										<p>
+											<img class="lazyload" src="../img/xing.jpg"
+												onerror="imgError(this)" alt="">
+										</p>
+										<noscript>
+											<img src="../img/xing.jpg" alt="" />
+											</p>
+										</noscript></li>
+									<li><p>theme_3</p>
+										<p>
+											<img class="lazyload" src="../img/xing.jpg"
+												onerror="imgError(this)" alt="">
+										</p>
+										<noscript>
+											<img src="../img/xing.jpg" alt="" />
+											</p>
+										</noscript></li>
+									<li><p>theme_4</p>
+										<p>
+											<img class="lazyload" src=" ../img/xing.jpg"
+												onerror="imgError(this)" alt="">
+										</p>
+										<noscript>
+											<img src="../img/xing.jpg" alt="" />
+											</p>
+										</noscript></li>
+								</ol>
+								<h3 id="toc-head-4">下载地址</h3>
+								<p>
+									<a
+										href="https://github.com/Fog-Forest/scripts/tree/main/mail-api"
+										target="_blank" rel="nofollow">https://github.com/Fog-Forest/scripts/tree/main/mail-api</a>
+								</p>
+								<h3 id="toc-head-5">参考</h3>
+								<p>
+									<a class="wp-editor-md-post-content-link"
+										href="https://github.com/PHPMailer/PHPMailer" target="_blank"
+										rel="nofollow">PHPMailer</a>
+								</p>
+								<p></p>
+								<div class="has-toc have-toc"></div>
+								<p></p>
+							</div>
+
+						</article>
+						<div class="toc-container" style="height: 3314.63px;">
+							<div class="toc">
+								<ol class="toc-list ">
+									<li class="toc-list-item"><a
+										href="article.html#toc-head-1"
+										class="toc-link node-name--H3  is-active-link">安装</a></li>
+									<li class="toc-list-item"><a
+										href="article.html#toc-head-2" class="toc-link node-name--H3 ">请求示例</a></li>
+									<li class="toc-list-item"><a
+										href="article.html#toc-head-3" class="toc-link node-name--H3 ">邮件模板</a></li>
+									<li class="toc-list-item"><a
+										href="article.html#toc-head-4" class="toc-link node-name--H3 ">下载地址</a></li>
+									<li class="toc-list-item"><a
+										href="article.html#toc-head-5" class="toc-link node-name--H3 ">参考</a></li>
+								</ol>
+							</div>
+							<div style="margin: 10px; border: 1px solid #B3B3B3; border-radius: 5px;">
+							<a style="text-decoration:none; color: #000; margin: 5px;">查询博客</a>
+							<form action="#" style="margin: 5px;">
+						<input type="date" name="date" style="margin: 5px;"/>
+						<input type="submit" value="提交" style="margin-left:70%; ">
+						</form>
+							</div>
+						</div>
+						<section class="post-squares nextprev">
+							<div class="post-nepre full previous">
+								<a href="#" rel="prev"><div class="background lazyload"
+										style="background-image: url(https://jsdelivr.amogu.cn/gh/moezx/cdn@3.0.1/img/svg/loader/orange.progress-bar-stripe-loader.svg);"
+										data-src="https://view.amogu.cn/images/2022/03/29/lQxD.png"></div>
+									<span class="label">Previous Post</span>
+									<div class="info">
+										<h3>Linux 服务器使用 Rclone 挂载 OneDrive 实现定时备份</h3>
+										<hr>
+									</div></a>
+							</div>
+							<div class="post-nepre half next"></div>
+						</section>
+					</main>
+				</div>
+			</div>
+			<section id="comments" class="comments">
+				<div class="commentwrap comments-hidden" style="display: block;">
+					<div class="notification">
+						<i class="iconfont icon-mark"></i>查看评论 - <span class="noticom">1
+							条评论 </span>
+					</div>
+				</div>
+				<div class="comments-main" style="display: block;">
+					<h3 id="comments-list-title">
+						Comments | <span class="noticom">1 条评论 </span>
+					</h3>
+					<div id="loading-comments">
+						<span></span>
+					</div>
+					<ul class="commentwrap">
+						<li class="comment even thread-even depth-1" id="comment-910"><div
+								class="contents">
+								<div class="comment-arrow">
+									<div class="main shadow">
+										<div class="profile">
+											<a href="#" target="_blank" rel="nofollow"><img
+												src="../img/trans.ajax-spinner-preloader(1).svg"
+												onerror="imgError(this,1)" data-src="#"
+												class="lazyload avatar avatar-24 photo" alt="😀" width="24"
+												height="24"></a>
+										</div>
+										<div class="commentinfo">
+											<section class="commeta">
+												<div class="left">
+													<h4 class="author">
+														<a href="#" target="_blank" rel="nofollow"><img
+															src="../img/headimg_dl.jpg" data-src=""
+															class="lazyload avatar avatar-24 photo" alt="😀"
+															width="24" height="24" onerror="imgError(this,1)"><span
+															class="bb-comment isauthor" title="作者">博主</span> CASoul <span
+															class="showGrade0" title="Lv0"><img
+																src="../img/level_0.svg"
+																style="height: 1.5em; max-height: 1.5em; display: inline-block;"></span></a>
+													</h4>
+												</div>
+												<a rel="nofollow" class="comment-reply-link" href="#"
+													data-commentid="910" data-postid="772"
+													data-belowelement="comment-910"
+													data-respondelement="respond" data-replyto="回复给CASoul"
+													aria-label="回复给CASoul">回复</a>
+												<div class="right">
+													<div class="info">
+														<time datetime="2022-05-02">发布于 19 天前</time>
+														&nbsp;&nbsp;<span class="useragent-info">( <img
+															src="../img/safari.svg">&nbsp;Safari
+															604.1&nbsp;&nbsp;<img
+															src="https://jsdelivr.amogu.cn/gh/moezx/cdn@3.2.7/img/Sakura/images/ua/svg/iphone.svg">&nbsp;Iphone
+															14_4 like Mac OS X) AppleWebKit )
+														</span><span class="useragent-info-m">( <img
+															src="../img/safari.svg">&nbsp;&nbsp;<img
+															src="https://jsdelivr.amogu.cn/gh/moezx/cdn@3.2.7/img/Sakura/images/ua/svg/iphone.svg">
+															)
+														</span>&nbsp;来自:
+													</div>
+												</div>
+											</section>
+										</div>
+										<div class="body">
+											<p>
+												<i class="fa fa-lock" aria-hidden="true"></i> 该评论为私密评论
+											</p>
+										</div>
+									</div>
+									<div class="arrow-left"></div>
+								</div>
+							</div>
+							<hr></li>
+					</ul>
+					<nav id="comments-navi"></nav>
+				</div>
+			</section>
+		</div>
+		<footer id="colophon" class="site-footer" role="contentinfo">
+			<div class="site-info" theme-info="Sakura v3.4.0">
+				<div class="footertext">
+					<div class="img-preload">
+						<img src="../img/wordpress-rotating-ball-o.svg"> <img
+							src="../img/disqus-preloader.svg">
+					</div>
+					<p style="color: #666666;"></p>
+					<p
+						style="font-family: &amp; amp; amp; amp; amp; #39; Ubuntu &amp;amp; amp; amp; amp; #39;; color: #666666">
+						©2022 随风起舞的云<br>
+					</p>
+					<p>
+						<span id="runtime_span">小破站在各种灾难中运行了:1 天</span>
+					</p>
+					<p></p>
+				</div>
+				<div class="footer-device">
+					<p style="font-family: &amp; amp;">
+						<span style="color: #b9b9b9;">风起扬帆 <a
+							class="iconfont icon-sakura rotating"
+							style="color: #ffc0cb; display: inline-block text-decoration:none;"
+							href="https://github.com/MarsperL"> MarsperL</a>
+						</span>
+					</p>
+				</div>
+			</div>
+		</footer>
+	</section>
+	<script type="text/javascript">
+		function show_runtime() {
+			window.setTimeout("show_runtime()", 1000);
+			X = new Date("05/19/2022 7:00:00");
+			Y = new Date();
+			T = (Y.getTime() - X.getTime());
+			M = 24 * 60 * 60 * 1000;
+			a = T / M;
+			A = Math.floor(a);
+			runtime_span.innerHTML = "小破站在各种灾难中运行了: " + A + " 天"
+		}
+		show_runtime();
+	</script>
+	<div id="waifu"></div>
+</body>
+</html>

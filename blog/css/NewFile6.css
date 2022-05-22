@@ -1,0 +1,305 @@
+@charset "utf-8";
+body{
+    background: url("../img/xing7.jpg");
+    color: #fff;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.l_float {
+   margin: 0 auto;
+}
+.r_float {
+    float: right;
+}
+.l_clear {
+    clear: left;
+    display: block;
+    overflow: hidden;
+    content:"";
+}
+.r_clear {
+    clear: right;
+    display: block;
+    overflow: hidden;
+    content:"";
+}
+.b_clear {
+    clear: both;
+    display: block;
+    overflow: hidden;
+    content:"";
+}
+.show {
+    display: block;
+}
+.hidden {
+    display: none;
+}
+
+header{
+    background-color: #fff;
+}
+header>nav{
+    width: 1200px;
+    margin: 0 auto;
+    /* background-color: orange; */
+    padding: 10px 0;
+
+
+}
+nav>.nav_logo,nav>.nav_logo>img{
+    height: 40px;
+
+}
+nav>.nav_link>ul>li{
+    float: left;
+    list-style: none;
+    line-height: 40px;
+    margin-right: 10px;
+    
+}
+nav>.nav_link>ul>li>a{
+    color: #333;
+    text-decoration: none;
+
+}
+
+nav>.nav_link>ul>li>a:hover{
+    color: #5E2FE7;
+}
+
+nav>.nav_link>ul>li:last-child{
+    margin-right: 0;
+}
+.container{
+	width: 100%;
+	height: 100%;
+}
+
+.container>.login_body{
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 80px;
+}
+.container>.login_body>.login_form{
+    width: 400px;
+    /* background: #fff; */
+}
+
+.container>.login_body>.login_form>.login_top,
+.container>.login_body>.login_form>.login_con{
+     backdrop-filter: blur(100px); /* 毛玻璃效果*/
+}
+
+.container>.login_body>.login_form>.login_top{
+    /* padding-bottom: 30px; */
+    padding: 20px 30px 10px 30px;
+    border-radius: 15px 15px 0px 0px;
+
+}
+
+.container>.login_body>.login_form>.login_top>img{
+    height: 40px;
+}
+
+
+.container>.login_body>.login_form>.login_top>.login_tags{
+/*    border-bottom: 2px solid #d9d9d9;*/
+    padding: 10px 0 0;
+  
+}
+
+.container>.login_body>.login_form>.login_top>.login_tags{
+    /* margin: 10px 0 20px 0; */
+
+}
+
+.container>.login_body>.login_form>.login_top>.login_tags>span{
+    padding: 10px;
+    text-align:center;
+    float:left;
+    width: 50%;
+    box-sizing: border-box;
+    border-bottom: 1px solid #fff;
+
+
+}
+
+.container>.login_body>.login_form>.login_top>.login_tags>.active{
+        border-bottom: 2px solid #703EFF;
+	
+        
+}
+
+.container>.login_body>.login_form>.login_con{
+    padding: 20px 30px;
+}
+
+.container>.login_body>.login_form>.login_con>form>div{
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.container>.login_body>.login_form>.login_con>form>div>img{
+    width: 24px;
+    position: absolute;
+    bottom: 32px;
+    left: 0;
+}
+
+.container>.login_body>.login_form>.login_con>form>div>.tips{
+    position: absolute;
+    bottom: 0px;
+    font-size: 12px;
+    right: 0;
+    color:#5E2FE7;
+}
+
+.container>.login_body>.login_form>.login_con>form>.submit>.tips{
+    text-align: center;
+    bottom: -3px;
+    left: 0;
+}
+
+.container>.login_body>.login_form>.login_con>form>div>label{
+    font-size: 14px;
+    
+}
+
+.container>.login_body>.login_form>.login_con>form>div>input{
+    display: block;
+    margin-top: 10px;
+    background-color: rgba(255,255,255,0.9);
+}
+
+.container>.login_body>.login_form>.login_con>form>div>input[type=text],
+.container>.login_body>.login_form>.login_con>form>div>input[type=password],
+.container>.login_body>.login_form>.login_con>form>div>button[type=submit]{
+    padding: 0 28px;
+    outline: none;
+    height: 40px;
+    width: 280px;
+    border: none;
+    color: #333;
+    font-size: 16px; 
+     border-radius: 8px;
+/*    position: relative;*/
+}
+
+
+
+.container>.login_body>.login_form>.login_con>form>div>#auth_code{
+    width: 90px;
+    font-size: 22px;
+    padding-right: 4px;
+}
+.container>.login_body>.login_form>.login_con>form>div>.auth_code{
+    height: 42px;
+    margin-top: 10px;
+    margin-left: 4px;
+    width: 114px;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #703EFF;
+    background-color: #fff;
+    
+}
+
+.container>.login_body>.login_form>.login_con>form>div>button[type=submit]{
+    background-color: #703EFF;
+    width: 120px;
+    border-radius:50px; 
+    border-bottom: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+
+}
+
+.container>.login_body>.login_form>.login_con>form>div>button[type=submit]:hover{
+    background-color: #5E2FE7;
+}
+
+.container>.login_body>.login_form>.login_con>form>div>a{
+    font-size: 12px;
+    line-height: 40px;
+}
+
+.container>.login_body>.login_form>.login_con>.qr_code{
+    text-align: center;
+}
+.container>.login_body>.login_form>.login_con>.qr_code>img{
+    width: 140px;
+}
+
+.container>.login_body>.login_form>.login_con>.qr_code>p{
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.container>.login_body>.login_form>.login_otherAccount{
+    padding: 12px 20px;
+    font-size: 12px;
+    border-top: 1px solid #d9d9d9;
+    backdrop-filter: blur(100px); /* 毛玻璃效果*/
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+}
+.container>.login_body>.login_form>.login_otherAccount>span{
+    margin-right: 4px;
+
+}
+
+.container>.login_body>.login_form>.login_otherAccount>a{
+    margin-right: 2px;
+}
+.container>.login_body>.login_form>.login_otherAccount>a>img{
+    height: 24px;
+    vertical-align: middle;
+}
+
+
+.footer{
+    font-size: 12px;
+    padding: 0 10px;
+    text-align: center;
+    margin-top: 26px;
+  }
+
+.footer a:link{
+    color: #999999;
+
+}
+.footer a:visited{
+    color: #999999;
+
+}
+
+.footer a:hover{
+    color: #5E2FE7;
+}
+.footer a:active{
+    color: #999999;
+
+}
+
+.footer,.footer>p,.footer a{
+    color: #999999;
+    text-decoration: none;
+
+}
+
+.footer>p{
+    margin: 5px auto 10px;
+}
+.footer>a>img{
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 4px;
+}
