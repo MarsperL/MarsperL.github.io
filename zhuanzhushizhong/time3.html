@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>专注时钟</title>
-  <!-- Link CSS -->
+<link rel="icon" type="image/x-ico" href="time/img/iconmonstr-time.png"/>
   <link rel="stylesheet" href="time3/css/style.css">
   <link rel="stylesheet" href="time/yiyan.css">
 </head>
@@ -31,7 +31,9 @@
 			roundCorner: true,
 			format: function (value) {
 				var date = new Date();
-				return date.getHours() + ':' + date.getMinutes();
+				let m = date.getMinutes();
+		        m = m < 10 ? ('0' + m) : m;
+				return date.getHours() + ':' + m;
 			}
 		});
 
