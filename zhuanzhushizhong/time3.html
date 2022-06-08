@@ -31,9 +31,11 @@
 			roundCorner: true,
 			format: function (value) {
 				var date = new Date();
+				let h = date.getHours();
+		        h = h < 10 ? ('0' + h) : h;
 				let m = date.getMinutes();
 		        m = m < 10 ? ('0' + m) : m;
-				return date.getHours() + ':' + m;
+				return h + ':' + m;
 			}
 		});
 
