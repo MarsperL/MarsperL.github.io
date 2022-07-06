@@ -6,8 +6,17 @@
 <link rel="icon" type="image/x-ico" href="time/img/iconmonstr-time.png"/>
   <link rel="stylesheet" href="time3/css/style.css">
   <link rel="stylesheet" href="time/yiyan.css">
+  <link rel="stylesheet" href="time/youjian.css">
+  
 </head>
-<body >
+<body>
+<!-- 右键菜单 -->
+	<ul id="rightMenu" style="width: 100px;">
+		<li id="open">开启常亮</li>
+		<li id="close">关闭常亮</li>
+		<li onclick="javascript :history.go(-1);">返回上页</li>
+		<li>#3</li>
+	</ul>
 <object data="background/liuxing3.html" class="liuxing-object"></object>
 <div class="view-fullscreen">
 <div id="clock" class="cancel-fullscreen">
@@ -16,8 +25,9 @@
 	<!-- 一言 -->
 <div class="poem-wrap yiyan" onclick="location.href='time3.html'">
    <p id="hitokoto_text">loading...</p>
-</div>
-	
+</div><script src="time/youjian.js"></script>
+  <script src="time/NoSleep.min.js"></script>
+	<script src="time/NoSleepWindow.js"></script>
 	<script src="time3/js/radialIndicator.min.js"></script>
 	<script src="time3/js/angular.radialIndicator.js"></script>
 	<script type="text/javascript">
