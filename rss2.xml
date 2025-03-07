@@ -240,41 +240,6 @@
     </item>
     
     <item>
-      <title>实现Nextcloud私有云盘</title>
-      <link>https://marsperl.github.io/yyg/f7b8055d/</link>
-      <guid>https://marsperl.github.io/yyg/f7b8055d/</guid>
-      <pubDate>Tue, 31 Dec 2024 13:26:18 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;任务目标&quot;&gt;&lt;a href=&quot;#任务目标&quot; class=&quot;headerlink&quot; title=&quot;任务目标&quot;&gt;&lt;/a&gt;任务目标&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;完成Nextcloud私有云盘的搭建&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;部署指南&quot;&gt;&lt;a href=&quot;#部署指南&quot; class=&quot;headerlink&quot; title=&quot;部署指南&quot;&gt;&lt;/a&gt;部署指南&lt;/h2&gt;&lt;h3 id=&quot;基础环境准备&quot;&gt;&lt;a href=&quot;#基础环境准备&quot; class=&quot;headerlink&quot; title=&quot;基础环境准备&quot;&gt;&lt;/a&gt;基础环境准备&lt;/h3&gt;&lt;p&gt;配置防火墙策略&lt;/p&gt;
-&lt;figure</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://MarsperL.github.io/categories/Linux%E8%BF%90%E7%BB%B4/">Linux运维</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Nextcloud/">Nextcloud</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E7%A7%81%E6%9C%89%E4%BA%91%E7%9B%98/">私有云盘</category>
-      
-      
-      <comments>https://marsperl.github.io/yyg/f7b8055d/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
       <title>实现Docker 容器跨主机通讯</title>
       <link>https://marsperl.github.io/yyg/60ed202a/</link>
       <guid>https://marsperl.github.io/yyg/60ed202a/</guid>
@@ -306,6 +271,41 @@
       
       
       <comments>https://marsperl.github.io/yyg/60ed202a/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>实现Nextcloud私有云盘</title>
+      <link>https://marsperl.github.io/yyg/f7b8055d/</link>
+      <guid>https://marsperl.github.io/yyg/f7b8055d/</guid>
+      <pubDate>Tue, 31 Dec 2024 13:26:18 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;任务目标&quot;&gt;&lt;a href=&quot;#任务目标&quot; class=&quot;headerlink&quot; title=&quot;任务目标&quot;&gt;&lt;/a&gt;任务目标&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;完成Nextcloud私有云盘的搭建&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;部署指南&quot;&gt;&lt;a href=&quot;#部署指南&quot; class=&quot;headerlink&quot; title=&quot;部署指南&quot;&gt;&lt;/a&gt;部署指南&lt;/h2&gt;&lt;h3 id=&quot;基础环境准备&quot;&gt;&lt;a href=&quot;#基础环境准备&quot; class=&quot;headerlink&quot; title=&quot;基础环境准备&quot;&gt;&lt;/a&gt;基础环境准备&lt;/h3&gt;&lt;p&gt;配置防火墙策略&lt;/p&gt;
+&lt;figure</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/Linux%E8%BF%90%E7%BB%B4/">Linux运维</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
+      
+      <category domain="https://MarsperL.github.io/tags/Nextcloud/">Nextcloud</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E7%A7%81%E6%9C%89%E4%BA%91%E7%9B%98/">私有云盘</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/f7b8055d/#disqus_thread</comments>
       
     </item>
     
@@ -350,45 +350,6 @@
     </item>
     
     <item>
-      <title>安装Winlogbeat日志采集器</title>
-      <link>https://marsperl.github.io/yyg/f547e2a9/</link>
-      <guid>https://marsperl.github.io/yyg/f547e2a9/</guid>
-      <pubDate>Tue, 31 Dec 2024 13:26:18 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;ol&gt;
-&lt;li&gt;Winlogbeat安装程序可通过其官网（&lt;a href=&quot;https://www.elastic.co/cn/beats/winlogbeat）下载。&quot;&gt;https://www.elastic.co/cn/beats/winlogbeat）下载。&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;双击启动安装程序，进入安装向导后勾选“I accept the terms in the License Agreement”，单击【Install】，如图所示。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;img src=&quot;/yyg/f547e2a9/4.png&quot; class=&quot;&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://MarsperL.github.io/categories/%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/">日志分析</category>
-      
-      <category domain="https://MarsperL.github.io/categories/%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/ELK/">ELK</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/">日志分析</category>
-      
-      <category domain="https://MarsperL.github.io/tags/ELK/">ELK</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86%E5%99%A8/">日志采集器</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Winlogbeat/">Winlogbeat</category>
-      
-      
-      <comments>https://marsperl.github.io/yyg/f547e2a9/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
       <title>在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）</title>
       <link>https://marsperl.github.io/yyg/5ea27f40/</link>
       <guid>https://marsperl.github.io/yyg/5ea27f40/</guid>
@@ -424,44 +385,41 @@
     </item>
     
     <item>
-      <title>使用cephadm方式部署ceph集群</title>
-      <link>https://marsperl.github.io/yyg/89bdf9b5/</link>
-      <guid>https://marsperl.github.io/yyg/89bdf9b5/</guid>
+      <title>安装Winlogbeat日志采集器</title>
+      <link>https://marsperl.github.io/yyg/f547e2a9/</link>
+      <guid>https://marsperl.github.io/yyg/f547e2a9/</guid>
       <pubDate>Tue, 31 Dec 2024 13:26:18 GMT</pubDate>
       
         
         
           
           
-      <description>&lt;h2 id=&quot;任务目标&quot;&gt;&lt;a href=&quot;#任务目标&quot; class=&quot;headerlink&quot; title=&quot;任务目标&quot;&gt;&lt;/a&gt;任务目标&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;完成使用cephadm方式部署ceph集群&lt;/li&gt;
+      <description>&lt;ol&gt;
+&lt;li&gt;Winlogbeat安装程序可通过其官网（&lt;a href=&quot;https://www.elastic.co/cn/beats/winlogbeat）下载。&quot;&gt;https://www.elastic.co/cn/beats/winlogbeat）下载。&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;双击启动安装程序，进入安装向导后勾选“I accept the terms in the License Agreement”，单击【Install】，如图所示。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&quot;任务平台&quot;&gt;&lt;a href=&quot;#任务平台&quot; class=&quot;headerlink&quot; title=&quot;任务平台&quot;&gt;&lt;/a&gt;任务平台&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;物理设备—&lt;/li&gt;
-&lt;li&gt;操作系统：openEuler 22.03 LTS SP2&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;部署指南&quot;&gt;&lt;a href=&quot;#部署指南&quot;</description>
+&lt;img src=&quot;/yyg/f547e2a9/4.png&quot; class=&quot;&quot;</description>
           
         
       
       
       
       
-      <category domain="https://MarsperL.github.io/categories/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/">存储系统</category>
+      <category domain="https://MarsperL.github.io/categories/%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/">日志分析</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/ceph/">ceph</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/ceph/">ceph</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E5%85%B1%E4%BA%AB%E5%AD%98%E5%82%A8/">共享存储</category>
-      
-      <category domain="https://MarsperL.github.io/tags/ceph%E9%9B%86%E7%BE%A4/">ceph集群</category>
-      
-      <category domain="https://MarsperL.github.io/tags/cephadm/">cephadm</category>
+      <category domain="https://MarsperL.github.io/categories/%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/ELK/">ELK</category>
       
       
-      <comments>https://marsperl.github.io/yyg/89bdf9b5/#disqus_thread</comments>
+      <category domain="https://MarsperL.github.io/tags/%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/">日志分析</category>
+      
+      <category domain="https://MarsperL.github.io/tags/ELK/">ELK</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86%E5%99%A8/">日志采集器</category>
+      
+      <category domain="https://MarsperL.github.io/tags/Winlogbeat/">Winlogbeat</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/f547e2a9/#disqus_thread</comments>
       
     </item>
     
@@ -513,6 +471,48 @@
       
       
       <comments>https://marsperl.github.io/yyg/56088d5a/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>使用cephadm方式部署ceph集群</title>
+      <link>https://marsperl.github.io/yyg/89bdf9b5/</link>
+      <guid>https://marsperl.github.io/yyg/89bdf9b5/</guid>
+      <pubDate>Tue, 31 Dec 2024 13:26:18 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;任务目标&quot;&gt;&lt;a href=&quot;#任务目标&quot; class=&quot;headerlink&quot; title=&quot;任务目标&quot;&gt;&lt;/a&gt;任务目标&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;完成使用cephadm方式部署ceph集群&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;任务平台&quot;&gt;&lt;a href=&quot;#任务平台&quot; class=&quot;headerlink&quot; title=&quot;任务平台&quot;&gt;&lt;/a&gt;任务平台&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;物理设备—&lt;/li&gt;
+&lt;li&gt;操作系统：openEuler 22.03 LTS SP2&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;部署指南&quot;&gt;&lt;a href=&quot;#部署指南&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/">存储系统</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/ceph/">ceph</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/ceph/">ceph</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E5%85%B1%E4%BA%AB%E5%AD%98%E5%82%A8/">共享存储</category>
+      
+      <category domain="https://MarsperL.github.io/tags/ceph%E9%9B%86%E7%BE%A4/">ceph集群</category>
+      
+      <category domain="https://MarsperL.github.io/tags/cephadm/">cephadm</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/89bdf9b5/#disqus_thread</comments>
       
     </item>
     
