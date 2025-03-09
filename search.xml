@@ -705,6 +705,204 @@
       </tags>
   </entry>
   <entry>
+    <title>ceph集群部署指南</title>
+    <url>/yyg/3fc2a251/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="任务目标"><a href="#任务目标" class="headerlink" title="任务目标"></a>任务目标</h2><ol>
+<li>完成ceph集群部署</li>
+</ol>
+<h2 id="任务平台"><a href="#任务平台" class="headerlink" title="任务平台"></a>任务平台</h2><ol>
+<li>物理设备—</li>
+<li>操作系统：openEuler 22.03 LTS SP2</li>
+</ol>
+<h2 id="部署指南"><a href="#部署指南" class="headerlink" title="部署指南"></a>部署指南</h2><h3 id="任务一：配置准备"><a href="#任务一：配置准备" class="headerlink" title="任务一：配置准备"></a>任务一：配置准备</h3><ol>
+<li>重命名hostname</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将10.10.3.117的主机名改为future-ceph-node0</span></span><br><span class="line">hostnamectl set-hostname future-ceph-node0 &amp;&amp; bash</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将10.10.3.118的主机名改为future-ceph-node1</span></span><br><span class="line">hostnamectl set-hostname future-ceph-node1 &amp;&amp; bash</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将10.10.3.119的主机名改为future-ceph-node2</span></span><br><span class="line">hostnamectl set-hostname future-ceph-node2 &amp;&amp; bash</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将10.10.3.120的主机名改为future-ceph-node3</span></span><br><span class="line">hostnamectl set-hostname future-ceph-node3 &amp;&amp; bash</span><br></pre></td></tr></table></figure>
+<ol>
+<li>安装前的配置修改</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">关闭防火墙</span></span><br><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl disable firewalld</span><br><span class="line">firewall-cmd --state</span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">selinux永久关闭</span></span><br><span class="line">setenforce 0</span><br><span class="line"> sed -i &#x27;s/^SELINUX=enforcing$/SELINUX=permissive/&#x27; /etc/selinux/config</span><br><span class="line">cat /etc/selinux/config</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">添加hosts</span></span><br><span class="line">cat &gt;&gt; /etc/hosts &lt;&lt; EOF</span><br><span class="line">10.10.3.117 future-ceph-node0</span><br><span class="line">10.10.3.118 future-ceph-node1</span><br><span class="line">10.10.3.119 future-ceph-node2</span><br><span class="line">10.10.3.120 future-ceph-node3</span><br><span class="line">EOF</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看</span></span><br><span class="line">cat /etc/hosts</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">同步时间</span></span><br><span class="line">yum install ntp -y</span><br><span class="line">systemctl start ntpd</span><br><span class="line">systemctl enable ntpd</span><br><span class="line">yum install chrony  -y</span><br><span class="line">systemctl start chronyd</span><br><span class="line">systemctl enable chronyd</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">修改配置，添加内容</span></span><br><span class="line">echo &quot;</span><br><span class="line">server 10.10.3.70 iburst</span><br><span class="line">allow 10.10.3.0/24</span><br><span class="line">&quot; &gt;&gt; /etc/chrony.conf</span><br><span class="line">timedatectl set-ntp true</span><br><span class="line">systemctl restart chronyd</span><br><span class="line">timedatectl status</span><br><span class="line">date</span><br><span class="line"></span><br><span class="line">添加节点SSH互相通信</span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line">ssh-copy-id 10.10.3.118</span><br><span class="line">ssh-copy-id 10.10.3.119</span><br><span class="line">ssh-copy-id 10.10.3.120</span><br></pre></td></tr></table></figure>
+<h3 id="任务二：部署Ceph作为分布式存储"><a href="#任务二：部署Ceph作为分布式存储" class="headerlink" title="任务二：部署Ceph作为分布式存储"></a>任务二：部署Ceph作为分布式存储</h3><p>配置下载源</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo &quot;[ceph]</span><br><span class="line">name=ceph</span><br><span class="line">baseurl=http://mirrors.aliyun.com/ceph/rpm-mimic/el7/x86_64/</span><br><span class="line">gpgcheck=0</span><br><span class="line">priority=1</span><br><span class="line"></span><br><span class="line">[ceph-noarch]</span><br><span class="line">name=cephnoarch</span><br><span class="line">baseurl=https://mirrors.aliyun.com/ceph/rpm-mimic/el7/noarch/</span><br><span class="line">gpgcheck=0</span><br><span class="line">priority=1</span><br><span class="line"></span><br><span class="line">[ceph-source]</span><br><span class="line">name=Ceph source packages</span><br><span class="line">baseurl=http://mirrors.aliyun.com/ceph/rpm-mimic/el7/SRPMS/</span><br><span class="line">enabled=0</span><br><span class="line">gpgcheck=1</span><br><span class="line">type=rpm-md</span><br><span class="line">gpgkey=https://mirrors.aliyun.com/ceph/keys/release.asc</span><br><span class="line">priority=1</span><br><span class="line">&quot; &gt;/etc/yum.repos.d/ceph.repo</span><br></pre></td></tr></table></figure>
+<p>下载python2</p>
+<ol>
+<li>安装<a href="https://so.csdn.net/so/search?q=zlib&amp;spm=1001.2101.3001.7020">zlib</a>库，不然安装pip时会报错（还要重新编译python）</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum -y install zlib*</span><br></pre></td></tr></table></figure>
+<ol>
+<li>安装 GCC 包，如果没有安装 GCC，请使用以下命令进行安装</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum -y install gcc openssl-devel bzip2-devel</span><br></pre></td></tr></table></figure>
+<ol>
+<li>下载Python-2.7.18</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /usr/src</span><br><span class="line">yum -y install wget</span><br><span class="line">wget https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tgz</span><br><span class="line">tar xzf Python-2.7.18.tgz</span><br></pre></td></tr></table></figure>
+<ol>
+<li>在编译之前还需要在安装源文件中修改Modules/Setup.dist文件，将注释去掉</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">zlib zlibmodule.c -I$(prefix)/include -L$(exec_prefix)/lib -lz</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>编译Python-2.7.18（<code>make altinstall</code>用于防止替换默认的 python 二进制文件 /usr/bin/python）</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /usr/src/Python-2.7.18</span><br><span class="line">./configure --enable-optimizations</span><br><span class="line">yum install -y make</span><br><span class="line">make altinstall</span><br></pre></td></tr></table></figure>
+<p>不要覆盖或链接原始的 Python 二进制文件，这可能会损坏系统</p>
+<ol>
+<li>设置环境变量</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vi /etc/profile</span><br><span class="line">export PYTHON_HOME=/usr/local/</span><br><span class="line">PATH=$PATH:$PYTHON_HOME/bin</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+<ol>
+<li>下载安装pip的脚本</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl &quot;https://bootstrap.pypa.io/pip/2.7/get-pip.py&quot; -o &quot;get-pip.py&quot;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>运行下载安装脚本</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">python2.7 get-pip.py </span><br></pre></td></tr></table></figure>
+<p>下载ceph</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">future-ceph-node0下载</span></span><br><span class="line">pip2 install ceph-deploy</span><br><span class="line">yum install -y ceph ceph-radosgw</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">其他节点下载</span></span><br><span class="line">yum install -y ceph ceph-radosgw</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">检查安装包是否完整</span></span><br><span class="line">rpm -qa |egrep -i &quot;ceph|rados|rbd&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="部署ceph集群"><a href="#部署ceph集群" class="headerlink" title="部署ceph集群"></a>部署ceph集群</h4><h5 id="管理节点"><a href="#管理节点" class="headerlink" title="管理节点"></a>管理节点</h5><h6 id="部署Monitor"><a href="#部署Monitor" class="headerlink" title="部署Monitor"></a>部署Monitor</h6><ol>
+<li>创建配置文件目录，并创建配置文件</li>
+</ol>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">mkdir</span> <span class="string">/etc/ceph/</span></span><br><span class="line"><span class="attr">touch</span> <span class="string">/etc/ceph/ceph.conf</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>为集群生成一个FSDI：</li>
+</ol>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">uuidgen</span><br><span class="line">38ac0084-40b7-4c93-b561-a16d6a6478c5</span><br></pre></td></tr></table></figure>
+<ol>
+<li>集群创建一个钥匙串，为Monitor 服务创建一个密钥：</li>
+</ol>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">ceph-authtool --create-keyring /tmp/ceph.mon.keyring --gen-key -n mon. --cap mon <span class="string">&#x27;allow *&#x27;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>创建一个管理员钥匙串，生成一个client.admin用户，并将此用户添加到钥匙串中：</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">ceph-authtool --create-keyring /etc/ceph/ceph.client.admin.keyring --gen-key -n client.admin --<span class="built_in">cap</span> mon <span class="string">&#x27;allow *&#x27;</span> --<span class="built_in">cap</span> osd <span class="string">&#x27;allow *&#x27;</span> --<span class="built_in">cap</span> mds <span class="string">&#x27;allow *&#x27;</span> --<span class="built_in">cap</span> mgr <span class="string">&#x27;allow *&#x27;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>创建bootstrap-osd钥匙串，将client.bootstrap-osd 用户添加到此钥匙串中：</li>
+</ol>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">ceph-authtool --create-keyring /<span class="keyword">var</span>/lib/ceph/bootstrap-osd/ceph.<span class="property">keyring</span> --gen-key -n client.<span class="property">bootstrap</span>-osd --cap mon <span class="string">&#x27;profile bootstrap-osd&#x27;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>将生成的key加入ceph.mon.keyring.</li>
+</ol>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">ceph-authtool /tmp/ceph.<span class="property">mon</span>.<span class="property">keyring</span> --<span class="keyword">import</span>-keyring /etc/ceph/ceph.<span class="property">client</span>.<span class="property">admin</span>.<span class="property">keyring</span></span><br><span class="line"></span><br><span class="line">ceph-authtool /tmp/ceph.<span class="property">mon</span>.<span class="property">keyring</span> --<span class="keyword">import</span>-keyring /<span class="keyword">var</span>/lib/ceph/bootstrap-osd/ceph.<span class="property">keyring</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>使用主机名和IP地址以及FSID生成monitor map:</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">monmaptool</span> <span class="string">--create</span> <span class="string">--add</span> <span class="string">future-ceph-node0</span> <span class="number">10.10</span><span class="number">.3</span><span class="number">.117</span> <span class="string">--fsid</span> <span class="string">79fd2206-39ca-4ec4-9cd2-96e065c6361e</span> <span class="string">/tmp/monmap</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>创建mon的目录,使用 <code>集群名称-主机名</code>的形式：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir  /var/lib/ceph/mon/ceph-future-ceph-node0</span><br></pre></td></tr></table></figure>
+<ol>
+<li>填入第一个mon守护进程的信息:</li>
+</ol>
+<figure class="highlight toml"><table><tr><td class="code"><pre><span class="line">ceph-mon --mkfs -i future-ceph-node0 --monmap /tmp/monmap --keyring /tmp/ceph.mon.keyring</span><br></pre></td></tr></table></figure>
+<ol>
+<li>配置/etc/ceph/ceph.conf文件：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat /etc/ceph/ceph.conf</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">###############################################</span></span></span><br><span class="line">[global]</span><br><span class="line">fsid = 79fd2206-39ca-4ec4-9cd2-96e065c6361e     # 生成的FSID</span><br><span class="line">mon initial members =future-ceph-node0</span><br><span class="line">mon host = 10.10.3.117</span><br><span class="line">public network = 10.10.3.0/24</span><br><span class="line">auth cluster required = cephx</span><br><span class="line">auth service required = cephx</span><br><span class="line">auth client required = cephx</span><br><span class="line">osd journal size = 1024</span><br><span class="line">osd pool default size = 3</span><br><span class="line">osd pool default min size = 2</span><br><span class="line">osd pool default pg num = 333</span><br><span class="line">osd pool default pgp num = 333</span><br><span class="line">osd crush chooseleaf type = 1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">###############################################</span></span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>由于我们使用使用root操作的，需要设置权限为ceph（也可以修改systemd的启动文件，将ceph用户改为root），并启动Monitor</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chown  -R ceph:ceph /var/lib/ceph</span><br><span class="line">systemctl start ceph-mon@future-ceph-node0.service</span><br><span class="line">systemctl enable ceph-mon@future-ceph-node0.service</span><br></pre></td></tr></table></figure>
+<ol>
+<li>确认服务已经正常启动：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ceph -s</span><br><span class="line">yum install -y net-tools</span><br><span class="line">netstat -lntp|grep ceph-mon</span><br></pre></td></tr></table></figure>
+<h6 id="部署Manager"><a href="#部署Manager" class="headerlink" title="部署Manager"></a>部署Manager</h6><p>当我们配置好ceph-mon服务之后，就需要配置ceph-mgr服务。</p>
+<ol>
+<li>生成一个认证密钥(ceph-mgr为自定义的名称)：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">10.10.3.117</span></span><br><span class="line">ceph auth get-or-create mgr.ceph-mgr mon &#x27;allow profile mgr&#x27; osd &#x27;allow *&#x27; mds &#x27;allow *&#x27;</span><br><span class="line">[mgr.ceph-mgr]</span><br><span class="line">        key = AQBMNTZl5adxEhAAk6Jk/CKNWUyNb2DoKXUPvQ==</span><br><span class="line">        </span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">10.10.3.118</span></span><br><span class="line">ceph auth get-or-create mgr.ceph-mgr1 mon &#x27;allow profile mgr&#x27; osd &#x27;allow *&#x27; mds &#x27;allow *&#x27;</span><br><span class="line">[mgr.ceph-mgr1]</span><br><span class="line">        key = AQDbRTZlgjXWBBAAGew4Xta+t9vgIWPCWC8EVg==</span><br></pre></td></tr></table></figure>
+<ol>
+<li>创建存放此密钥的文件的目录</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">10.10.3.117</span></span><br><span class="line">sudo -u ceph mkdir /var/lib/ceph/mgr/ceph-ceph-mgr</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">将产生的密钥文件存入此目录下，并命名为keyring</span></span><br><span class="line">vi /var/lib/ceph/mgr/ceph-ceph-mgr/keyring </span><br><span class="line">[mgr.ceph-mgr]</span><br><span class="line">        key = AQBMNTZl5adxEhAAk6Jk/CKNWUyNb2DoKXUPvQ==</span><br><span class="line">        </span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">10.10.3.118</span></span><br><span class="line">sudo -u ceph mkdir /var/lib/ceph/mgr/ceph-ceph-mgr1</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">将产生的密钥文件存入此目录下，并命名为keyring</span></span><br><span class="line">vi /var/lib/ceph/mgr/ceph-ceph-mgr1/keyring </span><br><span class="line">[mgr.ceph-mgr1]</span><br><span class="line">        key = AQDbRTZlgjXWBBAAGew4Xta+t9vgIWPCWC8EVg==</span><br></pre></td></tr></table></figure>
+<ol>
+<li>启动ceph-mgr服务</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ceph-mgr -i ceph-mgr</span><br><span class="line">ceph-mgr -i ceph-mgr1</span><br><span class="line">systemctl enable ceph-mgr@future-ceph-node0</span><br><span class="line">systemctl enable ceph-mgr@future-ceph-node1</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">检查服务是否启动，查看ceph状态</span></span><br><span class="line">ceph -s</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看当前mgr中可用的模块</span></span><br><span class="line">ceph mgr module ls</span><br></pre></td></tr></table></figure>
+<h6 id="创建OSD"><a href="#创建OSD" class="headerlink" title="创建OSD"></a>创建OSD</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ceph-volume lvm create --data /dev/sdb</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看当前的lvm逻辑卷</span></span><br><span class="line">ceph-volume lvm list</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看ceph状态</span></span><br><span class="line">ceph -s</span><br></pre></td></tr></table></figure>
+<h6 id="安装配置Ceph-dashboard"><a href="#安装配置Ceph-dashboard" class="headerlink" title="安装配置Ceph-dashboard"></a>安装配置Ceph-dashboard</h6><ol>
+<li>开启dashboard功能</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ceph mgr module enable dashboard</span><br></pre></td></tr></table></figure>
+<ol>
+<li>创建证书</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ceph dashboard create-self-signed-cert</span><br></pre></td></tr></table></figure>
+<ol>
+<li>配置web登录的用户名和密码</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">创建/etc/ceph/dashboard.key，并将密码写入</span></span><br><span class="line">echo &quot;密码&quot; &gt;/etc/ceph/dashboard.key</span><br><span class="line">ceph dashboard ac-user-create k8s administrator -i /etc/ceph/dashboard.key</span><br></pre></td></tr></table></figure>
+<ol>
+<li>修改dashboard默认端口(可选)</li>
+</ol>
+<p>配置端口，默认端口是8443，修改为18443，修改后需重启mgr，修改端口才生效。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ceph config set mgr mgr/dashboard/server_port 18443</span><br><span class="line">systemctl restart ceph-mgr.target</span><br></pre></td></tr></table></figure>
+<ol>
+<li>查看发布服务地址并登录</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ceph mgr services</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>{</p>
+<p>​    “dashboard”: “<a href="https://future-ceph-node0:8443/">https://future-ceph-node0:8443/</a>“</p>
+<p>}</p>
+<img src="/yyg/3fc2a251/image-20240323222001957-1711203607034-1.png" class="" title="image-20240323222001957">
+</blockquote>
+<h5 id="node节点"><a href="#node节点" class="headerlink" title="node节点"></a>node节点</h5><h6 id="扩展Monitor"><a href="#扩展Monitor" class="headerlink" title="扩展Monitor"></a>扩展Monitor</h6><ol>
+<li>修改master节点上的配置</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vi /etc/ceph/ceph.conf</span><br><span class="line">[global]</span><br><span class="line">fsid = 79fd2206-39ca-4ec4-9cd2-96e065c6361e     # 生成的FSID</span><br><span class="line">mon initial members =future-ceph-node0,future-ceph-node1,future-ceph-node2,future-ceph-node3            # 主机名</span><br><span class="line">mon host = 10.10.3.117,10.10.3.118,10.10.3.119,10.10.3.120                       # 对应的IP</span><br><span class="line">public network = 10.10.3.0/24</span><br><span class="line">auth cluster required = cephx</span><br><span class="line">auth service required = cephx</span><br><span class="line">auth client required = cephx</span><br><span class="line">osd journal size = 1024</span><br><span class="line">osd pool default size = 3</span><br><span class="line">osd pool default min size = 2</span><br><span class="line">osd pool default pg num = 333</span><br><span class="line">osd pool default pgp num = 333</span><br><span class="line">osd crush chooseleaf type = 1</span><br><span class="line">[mon]</span><br><span class="line">mon allow pool delete = true</span><br><span class="line"></span><br><span class="line">[mds.future-ceph-node0]</span><br><span class="line">host = future-ceph-node0</span><br></pre></td></tr></table></figure>
+<ol>
+<li>将配置和密钥文件分发到其它的节点上（master节点）</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">生成公钥，复制到node节点主机上</span></span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line">ssh-copy-id 10.10.3.118</span><br><span class="line">ssh-copy-id 10.10.3.119</span><br><span class="line">ssh-copy-id 10.10.3.120</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">复制认证密钥</span></span><br><span class="line">scp /etc/ceph/*  10.10.3.118:/etc/ceph/</span><br><span class="line">scp /etc/ceph/*  10.10.3.119:/etc/ceph/</span><br><span class="line">scp /etc/ceph/*  10.10.3.120:/etc/ceph/</span><br></pre></td></tr></table></figure>
+<ol>
+<li>在node节点创建ceph相关目录，并添加权限：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir -p  /var/lib/ceph/&#123;bootstrap-mds,bootstrap-mgr,bootstrap-osd,bootstrap-rbd,bootstrap-rgw,mds,mgr,mon,osd&#125;</span><br><span class="line">chown  -R ceph:ceph /var/lib/ceph</span><br><span class="line"></span><br><span class="line">sudo -u ceph mkdir /var/lib/ceph/mon/ceph-future-ceph-node1</span><br><span class="line">sudo -u ceph mkdir /var/lib/ceph/mon/ceph-future-ceph-node2</span><br><span class="line">sudo -u ceph mkdir /var/lib/ceph/mon/ceph-future-ceph-node3</span><br></pre></td></tr></table></figure>
+<ol>
+<li>修改node节点的配置文件,以node1为例（其他节点相似）</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[global]</span><br><span class="line">fsid = 79fd2206-39ca-4ec4-9cd2-96e065c6361e     # 生成的FSID</span><br><span class="line">mon initial members =future-ceph-node0,future-ceph-node1,future-ceph-node2,future-ceph-node3            # 主机名</span><br><span class="line">mon host = 10.10.3.117,10.10.3.118,10.10.3.119,10.10.3.120                       # 对应的IP</span><br><span class="line">public network = 10.10.3.0/24</span><br><span class="line">auth cluster required = cephx</span><br><span class="line">auth service required = cephx</span><br><span class="line">auth client required = cephx</span><br><span class="line">osd journal size = 1024</span><br><span class="line">osd pool default size = 3</span><br><span class="line">osd pool default min size = 2</span><br><span class="line">osd pool default pg num = 333</span><br><span class="line">osd pool default pgp num = 333</span><br><span class="line">osd crush chooseleaf type = 1</span><br><span class="line">[mon]</span><br><span class="line">mon allow pool delete = true</span><br><span class="line"></span><br><span class="line">[mon.future-ceph-node1]</span><br><span class="line">mon_addr = 10.10.3.118:6789</span><br><span class="line">host = future-ceph-node1</span><br></pre></td></tr></table></figure>
+<ol>
+<li>获取集群中的密钥和map,以node1为例（其他节点相似）</li>
+</ol>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">ceph</span> <span class="string">auth get mon. -o /tmp/monkeyring</span></span><br><span class="line"><span class="attr">ceph</span> <span class="string">mon getmap -o /tmp/monmap</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>使用已有的密钥和map添加一个新的Monitor,指定主机名,以node1为例（其他节点相似）</li>
+</ol>
+<figure class="highlight perl"><table><tr><td class="code"><pre><span class="line">sudo -u ceph ceph-mon --mkfs -i future-ceph-node1 --monmap /tmp/monmap --keyring /tmp/monkeyring</span><br></pre></td></tr></table></figure>
+<ol>
+<li>启动服务,以node1为例（其他节点相似）</li>
+</ol>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">systemctl</span> start ceph-mon<span class="variable">@future</span>-ceph-node1</span><br><span class="line">systemctl enable ceph-mon<span class="variable">@future</span>-ceph-node1</span><br><span class="line"><span class="comment">#查看mon状态</span></span><br><span class="line">ceph -s</span><br><span class="line">ceph mon stat</span><br></pre></td></tr></table></figure>
+<h6 id="添加OSD"><a href="#添加OSD" class="headerlink" title="添加OSD"></a>添加OSD</h6><p>从已经存在的osd的master节点上拷贝初始化的密钥文件</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">scp -p  /var/lib/ceph/bootstrap-osd/ceph.keyring  10.10.3.118:/var/lib/ceph/bootstrap-osd/</span><br><span class="line">scp -p  /var/lib/ceph/bootstrap-osd/ceph.keyring  10.10.3.119:/var/lib/ceph/bootstrap-osd/</span><br><span class="line">scp -p  /var/lib/ceph/bootstrap-osd/ceph.keyring  10.10.3.120:/var/lib/ceph/bootstrap-osd/</span><br></pre></td></tr></table></figure>
+<p>在node节点添加osd</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ceph-volume lvm create --data /dev/sdb</span><br><span class="line"></span><br><span class="line">systemctl restart ceph-osd@future-ceph-node1</span><br><span class="line">systemctl enable ceph-osd@future-ceph-node1</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看状态</span></span><br><span class="line">ceph -s</span><br></pre></td></tr></table></figure>
+<h4 id="添加Mds"><a href="#添加Mds" class="headerlink" title="添加Mds"></a>添加Mds</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">创建目录</span></span><br><span class="line">sudo -u ceph mkdir -p /var/lib/ceph/mds/ceph-future-ceph-node0</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">创建密钥</span></span><br><span class="line">ceph-authtool --create-keyring /var/lib/ceph/mds/ceph-future-ceph-node0/keyring --gen-key -n mds.future-ceph-node0</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">导入密钥，并设置caps</span></span><br><span class="line">ceph auth add mds.future-ceph-node0 osd &quot;allow rwx&quot; mds &quot;allow&quot; mon &quot;allow profile mds&quot; -i /var/lib/ceph/mds/ceph-future-ceph-node0/keyring</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">手动启动服务</span></span><br><span class="line">ceph-mds --cluster ceph -i future-ceph-node0 -m future-ceph-node0:6789</span><br><span class="line"> chown -R ceph:ceph /var/lib/ceph/mds/</span><br><span class="line"> systemctl start ceph-mds@future-ceph-node0</span><br><span class="line"> systemctl enable ceph-mds@future-ceph-node0</span><br><span class="line"><span class="meta prompt_"> #</span><span class="language-bash">检查服务是否启动</span></span><br><span class="line"> ps -ef|grep ceph-mds</span><br><span class="line"><span class="meta prompt_"> #</span><span class="language-bash">检查ceph 集群状态</span></span><br><span class="line"> ceph -s</span><br></pre></td></tr></table></figure>
+<h4 id="创建CephFS"><a href="#创建CephFS" class="headerlink" title="创建CephFS"></a>创建CephFS</h4><p>创建pools</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">存储数据</span></span><br><span class="line">ceph osd pool create cephfs_data 64</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">存储元数据</span></span><br><span class="line">ceph osd pool create cephfs_metadata 64</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">启用cephfs文件系统</span></span><br><span class="line">ceph fs new cephfs cephfs_metadata cephfs_data</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看文件系统状态</span></span><br><span class="line">ceph fs ls</span><br><span class="line">ceph mds stat</span><br></pre></td></tr></table></figure>
+<ol>
+<li>挂载cephfs</li>
+</ol>
+<p>内核驱动挂载</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装依赖</span></span><br><span class="line">yum install -y ceph-common</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">创建挂载点</span></span><br><span class="line">mkdir /data</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">获取存储密钥（管理节点）</span></span><br><span class="line">cat /etc/ceph/ceph.client.admin.keyring</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">将117中的/data 挂载到其他主机的/data</span></span><br><span class="line"> mount -t ceph 10.10.3.117:6789:/ /data -o name=admin,secret=AQBLfS9l612IGhAAOF1iJqT6+rHJPCxqQegqCA==</span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_"> #</span><span class="language-bash">卸载</span></span><br><span class="line">umount /data  </span><br></pre></td></tr></table></figure>
+<p>用户控件挂载</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install ceph-fuse -y</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">挂载到其他主机</span></span><br><span class="line">ceph-fuse -m  10.10.3.117:6789 /data</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看挂载配置</span></span><br><span class="line">df -h |grep code</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">卸载</span></span><br><span class="line">fusermount -u /mnt/cephfs</span><br></pre></td></tr></table></figure>
+<h3 id="创建rbd池"><a href="#创建rbd池" class="headerlink" title="创建rbd池"></a>创建rbd池</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">创建rbd池</span></span><br><span class="line">ceph osd pool create rbd-k8s 64 64</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">启用</span> </span><br><span class="line">ceph osd pool application enable rbd-k8s rbd</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">初始化</span></span><br><span class="line">rbd pool init rbd-k8s</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看</span></span><br><span class="line">ceph osd lspools</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看映像</span></span><br><span class="line"> rbd ls rbd-k8s</span><br><span class="line"><span class="meta prompt_"> #</span><span class="language-bash">查看映像信息</span></span><br><span class="line"> rbd info --pool rbd-k8s --image mars-c09bb992-963e-43dd-8e5c-e3a1d723b1c8 </span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">映射镜像</span></span><br><span class="line"> rbd map  --pool rbd-k8s --image mars-c09bb992-963e-43dd-8e5c-e3a1d723b1c8</span><br><span class="line"><span class="meta prompt_"> #</span><span class="language-bash">格式化</span></span><br><span class="line"> mkfs.ext4 /dev/rbd0</span><br><span class="line"><span class="meta prompt_"> #</span><span class="language-bash">挂载到本地</span></span><br><span class="line">  mount /dev/rbd0 /data/code</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">查看</span></span><br><span class="line">  lsblk</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">取消挂载</span></span><br><span class="line">   umount /dev/rbd0</span><br><span class="line"><span class="meta prompt_">   #</span><span class="language-bash">取消映射</span></span><br><span class="line">   rbd unmap /dev/rbd0</span><br><span class="line">   </span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>存储系统</category>
+        <category>ceph</category>
+      </categories>
+      <tags>
+        <tag>ceph</tag>
+        <tag>共享存储</tag>
+        <tag>ceph集群</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Windows 10（x86_64）使用QEMU安装ARM虚拟机</title>
     <url>/yyg/a785f75e/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="基础环境"><a href="#基础环境" class="headerlink" title="基础环境"></a>基础环境</h2><p>系统：Windows 10</p>
@@ -911,204 +1109,6 @@
       <tags>
         <tag>docker</tag>
         <tag>docker基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ceph集群部署指南</title>
-    <url>/yyg/3fc2a251/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="任务目标"><a href="#任务目标" class="headerlink" title="任务目标"></a>任务目标</h2><ol>
-<li>完成ceph集群部署</li>
-</ol>
-<h2 id="任务平台"><a href="#任务平台" class="headerlink" title="任务平台"></a>任务平台</h2><ol>
-<li>物理设备—</li>
-<li>操作系统：openEuler 22.03 LTS SP2</li>
-</ol>
-<h2 id="部署指南"><a href="#部署指南" class="headerlink" title="部署指南"></a>部署指南</h2><h3 id="任务一：配置准备"><a href="#任务一：配置准备" class="headerlink" title="任务一：配置准备"></a>任务一：配置准备</h3><ol>
-<li>重命名hostname</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将10.10.3.117的主机名改为future-ceph-node0</span></span><br><span class="line">hostnamectl set-hostname future-ceph-node0 &amp;&amp; bash</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将10.10.3.118的主机名改为future-ceph-node1</span></span><br><span class="line">hostnamectl set-hostname future-ceph-node1 &amp;&amp; bash</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将10.10.3.119的主机名改为future-ceph-node2</span></span><br><span class="line">hostnamectl set-hostname future-ceph-node2 &amp;&amp; bash</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将10.10.3.120的主机名改为future-ceph-node3</span></span><br><span class="line">hostnamectl set-hostname future-ceph-node3 &amp;&amp; bash</span><br></pre></td></tr></table></figure>
-<ol>
-<li>安装前的配置修改</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">关闭防火墙</span></span><br><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl disable firewalld</span><br><span class="line">firewall-cmd --state</span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">selinux永久关闭</span></span><br><span class="line">setenforce 0</span><br><span class="line"> sed -i &#x27;s/^SELINUX=enforcing$/SELINUX=permissive/&#x27; /etc/selinux/config</span><br><span class="line">cat /etc/selinux/config</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">添加hosts</span></span><br><span class="line">cat &gt;&gt; /etc/hosts &lt;&lt; EOF</span><br><span class="line">10.10.3.117 future-ceph-node0</span><br><span class="line">10.10.3.118 future-ceph-node1</span><br><span class="line">10.10.3.119 future-ceph-node2</span><br><span class="line">10.10.3.120 future-ceph-node3</span><br><span class="line">EOF</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看</span></span><br><span class="line">cat /etc/hosts</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">同步时间</span></span><br><span class="line">yum install ntp -y</span><br><span class="line">systemctl start ntpd</span><br><span class="line">systemctl enable ntpd</span><br><span class="line">yum install chrony  -y</span><br><span class="line">systemctl start chronyd</span><br><span class="line">systemctl enable chronyd</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">修改配置，添加内容</span></span><br><span class="line">echo &quot;</span><br><span class="line">server 10.10.3.70 iburst</span><br><span class="line">allow 10.10.3.0/24</span><br><span class="line">&quot; &gt;&gt; /etc/chrony.conf</span><br><span class="line">timedatectl set-ntp true</span><br><span class="line">systemctl restart chronyd</span><br><span class="line">timedatectl status</span><br><span class="line">date</span><br><span class="line"></span><br><span class="line">添加节点SSH互相通信</span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line">ssh-copy-id 10.10.3.118</span><br><span class="line">ssh-copy-id 10.10.3.119</span><br><span class="line">ssh-copy-id 10.10.3.120</span><br></pre></td></tr></table></figure>
-<h3 id="任务二：部署Ceph作为分布式存储"><a href="#任务二：部署Ceph作为分布式存储" class="headerlink" title="任务二：部署Ceph作为分布式存储"></a>任务二：部署Ceph作为分布式存储</h3><p>配置下载源</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo &quot;[ceph]</span><br><span class="line">name=ceph</span><br><span class="line">baseurl=http://mirrors.aliyun.com/ceph/rpm-mimic/el7/x86_64/</span><br><span class="line">gpgcheck=0</span><br><span class="line">priority=1</span><br><span class="line"></span><br><span class="line">[ceph-noarch]</span><br><span class="line">name=cephnoarch</span><br><span class="line">baseurl=https://mirrors.aliyun.com/ceph/rpm-mimic/el7/noarch/</span><br><span class="line">gpgcheck=0</span><br><span class="line">priority=1</span><br><span class="line"></span><br><span class="line">[ceph-source]</span><br><span class="line">name=Ceph source packages</span><br><span class="line">baseurl=http://mirrors.aliyun.com/ceph/rpm-mimic/el7/SRPMS/</span><br><span class="line">enabled=0</span><br><span class="line">gpgcheck=1</span><br><span class="line">type=rpm-md</span><br><span class="line">gpgkey=https://mirrors.aliyun.com/ceph/keys/release.asc</span><br><span class="line">priority=1</span><br><span class="line">&quot; &gt;/etc/yum.repos.d/ceph.repo</span><br></pre></td></tr></table></figure>
-<p>下载python2</p>
-<ol>
-<li>安装<a href="https://so.csdn.net/so/search?q=zlib&amp;spm=1001.2101.3001.7020">zlib</a>库，不然安装pip时会报错（还要重新编译python）</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum -y install zlib*</span><br></pre></td></tr></table></figure>
-<ol>
-<li>安装 GCC 包，如果没有安装 GCC，请使用以下命令进行安装</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum -y install gcc openssl-devel bzip2-devel</span><br></pre></td></tr></table></figure>
-<ol>
-<li>下载Python-2.7.18</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /usr/src</span><br><span class="line">yum -y install wget</span><br><span class="line">wget https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tgz</span><br><span class="line">tar xzf Python-2.7.18.tgz</span><br></pre></td></tr></table></figure>
-<ol>
-<li>在编译之前还需要在安装源文件中修改Modules/Setup.dist文件，将注释去掉</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">zlib zlibmodule.c -I$(prefix)/include -L$(exec_prefix)/lib -lz</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>编译Python-2.7.18（<code>make altinstall</code>用于防止替换默认的 python 二进制文件 /usr/bin/python）</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd /usr/src/Python-2.7.18</span><br><span class="line">./configure --enable-optimizations</span><br><span class="line">yum install -y make</span><br><span class="line">make altinstall</span><br></pre></td></tr></table></figure>
-<p>不要覆盖或链接原始的 Python 二进制文件，这可能会损坏系统</p>
-<ol>
-<li>设置环境变量</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vi /etc/profile</span><br><span class="line">export PYTHON_HOME=/usr/local/</span><br><span class="line">PATH=$PATH:$PYTHON_HOME/bin</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
-<ol>
-<li>下载安装pip的脚本</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">curl &quot;https://bootstrap.pypa.io/pip/2.7/get-pip.py&quot; -o &quot;get-pip.py&quot;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>运行下载安装脚本</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">python2.7 get-pip.py </span><br></pre></td></tr></table></figure>
-<p>下载ceph</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">future-ceph-node0下载</span></span><br><span class="line">pip2 install ceph-deploy</span><br><span class="line">yum install -y ceph ceph-radosgw</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">其他节点下载</span></span><br><span class="line">yum install -y ceph ceph-radosgw</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">检查安装包是否完整</span></span><br><span class="line">rpm -qa |egrep -i &quot;ceph|rados|rbd&quot;</span><br></pre></td></tr></table></figure>
-<h4 id="部署ceph集群"><a href="#部署ceph集群" class="headerlink" title="部署ceph集群"></a>部署ceph集群</h4><h5 id="管理节点"><a href="#管理节点" class="headerlink" title="管理节点"></a>管理节点</h5><h6 id="部署Monitor"><a href="#部署Monitor" class="headerlink" title="部署Monitor"></a>部署Monitor</h6><ol>
-<li>创建配置文件目录，并创建配置文件</li>
-</ol>
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">mkdir</span> <span class="string">/etc/ceph/</span></span><br><span class="line"><span class="attr">touch</span> <span class="string">/etc/ceph/ceph.conf</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>为集群生成一个FSDI：</li>
-</ol>
-<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">uuidgen</span><br><span class="line">38ac0084-40b7-4c93-b561-a16d6a6478c5</span><br></pre></td></tr></table></figure>
-<ol>
-<li>集群创建一个钥匙串，为Monitor 服务创建一个密钥：</li>
-</ol>
-<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">ceph-authtool --create-keyring /tmp/ceph.mon.keyring --gen-key -n mon. --cap mon <span class="string">&#x27;allow *&#x27;</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>创建一个管理员钥匙串，生成一个client.admin用户，并将此用户添加到钥匙串中：</li>
-</ol>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">ceph-authtool --create-keyring /etc/ceph/ceph.client.admin.keyring --gen-key -n client.admin --<span class="built_in">cap</span> mon <span class="string">&#x27;allow *&#x27;</span> --<span class="built_in">cap</span> osd <span class="string">&#x27;allow *&#x27;</span> --<span class="built_in">cap</span> mds <span class="string">&#x27;allow *&#x27;</span> --<span class="built_in">cap</span> mgr <span class="string">&#x27;allow *&#x27;</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>创建bootstrap-osd钥匙串，将client.bootstrap-osd 用户添加到此钥匙串中：</li>
-</ol>
-<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">ceph-authtool --create-keyring /<span class="keyword">var</span>/lib/ceph/bootstrap-osd/ceph.<span class="property">keyring</span> --gen-key -n client.<span class="property">bootstrap</span>-osd --cap mon <span class="string">&#x27;profile bootstrap-osd&#x27;</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>将生成的key加入ceph.mon.keyring.</li>
-</ol>
-<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">ceph-authtool /tmp/ceph.<span class="property">mon</span>.<span class="property">keyring</span> --<span class="keyword">import</span>-keyring /etc/ceph/ceph.<span class="property">client</span>.<span class="property">admin</span>.<span class="property">keyring</span></span><br><span class="line"></span><br><span class="line">ceph-authtool /tmp/ceph.<span class="property">mon</span>.<span class="property">keyring</span> --<span class="keyword">import</span>-keyring /<span class="keyword">var</span>/lib/ceph/bootstrap-osd/ceph.<span class="property">keyring</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>使用主机名和IP地址以及FSID生成monitor map:</li>
-</ol>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">monmaptool</span> <span class="string">--create</span> <span class="string">--add</span> <span class="string">future-ceph-node0</span> <span class="number">10.10</span><span class="number">.3</span><span class="number">.117</span> <span class="string">--fsid</span> <span class="string">79fd2206-39ca-4ec4-9cd2-96e065c6361e</span> <span class="string">/tmp/monmap</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>创建mon的目录,使用 <code>集群名称-主机名</code>的形式：</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir  /var/lib/ceph/mon/ceph-future-ceph-node0</span><br></pre></td></tr></table></figure>
-<ol>
-<li>填入第一个mon守护进程的信息:</li>
-</ol>
-<figure class="highlight toml"><table><tr><td class="code"><pre><span class="line">ceph-mon --mkfs -i future-ceph-node0 --monmap /tmp/monmap --keyring /tmp/ceph.mon.keyring</span><br></pre></td></tr></table></figure>
-<ol>
-<li>配置/etc/ceph/ceph.conf文件：</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat /etc/ceph/ceph.conf</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">###############################################</span></span></span><br><span class="line">[global]</span><br><span class="line">fsid = 79fd2206-39ca-4ec4-9cd2-96e065c6361e     # 生成的FSID</span><br><span class="line">mon initial members =future-ceph-node0</span><br><span class="line">mon host = 10.10.3.117</span><br><span class="line">public network = 10.10.3.0/24</span><br><span class="line">auth cluster required = cephx</span><br><span class="line">auth service required = cephx</span><br><span class="line">auth client required = cephx</span><br><span class="line">osd journal size = 1024</span><br><span class="line">osd pool default size = 3</span><br><span class="line">osd pool default min size = 2</span><br><span class="line">osd pool default pg num = 333</span><br><span class="line">osd pool default pgp num = 333</span><br><span class="line">osd crush chooseleaf type = 1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">###############################################</span></span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>由于我们使用使用root操作的，需要设置权限为ceph（也可以修改systemd的启动文件，将ceph用户改为root），并启动Monitor</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chown  -R ceph:ceph /var/lib/ceph</span><br><span class="line">systemctl start ceph-mon@future-ceph-node0.service</span><br><span class="line">systemctl enable ceph-mon@future-ceph-node0.service</span><br></pre></td></tr></table></figure>
-<ol>
-<li>确认服务已经正常启动：</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ceph -s</span><br><span class="line">yum install -y net-tools</span><br><span class="line">netstat -lntp|grep ceph-mon</span><br></pre></td></tr></table></figure>
-<h6 id="部署Manager"><a href="#部署Manager" class="headerlink" title="部署Manager"></a>部署Manager</h6><p>当我们配置好ceph-mon服务之后，就需要配置ceph-mgr服务。</p>
-<ol>
-<li>生成一个认证密钥(ceph-mgr为自定义的名称)：</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">10.10.3.117</span></span><br><span class="line">ceph auth get-or-create mgr.ceph-mgr mon &#x27;allow profile mgr&#x27; osd &#x27;allow *&#x27; mds &#x27;allow *&#x27;</span><br><span class="line">[mgr.ceph-mgr]</span><br><span class="line">        key = AQBMNTZl5adxEhAAk6Jk/CKNWUyNb2DoKXUPvQ==</span><br><span class="line">        </span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">10.10.3.118</span></span><br><span class="line">ceph auth get-or-create mgr.ceph-mgr1 mon &#x27;allow profile mgr&#x27; osd &#x27;allow *&#x27; mds &#x27;allow *&#x27;</span><br><span class="line">[mgr.ceph-mgr1]</span><br><span class="line">        key = AQDbRTZlgjXWBBAAGew4Xta+t9vgIWPCWC8EVg==</span><br></pre></td></tr></table></figure>
-<ol>
-<li>创建存放此密钥的文件的目录</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">10.10.3.117</span></span><br><span class="line">sudo -u ceph mkdir /var/lib/ceph/mgr/ceph-ceph-mgr</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">将产生的密钥文件存入此目录下，并命名为keyring</span></span><br><span class="line">vi /var/lib/ceph/mgr/ceph-ceph-mgr/keyring </span><br><span class="line">[mgr.ceph-mgr]</span><br><span class="line">        key = AQBMNTZl5adxEhAAk6Jk/CKNWUyNb2DoKXUPvQ==</span><br><span class="line">        </span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">10.10.3.118</span></span><br><span class="line">sudo -u ceph mkdir /var/lib/ceph/mgr/ceph-ceph-mgr1</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">将产生的密钥文件存入此目录下，并命名为keyring</span></span><br><span class="line">vi /var/lib/ceph/mgr/ceph-ceph-mgr1/keyring </span><br><span class="line">[mgr.ceph-mgr1]</span><br><span class="line">        key = AQDbRTZlgjXWBBAAGew4Xta+t9vgIWPCWC8EVg==</span><br></pre></td></tr></table></figure>
-<ol>
-<li>启动ceph-mgr服务</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ceph-mgr -i ceph-mgr</span><br><span class="line">ceph-mgr -i ceph-mgr1</span><br><span class="line">systemctl enable ceph-mgr@future-ceph-node0</span><br><span class="line">systemctl enable ceph-mgr@future-ceph-node1</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">检查服务是否启动，查看ceph状态</span></span><br><span class="line">ceph -s</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看当前mgr中可用的模块</span></span><br><span class="line">ceph mgr module ls</span><br></pre></td></tr></table></figure>
-<h6 id="创建OSD"><a href="#创建OSD" class="headerlink" title="创建OSD"></a>创建OSD</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ceph-volume lvm create --data /dev/sdb</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看当前的lvm逻辑卷</span></span><br><span class="line">ceph-volume lvm list</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看ceph状态</span></span><br><span class="line">ceph -s</span><br></pre></td></tr></table></figure>
-<h6 id="安装配置Ceph-dashboard"><a href="#安装配置Ceph-dashboard" class="headerlink" title="安装配置Ceph-dashboard"></a>安装配置Ceph-dashboard</h6><ol>
-<li>开启dashboard功能</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ceph mgr module enable dashboard</span><br></pre></td></tr></table></figure>
-<ol>
-<li>创建证书</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ceph dashboard create-self-signed-cert</span><br></pre></td></tr></table></figure>
-<ol>
-<li>配置web登录的用户名和密码</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">创建/etc/ceph/dashboard.key，并将密码写入</span></span><br><span class="line">echo &quot;密码&quot; &gt;/etc/ceph/dashboard.key</span><br><span class="line">ceph dashboard ac-user-create k8s administrator -i /etc/ceph/dashboard.key</span><br></pre></td></tr></table></figure>
-<ol>
-<li>修改dashboard默认端口(可选)</li>
-</ol>
-<p>配置端口，默认端口是8443，修改为18443，修改后需重启mgr，修改端口才生效。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ceph config set mgr mgr/dashboard/server_port 18443</span><br><span class="line">systemctl restart ceph-mgr.target</span><br></pre></td></tr></table></figure>
-<ol>
-<li>查看发布服务地址并登录</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ceph mgr services</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>{</p>
-<p>​    “dashboard”: “<a href="https://future-ceph-node0:8443/">https://future-ceph-node0:8443/</a>“</p>
-<p>}</p>
-<img src="/yyg/3fc2a251/image-20240323222001957-1711203607034-1.png" class="" title="image-20240323222001957">
-</blockquote>
-<h5 id="node节点"><a href="#node节点" class="headerlink" title="node节点"></a>node节点</h5><h6 id="扩展Monitor"><a href="#扩展Monitor" class="headerlink" title="扩展Monitor"></a>扩展Monitor</h6><ol>
-<li>修改master节点上的配置</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vi /etc/ceph/ceph.conf</span><br><span class="line">[global]</span><br><span class="line">fsid = 79fd2206-39ca-4ec4-9cd2-96e065c6361e     # 生成的FSID</span><br><span class="line">mon initial members =future-ceph-node0,future-ceph-node1,future-ceph-node2,future-ceph-node3            # 主机名</span><br><span class="line">mon host = 10.10.3.117,10.10.3.118,10.10.3.119,10.10.3.120                       # 对应的IP</span><br><span class="line">public network = 10.10.3.0/24</span><br><span class="line">auth cluster required = cephx</span><br><span class="line">auth service required = cephx</span><br><span class="line">auth client required = cephx</span><br><span class="line">osd journal size = 1024</span><br><span class="line">osd pool default size = 3</span><br><span class="line">osd pool default min size = 2</span><br><span class="line">osd pool default pg num = 333</span><br><span class="line">osd pool default pgp num = 333</span><br><span class="line">osd crush chooseleaf type = 1</span><br><span class="line">[mon]</span><br><span class="line">mon allow pool delete = true</span><br><span class="line"></span><br><span class="line">[mds.future-ceph-node0]</span><br><span class="line">host = future-ceph-node0</span><br></pre></td></tr></table></figure>
-<ol>
-<li>将配置和密钥文件分发到其它的节点上（master节点）</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">生成公钥，复制到node节点主机上</span></span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line">ssh-copy-id 10.10.3.118</span><br><span class="line">ssh-copy-id 10.10.3.119</span><br><span class="line">ssh-copy-id 10.10.3.120</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">复制认证密钥</span></span><br><span class="line">scp /etc/ceph/*  10.10.3.118:/etc/ceph/</span><br><span class="line">scp /etc/ceph/*  10.10.3.119:/etc/ceph/</span><br><span class="line">scp /etc/ceph/*  10.10.3.120:/etc/ceph/</span><br></pre></td></tr></table></figure>
-<ol>
-<li>在node节点创建ceph相关目录，并添加权限：</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir -p  /var/lib/ceph/&#123;bootstrap-mds,bootstrap-mgr,bootstrap-osd,bootstrap-rbd,bootstrap-rgw,mds,mgr,mon,osd&#125;</span><br><span class="line">chown  -R ceph:ceph /var/lib/ceph</span><br><span class="line"></span><br><span class="line">sudo -u ceph mkdir /var/lib/ceph/mon/ceph-future-ceph-node1</span><br><span class="line">sudo -u ceph mkdir /var/lib/ceph/mon/ceph-future-ceph-node2</span><br><span class="line">sudo -u ceph mkdir /var/lib/ceph/mon/ceph-future-ceph-node3</span><br></pre></td></tr></table></figure>
-<ol>
-<li>修改node节点的配置文件,以node1为例（其他节点相似）</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[global]</span><br><span class="line">fsid = 79fd2206-39ca-4ec4-9cd2-96e065c6361e     # 生成的FSID</span><br><span class="line">mon initial members =future-ceph-node0,future-ceph-node1,future-ceph-node2,future-ceph-node3            # 主机名</span><br><span class="line">mon host = 10.10.3.117,10.10.3.118,10.10.3.119,10.10.3.120                       # 对应的IP</span><br><span class="line">public network = 10.10.3.0/24</span><br><span class="line">auth cluster required = cephx</span><br><span class="line">auth service required = cephx</span><br><span class="line">auth client required = cephx</span><br><span class="line">osd journal size = 1024</span><br><span class="line">osd pool default size = 3</span><br><span class="line">osd pool default min size = 2</span><br><span class="line">osd pool default pg num = 333</span><br><span class="line">osd pool default pgp num = 333</span><br><span class="line">osd crush chooseleaf type = 1</span><br><span class="line">[mon]</span><br><span class="line">mon allow pool delete = true</span><br><span class="line"></span><br><span class="line">[mon.future-ceph-node1]</span><br><span class="line">mon_addr = 10.10.3.118:6789</span><br><span class="line">host = future-ceph-node1</span><br></pre></td></tr></table></figure>
-<ol>
-<li>获取集群中的密钥和map,以node1为例（其他节点相似）</li>
-</ol>
-<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">ceph</span> <span class="string">auth get mon. -o /tmp/monkeyring</span></span><br><span class="line"><span class="attr">ceph</span> <span class="string">mon getmap -o /tmp/monmap</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>使用已有的密钥和map添加一个新的Monitor,指定主机名,以node1为例（其他节点相似）</li>
-</ol>
-<figure class="highlight perl"><table><tr><td class="code"><pre><span class="line">sudo -u ceph ceph-mon --mkfs -i future-ceph-node1 --monmap /tmp/monmap --keyring /tmp/monkeyring</span><br></pre></td></tr></table></figure>
-<ol>
-<li>启动服务,以node1为例（其他节点相似）</li>
-</ol>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">systemctl</span> start ceph-mon<span class="variable">@future</span>-ceph-node1</span><br><span class="line">systemctl enable ceph-mon<span class="variable">@future</span>-ceph-node1</span><br><span class="line"><span class="comment">#查看mon状态</span></span><br><span class="line">ceph -s</span><br><span class="line">ceph mon stat</span><br></pre></td></tr></table></figure>
-<h6 id="添加OSD"><a href="#添加OSD" class="headerlink" title="添加OSD"></a>添加OSD</h6><p>从已经存在的osd的master节点上拷贝初始化的密钥文件</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">scp -p  /var/lib/ceph/bootstrap-osd/ceph.keyring  10.10.3.118:/var/lib/ceph/bootstrap-osd/</span><br><span class="line">scp -p  /var/lib/ceph/bootstrap-osd/ceph.keyring  10.10.3.119:/var/lib/ceph/bootstrap-osd/</span><br><span class="line">scp -p  /var/lib/ceph/bootstrap-osd/ceph.keyring  10.10.3.120:/var/lib/ceph/bootstrap-osd/</span><br></pre></td></tr></table></figure>
-<p>在node节点添加osd</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ceph-volume lvm create --data /dev/sdb</span><br><span class="line"></span><br><span class="line">systemctl restart ceph-osd@future-ceph-node1</span><br><span class="line">systemctl enable ceph-osd@future-ceph-node1</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看状态</span></span><br><span class="line">ceph -s</span><br></pre></td></tr></table></figure>
-<h4 id="添加Mds"><a href="#添加Mds" class="headerlink" title="添加Mds"></a>添加Mds</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">创建目录</span></span><br><span class="line">sudo -u ceph mkdir -p /var/lib/ceph/mds/ceph-future-ceph-node0</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">创建密钥</span></span><br><span class="line">ceph-authtool --create-keyring /var/lib/ceph/mds/ceph-future-ceph-node0/keyring --gen-key -n mds.future-ceph-node0</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">导入密钥，并设置caps</span></span><br><span class="line">ceph auth add mds.future-ceph-node0 osd &quot;allow rwx&quot; mds &quot;allow&quot; mon &quot;allow profile mds&quot; -i /var/lib/ceph/mds/ceph-future-ceph-node0/keyring</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">手动启动服务</span></span><br><span class="line">ceph-mds --cluster ceph -i future-ceph-node0 -m future-ceph-node0:6789</span><br><span class="line"> chown -R ceph:ceph /var/lib/ceph/mds/</span><br><span class="line"> systemctl start ceph-mds@future-ceph-node0</span><br><span class="line"> systemctl enable ceph-mds@future-ceph-node0</span><br><span class="line"><span class="meta prompt_"> #</span><span class="language-bash">检查服务是否启动</span></span><br><span class="line"> ps -ef|grep ceph-mds</span><br><span class="line"><span class="meta prompt_"> #</span><span class="language-bash">检查ceph 集群状态</span></span><br><span class="line"> ceph -s</span><br></pre></td></tr></table></figure>
-<h4 id="创建CephFS"><a href="#创建CephFS" class="headerlink" title="创建CephFS"></a>创建CephFS</h4><p>创建pools</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">存储数据</span></span><br><span class="line">ceph osd pool create cephfs_data 64</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">存储元数据</span></span><br><span class="line">ceph osd pool create cephfs_metadata 64</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">启用cephfs文件系统</span></span><br><span class="line">ceph fs new cephfs cephfs_metadata cephfs_data</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看文件系统状态</span></span><br><span class="line">ceph fs ls</span><br><span class="line">ceph mds stat</span><br></pre></td></tr></table></figure>
-<ol>
-<li>挂载cephfs</li>
-</ol>
-<p>内核驱动挂载</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装依赖</span></span><br><span class="line">yum install -y ceph-common</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">创建挂载点</span></span><br><span class="line">mkdir /data</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">获取存储密钥（管理节点）</span></span><br><span class="line">cat /etc/ceph/ceph.client.admin.keyring</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">将117中的/data 挂载到其他主机的/data</span></span><br><span class="line"> mount -t ceph 10.10.3.117:6789:/ /data -o name=admin,secret=AQBLfS9l612IGhAAOF1iJqT6+rHJPCxqQegqCA==</span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_"> #</span><span class="language-bash">卸载</span></span><br><span class="line">umount /data  </span><br></pre></td></tr></table></figure>
-<p>用户控件挂载</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install ceph-fuse -y</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">挂载到其他主机</span></span><br><span class="line">ceph-fuse -m  10.10.3.117:6789 /data</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看挂载配置</span></span><br><span class="line">df -h |grep code</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">卸载</span></span><br><span class="line">fusermount -u /mnt/cephfs</span><br></pre></td></tr></table></figure>
-<h3 id="创建rbd池"><a href="#创建rbd池" class="headerlink" title="创建rbd池"></a>创建rbd池</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">创建rbd池</span></span><br><span class="line">ceph osd pool create rbd-k8s 64 64</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">启用</span> </span><br><span class="line">ceph osd pool application enable rbd-k8s rbd</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">初始化</span></span><br><span class="line">rbd pool init rbd-k8s</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看</span></span><br><span class="line">ceph osd lspools</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看映像</span></span><br><span class="line"> rbd ls rbd-k8s</span><br><span class="line"><span class="meta prompt_"> #</span><span class="language-bash">查看映像信息</span></span><br><span class="line"> rbd info --pool rbd-k8s --image mars-c09bb992-963e-43dd-8e5c-e3a1d723b1c8 </span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">映射镜像</span></span><br><span class="line"> rbd map  --pool rbd-k8s --image mars-c09bb992-963e-43dd-8e5c-e3a1d723b1c8</span><br><span class="line"><span class="meta prompt_"> #</span><span class="language-bash">格式化</span></span><br><span class="line"> mkfs.ext4 /dev/rbd0</span><br><span class="line"><span class="meta prompt_"> #</span><span class="language-bash">挂载到本地</span></span><br><span class="line">  mount /dev/rbd0 /data/code</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">查看</span></span><br><span class="line">  lsblk</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">取消挂载</span></span><br><span class="line">   umount /dev/rbd0</span><br><span class="line"><span class="meta prompt_">   #</span><span class="language-bash">取消映射</span></span><br><span class="line">   rbd unmap /dev/rbd0</span><br><span class="line">   </span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>存储系统</category>
-        <category>ceph</category>
-      </categories>
-      <tags>
-        <tag>ceph</tag>
-        <tag>共享存储</tag>
-        <tag>ceph集群</tag>
       </tags>
   </entry>
   <entry>
@@ -1871,54 +1871,6 @@ Mastodon:  @Podman_io@fosstodon.org
       </tags>
   </entry>
   <entry>
-    <title>x86服务器构建ARM架构docker镜像</title>
-    <url>/yyg/4451cec/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="基础环境"><a href="#基础环境" class="headerlink" title="基础环境"></a>基础环境</h2><p>操作系统：openEuler 22.03 (LTS-SP2)</p>
-<p>软件：Docker-26.1.2 、Docker Compose-v2.27.0</p>
-<h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h2><p>（1）配置yum源下载docker。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line">sed -i &#x27;s/\$releasever/7/g&#x27; /etc/yum.repos.d/docker-ce.repo</span><br></pre></td></tr></table></figure>
-<p>（2）安装最新版docker和docker compose。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">下载依赖及docker、docker compose</span></span><br><span class="line">yum install -container-selinux</span><br><span class="line">yum install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin </span><br></pre></td></tr></table></figure>
-<p>（3）修改Docker的数据目录为“/data/dockerData”，并配置docker镜像源。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo &#x27;&#123;</span><br><span class="line">  &quot;data-root&quot;: &quot;/data/dockerData&quot;,</span><br><span class="line"> &quot;registry-mirrors&quot;: [&quot;https://dockerhub.icu&quot;]</span><br><span class="line">&#125;&#x27; &gt; /etc/docker/daemon.json</span><br></pre></td></tr></table></figure>
-<p>（4）启动Docker服务，并设置为开机自启动。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl start docker</span><br><span class="line">systemctl enable docker</span><br></pre></td></tr></table></figure>
-<h2 id="使用-register-注册可支持的架构解析器"><a href="#使用-register-注册可支持的架构解析器" class="headerlink" title="使用 register 注册可支持的架构解析器"></a>使用 <code>register</code> 注册可支持的架构解析器</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run --rm --privileged multiarch/qemu-user-static:register --reset</span><br></pre></td></tr></table></figure>
-<p>查看二进制格式的解释器是否启用，显示<code>enabled</code>，即为启用。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ls  /proc/sys/fs/binfmt_misc/ </span><br><span class="line">cat /proc/sys/fs/binfmt_misc/qemu-aarch64</span><br></pre></td></tr></table></figure>
-<h2 id="拉取基础arm镜像"><a href="#拉取基础arm镜像" class="headerlink" title="拉取基础arm镜像"></a>拉取基础arm镜像</h2><p>此处以httpd镜像为例，在x86服务器上拉取arm64架构的httpd镜像，其中<code>--platform=arm64</code>指定拉取的镜像架构位arm64，<code>--platform=amd64</code>则是拉取x86架构的镜像。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull --platform=arm64 httpd:latest</span><br></pre></td></tr></table></figure>
-<h2 id="定义Dockerfile，创建新镜像"><a href="#定义Dockerfile，创建新镜像" class="headerlink" title="定义Dockerfile，创建新镜像"></a>定义Dockerfile，创建新镜像</h2><p>通过使用Dockerfile创建新arm镜像的方式有两种，一种是直接下载<code>qemu-aarch64-static</code>程序，在构建镜像时直接拷贝进镜像中；另一种是拉取<code>multiarch/qemu-user-static:x86_64-aarch64</code>镜像，通过多阶段构建，从<code>multiarch/qemu-user-static:x86_64-aarch64</code>镜像中复制 <code>qemu-aarch64-static</code>程序 到 <code>httpd</code> 镜像中。</p>
-<h3 id="方式一：下载程序，直接复制"><a href="#方式一：下载程序，直接复制" class="headerlink" title="方式一：下载程序，直接复制"></a>方式一：下载程序，直接复制</h3><p>（1）在下载<code>qemu-aarch64-static</code>程序时，可直接下载该程序，也可先下载其压缩包，再解压。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">直接下载程序（推荐）</span></span><br><span class="line">wget https://github.com/multiarch/qemu-user-static/releases/download/v7.2.0-1/qemu-aarch64-static</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">先下载其压缩包，再解压</span></span><br><span class="line">wget https://github.com/multiarch/qemu-user-static/releases/download/v7.2.0-1/qemu-aarch64-static.tar.gz</span><br><span class="line">tar -vzxf qemu-aarch64-static.tar.gz</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">赋予可执行权限</span></span><br><span class="line">chmod +x /usr/bin/qemu-aarch64-static</span><br></pre></td></tr></table></figure>
-<p>（2）创建Dockerfile文件，在httpd镜像的基础上构建新镜像，<code>qemu-aarch64-static</code><mark>程序必须和Dockerfile文件在同一目录下</mark>。Dockerfile文件的具体内容如下：</p>
-<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> httpd:latest</span><br><span class="line"><span class="comment"># 将qemu-aarch64-static程序拷贝进镜像的/usr/bin/目录</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> ./qemu-aarch64-static /usr/bin/qemu-aarch64-static</span></span><br><span class="line"><span class="comment"># 将测试的html文件拷贝到镜像的相关目录</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> ./index.html  /usr/local/apache2/htdocs/</span></span><br></pre></td></tr></table></figure>
-<p>（3）指定构建的架构，执行命令开始构建新镜像，构建完成后，查看新镜像的架构并导出为tar文件，在arm服务器上进行验证。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">构建镜像</span></span><br><span class="line">docker build --platform arm64 -t httpd:1.00 .</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看新镜像的架构</span></span><br><span class="line"> docker inspect httpd:1.00 | grep Architecture</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">导出镜像为tar文件</span></span><br><span class="line">docker save -o httpd.tar httpd:1.00</span><br></pre></td></tr></table></figure>
-<h3 id="方式二：通过镜像多重构建复制"><a href="#方式二：通过镜像多重构建复制" class="headerlink" title="方式二：通过镜像多重构建复制"></a>方式二：通过镜像多重构建复制</h3><p>（1）创建Dockerfile文件，分两个阶段构建新镜像，第一阶段从 <code>multiarch/qemu-user-static</code> 镜像中获取<code>qemu-aarch64-static</code>程序，第二阶段在httpd镜像的基础上构建新镜像，Dockerfile文件的具体内容如下：</p>
-<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 第一阶段：从multiarch/qemu-user-static镜像中获取qemu-aarch64-static程序  </span></span><br><span class="line"><span class="keyword">FROM</span> multiarch/qemu-<span class="keyword">user</span>-static:x86_64-aarch64 as qemu</span><br><span class="line"><span class="comment"># 第二阶段：在httpd镜像的基础上构建新镜像</span></span><br><span class="line"><span class="keyword">FROM</span> httpd:latest</span><br><span class="line"><span class="comment"># 将qemu-aarch64-static程序拷贝进镜像的/usr/bin/目录</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/</span></span><br><span class="line"><span class="comment"># 将测试的html文件拷贝到镜像的相关目录</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> ./index.html  /usr/local/apache2/htdocs/</span></span><br></pre></td></tr></table></figure>
-<p>（2）指定构建的架构，执行命令开始构建新镜像，构建完成后，查看新镜像的架构并导出为tar文件，在arm服务器上进行验证。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">构建镜像</span></span><br><span class="line">docker build --platform arm64 -t httpd:1.00 .</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看新镜像的架构</span></span><br><span class="line"> docker inspect httpd:1.00 | grep Architecture</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">导出镜像为tar文件</span></span><br><span class="line">docker save -o httpd.tar httpd:1.00</span><br></pre></td></tr></table></figure>
-<p><mark>扩展：通过镜像多重构建复制也可用该docker命令直接替代。</mark></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker build --rm --platform arm64 -t &quot;httpd:1.00&quot; -&lt;&lt;EOF</span><br><span class="line">FROM multiarch/qemu-user-static:x86_64-aarch64 as qemu</span><br><span class="line">FROM httpd:latest</span><br><span class="line">COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin</span><br><span class="line">COPY ./index.html  /usr/local/apache2/htdocs/</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
-<h2 id="在arm服务器上验证"><a href="#在arm服务器上验证" class="headerlink" title="在arm服务器上验证"></a>在arm服务器上验证</h2><p>将新的镜像tar文件导入到arm服务器上，创建新容器验证镜像是否可用及镜像中的html文件是否生效。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">导入新镜像</span></span><br><span class="line">docker load -i httpd.tar</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看新镜像的架构</span></span><br><span class="line">docker inspect httpd:1.00 | grep Architecture</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">运行新容器</span></span><br><span class="line">docker run -itd --name test httpd:1.00</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看运行状态</span></span><br><span class="line">docker ps</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看容器IP</span></span><br><span class="line">docker inspect test | grep IPAddress</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">访问测试上传的html文件是否生效</span></span><br><span class="line">curl 172.17.0.2</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux运维</category>
-        <category>容器化</category>
-        <category>docker</category>
-        <category>容器管理</category>
-      </categories>
-      <tags>
-        <tag>运维</tag>
-        <tag>Linux</tag>
-        <tag>x86-ARM</tag>
-        <tag>docker镜像</tag>
-        <tag>跨架构镜像</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>一些免费的gpt网站</title>
     <url>/yyg/30035ff1/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><div title="CodeNews" referrerPolicy="no-referrer" class="card_box" style="background-color: #333; width:96px; height:80px;">
@@ -2027,6 +1979,137 @@ Mastodon:  @Podman_io@fosstodon.org
       <tags>
         <tag>人工智能助手</tag>
         <tag>免费gpt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>x86服务器构建ARM架构docker镜像</title>
+    <url>/yyg/4451cec/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="基础环境"><a href="#基础环境" class="headerlink" title="基础环境"></a>基础环境</h2><p>操作系统：openEuler 22.03 (LTS-SP2)</p>
+<p>软件：Docker-26.1.2 、Docker Compose-v2.27.0</p>
+<h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h2><p>（1）配置yum源下载docker。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line">sed -i &#x27;s/\$releasever/7/g&#x27; /etc/yum.repos.d/docker-ce.repo</span><br></pre></td></tr></table></figure>
+<p>（2）安装最新版docker和docker compose。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">下载依赖及docker、docker compose</span></span><br><span class="line">yum install -container-selinux</span><br><span class="line">yum install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin </span><br></pre></td></tr></table></figure>
+<p>（3）修改Docker的数据目录为“/data/dockerData”，并配置docker镜像源。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo &#x27;&#123;</span><br><span class="line">  &quot;data-root&quot;: &quot;/data/dockerData&quot;,</span><br><span class="line"> &quot;registry-mirrors&quot;: [&quot;https://dockerhub.icu&quot;]</span><br><span class="line">&#125;&#x27; &gt; /etc/docker/daemon.json</span><br></pre></td></tr></table></figure>
+<p>（4）启动Docker服务，并设置为开机自启动。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl start docker</span><br><span class="line">systemctl enable docker</span><br></pre></td></tr></table></figure>
+<h2 id="使用-register-注册可支持的架构解析器"><a href="#使用-register-注册可支持的架构解析器" class="headerlink" title="使用 register 注册可支持的架构解析器"></a>使用 <code>register</code> 注册可支持的架构解析器</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run --rm --privileged multiarch/qemu-user-static:register --reset</span><br></pre></td></tr></table></figure>
+<p>查看二进制格式的解释器是否启用，显示<code>enabled</code>，即为启用。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ls  /proc/sys/fs/binfmt_misc/ </span><br><span class="line">cat /proc/sys/fs/binfmt_misc/qemu-aarch64</span><br></pre></td></tr></table></figure>
+<h2 id="拉取基础arm镜像"><a href="#拉取基础arm镜像" class="headerlink" title="拉取基础arm镜像"></a>拉取基础arm镜像</h2><p>此处以httpd镜像为例，在x86服务器上拉取arm64架构的httpd镜像，其中<code>--platform=arm64</code>指定拉取的镜像架构位arm64，<code>--platform=amd64</code>则是拉取x86架构的镜像。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull --platform=arm64 httpd:latest</span><br></pre></td></tr></table></figure>
+<h2 id="定义Dockerfile，创建新镜像"><a href="#定义Dockerfile，创建新镜像" class="headerlink" title="定义Dockerfile，创建新镜像"></a>定义Dockerfile，创建新镜像</h2><p>通过使用Dockerfile创建新arm镜像的方式有两种，一种是直接下载<code>qemu-aarch64-static</code>程序，在构建镜像时直接拷贝进镜像中；另一种是拉取<code>multiarch/qemu-user-static:x86_64-aarch64</code>镜像，通过多阶段构建，从<code>multiarch/qemu-user-static:x86_64-aarch64</code>镜像中复制 <code>qemu-aarch64-static</code>程序 到 <code>httpd</code> 镜像中。</p>
+<h3 id="方式一：下载程序，直接复制"><a href="#方式一：下载程序，直接复制" class="headerlink" title="方式一：下载程序，直接复制"></a>方式一：下载程序，直接复制</h3><p>（1）在下载<code>qemu-aarch64-static</code>程序时，可直接下载该程序，也可先下载其压缩包，再解压。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">直接下载程序（推荐）</span></span><br><span class="line">wget https://github.com/multiarch/qemu-user-static/releases/download/v7.2.0-1/qemu-aarch64-static</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">先下载其压缩包，再解压</span></span><br><span class="line">wget https://github.com/multiarch/qemu-user-static/releases/download/v7.2.0-1/qemu-aarch64-static.tar.gz</span><br><span class="line">tar -vzxf qemu-aarch64-static.tar.gz</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">赋予可执行权限</span></span><br><span class="line">chmod +x /usr/bin/qemu-aarch64-static</span><br></pre></td></tr></table></figure>
+<p>（2）创建Dockerfile文件，在httpd镜像的基础上构建新镜像，<code>qemu-aarch64-static</code><mark>程序必须和Dockerfile文件在同一目录下</mark>。Dockerfile文件的具体内容如下：</p>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> httpd:latest</span><br><span class="line"><span class="comment"># 将qemu-aarch64-static程序拷贝进镜像的/usr/bin/目录</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> ./qemu-aarch64-static /usr/bin/qemu-aarch64-static</span></span><br><span class="line"><span class="comment"># 将测试的html文件拷贝到镜像的相关目录</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> ./index.html  /usr/local/apache2/htdocs/</span></span><br></pre></td></tr></table></figure>
+<p>（3）指定构建的架构，执行命令开始构建新镜像，构建完成后，查看新镜像的架构并导出为tar文件，在arm服务器上进行验证。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">构建镜像</span></span><br><span class="line">docker build --platform arm64 -t httpd:1.00 .</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看新镜像的架构</span></span><br><span class="line"> docker inspect httpd:1.00 | grep Architecture</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">导出镜像为tar文件</span></span><br><span class="line">docker save -o httpd.tar httpd:1.00</span><br></pre></td></tr></table></figure>
+<h3 id="方式二：通过镜像多重构建复制"><a href="#方式二：通过镜像多重构建复制" class="headerlink" title="方式二：通过镜像多重构建复制"></a>方式二：通过镜像多重构建复制</h3><p>（1）创建Dockerfile文件，分两个阶段构建新镜像，第一阶段从 <code>multiarch/qemu-user-static</code> 镜像中获取<code>qemu-aarch64-static</code>程序，第二阶段在httpd镜像的基础上构建新镜像，Dockerfile文件的具体内容如下：</p>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 第一阶段：从multiarch/qemu-user-static镜像中获取qemu-aarch64-static程序  </span></span><br><span class="line"><span class="keyword">FROM</span> multiarch/qemu-<span class="keyword">user</span>-static:x86_64-aarch64 as qemu</span><br><span class="line"><span class="comment"># 第二阶段：在httpd镜像的基础上构建新镜像</span></span><br><span class="line"><span class="keyword">FROM</span> httpd:latest</span><br><span class="line"><span class="comment"># 将qemu-aarch64-static程序拷贝进镜像的/usr/bin/目录</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/</span></span><br><span class="line"><span class="comment"># 将测试的html文件拷贝到镜像的相关目录</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> ./index.html  /usr/local/apache2/htdocs/</span></span><br></pre></td></tr></table></figure>
+<p>（2）指定构建的架构，执行命令开始构建新镜像，构建完成后，查看新镜像的架构并导出为tar文件，在arm服务器上进行验证。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">构建镜像</span></span><br><span class="line">docker build --platform arm64 -t httpd:1.00 .</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看新镜像的架构</span></span><br><span class="line"> docker inspect httpd:1.00 | grep Architecture</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">导出镜像为tar文件</span></span><br><span class="line">docker save -o httpd.tar httpd:1.00</span><br></pre></td></tr></table></figure>
+<p><mark>扩展：通过镜像多重构建复制也可用该docker命令直接替代。</mark></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker build --rm --platform arm64 -t &quot;httpd:1.00&quot; -&lt;&lt;EOF</span><br><span class="line">FROM multiarch/qemu-user-static:x86_64-aarch64 as qemu</span><br><span class="line">FROM httpd:latest</span><br><span class="line">COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin</span><br><span class="line">COPY ./index.html  /usr/local/apache2/htdocs/</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<h2 id="在arm服务器上验证"><a href="#在arm服务器上验证" class="headerlink" title="在arm服务器上验证"></a>在arm服务器上验证</h2><p>将新的镜像tar文件导入到arm服务器上，创建新容器验证镜像是否可用及镜像中的html文件是否生效。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">导入新镜像</span></span><br><span class="line">docker load -i httpd.tar</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看新镜像的架构</span></span><br><span class="line">docker inspect httpd:1.00 | grep Architecture</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">运行新容器</span></span><br><span class="line">docker run -itd --name test httpd:1.00</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看运行状态</span></span><br><span class="line">docker ps</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看容器IP</span></span><br><span class="line">docker inspect test | grep IPAddress</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">访问测试上传的html文件是否生效</span></span><br><span class="line">curl 172.17.0.2</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux运维</category>
+        <category>容器化</category>
+        <category>docker</category>
+        <category>容器管理</category>
+      </categories>
+      <tags>
+        <tag>运维</tag>
+        <tag>Linux</tag>
+        <tag>x86-ARM</tag>
+        <tag>docker镜像</tag>
+        <tag>跨架构镜像</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ELK | 使用 docker部署三节点 Elasticsearch 集群</title>
+    <url>/yyg/56088d5a/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><ol>
+<li><p>硬件环境</p>
+<p>操作系统：Centos Stream 9</p>
+<p>CPU：4颗</p>
+<p>内存：8GB</p>
+<p>硬盘：50GB</p>
+</li>
+<li><p>软件环境</p>
+<p>docker版本：26.1.0</p>
+<p>docker compose版本：v2.26.1</p>
+</li>
+</ol>
+<h2 id="部署过程"><a href="#部署过程" class="headerlink" title="部署过程"></a>部署过程</h2><h3 id="准备基础环境，安装Docker"><a href="#准备基础环境，安装Docker" class="headerlink" title="准备基础环境，安装Docker"></a>准备基础环境，安装Docker</h3><p>1、安装 yum-utils 软件包（提供 yum-config-manager 实用程序）并设置存储库，命令如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 安装 yum-utils 软件包</span><br><span class="line">yum install -y yum-utils</span><br><span class="line"># 设置docker-ce存储库</span><br><span class="line">yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+<p>2、安装最新版docker及其组件，命令如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</span><br></pre></td></tr></table></figure>
+<p>3、启动Docker服务，并设置为开机自启动，命令如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 启动Docker服务</span><br><span class="line">systemctl start docker</span><br><span class="line"># 设置Docker为开机自启动</span><br><span class="line">systemctl enable docker</span><br><span class="line"># 查看Docker服务状态</span><br><span class="line">systemctl status docker</span><br></pre></td></tr></table></figure>
+<p>4、修改Docker的数据目录为“/data/dockerData”，并重启docker服务使配置生效。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 创建Docker守护进程配置文件</span><br><span class="line"># 编辑配置文件/etc/docker/daemon.json，配置docker数据目录</span><br><span class="line">vi /etc/docker/daemon.json</span><br><span class="line">**************************daemon.json**************************</span><br><span class="line">&#123;</span><br><span class="line">  &quot;data-root&quot;: &quot;/data/dockerData&quot;</span><br><span class="line">&#125;</span><br><span class="line">**************************daemon.json**************************</span><br><span class="line"></span><br><span class="line"># 重启docker服务，使配置生效</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+<p>5、设置与内存映射相关的内核参数为262144，查看应用到系统的内核参数。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo &quot;vm.max_map_count=262144&quot; &gt;&gt; /etc/sysctl.conf</span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+<p>6、配置防火墙策略</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">firewall-cmd --add-port=9200/tcp --permanent</span><br><span class="line">firewall-cmd --add-port=80/tcp --permanent</span><br><span class="line">firewall-cmd --add-port=443/tcp --permanent</span><br><span class="line">firewall-cmd --add-port=5601/tcp --permanent</span><br><span class="line">firewall-cmd --reload</span><br><span class="line">firewall-cmd --list-all</span><br></pre></td></tr></table></figure>
+<h3 id="部署elk集群"><a href="#部署elk集群" class="headerlink" title="部署elk集群"></a>部署elk集群</h3><p>1、创建构建容器所需要的文件目录，并赋予相应的访问权限。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /data</span><br><span class="line">mkdir es-node1  es-node2  es-node3  elk-kibana</span><br><span class="line">chmod g+rwx es-node1  es-node2  es-node3  elk-kibana</span><br><span class="line">chgrp 0 es-node1  es-node2  es-node3  elk-kibana</span><br></pre></td></tr></table></figure>
+<p>2、在/data/script 目录下，创建并编辑 .env 文件，用来配置elk的环境变量。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /data/script</span><br><span class="line">vi /data/script/.env</span><br><span class="line">**************************.env**************************</span><br><span class="line"># Elasticsearch的密码</span><br><span class="line">ELASTIC_PASSWORD=elk#bd@123</span><br><span class="line"># Kibana的密码</span><br><span class="line">KIBANA_PASSWORD=elk#bd@123</span><br><span class="line"># Elastic Stack的版本号</span><br><span class="line">STACK_VERSION=8.13.3</span><br><span class="line"># Elastic Stack的集群名称</span><br><span class="line">CLUSTER_NAME=ELK-docker-Cluster</span><br><span class="line"># 指定Elastic Stack的许可证类型</span><br><span class="line">LICENSE=basic</span><br><span class="line"># 指定Elasticsearch的端口号</span><br><span class="line">ES_PORT=9200</span><br><span class="line"># 指定Kibana的端口号</span><br><span class="line">KIBANA_PORT=5601</span><br><span class="line"># 指定内存限制</span><br><span class="line">MEM_LIMIT=2147483648</span><br><span class="line"># 指定Docker Compose项目的名称</span><br><span class="line">COMPOSE_PROJECT_NAME=elk-docker-project</span><br><span class="line">**************************.env**************************</span><br></pre></td></tr></table></figure>
+<p>3、创建logstash容器所需的目录和配置文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir -p logstash/config logstash/pipeline</span><br><span class="line">echo &#x27;http.host: &quot;0.0.0.0&quot;&#x27; &gt; /data/logstash/config/logstash.yml</span><br><span class="line">vi /data/logstash/pipeline/logstash.conf</span><br><span class="line">**************************logstash.conf**************************</span><br><span class="line">input &#123;</span><br><span class="line">  beats &#123;</span><br><span class="line">    port =&gt; 5044</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">  elasticsearch &#123;</span><br><span class="line">    hosts =&gt; [&quot;https://es-node1:9200&quot;]</span><br><span class="line">    index =&gt; &quot;%&#123;[@metadata][beat]&#125;-%&#123;[@metadata][version]&#125;-%&#123;+YYYY.MM.dd&#125;&quot;</span><br><span class="line">    user =&gt; &quot;elastic&quot;</span><br><span class="line">    password =&gt; &quot;elk#bd@123&quot;</span><br><span class="line">    cacert=&gt; &quot;/usr/share/logstash/config/certs/ca/ca.crt&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">**************************logstash.conf**************************</span><br></pre></td></tr></table></figure>
+<p>4、创建docker compose文件，编排创建es初始化节点、es三节点、Kibana、logstash容器。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vi /data/script/elk.yml</span><br><span class="line">**************************elk.yml**************************</span><br><span class="line">services:</span><br><span class="line">  es-setup:</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:$&#123;STACK_VERSION&#125;</span><br><span class="line">    container_name: es-setup</span><br><span class="line">    volumes:</span><br><span class="line">      - /data/elk-certs:/usr/share/elasticsearch/config/certs</span><br><span class="line">    user: &quot;0&quot;</span><br><span class="line">    networks:</span><br><span class="line">      net:</span><br><span class="line">        ipv4_address: 172.20.100.10</span><br><span class="line">    command: &gt;</span><br><span class="line">      bash -c &#x27;</span><br><span class="line">        if [ x$&#123;ELASTIC_PASSWORD&#125; == x ]; then</span><br><span class="line">          echo &quot;Set the ELASTIC_PASSWORD environment variable in the .env file&quot;;</span><br><span class="line">          exit 1;</span><br><span class="line">        elif [ x$&#123;KIBANA_PASSWORD&#125; == x ]; then</span><br><span class="line">          echo &quot;Set the KIBANA_PASSWORD environment variable in the .env file&quot;;</span><br><span class="line">          exit 1;</span><br><span class="line">        fi;</span><br><span class="line">        </span><br><span class="line">        if [ ! -f config/certs/ca.zip ]; then</span><br><span class="line">          echo &quot;Creating CA&quot;;</span><br><span class="line">          bin/elasticsearch-certutil ca --silent --pem -out config/certs/ca.zip;</span><br><span class="line">          unzip config/certs/ca.zip -d config/certs;</span><br><span class="line">        fi;</span><br><span class="line">        if [ ! -f config/certs/certs.zip ]; then</span><br><span class="line">          echo &quot;Creating certs&quot;;</span><br><span class="line">          echo -ne \</span><br><span class="line">          &quot;instances:\n&quot;\</span><br><span class="line">          &quot;  - name: es-node1\n&quot;\</span><br><span class="line">          &quot;    dns:\n&quot;\</span><br><span class="line">          &quot;      - es-node1\n&quot;\</span><br><span class="line">          &quot;      - localhost\n&quot;\</span><br><span class="line">          &quot;    ip:\n&quot;\</span><br><span class="line">          &quot;      - 127.0.0.1\n&quot;\</span><br><span class="line">          &quot;  - name: es-node2\n&quot;\</span><br><span class="line">          &quot;    dns:\n&quot;\</span><br><span class="line">          &quot;      - es-node2\n&quot;\</span><br><span class="line">          &quot;      - localhost\n&quot;\</span><br><span class="line">          &quot;    ip:\n&quot;\</span><br><span class="line">          &quot;      - 127.0.0.1\n&quot;\</span><br><span class="line">          &quot;  - name: es-node3\n&quot;\</span><br><span class="line">          &quot;    dns:\n&quot;\</span><br><span class="line">          &quot;      - es-node3\n&quot;\</span><br><span class="line">          &quot;      - localhost\n&quot;\</span><br><span class="line">          &quot;    ip:\n&quot;\</span><br><span class="line">          &quot;      - 127.0.0.1\n&quot;\</span><br><span class="line">          &gt; config/certs/instances.yml;</span><br><span class="line">          bin/elasticsearch-certutil cert --silent --pem -out config/certs/certs.zip --in config/certs/instances.yml --ca-cert config/certs/ca/ca.crt --ca-key config/certs/ca/ca.key;</span><br><span class="line">          unzip config/certs/certs.zip -d config/certs;</span><br><span class="line">        fi;</span><br><span class="line"></span><br><span class="line">        echo &quot;Setting file permissions&quot;;</span><br><span class="line">        chown -R root:root config/certs;</span><br><span class="line">        find . -type d -exec chmod 750 \&#123;\&#125; \;;</span><br><span class="line">        find . -type f -exec chmod 640 \&#123;\&#125; \;;</span><br><span class="line">        echo &quot;Waiting for Elasticsearch availability&quot;;</span><br><span class="line">        until curl -s --cacert config/certs/ca/ca.crt https://es-node1:9200 | grep -q &quot;missing authentication credentials&quot;; do sleep 30; done;</span><br><span class="line">        echo &quot;Setting kibana_system password&quot;;</span><br><span class="line">        until curl -s -X POST --cacert config/certs/ca/ca.crt -u &quot;elastic:$&#123;ELASTIC_PASSWORD&#125;&quot; -H &quot;Content-Type: application/json&quot; https://es-node1:9200/_security/user/kibana_system/_password -d &quot;&#123;\&quot;password\&quot;:\&quot;$&#123;KIBANA_PASSWORD&#125;\&quot;&#125;&quot; | grep -q &quot;^&#123;&#125;&quot;; do sleep 10; done;</span><br><span class="line">        echo &quot;All done!&quot;;</span><br><span class="line">      &#x27;</span><br><span class="line">    healthcheck:</span><br><span class="line">      test: [&quot;CMD-&quot;, &quot;[ -f config/certs/es-node1/es-node1.crt ]&quot;]</span><br><span class="line">      interval: 1s</span><br><span class="line">      timeout: 5s</span><br><span class="line">      retries: 120</span><br><span class="line"></span><br><span class="line">  es-node1:</span><br><span class="line">    depends_on:</span><br><span class="line">      es-setup:</span><br><span class="line">        condition: service_healthy</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:$&#123;STACK_VERSION&#125;</span><br><span class="line">    container_name: es-node1</span><br><span class="line">    restart: always</span><br><span class="line">    networks:</span><br><span class="line">      net:</span><br><span class="line">        ipv4_address: 172.20.100.11</span><br><span class="line">    volumes:</span><br><span class="line">      - /data/elk-certs:/usr/share/elasticsearch/config/certs</span><br><span class="line">      - /data/es-node1:/usr/share/elasticsearch/data</span><br><span class="line">    ports:</span><br><span class="line">      - $&#123;ES_PORT&#125;:9200</span><br><span class="line">    environment:</span><br><span class="line">      - node.name=es-node1</span><br><span class="line">      - cluster.name=$&#123;CLUSTER_NAME&#125;</span><br><span class="line">      - cluster.initial_master_nodes=es-node1,es-node2,es-node3</span><br><span class="line">      - discovery.seed_hosts=es-node2,es-node3</span><br><span class="line">      - ELASTIC_PASSWORD=$&#123;ELASTIC_PASSWORD&#125;</span><br><span class="line">      - bootstrap.memory_lock=true</span><br><span class="line">      - xpack.security.enabled=true</span><br><span class="line">      - xpack.security.http.ssl.enabled=true</span><br><span class="line">      - xpack.security.http.ssl.key=certs/es-node1/es-node1.key</span><br><span class="line">      - xpack.security.http.ssl.certificate=certs/es-node1/es-node1.crt</span><br><span class="line">      - xpack.security.http.ssl.certificate_authorities=certs/ca/ca.crt</span><br><span class="line">      - xpack.security.transport.ssl.enabled=true</span><br><span class="line">      - xpack.security.transport.ssl.key=certs/es-node1/es-node1.key</span><br><span class="line">      - xpack.security.transport.ssl.certificate=certs/es-node1/es-node1.crt</span><br><span class="line">      - xpack.security.transport.ssl.certificate_authorities=certs/ca/ca.crt</span><br><span class="line">      - xpack.security.transport.ssl.verification_mode=certificate</span><br><span class="line">      - xpack.license.self_generated.type=$&#123;LICENSE&#125;</span><br><span class="line">    mem_limit: $&#123;MEM_LIMIT&#125;</span><br><span class="line">    ulimits:</span><br><span class="line">      memlock:</span><br><span class="line">        soft: -1</span><br><span class="line">        hard: -1</span><br><span class="line">    healthcheck:</span><br><span class="line">      test:</span><br><span class="line">        [</span><br><span class="line">          &quot;CMD-&quot;,</span><br><span class="line">          &quot;curl -s --cacert config/certs/ca/ca.crt https://localhost:9200 | grep -q &#x27;missing authentication credentials&#x27;&quot;,</span><br><span class="line">        ]</span><br><span class="line">      interval: 10s</span><br><span class="line">      timeout: 10s</span><br><span class="line">      retries: 120</span><br><span class="line">    extra_hosts:</span><br><span class="line">      - &quot;es-node1:172.20.100.11&quot;</span><br><span class="line">      - &quot;es-node2:172.20.100.12&quot;</span><br><span class="line">      - &quot;es-node3:172.20.100.13&quot;</span><br><span class="line"></span><br><span class="line">  es-node2:</span><br><span class="line">    depends_on:</span><br><span class="line">      - es-node1</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:$&#123;STACK_VERSION&#125;</span><br><span class="line">    container_name: es-node2</span><br><span class="line">    restart: always</span><br><span class="line">    networks:</span><br><span class="line">      net:</span><br><span class="line">        ipv4_address: 172.20.100.12</span><br><span class="line">    volumes:</span><br><span class="line">      - /data/elk-certs:/usr/share/elasticsearch/config/certs</span><br><span class="line">      - /data/es-node2:/usr/share/elasticsearch/data</span><br><span class="line">    environment:</span><br><span class="line">      - node.name=es-node2</span><br><span class="line">      - cluster.name=$&#123;CLUSTER_NAME&#125;</span><br><span class="line">      - cluster.initial_master_nodes=es-node1,es-node2,es-node3</span><br><span class="line">      - discovery.seed_hosts=es-node1,es-node3</span><br><span class="line">      - bootstrap.memory_lock=true</span><br><span class="line">      - xpack.security.enabled=true</span><br><span class="line">      - xpack.security.http.ssl.enabled=true</span><br><span class="line">      - xpack.security.http.ssl.key=certs/es-node2/es-node2.key</span><br><span class="line">      - xpack.security.http.ssl.certificate=certs/es-node2/es-node2.crt</span><br><span class="line">      - xpack.security.http.ssl.certificate_authorities=certs/ca/ca.crt</span><br><span class="line">      - xpack.security.transport.ssl.enabled=true</span><br><span class="line">      - xpack.security.transport.ssl.key=certs/es-node2/es-node2.key</span><br><span class="line">      - xpack.security.transport.ssl.certificate=certs/es-node2/es-node2.crt</span><br><span class="line">      - xpack.security.transport.ssl.certificate_authorities=certs/ca/ca.crt</span><br><span class="line">      - xpack.security.transport.ssl.verification_mode=certificate</span><br><span class="line">      - xpack.license.self_generated.type=$&#123;LICENSE&#125;</span><br><span class="line">    mem_limit: $&#123;MEM_LIMIT&#125;</span><br><span class="line">    ulimits:</span><br><span class="line">      memlock:</span><br><span class="line">        soft: -1</span><br><span class="line">        hard: -1</span><br><span class="line">    healthcheck:</span><br><span class="line">      test:</span><br><span class="line">        [</span><br><span class="line">          &quot;CMD-&quot;,</span><br><span class="line">          &quot;curl -s --cacert config/certs/ca/ca.crt https://localhost:9200 | grep -q &#x27;missing authentication credentials&#x27;&quot;,</span><br><span class="line">        ]</span><br><span class="line">      interval: 10s</span><br><span class="line">      timeout: 10s</span><br><span class="line">      retries: 120</span><br><span class="line">    extra_hosts:</span><br><span class="line">      - &quot;es-node1:172.20.100.11&quot;</span><br><span class="line">      - &quot;es-node2:172.20.100.12&quot;</span><br><span class="line">      - &quot;es-node3:172.20.100.13&quot;</span><br><span class="line"></span><br><span class="line">  es-node3:</span><br><span class="line">    depends_on:</span><br><span class="line">      - es-node2</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:$&#123;STACK_VERSION&#125;</span><br><span class="line">    container_name: es-node3</span><br><span class="line">    restart: always</span><br><span class="line">    networks:</span><br><span class="line">      net:</span><br><span class="line">        ipv4_address: 172.20.100.13</span><br><span class="line">    volumes:</span><br><span class="line">      - /data/elk-certs:/usr/share/elasticsearch/config/certs</span><br><span class="line">      - /data/es-node3:/usr/share/elasticsearch/data</span><br><span class="line">    environment:</span><br><span class="line">      - node.name=es-node3</span><br><span class="line">      - cluster.name=$&#123;CLUSTER_NAME&#125;</span><br><span class="line">      - cluster.initial_master_nodes=es-node1,es-node2,es-node3</span><br><span class="line">      - discovery.seed_hosts=es-node1,es-node2</span><br><span class="line">      - bootstrap.memory_lock=true</span><br><span class="line">      - xpack.security.enabled=true</span><br><span class="line">      - xpack.security.http.ssl.enabled=true</span><br><span class="line">      - xpack.security.http.ssl.key=certs/es-node3/es-node3.key</span><br><span class="line">      - xpack.security.http.ssl.certificate=certs/es-node3/es-node3.crt</span><br><span class="line">      - xpack.security.http.ssl.certificate_authorities=certs/ca/ca.crt</span><br><span class="line">      - xpack.security.transport.ssl.enabled=true</span><br><span class="line">      - xpack.security.transport.ssl.key=certs/es-node3/es-node3.key</span><br><span class="line">      - xpack.security.transport.ssl.certificate=certs/es-node3/es-node3.crt</span><br><span class="line">      - xpack.security.transport.ssl.certificate_authorities=certs/ca/ca.crt</span><br><span class="line">      - xpack.security.transport.ssl.verification_mode=certificate</span><br><span class="line">      - xpack.license.self_generated.type=$&#123;LICENSE&#125;</span><br><span class="line">    mem_limit: $&#123;MEM_LIMIT&#125;</span><br><span class="line">    ulimits:</span><br><span class="line">      memlock:</span><br><span class="line">        soft: -1</span><br><span class="line">        hard: -1</span><br><span class="line">    healthcheck:</span><br><span class="line">      test:</span><br><span class="line">        [</span><br><span class="line">          &quot;CMD-&quot;,</span><br><span class="line">          &quot;curl -s --cacert config/certs/ca/ca.crt https://localhost:9200 | grep -q &#x27;missing authentication credentials&#x27;&quot;,</span><br><span class="line">        ]</span><br><span class="line">      interval: 10s</span><br><span class="line">      timeout: 10s</span><br><span class="line">      retries: 120</span><br><span class="line">    extra_hosts:</span><br><span class="line">      - &quot;es-node1:172.20.100.11&quot;</span><br><span class="line">      - &quot;es-node2:172.20.100.12&quot;</span><br><span class="line">      - &quot;es-node3:172.20.100.13&quot;</span><br><span class="line"></span><br><span class="line">  kibana:</span><br><span class="line">    depends_on:</span><br><span class="line">      es-node1:</span><br><span class="line">        condition: service_healthy</span><br><span class="line">      es-node2:</span><br><span class="line">        condition: service_healthy</span><br><span class="line">      es-node3:</span><br><span class="line">        condition: service_healthy</span><br><span class="line">    image: docker.elastic.co/kibana/kibana:$&#123;STACK_VERSION&#125;</span><br><span class="line">    container_name: kibana</span><br><span class="line">    restart: always</span><br><span class="line">    networks:</span><br><span class="line">      net:</span><br><span class="line">        ipv4_address: 172.20.100.14</span><br><span class="line">    volumes:</span><br><span class="line">      - /data/elk-certs:/usr/share/kibana/config/certs</span><br><span class="line">      - /data/kibana:/usr/share/kibana/data</span><br><span class="line">    ports:</span><br><span class="line">      - $&#123;KIBANA_PORT&#125;:5601</span><br><span class="line">    environment:</span><br><span class="line">      - SERVERNAME=kibana</span><br><span class="line">      - ELASTICSEARCH_HOSTS=https://es-node1:9200</span><br><span class="line">      - ELASTICSEARCH_USERNAME=kibana_system</span><br><span class="line">      - ELASTICSEARCH_PASSWORD=$&#123;KIBANA_PASSWORD&#125;</span><br><span class="line">      - ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES=config/certs/ca/ca.crt</span><br><span class="line">    mem_limit: $&#123;MEM_LIMIT&#125;</span><br><span class="line">    healthcheck:</span><br><span class="line">      test:</span><br><span class="line">        [</span><br><span class="line">          &quot;CMD-&quot;,</span><br><span class="line">          &quot;curl -s -I http://localhost:5601 | grep -q &#x27;HTTP/1.1 302 Found&#x27;&quot;,</span><br><span class="line">        ]</span><br><span class="line">      interval: 10s</span><br><span class="line">      timeout: 10s</span><br><span class="line">      retries: 120</span><br><span class="line">  logstash:</span><br><span class="line">    image: docker.elastic.co/logstash/logstash:$&#123;STACK_VERSION&#125;</span><br><span class="line">    container_name: logstash</span><br><span class="line">    volumes:</span><br><span class="line">      - /data/elk-certs:/usr/share/logstash/config/certs</span><br><span class="line">      - /data/logstash/pipeline:/usr/share/logstash/pipeline</span><br><span class="line">      - /data/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml</span><br><span class="line">    user: &quot;0&quot;</span><br><span class="line">    restart: always</span><br><span class="line">    ports:</span><br><span class="line">      - 5044:5044</span><br><span class="line">    networks:</span><br><span class="line">      net:</span><br><span class="line">        ipv4_address: 172.20.100.15</span><br><span class="line">    extra_hosts:</span><br><span class="line">      - &quot;es-node1:172.20.100.11&quot;</span><br><span class="line">      - &quot;es-node2:172.20.100.12&quot;</span><br><span class="line">      - &quot;es-node3:172.20.100.13&quot;</span><br><span class="line">networks:</span><br><span class="line">  net:</span><br><span class="line">    driver: bridge</span><br><span class="line">    ipam:</span><br><span class="line">      config:</span><br><span class="line">        - subnet: 172.20.100.0/24</span><br><span class="line">**************************elk.yml**************************</span><br></pre></td></tr></table></figure>
+<p>执行命令，创建容器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker compose -f /data/script/elk.yml up -d</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[+] Running 42/16<br>✔ es-node3 Pulled 35.6s<br>✔ es-setup Pulled 35.6s<br>✔ logstash Pulled 96.0s<br>✔ kibana Pulled 99.3s<br>✔ es-node2 Pulled 35.6s<br>✔ es-node1 Pulled 35.6s</p>
+<p>[+] Running 7/7<br>✔ Network elk-docker-project_net Crea… 0.6s<br>✔ Container es-setup Healthy 21.6s<br>✔ Container logstash Started 12.5s<br>✔ Container es-node1 Healthy 72.5s<br>✔ Container es-node2 Healthy 72.5s<br>✔ Container es-node3 Healthy 73.0s<br>✔ Container kibana Started 73.4s</p>
+</blockquote>
+<p>容器创建完成后，查看各容器状态是否正常</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES<br>5b591d4ade82 docker.elastic.co/kibana/kibana:8.13.3 “/bin/tini — /usr/l…” 5 minutes ago Up 4 minutes (healthy) 0.0.0.0:5601-&gt;5601/tcp, :::5601-&gt;5601/tcp kibana<br>e2e75a54149e docker.elastic.co/elasticsearch/elasticsearch:8.13.3 “/bin/tini — /usr/l…” 5 minutes ago Up 5 minutes (healthy) 9200/tcp, 9300/tcp es-node3<br>b8c8357f3634 docker.elastic.co/elasticsearch/elasticsearch:8.13.3 “/bin/tini — /usr/l…” 5 minutes ago Up 5 minutes (healthy) 9200/tcp, 9300/tcp es-node2<br>c552940bd559 docker.elastic.co/elasticsearch/elasticsearch:8.13.3 “/bin/tini — /usr/l…” 5 minutes ago Up 5 minutes (healthy) 0.0.0.0:9200-&gt;9200/tcp, :::9200-&gt;9200/tcp, 9300/tcp es-node1<br>0366974065d8 docker.elastic.co/logstash/logstash:8.13.3 “/usr/local/bin/dock…” 5 minutes ago Up 5 minutes 0.0.0.0:5044-&gt;5044/tcp, :::5044-&gt;5044/tcp, 9600/tcp logstash</p>
+</blockquote>
+<p>5、修改kibana的配置文件，将其语言转化为中文。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker cp kibana:/usr/share/kibana/config/kibana.yml .</span><br><span class="line">vi kibana.yml</span><br><span class="line">**************************kibana.yml**************************</span><br><span class="line"> #</span><br><span class="line"># ** THIS IS AN AUTO-GENERATED FILE **</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line"># Default Kibana configuration for docker target</span><br><span class="line">server.host: &quot;0.0.0.0&quot;</span><br><span class="line">server.shutdownTimeout: &quot;5s&quot;</span><br><span class="line">elasticsearch.hosts: [ &quot;http://elasticsearch:9200&quot; ]</span><br><span class="line">monitoring.ui.container.elasticsearch.enabled: true</span><br><span class="line">i18n.locale: &quot;zh-CN&quot;</span><br><span class="line">server.publicBaseUrl: &quot;http://localhost:5601/&quot;</span><br><span class="line">**************************kibana.yml**************************</span><br><span class="line">docker cp kibana.yml  kibana:/usr/share/kibana/config/kibana.yml</span><br><span class="line">docker restart kibana</span><br></pre></td></tr></table></figure>
+<p>6、在浏览器中分别访问<code>https://10.10.2.103:9200/</code>和<code>http://10.10.2.103:5601/</code>，输入账户和密码，进行查看，如下图所示。</p>
+<img src="/yyg/56088d5a/1.png" class="" title="img">
+<img src="/yyg/56088d5a/2.png" class="" title="img">
+<img src="/yyg/56088d5a/3.png" class="" title="img">
+<h3 id="推送Linux日志，验证部署"><a href="#推送Linux日志，验证部署" class="headerlink" title="推送Linux日志，验证部署"></a>推送Linux日志，验证部署</h3><p>1、安装Filebeat日志采集器</p>
+<p>（1）通过rpm方式安装Filebeat日志采集器。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#下载rpm包</span><br><span class="line">curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.13.3-x86_64.rpm</span><br><span class="line">#执行安装</span><br><span class="line">rpm -vi filebeat-8.13.3-x86_64.rpm</span><br></pre></td></tr></table></figure>
+<p>（2）配置Filebeat</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#启动Filebeat</span><br><span class="line">systemctl start filebeat</span><br><span class="line">#查看Filebeat运行状态</span><br><span class="line">systemctl status filebeat</span><br><span class="line">#设置Filebeat为开机自启</span><br><span class="line">systemctl enable filebeat</span><br></pre></td></tr></table></figure>
+<p>2、配置Filebeat收集Linux日志</p>
+<p>（1）配置filebeat文件，将日志发送到 Logstash 服务。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 修改filebeat配置文件</span><br><span class="line">mv /etc/filebeat/filebeat.yml /etc/filebeat/filebeat.yml.bak</span><br><span class="line"># 新建filebeat配置文件</span><br><span class="line">vi /etc/filebeat/filebeat.yml</span><br><span class="line">**************************filebeat-dns.yml**************************</span><br><span class="line"># 配置文件输入，监视日志文件</span><br><span class="line">filebeat.inputs:</span><br><span class="line">- type: log</span><br><span class="line">  enabled: true</span><br><span class="line">  # 指定 DNS 日志文件路径</span><br><span class="line">  paths:</span><br><span class="line">    - /var/log/messages* </span><br><span class="line">  # 标识日志类型为elk-linux</span><br><span class="line">  fields:</span><br><span class="line">    type: elk-linux      </span><br><span class="line">  # 将额外的字段添加到根级别    </span><br><span class="line">  fields_under_root: true        </span><br><span class="line"></span><br><span class="line"># 配置输出到 Logstash</span><br><span class="line"># 指定 Logstash 服务的地址和端口</span><br><span class="line">output.logstash:</span><br><span class="line">  hosts: [&quot;10.10.2.103:5044&quot;]   </span><br><span class="line">**************************filebeat-dns.yml**************************</span><br></pre></td></tr></table></figure>
+<p>（2）重启filebeat服务，验证配置是否生效</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 重启filebeat</span><br><span class="line">systemctl restart filebeat</span><br><span class="line"># 删除锁文件后，重新启动 Filebeat 服务</span><br><span class="line">rm -rf /var/lib/filebeat/filebeat.lock</span><br><span class="line"># 运行并查看 Filebeat 的运行日志</span><br><span class="line">filebeat -e -c /etc/filebeat/filebeat.yml</span><br></pre></td></tr></table></figure>
+<p>3、在浏览器中登录Kibana，点击左侧菜单中的 “Stack Management”，管理创建数据视图。如下图所示。</p>
+<img src="/yyg/56088d5a/4.png" class="" title="img">
+<p>4、在“Stack Management”界面中，点击“数据视图”，选择索引模式，创建“elk-linux”视图。如下图所示。</p>
+<img src="/yyg/56088d5a/5.png" class="" title="img">
+<img src="/yyg/56088d5a/6.png" class="" title="img">
+<p>5、数据视图创建完成后，选择左侧菜单中的“Discover”，查看Linux日志详细内容。如下图所示。由此，elk集群搭建完成。</p>
+<img src="/yyg/56088d5a/7.png" class="" title="img">
+<img src="/yyg/56088d5a/8.png" class="" title="img">]]></content>
+      <categories>
+        <category>日志分析</category>
+        <category>ELK</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>日志分析</tag>
+        <tag>ELK</tag>
+        <tag>Elasticsearch</tag>
+        <tag>Kibana</tag>
+        <tag>Logstash</tag>
       </tags>
   </entry>
   <entry>
@@ -2147,86 +2230,45 @@ Mastodon:  @Podman_io@fosstodon.org
       </tags>
   </entry>
   <entry>
-    <title>ELK | 使用 docker部署三节点 Elasticsearch 集群</title>
-    <url>/yyg/56088d5a/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><ol>
-<li><p>硬件环境</p>
-<p>操作系统：Centos Stream 9</p>
-<p>CPU：4颗</p>
-<p>内存：8GB</p>
-<p>硬盘：50GB</p>
-</li>
-<li><p>软件环境</p>
-<p>docker版本：26.1.0</p>
-<p>docker compose版本：v2.26.1</p>
-</li>
+    <title>在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）</title>
+    <url>/yyg/5ea27f40/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）"><a href="#在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）" class="headerlink" title="在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）"></a>在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在搭建<code>云野阁</code>博客网站期间，看了好多具有个人特色的博客网站，有不少都有RSS订阅功能，那RSS是什么呢？咱们先唠唠。</p>
+<details class="folding-tag" cyan><summary> 🔜RSS🔚 </summary>
+              <div class='content'>
+              <p>RSS 全称 Really Simple Syndication（真正简易联合），是一种基于XML（可扩展标记语言）的内容分发协议，它允许用户订阅网站的内容更新，如新闻、博客文章等。好像还有另外的说法是Rich Site Summary（网站内容摘要）和 RDF Site Summary（资源描述框架站点摘要），不过其实都描述的是从订阅源获取更新的内容，并将获取的内容整合集中显示，方便用户进行查看。</p><p>网上有关RSS的相关介绍有很多，感兴趣的话可以搜索了解下。</p>
+              </div>
+            </details>
+<p>订阅了RSS，只要再结合RSS阅读器，就可以直接看到有关博客的最新文章，那我们就重点搞RSS阅读器。RSS阅读器无论是自建还是使用现成的，都有很多类型，像浏览器插件、手机端、电脑端程序、web端等。搭建一个web端，方便、省事、对终端依赖小。</p>
+<p><a href="https://github.com/osmoscraft/osmosfeed">OsmosFeed</a>是GitHub上一个开源的Web版RSS阅读器，可以使用 GitHub Pages托管，利用GitHub Actions实现内容定期自动更新，主题可自定义。</p>
+<p>本站的<code>文界</code>就是使用OsmosFeed搭建并托管在GitHub Pages上的。<a class="btn-beautify outline blue" href="/yygrss/index.html" 
+  title="点我跳转查看"><i class="far fa-hand-point-right"></i><span>点我跳转查看</span></a></p>
+<h2 id="搭建过程"><a href="#搭建过程" class="headerlink" title="搭建过程"></a>搭建过程</h2><h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><p>1.访问OsmosFeed仓库的<a href="https://github.com/osmoscraft/osmosfeed/blob/master/README_zh.md">配置教程</a>，点击教程中”创建新仓库“中的第一步”使用osmosfeed-template官方模板创建仓库“，页面跳转至创建新仓库界面，设置仓库名并将可见性设为Public，点击创建Create repository按钮新建仓库。</p>
+<img src="/yyg/5ea27f40/1.png" class="" title="image-20240826224400783">
+<p>2.进入刚创建好的仓库，进入目录<code>.github/workflows</code>,修改<code>update-feed.yaml</code>文件为以下内容。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Build</span> <span class="string">site</span> <span class="string">on</span> <span class="string">schedule</span> <span class="string">or</span> <span class="string">main</span> <span class="string">branch</span> <span class="string">update</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span></span><br><span class="line">  <span class="attr">schedule:</span></span><br><span class="line">    <span class="comment"># Adjust refresh schedule here. By default, it runs once per day.</span></span><br><span class="line">    <span class="comment"># Syntax reference: https://docs.github.com/en/actions/reference/events-that-trigger-workflows#schedule</span></span><br><span class="line">    <span class="comment"># Recommended tool: https://crontab.guru/</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">cron:</span> <span class="string">&quot;0 11 * * *&quot;</span>    <span class="comment">#设置的执行时间周期</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v4</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Setup</span> <span class="string">Node.js</span> <span class="string">environment</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v4.0.3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">&quot;20&quot;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">dependencies</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">npm</span> <span class="string">i</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Build</span> <span class="string">the</span> <span class="string">feed</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">npm</span> <span class="string">run</span> <span class="string">build</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">to</span> <span class="string">GitHub</span> <span class="string">Pages</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">peaceiris/actions-gh-pages@v4</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">github_token:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.action_token</span> <span class="string">&#125;&#125;</span>   <span class="comment">#action_token为设置的Actions secrets ，后面会讲到</span></span><br><span class="line">          <span class="attr">publish_dir:</span> <span class="string">./public</span></span><br></pre></td></tr></table></figure>
+<p>3.进入刚创建好的仓库，修改根目录下的osmosfeed.yaml文件，将<code>cacheUrl:</code>行前的<code>#</code>去除，并将<code>GITHUB_USERNAME</code>修改为自己的github名称，<code>REPO_NAME</code>修改为本仓库的名。<code>sources</code>下的<code>- href:</code>为RSS/Atom源。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">cacheUrl:</span> <span class="string">https://GITHUB_USERNAME.github.io/REPO_NAME/cache.json</span></span><br><span class="line"><span class="attr">sources:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">href:</span> <span class="string">https://css-tricks.com/feed/</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">href:</span> <span class="string">https://www.freecodecamp.org/news/rss/</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">href:</span> <span class="string">https://daverupert.com/atom.xml</span></span><br></pre></td></tr></table></figure>
+<h3 id="设置身份验证令牌"><a href="#设置身份验证令牌" class="headerlink" title="设置身份验证令牌"></a>设置身份验证令牌</h3><p>1.点击自己的头像，选择 “Settings” -&gt; “Developer settings” -&gt; “Personal access tokens”-&gt;”Tokens（classic）“，点击 “Generate new token”，选择”Generate new token（classic）“，验证后，指定一个描述性名称，选择令牌的有效时间，选择要授予此令牌的范围或权限。只需要选择repo一项即可。点击”Generate token“，完成创建。</p>
+<img src="/yyg/5ea27f40/2.png" class="" title="image-20240826230331732">
+<p>2.创建完成后，复制保存token，后面要用。</p>
+<p>3.进入刚创建好的仓库，进入仓库的“Settings” -&gt; “Secrets and variables” -&gt; “Actions”。点击”Repository secrets“中的“New repository secret”，输入Actions secrets 的名字为action_token（与update-feed.yaml文件中的保持一致），并将第2步复制的token粘贴至Secrets框中，点击”Add secret“保存。</p>
+<img src="/yyg/5ea27f40/3.png" class="" title="image-20240826231333139">
+<h3 id="部署GitHub-Pages"><a href="#部署GitHub-Pages" class="headerlink" title="部署GitHub Pages"></a>部署GitHub Pages</h3><p>1.进入仓库的“Settings” -&gt; “Pages” ，在Branch中选择”gh-pages“，目录选择”/(root)“，点击”save“保存。</p>
+<img src="/yyg/5ea27f40/4.png" class="" title="image-20240826232546187">
+<img src="/yyg/5ea27f40/5.png" class="" title="image-20240826232701080">
+<ol>
+<li>刷新页面，直到界面上出现 <code>Your site is published at https://github用户名.github.io/仓库名</code>的确认信息（最多等待1－3分钟）即可离开。完成部署。部署的详细过程可以进入仓库的”Actions”，进行查看具体过程与异常情况。</li>
 </ol>
-<h2 id="部署过程"><a href="#部署过程" class="headerlink" title="部署过程"></a>部署过程</h2><h3 id="准备基础环境，安装Docker"><a href="#准备基础环境，安装Docker" class="headerlink" title="准备基础环境，安装Docker"></a>准备基础环境，安装Docker</h3><p>1、安装 yum-utils 软件包（提供 yum-config-manager 实用程序）并设置存储库，命令如下。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 安装 yum-utils 软件包</span><br><span class="line">yum install -y yum-utils</span><br><span class="line"># 设置docker-ce存储库</span><br><span class="line">yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
-<p>2、安装最新版docker及其组件，命令如下。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</span><br></pre></td></tr></table></figure>
-<p>3、启动Docker服务，并设置为开机自启动，命令如下。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 启动Docker服务</span><br><span class="line">systemctl start docker</span><br><span class="line"># 设置Docker为开机自启动</span><br><span class="line">systemctl enable docker</span><br><span class="line"># 查看Docker服务状态</span><br><span class="line">systemctl status docker</span><br></pre></td></tr></table></figure>
-<p>4、修改Docker的数据目录为“/data/dockerData”，并重启docker服务使配置生效。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 创建Docker守护进程配置文件</span><br><span class="line"># 编辑配置文件/etc/docker/daemon.json，配置docker数据目录</span><br><span class="line">vi /etc/docker/daemon.json</span><br><span class="line">**************************daemon.json**************************</span><br><span class="line">&#123;</span><br><span class="line">  &quot;data-root&quot;: &quot;/data/dockerData&quot;</span><br><span class="line">&#125;</span><br><span class="line">**************************daemon.json**************************</span><br><span class="line"></span><br><span class="line"># 重启docker服务，使配置生效</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
-<p>5、设置与内存映射相关的内核参数为262144，查看应用到系统的内核参数。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo &quot;vm.max_map_count=262144&quot; &gt;&gt; /etc/sysctl.conf</span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
-<p>6、配置防火墙策略</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">firewall-cmd --add-port=9200/tcp --permanent</span><br><span class="line">firewall-cmd --add-port=80/tcp --permanent</span><br><span class="line">firewall-cmd --add-port=443/tcp --permanent</span><br><span class="line">firewall-cmd --add-port=5601/tcp --permanent</span><br><span class="line">firewall-cmd --reload</span><br><span class="line">firewall-cmd --list-all</span><br></pre></td></tr></table></figure>
-<h3 id="部署elk集群"><a href="#部署elk集群" class="headerlink" title="部署elk集群"></a>部署elk集群</h3><p>1、创建构建容器所需要的文件目录，并赋予相应的访问权限。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /data</span><br><span class="line">mkdir es-node1  es-node2  es-node3  elk-kibana</span><br><span class="line">chmod g+rwx es-node1  es-node2  es-node3  elk-kibana</span><br><span class="line">chgrp 0 es-node1  es-node2  es-node3  elk-kibana</span><br></pre></td></tr></table></figure>
-<p>2、在/data/script 目录下，创建并编辑 .env 文件，用来配置elk的环境变量。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /data/script</span><br><span class="line">vi /data/script/.env</span><br><span class="line">**************************.env**************************</span><br><span class="line"># Elasticsearch的密码</span><br><span class="line">ELASTIC_PASSWORD=elk#bd@123</span><br><span class="line"># Kibana的密码</span><br><span class="line">KIBANA_PASSWORD=elk#bd@123</span><br><span class="line"># Elastic Stack的版本号</span><br><span class="line">STACK_VERSION=8.13.3</span><br><span class="line"># Elastic Stack的集群名称</span><br><span class="line">CLUSTER_NAME=ELK-docker-Cluster</span><br><span class="line"># 指定Elastic Stack的许可证类型</span><br><span class="line">LICENSE=basic</span><br><span class="line"># 指定Elasticsearch的端口号</span><br><span class="line">ES_PORT=9200</span><br><span class="line"># 指定Kibana的端口号</span><br><span class="line">KIBANA_PORT=5601</span><br><span class="line"># 指定内存限制</span><br><span class="line">MEM_LIMIT=2147483648</span><br><span class="line"># 指定Docker Compose项目的名称</span><br><span class="line">COMPOSE_PROJECT_NAME=elk-docker-project</span><br><span class="line">**************************.env**************************</span><br></pre></td></tr></table></figure>
-<p>3、创建logstash容器所需的目录和配置文件。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir -p logstash/config logstash/pipeline</span><br><span class="line">echo &#x27;http.host: &quot;0.0.0.0&quot;&#x27; &gt; /data/logstash/config/logstash.yml</span><br><span class="line">vi /data/logstash/pipeline/logstash.conf</span><br><span class="line">**************************logstash.conf**************************</span><br><span class="line">input &#123;</span><br><span class="line">  beats &#123;</span><br><span class="line">    port =&gt; 5044</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">  elasticsearch &#123;</span><br><span class="line">    hosts =&gt; [&quot;https://es-node1:9200&quot;]</span><br><span class="line">    index =&gt; &quot;%&#123;[@metadata][beat]&#125;-%&#123;[@metadata][version]&#125;-%&#123;+YYYY.MM.dd&#125;&quot;</span><br><span class="line">    user =&gt; &quot;elastic&quot;</span><br><span class="line">    password =&gt; &quot;elk#bd@123&quot;</span><br><span class="line">    cacert=&gt; &quot;/usr/share/logstash/config/certs/ca/ca.crt&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">**************************logstash.conf**************************</span><br></pre></td></tr></table></figure>
-<p>4、创建docker compose文件，编排创建es初始化节点、es三节点、Kibana、logstash容器。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vi /data/script/elk.yml</span><br><span class="line">**************************elk.yml**************************</span><br><span class="line">services:</span><br><span class="line">  es-setup:</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:$&#123;STACK_VERSION&#125;</span><br><span class="line">    container_name: es-setup</span><br><span class="line">    volumes:</span><br><span class="line">      - /data/elk-certs:/usr/share/elasticsearch/config/certs</span><br><span class="line">    user: &quot;0&quot;</span><br><span class="line">    networks:</span><br><span class="line">      net:</span><br><span class="line">        ipv4_address: 172.20.100.10</span><br><span class="line">    command: &gt;</span><br><span class="line">      bash -c &#x27;</span><br><span class="line">        if [ x$&#123;ELASTIC_PASSWORD&#125; == x ]; then</span><br><span class="line">          echo &quot;Set the ELASTIC_PASSWORD environment variable in the .env file&quot;;</span><br><span class="line">          exit 1;</span><br><span class="line">        elif [ x$&#123;KIBANA_PASSWORD&#125; == x ]; then</span><br><span class="line">          echo &quot;Set the KIBANA_PASSWORD environment variable in the .env file&quot;;</span><br><span class="line">          exit 1;</span><br><span class="line">        fi;</span><br><span class="line">        </span><br><span class="line">        if [ ! -f config/certs/ca.zip ]; then</span><br><span class="line">          echo &quot;Creating CA&quot;;</span><br><span class="line">          bin/elasticsearch-certutil ca --silent --pem -out config/certs/ca.zip;</span><br><span class="line">          unzip config/certs/ca.zip -d config/certs;</span><br><span class="line">        fi;</span><br><span class="line">        if [ ! -f config/certs/certs.zip ]; then</span><br><span class="line">          echo &quot;Creating certs&quot;;</span><br><span class="line">          echo -ne \</span><br><span class="line">          &quot;instances:\n&quot;\</span><br><span class="line">          &quot;  - name: es-node1\n&quot;\</span><br><span class="line">          &quot;    dns:\n&quot;\</span><br><span class="line">          &quot;      - es-node1\n&quot;\</span><br><span class="line">          &quot;      - localhost\n&quot;\</span><br><span class="line">          &quot;    ip:\n&quot;\</span><br><span class="line">          &quot;      - 127.0.0.1\n&quot;\</span><br><span class="line">          &quot;  - name: es-node2\n&quot;\</span><br><span class="line">          &quot;    dns:\n&quot;\</span><br><span class="line">          &quot;      - es-node2\n&quot;\</span><br><span class="line">          &quot;      - localhost\n&quot;\</span><br><span class="line">          &quot;    ip:\n&quot;\</span><br><span class="line">          &quot;      - 127.0.0.1\n&quot;\</span><br><span class="line">          &quot;  - name: es-node3\n&quot;\</span><br><span class="line">          &quot;    dns:\n&quot;\</span><br><span class="line">          &quot;      - es-node3\n&quot;\</span><br><span class="line">          &quot;      - localhost\n&quot;\</span><br><span class="line">          &quot;    ip:\n&quot;\</span><br><span class="line">          &quot;      - 127.0.0.1\n&quot;\</span><br><span class="line">          &gt; config/certs/instances.yml;</span><br><span class="line">          bin/elasticsearch-certutil cert --silent --pem -out config/certs/certs.zip --in config/certs/instances.yml --ca-cert config/certs/ca/ca.crt --ca-key config/certs/ca/ca.key;</span><br><span class="line">          unzip config/certs/certs.zip -d config/certs;</span><br><span class="line">        fi;</span><br><span class="line"></span><br><span class="line">        echo &quot;Setting file permissions&quot;;</span><br><span class="line">        chown -R root:root config/certs;</span><br><span class="line">        find . -type d -exec chmod 750 \&#123;\&#125; \;;</span><br><span class="line">        find . -type f -exec chmod 640 \&#123;\&#125; \;;</span><br><span class="line">        echo &quot;Waiting for Elasticsearch availability&quot;;</span><br><span class="line">        until curl -s --cacert config/certs/ca/ca.crt https://es-node1:9200 | grep -q &quot;missing authentication credentials&quot;; do sleep 30; done;</span><br><span class="line">        echo &quot;Setting kibana_system password&quot;;</span><br><span class="line">        until curl -s -X POST --cacert config/certs/ca/ca.crt -u &quot;elastic:$&#123;ELASTIC_PASSWORD&#125;&quot; -H &quot;Content-Type: application/json&quot; https://es-node1:9200/_security/user/kibana_system/_password -d &quot;&#123;\&quot;password\&quot;:\&quot;$&#123;KIBANA_PASSWORD&#125;\&quot;&#125;&quot; | grep -q &quot;^&#123;&#125;&quot;; do sleep 10; done;</span><br><span class="line">        echo &quot;All done!&quot;;</span><br><span class="line">      &#x27;</span><br><span class="line">    healthcheck:</span><br><span class="line">      test: [&quot;CMD-&quot;, &quot;[ -f config/certs/es-node1/es-node1.crt ]&quot;]</span><br><span class="line">      interval: 1s</span><br><span class="line">      timeout: 5s</span><br><span class="line">      retries: 120</span><br><span class="line"></span><br><span class="line">  es-node1:</span><br><span class="line">    depends_on:</span><br><span class="line">      es-setup:</span><br><span class="line">        condition: service_healthy</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:$&#123;STACK_VERSION&#125;</span><br><span class="line">    container_name: es-node1</span><br><span class="line">    restart: always</span><br><span class="line">    networks:</span><br><span class="line">      net:</span><br><span class="line">        ipv4_address: 172.20.100.11</span><br><span class="line">    volumes:</span><br><span class="line">      - /data/elk-certs:/usr/share/elasticsearch/config/certs</span><br><span class="line">      - /data/es-node1:/usr/share/elasticsearch/data</span><br><span class="line">    ports:</span><br><span class="line">      - $&#123;ES_PORT&#125;:9200</span><br><span class="line">    environment:</span><br><span class="line">      - node.name=es-node1</span><br><span class="line">      - cluster.name=$&#123;CLUSTER_NAME&#125;</span><br><span class="line">      - cluster.initial_master_nodes=es-node1,es-node2,es-node3</span><br><span class="line">      - discovery.seed_hosts=es-node2,es-node3</span><br><span class="line">      - ELASTIC_PASSWORD=$&#123;ELASTIC_PASSWORD&#125;</span><br><span class="line">      - bootstrap.memory_lock=true</span><br><span class="line">      - xpack.security.enabled=true</span><br><span class="line">      - xpack.security.http.ssl.enabled=true</span><br><span class="line">      - xpack.security.http.ssl.key=certs/es-node1/es-node1.key</span><br><span class="line">      - xpack.security.http.ssl.certificate=certs/es-node1/es-node1.crt</span><br><span class="line">      - xpack.security.http.ssl.certificate_authorities=certs/ca/ca.crt</span><br><span class="line">      - xpack.security.transport.ssl.enabled=true</span><br><span class="line">      - xpack.security.transport.ssl.key=certs/es-node1/es-node1.key</span><br><span class="line">      - xpack.security.transport.ssl.certificate=certs/es-node1/es-node1.crt</span><br><span class="line">      - xpack.security.transport.ssl.certificate_authorities=certs/ca/ca.crt</span><br><span class="line">      - xpack.security.transport.ssl.verification_mode=certificate</span><br><span class="line">      - xpack.license.self_generated.type=$&#123;LICENSE&#125;</span><br><span class="line">    mem_limit: $&#123;MEM_LIMIT&#125;</span><br><span class="line">    ulimits:</span><br><span class="line">      memlock:</span><br><span class="line">        soft: -1</span><br><span class="line">        hard: -1</span><br><span class="line">    healthcheck:</span><br><span class="line">      test:</span><br><span class="line">        [</span><br><span class="line">          &quot;CMD-&quot;,</span><br><span class="line">          &quot;curl -s --cacert config/certs/ca/ca.crt https://localhost:9200 | grep -q &#x27;missing authentication credentials&#x27;&quot;,</span><br><span class="line">        ]</span><br><span class="line">      interval: 10s</span><br><span class="line">      timeout: 10s</span><br><span class="line">      retries: 120</span><br><span class="line">    extra_hosts:</span><br><span class="line">      - &quot;es-node1:172.20.100.11&quot;</span><br><span class="line">      - &quot;es-node2:172.20.100.12&quot;</span><br><span class="line">      - &quot;es-node3:172.20.100.13&quot;</span><br><span class="line"></span><br><span class="line">  es-node2:</span><br><span class="line">    depends_on:</span><br><span class="line">      - es-node1</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:$&#123;STACK_VERSION&#125;</span><br><span class="line">    container_name: es-node2</span><br><span class="line">    restart: always</span><br><span class="line">    networks:</span><br><span class="line">      net:</span><br><span class="line">        ipv4_address: 172.20.100.12</span><br><span class="line">    volumes:</span><br><span class="line">      - /data/elk-certs:/usr/share/elasticsearch/config/certs</span><br><span class="line">      - /data/es-node2:/usr/share/elasticsearch/data</span><br><span class="line">    environment:</span><br><span class="line">      - node.name=es-node2</span><br><span class="line">      - cluster.name=$&#123;CLUSTER_NAME&#125;</span><br><span class="line">      - cluster.initial_master_nodes=es-node1,es-node2,es-node3</span><br><span class="line">      - discovery.seed_hosts=es-node1,es-node3</span><br><span class="line">      - bootstrap.memory_lock=true</span><br><span class="line">      - xpack.security.enabled=true</span><br><span class="line">      - xpack.security.http.ssl.enabled=true</span><br><span class="line">      - xpack.security.http.ssl.key=certs/es-node2/es-node2.key</span><br><span class="line">      - xpack.security.http.ssl.certificate=certs/es-node2/es-node2.crt</span><br><span class="line">      - xpack.security.http.ssl.certificate_authorities=certs/ca/ca.crt</span><br><span class="line">      - xpack.security.transport.ssl.enabled=true</span><br><span class="line">      - xpack.security.transport.ssl.key=certs/es-node2/es-node2.key</span><br><span class="line">      - xpack.security.transport.ssl.certificate=certs/es-node2/es-node2.crt</span><br><span class="line">      - xpack.security.transport.ssl.certificate_authorities=certs/ca/ca.crt</span><br><span class="line">      - xpack.security.transport.ssl.verification_mode=certificate</span><br><span class="line">      - xpack.license.self_generated.type=$&#123;LICENSE&#125;</span><br><span class="line">    mem_limit: $&#123;MEM_LIMIT&#125;</span><br><span class="line">    ulimits:</span><br><span class="line">      memlock:</span><br><span class="line">        soft: -1</span><br><span class="line">        hard: -1</span><br><span class="line">    healthcheck:</span><br><span class="line">      test:</span><br><span class="line">        [</span><br><span class="line">          &quot;CMD-&quot;,</span><br><span class="line">          &quot;curl -s --cacert config/certs/ca/ca.crt https://localhost:9200 | grep -q &#x27;missing authentication credentials&#x27;&quot;,</span><br><span class="line">        ]</span><br><span class="line">      interval: 10s</span><br><span class="line">      timeout: 10s</span><br><span class="line">      retries: 120</span><br><span class="line">    extra_hosts:</span><br><span class="line">      - &quot;es-node1:172.20.100.11&quot;</span><br><span class="line">      - &quot;es-node2:172.20.100.12&quot;</span><br><span class="line">      - &quot;es-node3:172.20.100.13&quot;</span><br><span class="line"></span><br><span class="line">  es-node3:</span><br><span class="line">    depends_on:</span><br><span class="line">      - es-node2</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:$&#123;STACK_VERSION&#125;</span><br><span class="line">    container_name: es-node3</span><br><span class="line">    restart: always</span><br><span class="line">    networks:</span><br><span class="line">      net:</span><br><span class="line">        ipv4_address: 172.20.100.13</span><br><span class="line">    volumes:</span><br><span class="line">      - /data/elk-certs:/usr/share/elasticsearch/config/certs</span><br><span class="line">      - /data/es-node3:/usr/share/elasticsearch/data</span><br><span class="line">    environment:</span><br><span class="line">      - node.name=es-node3</span><br><span class="line">      - cluster.name=$&#123;CLUSTER_NAME&#125;</span><br><span class="line">      - cluster.initial_master_nodes=es-node1,es-node2,es-node3</span><br><span class="line">      - discovery.seed_hosts=es-node1,es-node2</span><br><span class="line">      - bootstrap.memory_lock=true</span><br><span class="line">      - xpack.security.enabled=true</span><br><span class="line">      - xpack.security.http.ssl.enabled=true</span><br><span class="line">      - xpack.security.http.ssl.key=certs/es-node3/es-node3.key</span><br><span class="line">      - xpack.security.http.ssl.certificate=certs/es-node3/es-node3.crt</span><br><span class="line">      - xpack.security.http.ssl.certificate_authorities=certs/ca/ca.crt</span><br><span class="line">      - xpack.security.transport.ssl.enabled=true</span><br><span class="line">      - xpack.security.transport.ssl.key=certs/es-node3/es-node3.key</span><br><span class="line">      - xpack.security.transport.ssl.certificate=certs/es-node3/es-node3.crt</span><br><span class="line">      - xpack.security.transport.ssl.certificate_authorities=certs/ca/ca.crt</span><br><span class="line">      - xpack.security.transport.ssl.verification_mode=certificate</span><br><span class="line">      - xpack.license.self_generated.type=$&#123;LICENSE&#125;</span><br><span class="line">    mem_limit: $&#123;MEM_LIMIT&#125;</span><br><span class="line">    ulimits:</span><br><span class="line">      memlock:</span><br><span class="line">        soft: -1</span><br><span class="line">        hard: -1</span><br><span class="line">    healthcheck:</span><br><span class="line">      test:</span><br><span class="line">        [</span><br><span class="line">          &quot;CMD-&quot;,</span><br><span class="line">          &quot;curl -s --cacert config/certs/ca/ca.crt https://localhost:9200 | grep -q &#x27;missing authentication credentials&#x27;&quot;,</span><br><span class="line">        ]</span><br><span class="line">      interval: 10s</span><br><span class="line">      timeout: 10s</span><br><span class="line">      retries: 120</span><br><span class="line">    extra_hosts:</span><br><span class="line">      - &quot;es-node1:172.20.100.11&quot;</span><br><span class="line">      - &quot;es-node2:172.20.100.12&quot;</span><br><span class="line">      - &quot;es-node3:172.20.100.13&quot;</span><br><span class="line"></span><br><span class="line">  kibana:</span><br><span class="line">    depends_on:</span><br><span class="line">      es-node1:</span><br><span class="line">        condition: service_healthy</span><br><span class="line">      es-node2:</span><br><span class="line">        condition: service_healthy</span><br><span class="line">      es-node3:</span><br><span class="line">        condition: service_healthy</span><br><span class="line">    image: docker.elastic.co/kibana/kibana:$&#123;STACK_VERSION&#125;</span><br><span class="line">    container_name: kibana</span><br><span class="line">    restart: always</span><br><span class="line">    networks:</span><br><span class="line">      net:</span><br><span class="line">        ipv4_address: 172.20.100.14</span><br><span class="line">    volumes:</span><br><span class="line">      - /data/elk-certs:/usr/share/kibana/config/certs</span><br><span class="line">      - /data/kibana:/usr/share/kibana/data</span><br><span class="line">    ports:</span><br><span class="line">      - $&#123;KIBANA_PORT&#125;:5601</span><br><span class="line">    environment:</span><br><span class="line">      - SERVERNAME=kibana</span><br><span class="line">      - ELASTICSEARCH_HOSTS=https://es-node1:9200</span><br><span class="line">      - ELASTICSEARCH_USERNAME=kibana_system</span><br><span class="line">      - ELASTICSEARCH_PASSWORD=$&#123;KIBANA_PASSWORD&#125;</span><br><span class="line">      - ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES=config/certs/ca/ca.crt</span><br><span class="line">    mem_limit: $&#123;MEM_LIMIT&#125;</span><br><span class="line">    healthcheck:</span><br><span class="line">      test:</span><br><span class="line">        [</span><br><span class="line">          &quot;CMD-&quot;,</span><br><span class="line">          &quot;curl -s -I http://localhost:5601 | grep -q &#x27;HTTP/1.1 302 Found&#x27;&quot;,</span><br><span class="line">        ]</span><br><span class="line">      interval: 10s</span><br><span class="line">      timeout: 10s</span><br><span class="line">      retries: 120</span><br><span class="line">  logstash:</span><br><span class="line">    image: docker.elastic.co/logstash/logstash:$&#123;STACK_VERSION&#125;</span><br><span class="line">    container_name: logstash</span><br><span class="line">    volumes:</span><br><span class="line">      - /data/elk-certs:/usr/share/logstash/config/certs</span><br><span class="line">      - /data/logstash/pipeline:/usr/share/logstash/pipeline</span><br><span class="line">      - /data/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml</span><br><span class="line">    user: &quot;0&quot;</span><br><span class="line">    restart: always</span><br><span class="line">    ports:</span><br><span class="line">      - 5044:5044</span><br><span class="line">    networks:</span><br><span class="line">      net:</span><br><span class="line">        ipv4_address: 172.20.100.15</span><br><span class="line">    extra_hosts:</span><br><span class="line">      - &quot;es-node1:172.20.100.11&quot;</span><br><span class="line">      - &quot;es-node2:172.20.100.12&quot;</span><br><span class="line">      - &quot;es-node3:172.20.100.13&quot;</span><br><span class="line">networks:</span><br><span class="line">  net:</span><br><span class="line">    driver: bridge</span><br><span class="line">    ipam:</span><br><span class="line">      config:</span><br><span class="line">        - subnet: 172.20.100.0/24</span><br><span class="line">**************************elk.yml**************************</span><br></pre></td></tr></table></figure>
-<p>执行命令，创建容器</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker compose -f /data/script/elk.yml up -d</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>[+] Running 42/16<br>✔ es-node3 Pulled 35.6s<br>✔ es-setup Pulled 35.6s<br>✔ logstash Pulled 96.0s<br>✔ kibana Pulled 99.3s<br>✔ es-node2 Pulled 35.6s<br>✔ es-node1 Pulled 35.6s</p>
-<p>[+] Running 7/7<br>✔ Network elk-docker-project_net Crea… 0.6s<br>✔ Container es-setup Healthy 21.6s<br>✔ Container logstash Started 12.5s<br>✔ Container es-node1 Healthy 72.5s<br>✔ Container es-node2 Healthy 72.5s<br>✔ Container es-node3 Healthy 73.0s<br>✔ Container kibana Started 73.4s</p>
-</blockquote>
-<p>容器创建完成后，查看各容器状态是否正常</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES<br>5b591d4ade82 docker.elastic.co/kibana/kibana:8.13.3 “/bin/tini — /usr/l…” 5 minutes ago Up 4 minutes (healthy) 0.0.0.0:5601-&gt;5601/tcp, :::5601-&gt;5601/tcp kibana<br>e2e75a54149e docker.elastic.co/elasticsearch/elasticsearch:8.13.3 “/bin/tini — /usr/l…” 5 minutes ago Up 5 minutes (healthy) 9200/tcp, 9300/tcp es-node3<br>b8c8357f3634 docker.elastic.co/elasticsearch/elasticsearch:8.13.3 “/bin/tini — /usr/l…” 5 minutes ago Up 5 minutes (healthy) 9200/tcp, 9300/tcp es-node2<br>c552940bd559 docker.elastic.co/elasticsearch/elasticsearch:8.13.3 “/bin/tini — /usr/l…” 5 minutes ago Up 5 minutes (healthy) 0.0.0.0:9200-&gt;9200/tcp, :::9200-&gt;9200/tcp, 9300/tcp es-node1<br>0366974065d8 docker.elastic.co/logstash/logstash:8.13.3 “/usr/local/bin/dock…” 5 minutes ago Up 5 minutes 0.0.0.0:5044-&gt;5044/tcp, :::5044-&gt;5044/tcp, 9600/tcp logstash</p>
-</blockquote>
-<p>5、修改kibana的配置文件，将其语言转化为中文。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker cp kibana:/usr/share/kibana/config/kibana.yml .</span><br><span class="line">vi kibana.yml</span><br><span class="line">**************************kibana.yml**************************</span><br><span class="line"> #</span><br><span class="line"># ** THIS IS AN AUTO-GENERATED FILE **</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line"># Default Kibana configuration for docker target</span><br><span class="line">server.host: &quot;0.0.0.0&quot;</span><br><span class="line">server.shutdownTimeout: &quot;5s&quot;</span><br><span class="line">elasticsearch.hosts: [ &quot;http://elasticsearch:9200&quot; ]</span><br><span class="line">monitoring.ui.container.elasticsearch.enabled: true</span><br><span class="line">i18n.locale: &quot;zh-CN&quot;</span><br><span class="line">server.publicBaseUrl: &quot;http://localhost:5601/&quot;</span><br><span class="line">**************************kibana.yml**************************</span><br><span class="line">docker cp kibana.yml  kibana:/usr/share/kibana/config/kibana.yml</span><br><span class="line">docker restart kibana</span><br></pre></td></tr></table></figure>
-<p>6、在浏览器中分别访问<code>https://10.10.2.103:9200/</code>和<code>http://10.10.2.103:5601/</code>，输入账户和密码，进行查看，如下图所示。</p>
-<img src="/yyg/56088d5a/1.png" class="" title="img">
-<img src="/yyg/56088d5a/2.png" class="" title="img">
-<img src="/yyg/56088d5a/3.png" class="" title="img">
-<h3 id="推送Linux日志，验证部署"><a href="#推送Linux日志，验证部署" class="headerlink" title="推送Linux日志，验证部署"></a>推送Linux日志，验证部署</h3><p>1、安装Filebeat日志采集器</p>
-<p>（1）通过rpm方式安装Filebeat日志采集器。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#下载rpm包</span><br><span class="line">curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.13.3-x86_64.rpm</span><br><span class="line">#执行安装</span><br><span class="line">rpm -vi filebeat-8.13.3-x86_64.rpm</span><br></pre></td></tr></table></figure>
-<p>（2）配置Filebeat</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#启动Filebeat</span><br><span class="line">systemctl start filebeat</span><br><span class="line">#查看Filebeat运行状态</span><br><span class="line">systemctl status filebeat</span><br><span class="line">#设置Filebeat为开机自启</span><br><span class="line">systemctl enable filebeat</span><br></pre></td></tr></table></figure>
-<p>2、配置Filebeat收集Linux日志</p>
-<p>（1）配置filebeat文件，将日志发送到 Logstash 服务。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 修改filebeat配置文件</span><br><span class="line">mv /etc/filebeat/filebeat.yml /etc/filebeat/filebeat.yml.bak</span><br><span class="line"># 新建filebeat配置文件</span><br><span class="line">vi /etc/filebeat/filebeat.yml</span><br><span class="line">**************************filebeat-dns.yml**************************</span><br><span class="line"># 配置文件输入，监视日志文件</span><br><span class="line">filebeat.inputs:</span><br><span class="line">- type: log</span><br><span class="line">  enabled: true</span><br><span class="line">  # 指定 DNS 日志文件路径</span><br><span class="line">  paths:</span><br><span class="line">    - /var/log/messages* </span><br><span class="line">  # 标识日志类型为elk-linux</span><br><span class="line">  fields:</span><br><span class="line">    type: elk-linux      </span><br><span class="line">  # 将额外的字段添加到根级别    </span><br><span class="line">  fields_under_root: true        </span><br><span class="line"></span><br><span class="line"># 配置输出到 Logstash</span><br><span class="line"># 指定 Logstash 服务的地址和端口</span><br><span class="line">output.logstash:</span><br><span class="line">  hosts: [&quot;10.10.2.103:5044&quot;]   </span><br><span class="line">**************************filebeat-dns.yml**************************</span><br></pre></td></tr></table></figure>
-<p>（2）重启filebeat服务，验证配置是否生效</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 重启filebeat</span><br><span class="line">systemctl restart filebeat</span><br><span class="line"># 删除锁文件后，重新启动 Filebeat 服务</span><br><span class="line">rm -rf /var/lib/filebeat/filebeat.lock</span><br><span class="line"># 运行并查看 Filebeat 的运行日志</span><br><span class="line">filebeat -e -c /etc/filebeat/filebeat.yml</span><br></pre></td></tr></table></figure>
-<p>3、在浏览器中登录Kibana，点击左侧菜单中的 “Stack Management”，管理创建数据视图。如下图所示。</p>
-<img src="/yyg/56088d5a/4.png" class="" title="img">
-<p>4、在“Stack Management”界面中，点击“数据视图”，选择索引模式，创建“elk-linux”视图。如下图所示。</p>
-<img src="/yyg/56088d5a/5.png" class="" title="img">
-<img src="/yyg/56088d5a/6.png" class="" title="img">
-<p>5、数据视图创建完成后，选择左侧菜单中的“Discover”，查看Linux日志详细内容。如下图所示。由此，elk集群搭建完成。</p>
-<img src="/yyg/56088d5a/7.png" class="" title="img">
-<img src="/yyg/56088d5a/8.png" class="" title="img">]]></content>
+<img src="/yyg/5ea27f40/6.png" class="" title="image-20240826235331777">]]></content>
       <categories>
-        <category>日志分析</category>
-        <category>ELK</category>
+        <category>博客教程</category>
+        <category>rss阅读器</category>
       </categories>
       <tags>
-        <tag>docker</tag>
-        <tag>日志分析</tag>
-        <tag>ELK</tag>
-        <tag>Elasticsearch</tag>
-        <tag>Kibana</tag>
-        <tag>Logstash</tag>
+        <tag>博客</tag>
+        <tag>魔改</tag>
+        <tag>在线rss阅读器</tag>
+        <tag>GitHub Pages</tag>
       </tags>
   </entry>
   <entry>
@@ -2286,78 +2328,6 @@ Mastodon:  @Podman_io@fosstodon.org
       <tags>
         <tag>docker</tag>
         <tag>portainer</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）</title>
-    <url>/yyg/5ea27f40/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）"><a href="#在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）" class="headerlink" title="在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）"></a>在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在搭建<code>云野阁</code>博客网站期间，看了好多具有个人特色的博客网站，有不少都有RSS订阅功能，那RSS是什么呢？咱们先唠唠。</p>
-<details class="folding-tag" cyan><summary> 🔜RSS🔚 </summary>
-              <div class='content'>
-              <p>RSS 全称 Really Simple Syndication（真正简易联合），是一种基于XML（可扩展标记语言）的内容分发协议，它允许用户订阅网站的内容更新，如新闻、博客文章等。好像还有另外的说法是Rich Site Summary（网站内容摘要）和 RDF Site Summary（资源描述框架站点摘要），不过其实都描述的是从订阅源获取更新的内容，并将获取的内容整合集中显示，方便用户进行查看。</p><p>网上有关RSS的相关介绍有很多，感兴趣的话可以搜索了解下。</p>
-              </div>
-            </details>
-<p>订阅了RSS，只要再结合RSS阅读器，就可以直接看到有关博客的最新文章，那我们就重点搞RSS阅读器。RSS阅读器无论是自建还是使用现成的，都有很多类型，像浏览器插件、手机端、电脑端程序、web端等。搭建一个web端，方便、省事、对终端依赖小。</p>
-<p><a href="https://github.com/osmoscraft/osmosfeed">OsmosFeed</a>是GitHub上一个开源的Web版RSS阅读器，可以使用 GitHub Pages托管，利用GitHub Actions实现内容定期自动更新，主题可自定义。</p>
-<p>本站的<code>文界</code>就是使用OsmosFeed搭建并托管在GitHub Pages上的。<a class="btn-beautify outline blue" href="/yygrss/index.html" 
-  title="点我跳转查看"><i class="far fa-hand-point-right"></i><span>点我跳转查看</span></a></p>
-<h2 id="搭建过程"><a href="#搭建过程" class="headerlink" title="搭建过程"></a>搭建过程</h2><h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><p>1.访问OsmosFeed仓库的<a href="https://github.com/osmoscraft/osmosfeed/blob/master/README_zh.md">配置教程</a>，点击教程中”创建新仓库“中的第一步”使用osmosfeed-template官方模板创建仓库“，页面跳转至创建新仓库界面，设置仓库名并将可见性设为Public，点击创建Create repository按钮新建仓库。</p>
-<img src="/yyg/5ea27f40/1.png" class="" title="image-20240826224400783">
-<p>2.进入刚创建好的仓库，进入目录<code>.github/workflows</code>,修改<code>update-feed.yaml</code>文件为以下内容。</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Build</span> <span class="string">site</span> <span class="string">on</span> <span class="string">schedule</span> <span class="string">or</span> <span class="string">main</span> <span class="string">branch</span> <span class="string">update</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span></span><br><span class="line">  <span class="attr">schedule:</span></span><br><span class="line">    <span class="comment"># Adjust refresh schedule here. By default, it runs once per day.</span></span><br><span class="line">    <span class="comment"># Syntax reference: https://docs.github.com/en/actions/reference/events-that-trigger-workflows#schedule</span></span><br><span class="line">    <span class="comment"># Recommended tool: https://crontab.guru/</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">cron:</span> <span class="string">&quot;0 11 * * *&quot;</span>    <span class="comment">#设置的执行时间周期</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v4</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Setup</span> <span class="string">Node.js</span> <span class="string">environment</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v4.0.3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">&quot;20&quot;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">dependencies</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">npm</span> <span class="string">i</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Build</span> <span class="string">the</span> <span class="string">feed</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">npm</span> <span class="string">run</span> <span class="string">build</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">to</span> <span class="string">GitHub</span> <span class="string">Pages</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">peaceiris/actions-gh-pages@v4</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">github_token:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.action_token</span> <span class="string">&#125;&#125;</span>   <span class="comment">#action_token为设置的Actions secrets ，后面会讲到</span></span><br><span class="line">          <span class="attr">publish_dir:</span> <span class="string">./public</span></span><br></pre></td></tr></table></figure>
-<p>3.进入刚创建好的仓库，修改根目录下的osmosfeed.yaml文件，将<code>cacheUrl:</code>行前的<code>#</code>去除，并将<code>GITHUB_USERNAME</code>修改为自己的github名称，<code>REPO_NAME</code>修改为本仓库的名。<code>sources</code>下的<code>- href:</code>为RSS/Atom源。</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">cacheUrl:</span> <span class="string">https://GITHUB_USERNAME.github.io/REPO_NAME/cache.json</span></span><br><span class="line"><span class="attr">sources:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">href:</span> <span class="string">https://css-tricks.com/feed/</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">href:</span> <span class="string">https://www.freecodecamp.org/news/rss/</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">href:</span> <span class="string">https://daverupert.com/atom.xml</span></span><br></pre></td></tr></table></figure>
-<h3 id="设置身份验证令牌"><a href="#设置身份验证令牌" class="headerlink" title="设置身份验证令牌"></a>设置身份验证令牌</h3><p>1.点击自己的头像，选择 “Settings” -&gt; “Developer settings” -&gt; “Personal access tokens”-&gt;”Tokens（classic）“，点击 “Generate new token”，选择”Generate new token（classic）“，验证后，指定一个描述性名称，选择令牌的有效时间，选择要授予此令牌的范围或权限。只需要选择repo一项即可。点击”Generate token“，完成创建。</p>
-<img src="/yyg/5ea27f40/2.png" class="" title="image-20240826230331732">
-<p>2.创建完成后，复制保存token，后面要用。</p>
-<p>3.进入刚创建好的仓库，进入仓库的“Settings” -&gt; “Secrets and variables” -&gt; “Actions”。点击”Repository secrets“中的“New repository secret”，输入Actions secrets 的名字为action_token（与update-feed.yaml文件中的保持一致），并将第2步复制的token粘贴至Secrets框中，点击”Add secret“保存。</p>
-<img src="/yyg/5ea27f40/3.png" class="" title="image-20240826231333139">
-<h3 id="部署GitHub-Pages"><a href="#部署GitHub-Pages" class="headerlink" title="部署GitHub Pages"></a>部署GitHub Pages</h3><p>1.进入仓库的“Settings” -&gt; “Pages” ，在Branch中选择”gh-pages“，目录选择”/(root)“，点击”save“保存。</p>
-<img src="/yyg/5ea27f40/4.png" class="" title="image-20240826232546187">
-<img src="/yyg/5ea27f40/5.png" class="" title="image-20240826232701080">
-<ol>
-<li>刷新页面，直到界面上出现 <code>Your site is published at https://github用户名.github.io/仓库名</code>的确认信息（最多等待1－3分钟）即可离开。完成部署。部署的详细过程可以进入仓库的”Actions”，进行查看具体过程与异常情况。</li>
-</ol>
-<img src="/yyg/5ea27f40/6.png" class="" title="image-20240826235331777">]]></content>
-      <categories>
-        <category>博客教程</category>
-        <category>rss阅读器</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-        <tag>魔改</tag>
-        <tag>在线rss阅读器</tag>
-        <tag>GitHub Pages</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>安装Winlogbeat日志采集器</title>
-    <url>/yyg/f547e2a9/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ol>
-<li>Winlogbeat安装程序可通过其官网（<a href="https://www.elastic.co/cn/beats/winlogbeat）下载。">https://www.elastic.co/cn/beats/winlogbeat）下载。</a></li>
-<li>双击启动安装程序，进入安装向导后勾选“I accept the terms in the License Agreement”，单击【Install】，如图所示。</li>
-</ol>
-<img src="/yyg/f547e2a9/4.png" class="" title="img">
-<ol>
-<li>按安装向导安装完成后，单击【Finish】，完成安装并打开安装目录。如图所示。</li>
-</ol>
-<img src="/yyg/f547e2a9/3.png" class="" title="img">
-<img src="/yyg/f547e2a9/2.png" class="" title="img">
-<ol>
-<li><p>以管理员身份打开 PowerShell 提示符（右键单击 PowerShell 图标，然后选择以管理员身份运行），允许在本地主机上创建winlogbeat服务，创建成功后允许winlogbeat服务并验证。如图所示。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PS C:\Windows\system32&gt; cd &quot;C:\Program Files\Elastic\Beats\8.13.2\winlogbeat&quot;</span><br><span class="line"># 允许在本地计算机上编写的未签名脚本自由运行</span><br><span class="line">PS C:\Program Files\Elastic\Beats\8.13.2\winlogbeat&gt; set-executionpolicy remotesigned</span><br><span class="line"></span><br><span class="line">执行策略更改</span><br><span class="line">执行策略可帮助你防止执行不信任的脚本。更改执行策略可能会产生安全风险，如 https:/go.microsoft.com/fwlink/?LinkID=135170</span><br><span class="line">中的 about_Execution_Policies 帮助主题所述。是否要更改执行策略?</span><br><span class="line">[Y] 是(Y)  [A] 全是(A)  [N] 否(N)  [L] 全否(L)  [S] 暂停(S)  [?] 帮助 (默认值为“N”): y</span><br><span class="line"># 允许脚本在系统上运行</span><br><span class="line">PS C:\Program Files\Elastic\Beats\8.13.2\winlogbeat&gt; set-executionpolicy Bypass</span><br><span class="line"></span><br><span class="line">执行策略更改</span><br><span class="line">执行策略可帮助你防止执行不信任的脚本。更改执行策略可能会产生安全风险，如 https:/go.microsoft.com/fwlink/?LinkID=135170</span><br><span class="line">中的 about_Execution_Policies 帮助主题所述。是否要更改执行策略?</span><br><span class="line">[Y] 是(Y)  [A] 全是(A)  [N] 否(N)  [L] 全否(L)  [S] 暂停(S)  [?] 帮助 (默认值为“N”): y</span><br><span class="line"># 创建winlogbeat服务</span><br><span class="line">PS C:\Program Files\Elastic\Beats\8.13.2\winlogbeat&gt; .\install-service-winlogbeat.ps1</span><br><span class="line">[SC] DeleteService 成功</span><br><span class="line"></span><br><span class="line">Status   Name               DisplayName</span><br><span class="line">------   ----               -----------</span><br><span class="line">Stopped  winlogbeat         winlogbeat</span><br><span class="line"></span><br><span class="line"># 启动winlogbeat服务</span><br><span class="line">PS C:\Program Files\Elastic\Beats\8.13.2\winlogbeat&gt; Start-Service winlogbeat</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<img src="/yyg/f547e2a9/1.png" class="" title="img">]]></content>
-      <categories>
-        <category>日志分析</category>
-        <category>ELK</category>
-      </categories>
-      <tags>
-        <tag>日志分析</tag>
-        <tag>ELK</tag>
-        <tag>日志采集器</tag>
-        <tag>Winlogbeat</tag>
       </tags>
   </entry>
   <entry>
@@ -2422,6 +2392,36 @@ Mastodon:  @Podman_io@fosstodon.org
       <tags>
         <tag>docker</tag>
         <tag>容器通信</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安装Winlogbeat日志采集器</title>
+    <url>/yyg/f547e2a9/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ol>
+<li>Winlogbeat安装程序可通过其官网（<a href="https://www.elastic.co/cn/beats/winlogbeat）下载。">https://www.elastic.co/cn/beats/winlogbeat）下载。</a></li>
+<li>双击启动安装程序，进入安装向导后勾选“I accept the terms in the License Agreement”，单击【Install】，如图所示。</li>
+</ol>
+<img src="/yyg/f547e2a9/4.png" class="" title="img">
+<ol>
+<li>按安装向导安装完成后，单击【Finish】，完成安装并打开安装目录。如图所示。</li>
+</ol>
+<img src="/yyg/f547e2a9/3.png" class="" title="img">
+<img src="/yyg/f547e2a9/2.png" class="" title="img">
+<ol>
+<li><p>以管理员身份打开 PowerShell 提示符（右键单击 PowerShell 图标，然后选择以管理员身份运行），允许在本地主机上创建winlogbeat服务，创建成功后允许winlogbeat服务并验证。如图所示。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PS C:\Windows\system32&gt; cd &quot;C:\Program Files\Elastic\Beats\8.13.2\winlogbeat&quot;</span><br><span class="line"># 允许在本地计算机上编写的未签名脚本自由运行</span><br><span class="line">PS C:\Program Files\Elastic\Beats\8.13.2\winlogbeat&gt; set-executionpolicy remotesigned</span><br><span class="line"></span><br><span class="line">执行策略更改</span><br><span class="line">执行策略可帮助你防止执行不信任的脚本。更改执行策略可能会产生安全风险，如 https:/go.microsoft.com/fwlink/?LinkID=135170</span><br><span class="line">中的 about_Execution_Policies 帮助主题所述。是否要更改执行策略?</span><br><span class="line">[Y] 是(Y)  [A] 全是(A)  [N] 否(N)  [L] 全否(L)  [S] 暂停(S)  [?] 帮助 (默认值为“N”): y</span><br><span class="line"># 允许脚本在系统上运行</span><br><span class="line">PS C:\Program Files\Elastic\Beats\8.13.2\winlogbeat&gt; set-executionpolicy Bypass</span><br><span class="line"></span><br><span class="line">执行策略更改</span><br><span class="line">执行策略可帮助你防止执行不信任的脚本。更改执行策略可能会产生安全风险，如 https:/go.microsoft.com/fwlink/?LinkID=135170</span><br><span class="line">中的 about_Execution_Policies 帮助主题所述。是否要更改执行策略?</span><br><span class="line">[Y] 是(Y)  [A] 全是(A)  [N] 否(N)  [L] 全否(L)  [S] 暂停(S)  [?] 帮助 (默认值为“N”): y</span><br><span class="line"># 创建winlogbeat服务</span><br><span class="line">PS C:\Program Files\Elastic\Beats\8.13.2\winlogbeat&gt; .\install-service-winlogbeat.ps1</span><br><span class="line">[SC] DeleteService 成功</span><br><span class="line"></span><br><span class="line">Status   Name               DisplayName</span><br><span class="line">------   ----               -----------</span><br><span class="line">Stopped  winlogbeat         winlogbeat</span><br><span class="line"></span><br><span class="line"># 启动winlogbeat服务</span><br><span class="line">PS C:\Program Files\Elastic\Beats\8.13.2\winlogbeat&gt; Start-Service winlogbeat</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<img src="/yyg/f547e2a9/1.png" class="" title="img">]]></content>
+      <categories>
+        <category>日志分析</category>
+        <category>ELK</category>
+      </categories>
+      <tags>
+        <tag>日志分析</tag>
+        <tag>ELK</tag>
+        <tag>日志采集器</tag>
+        <tag>Winlogbeat</tag>
       </tags>
   </entry>
   <entry>
@@ -2507,72 +2507,6 @@ Mastodon:  @Podman_io@fosstodon.org
         <tag>跨城搬家</tag>
         <tag>复盘</tag>
         <tag>乔迁新居</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>项目漏洞问题记录</title>
-    <url>/yyg/8a0457d3/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="SSL-2-0-和-3-0-的漏洞修复："><a href="#SSL-2-0-和-3-0-的漏洞修复：" class="headerlink" title="SSL 2.0 和 3.0 的漏洞修复："></a><strong>SSL 2.0 和 3.0 的漏洞修复：</strong></h2><p>SSL (Secure Sockets Layer) 是一种加密协议，曾被广泛用于网络通信中以确保数据的安全传输。SSL 2.0 和 3.0 是早期的版本，但它们已经被认为不再安全，因此被现代协议（如 TLS 1.2 和 TLS 1.3）所取代。</p>
-<p>SSL 2.0 和 3.0 的漏洞：</p>
-<ul>
-<li>SSL 2.0：存在多个安全漏洞，包括较弱的加密算法、缺乏安全性验证等。它已经被广泛弃用。</li>
-<li>SSL 3.0：虽然相较于 SSL 2.0 改进了加密算法，但仍然存在诸如 POODLE 攻击（Padding Oracle On Downgraded Legacy Encryption）等严重的安全问题，因此它也已经不再推荐使用。</li>
-</ul>
-<p>如何检测 SSL 2.0 和 SSL 3.0：</p>
-<ol>
-<li>使用工具扫描：许多安全扫描工具（如 OpenSSL）可以帮助检测网站是否支持 SSL 2.0 和 SSL 3.0。</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl s_client -connect &lt;hostname&gt;:443 -ssl2</span><br><span class="line">openssl s_client -connect &lt;hostname&gt;:443 -ssl3</span><br></pre></td></tr></table></figure>
-<p>如果连接成功，表示该协议被服务器支持。</p>
-<ol>
-<li>服务器配置检查：你可以检查服务器上的 SSL/TLS 配置，确保不再支持 SSL 2.0 或 SSL 3.0。</li>
-</ol>
-<ul>
-<li>对于 Apache，检查 <code>ssl.conf</code> 或 <code>httpd.conf</code> 文件中的 <code>SSLProtocol</code> 配置：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SSLProtocol all -SSLv2 -SSLv3</span><br></pre></td></tr></table></figure>
-<ul>
-<li>对于 Nginx，检查 <code>nginx.conf</code> 文件中的 <code>ssl_protocols</code> 配置：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssl_protocols TLSv1.2 TLSv1.3;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>在浏览器开发者工具中检查：你也可以通过浏览器的开发者工具（如 Chrome 或 Firefox）来查看网络请求的加密协议版本。在开发者工具的“网络”选项卡中，查看 HTTPS 请求的详细信息，协议版本会在响应头部显示。</li>
-<li>自动化扫描工具：可以使用自动化工具（如 Nmap）来扫描服务器支持的 SSL/TLS 协议。例如：</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nmap --script ssl-enum-ciphers -p 443 &lt;hostname&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="“SWEET32”-："><a href="#“SWEET32”-：" class="headerlink" title="“SWEET32” ："></a><strong>“SWEET32” ：</strong></h2><p>“SWEET32” 是一种针对 TLS 和 SSL 协议中的 中等强度加密套件（如 3DES）的攻击方式，主要用于 2-块碰撞攻击（birthday bound attack）。具体来说，它影响的是 使用 64 位块大小的加密算法，比如 3DES 和一些较老的加密套件。</p>
-<h3 id="为什么中等强度加密套件不安全？"><a href="#为什么中等强度加密套件不安全？" class="headerlink" title="为什么中等强度加密套件不安全？"></a>为什么中等强度加密套件不安全？</h3><ul>
-<li>SWEET32 攻击原理： 由于 3DES（和其他基于 64 位块的加密算法）的设计缺陷，攻击者可以在长时间的数据流量中找到加密数据块的碰撞，从而泄露信息。攻击的成功概率随着加密数据量的增加而增加。</li>
-<li>推荐的做法： 由于这种攻击在大数据传输中更容易成功（比如长时间的 HTTPS 会话），现代的最佳实践是禁用所有 64 位块大小的加密算法，如 3DES。</li>
-</ul>
-<p>查看服务器支持的所有加密套件：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl s_client -connect example.com:443 -cipher &#x27;ALL&#x27;</span><br></pre></td></tr></table></figure>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ol>
-<li>禁用中等强度的加密套件（如 3DES）： 服务器应该配置为只支持 强加密套件，例如 AES 加密和 ChaCha20，同时禁用 3DES、RC4 等不安全的套件。</li>
-</ol>
-<p>如果你有访问服务器配置的权限，可以根据使用的 Web 服务器（如 Apache、Nginx 等）进行相应配置。</p>
-<p>例如，在 Apache 中，你可以在 <code>ssl.conf</code> 文件中禁用 3DES 和其他弱套件：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SSLCipherSuite HIGH:!aNULL:!MD5:!3DES</span><br></pre></td></tr></table></figure>
-<p>对于 Nginx，可以使用类似的配置：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssl_ciphers &#x27;TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:!3DES&#x27;;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>启用现代的加密套件： 推荐启用 AES 或 ChaCha20 等现代加密套件。确保启用的套件符合 TLS 1.2 或 TLS 1.3 的标准。</li>
-</ol>
-<p>例如，下面是一个推荐的加密套件配置，它仅启用了强加密算法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SSLProtocol TLSv1.2 TLSv1.3</span><br><span class="line">SSLCipherSuite ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384</span><br></pre></td></tr></table></figure>
-<ol>
-<li>升级到 TLS 1.2 或 TLS 1.3： 确保服务器仅支持 TLS 1.2 或 TLS 1.3，而 SSLv3 和 TLS 1.0/1.1 应该被禁用。现代的加密套件和协议版本可以有效地降低 SWEET32 攻击的风险。</li>
-</ol>
-<p>在服务器的配置文件ssl.conf中，确保禁用了旧的协议版本：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SSLProtocol TLSv1.2 TLSv1.3</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>梳理总结</category>
-        <category>项目问题总结</category>
-      </categories>
-      <tags>
-        <tag>运维</tag>
-        <tag>项目问题总结</tag>
-        <tag>漏洞扫描</tag>
       </tags>
   </entry>
   <entry>
@@ -2831,6 +2765,72 @@ track_script &#123;
         <tag>Kubeadm</tag>
         <tag>k8s集群</tag>
         <tag>高可用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>项目漏洞问题记录</title>
+    <url>/yyg/8a0457d3/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="SSL-2-0-和-3-0-的漏洞修复："><a href="#SSL-2-0-和-3-0-的漏洞修复：" class="headerlink" title="SSL 2.0 和 3.0 的漏洞修复："></a><strong>SSL 2.0 和 3.0 的漏洞修复：</strong></h2><p>SSL (Secure Sockets Layer) 是一种加密协议，曾被广泛用于网络通信中以确保数据的安全传输。SSL 2.0 和 3.0 是早期的版本，但它们已经被认为不再安全，因此被现代协议（如 TLS 1.2 和 TLS 1.3）所取代。</p>
+<p>SSL 2.0 和 3.0 的漏洞：</p>
+<ul>
+<li>SSL 2.0：存在多个安全漏洞，包括较弱的加密算法、缺乏安全性验证等。它已经被广泛弃用。</li>
+<li>SSL 3.0：虽然相较于 SSL 2.0 改进了加密算法，但仍然存在诸如 POODLE 攻击（Padding Oracle On Downgraded Legacy Encryption）等严重的安全问题，因此它也已经不再推荐使用。</li>
+</ul>
+<p>如何检测 SSL 2.0 和 SSL 3.0：</p>
+<ol>
+<li>使用工具扫描：许多安全扫描工具（如 OpenSSL）可以帮助检测网站是否支持 SSL 2.0 和 SSL 3.0。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl s_client -connect &lt;hostname&gt;:443 -ssl2</span><br><span class="line">openssl s_client -connect &lt;hostname&gt;:443 -ssl3</span><br></pre></td></tr></table></figure>
+<p>如果连接成功，表示该协议被服务器支持。</p>
+<ol>
+<li>服务器配置检查：你可以检查服务器上的 SSL/TLS 配置，确保不再支持 SSL 2.0 或 SSL 3.0。</li>
+</ol>
+<ul>
+<li>对于 Apache，检查 <code>ssl.conf</code> 或 <code>httpd.conf</code> 文件中的 <code>SSLProtocol</code> 配置：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SSLProtocol all -SSLv2 -SSLv3</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对于 Nginx，检查 <code>nginx.conf</code> 文件中的 <code>ssl_protocols</code> 配置：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssl_protocols TLSv1.2 TLSv1.3;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>在浏览器开发者工具中检查：你也可以通过浏览器的开发者工具（如 Chrome 或 Firefox）来查看网络请求的加密协议版本。在开发者工具的“网络”选项卡中，查看 HTTPS 请求的详细信息，协议版本会在响应头部显示。</li>
+<li>自动化扫描工具：可以使用自动化工具（如 Nmap）来扫描服务器支持的 SSL/TLS 协议。例如：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nmap --script ssl-enum-ciphers -p 443 &lt;hostname&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="“SWEET32”-："><a href="#“SWEET32”-：" class="headerlink" title="“SWEET32” ："></a><strong>“SWEET32” ：</strong></h2><p>“SWEET32” 是一种针对 TLS 和 SSL 协议中的 中等强度加密套件（如 3DES）的攻击方式，主要用于 2-块碰撞攻击（birthday bound attack）。具体来说，它影响的是 使用 64 位块大小的加密算法，比如 3DES 和一些较老的加密套件。</p>
+<h3 id="为什么中等强度加密套件不安全？"><a href="#为什么中等强度加密套件不安全？" class="headerlink" title="为什么中等强度加密套件不安全？"></a>为什么中等强度加密套件不安全？</h3><ul>
+<li>SWEET32 攻击原理： 由于 3DES（和其他基于 64 位块的加密算法）的设计缺陷，攻击者可以在长时间的数据流量中找到加密数据块的碰撞，从而泄露信息。攻击的成功概率随着加密数据量的增加而增加。</li>
+<li>推荐的做法： 由于这种攻击在大数据传输中更容易成功（比如长时间的 HTTPS 会话），现代的最佳实践是禁用所有 64 位块大小的加密算法，如 3DES。</li>
+</ul>
+<p>查看服务器支持的所有加密套件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl s_client -connect example.com:443 -cipher &#x27;ALL&#x27;</span><br></pre></td></tr></table></figure>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ol>
+<li>禁用中等强度的加密套件（如 3DES）： 服务器应该配置为只支持 强加密套件，例如 AES 加密和 ChaCha20，同时禁用 3DES、RC4 等不安全的套件。</li>
+</ol>
+<p>如果你有访问服务器配置的权限，可以根据使用的 Web 服务器（如 Apache、Nginx 等）进行相应配置。</p>
+<p>例如，在 Apache 中，你可以在 <code>ssl.conf</code> 文件中禁用 3DES 和其他弱套件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SSLCipherSuite HIGH:!aNULL:!MD5:!3DES</span><br></pre></td></tr></table></figure>
+<p>对于 Nginx，可以使用类似的配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssl_ciphers &#x27;TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:!3DES&#x27;;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>启用现代的加密套件： 推荐启用 AES 或 ChaCha20 等现代加密套件。确保启用的套件符合 TLS 1.2 或 TLS 1.3 的标准。</li>
+</ol>
+<p>例如，下面是一个推荐的加密套件配置，它仅启用了强加密算法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SSLProtocol TLSv1.2 TLSv1.3</span><br><span class="line">SSLCipherSuite ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384</span><br></pre></td></tr></table></figure>
+<ol>
+<li>升级到 TLS 1.2 或 TLS 1.3： 确保服务器仅支持 TLS 1.2 或 TLS 1.3，而 SSLv3 和 TLS 1.0/1.1 应该被禁用。现代的加密套件和协议版本可以有效地降低 SWEET32 攻击的风险。</li>
+</ol>
+<p>在服务器的配置文件ssl.conf中，确保禁用了旧的协议版本：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SSLProtocol TLSv1.2 TLSv1.3</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>梳理总结</category>
+        <category>项目问题总结</category>
+      </categories>
+      <tags>
+        <tag>运维</tag>
+        <tag>项目问题总结</tag>
+        <tag>漏洞扫描</tag>
       </tags>
   </entry>
   <entry>
