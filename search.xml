@@ -1,38 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>DHCP服务器搭建</title>
-    <url>/yyg/97ec93b/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="服务器端"><a href="#服务器端" class="headerlink" title="服务器端"></a>服务器端</h2><p>（1）通过在线方式安装dhcp-server</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@dncp-103 ~]# yum -y install dhcp-server</span><br></pre></td></tr></table></figure>
-<p>（2）修改dhcpd服务配置文件，完成DHCP服务器的搭建</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@dncp-103 ~]# vi /etc/dhcp/dhcpd.conf</span><br><span class="line">-------------------dhcpd.conf-------------------</span><br><span class="line"># DHCP Server Configuration file.</span><br><span class="line">#   see /usr/share/doc/dhcp-server/dhcpd.conf.example</span><br><span class="line">#   see dhcpd.conf(5) man page</span><br><span class="line">#</span><br><span class="line"># 设置域名为 &quot;elk.com&quot;</span><br><span class="line">option domain-name     &quot;elk.com&quot;;</span><br><span class="line"></span><br><span class="line"># 设置域名服务器为 10.10.2.103</span><br><span class="line">option domain-name-servers    10.10.2.103;</span><br><span class="line"></span><br><span class="line"># Declare DHCP Server</span><br><span class="line"># 声明此 DHCP 服务器</span><br><span class="line">authoritative;  </span><br><span class="line"></span><br><span class="line"># 设置默认租约时间为 600 秒</span><br><span class="line">default-lease-time 600;</span><br><span class="line"># 设置日志设施为 local4</span><br><span class="line">log-facility local4;</span><br><span class="line"># 设置最大租约时间为 7200 秒</span><br><span class="line">max-lease-time 7200;</span><br><span class="line"></span><br><span class="line"># Set Network address, subnet mask and gateway</span><br><span class="line">subnet 10.10.2.0 netmask 255.255.255.0 &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 设置 IP 地址范围为 10.10.2.202 到 10.10.2.205</span><br><span class="line">subnet 10.10.2.0 netmask 255.255.255.0 &#123;</span><br><span class="line">  range 10.10.2.202 10.10.2.205;</span><br><span class="line">  # 设置网关为 10.10.2.1</span><br><span class="line">  option routers 10.10.2.1;</span><br><span class="line">  # 设置子网掩码为 255.255.255.0</span><br><span class="line">  option subnet-mask 255.255.255.0;</span><br><span class="line">  # 设置广播地址为 10.10.2.255</span><br><span class="line">  option broadcast-address 10.10.2.255;</span><br><span class="line">  # 设置默认租约时间为 600 秒</span><br><span class="line">  default-lease-time 600;</span><br><span class="line">  # 设置最大租约时间为 7200 秒</span><br><span class="line">  max-lease-time 7200;</span><br><span class="line">  # Add other DHCP options here</span><br><span class="line">&#125;</span><br><span class="line">-------------------dhcpd.conf-------------------</span><br></pre></td></tr></table></figure>
-<p>（3）在rsyslog.conf中配置dhcp日志路径</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@dncp-103 ~]# vi /etc/rsyslog.conf</span><br><span class="line">-------------------rsyslog.conf-------------------</span><br><span class="line">#为排版方便此处省略部分提示信息</span><br><span class="line"># Don&#x27;t log private authentication messages!</span><br><span class="line">#将 local4 设施的日志消息排除在 /var/log/messages 文件之外</span><br><span class="line">*.info;mail.none;authpriv.none;cron.none;local4.none           /var/log/messages</span><br><span class="line"># 来自 local4 设施的所有级别的日志消息记录到 /var/log/dhcp/dhcp.log 文件中</span><br><span class="line">local4.* /var/log/dhcp/dhcp.log</span><br><span class="line">#为排版方便此处省略部分提示信息</span><br><span class="line">-------------------rsyslog.conf-------------------</span><br></pre></td></tr></table></figure>
-<p>（4）启动dhcpd服务并重启rsyslog服务，使得配置生效</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 启动dhcpd服务</span><br><span class="line">[root@dncp-103 ~]# systemctl start dhcpd</span><br><span class="line"># 重启rsyslog服务</span><br><span class="line">[root@dncp-103 ~]# systemctl restart rsyslog</span><br></pre></td></tr></table></figure>
-<p>（5）查看dhcpd服务状态</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@dncp-103 ~]# systemctl status dhcpd</span><br></pre></td></tr></table></figure>
-<p>（6）配置dhcpd服务为开机自启动</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@dncp-103 ~]# systemctl enable dhcpd</span><br></pre></td></tr></table></figure>
-<p>（7）配置防火墙，重启服务，使得配置生效</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 配置dhcp服务访问策略，使其能够正常访问</span><br><span class="line">[root@dncp-103 ~]# firewall-cmd --add-service=dhcp --permanent</span><br><span class="line">success</span><br><span class="line"># 重新加载防火墙策略</span><br><span class="line">[root@dncp-103 ~]# firewall-cmd --reload</span><br><span class="line">success</span><br></pre></td></tr></table></figure>
-<h2 id="客户机端"><a href="#客户机端" class="headerlink" title="客户机端"></a>客户机端</h2><p>（1）查看客户机原本ip</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@dncp-113 ~]# ip a</span><br></pre></td></tr></table></figure>
-<p>（2）修改客户机ip为动态，验证DHCP服务器是否能动态的分配ip</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 修改网卡配置文件</span><br><span class="line">[root@dncp-113 ~]# vi /etc/NetworkManager/system-connections/ens32.nmconnection</span><br><span class="line">-------------------ens32.nmconnection-------------------</span><br><span class="line">[connection]</span><br><span class="line">id=ens32</span><br><span class="line">uuid=2bb0f492-19e2-37c0-b8fa-1781d3122a83</span><br><span class="line">type=ethernet</span><br><span class="line">autoconnect-priority=-999</span><br><span class="line">interface-name=ens32</span><br><span class="line">timestamp=1713841073</span><br><span class="line"></span><br><span class="line">[ethernet]</span><br><span class="line"></span><br><span class="line">[ipv4]</span><br><span class="line"># 注释设置静态IP信息</span><br><span class="line">#address1=10.10.2.113/24,10.10.2.1</span><br><span class="line">dns=10.10.2.103;</span><br><span class="line"># 通过 DHCP动态获取 IP 地址</span><br><span class="line">method=auto</span><br><span class="line"></span><br><span class="line">[ipv6]</span><br><span class="line">addr-gen-mode=eui64</span><br><span class="line">method=auto</span><br><span class="line"></span><br><span class="line">[proxy]</span><br><span class="line">-------------------ens32.nmconnection-------------------</span><br></pre></td></tr></table></figure>
-<p>（3）重新加载 NetworkManager 的连接配置，查看分配的动态ip</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 重新加载 NetworkManager 的连接配置</span><br><span class="line">[root@dncp-113 ~]# nmcli c reload</span><br><span class="line"># 连接网络接口 ens32</span><br><span class="line">[root@dncp-113 ~]# nmcli d connect ens32</span><br><span class="line">设备 &quot;ens32&quot; 成功以 &quot;2bb0f492-19e2-37c0-b8fa-1781d3122a83&quot; 激活。</span><br><span class="line"># 查看分配的动态ip</span><br><span class="line">[root@dncp-113 ~]# ip a</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Linux运维</category>
-        <category>网络服务搭建</category>
-      </categories>
-      <tags>
-        <tag>Linux运维</tag>
-        <tag>DHCP</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>DNS服务器搭建</title>
     <url>/yyg/37824039/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="服务器端"><a href="#服务器端" class="headerlink" title="服务器端"></a>服务器端</h2><p>（1）通过在线方式安装bind9</p>
@@ -69,6 +37,85 @@
       <tags>
         <tag>Linux运维</tag>
         <tag>DNS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>DHCP服务器搭建</title>
+    <url>/yyg/97ec93b/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="服务器端"><a href="#服务器端" class="headerlink" title="服务器端"></a>服务器端</h2><p>（1）通过在线方式安装dhcp-server</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@dncp-103 ~]# yum -y install dhcp-server</span><br></pre></td></tr></table></figure>
+<p>（2）修改dhcpd服务配置文件，完成DHCP服务器的搭建</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@dncp-103 ~]# vi /etc/dhcp/dhcpd.conf</span><br><span class="line">-------------------dhcpd.conf-------------------</span><br><span class="line"># DHCP Server Configuration file.</span><br><span class="line">#   see /usr/share/doc/dhcp-server/dhcpd.conf.example</span><br><span class="line">#   see dhcpd.conf(5) man page</span><br><span class="line">#</span><br><span class="line"># 设置域名为 &quot;elk.com&quot;</span><br><span class="line">option domain-name     &quot;elk.com&quot;;</span><br><span class="line"></span><br><span class="line"># 设置域名服务器为 10.10.2.103</span><br><span class="line">option domain-name-servers    10.10.2.103;</span><br><span class="line"></span><br><span class="line"># Declare DHCP Server</span><br><span class="line"># 声明此 DHCP 服务器</span><br><span class="line">authoritative;  </span><br><span class="line"></span><br><span class="line"># 设置默认租约时间为 600 秒</span><br><span class="line">default-lease-time 600;</span><br><span class="line"># 设置日志设施为 local4</span><br><span class="line">log-facility local4;</span><br><span class="line"># 设置最大租约时间为 7200 秒</span><br><span class="line">max-lease-time 7200;</span><br><span class="line"></span><br><span class="line"># Set Network address, subnet mask and gateway</span><br><span class="line">subnet 10.10.2.0 netmask 255.255.255.0 &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 设置 IP 地址范围为 10.10.2.202 到 10.10.2.205</span><br><span class="line">subnet 10.10.2.0 netmask 255.255.255.0 &#123;</span><br><span class="line">  range 10.10.2.202 10.10.2.205;</span><br><span class="line">  # 设置网关为 10.10.2.1</span><br><span class="line">  option routers 10.10.2.1;</span><br><span class="line">  # 设置子网掩码为 255.255.255.0</span><br><span class="line">  option subnet-mask 255.255.255.0;</span><br><span class="line">  # 设置广播地址为 10.10.2.255</span><br><span class="line">  option broadcast-address 10.10.2.255;</span><br><span class="line">  # 设置默认租约时间为 600 秒</span><br><span class="line">  default-lease-time 600;</span><br><span class="line">  # 设置最大租约时间为 7200 秒</span><br><span class="line">  max-lease-time 7200;</span><br><span class="line">  # Add other DHCP options here</span><br><span class="line">&#125;</span><br><span class="line">-------------------dhcpd.conf-------------------</span><br></pre></td></tr></table></figure>
+<p>（3）在rsyslog.conf中配置dhcp日志路径</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@dncp-103 ~]# vi /etc/rsyslog.conf</span><br><span class="line">-------------------rsyslog.conf-------------------</span><br><span class="line">#为排版方便此处省略部分提示信息</span><br><span class="line"># Don&#x27;t log private authentication messages!</span><br><span class="line">#将 local4 设施的日志消息排除在 /var/log/messages 文件之外</span><br><span class="line">*.info;mail.none;authpriv.none;cron.none;local4.none           /var/log/messages</span><br><span class="line"># 来自 local4 设施的所有级别的日志消息记录到 /var/log/dhcp/dhcp.log 文件中</span><br><span class="line">local4.* /var/log/dhcp/dhcp.log</span><br><span class="line">#为排版方便此处省略部分提示信息</span><br><span class="line">-------------------rsyslog.conf-------------------</span><br></pre></td></tr></table></figure>
+<p>（4）启动dhcpd服务并重启rsyslog服务，使得配置生效</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 启动dhcpd服务</span><br><span class="line">[root@dncp-103 ~]# systemctl start dhcpd</span><br><span class="line"># 重启rsyslog服务</span><br><span class="line">[root@dncp-103 ~]# systemctl restart rsyslog</span><br></pre></td></tr></table></figure>
+<p>（5）查看dhcpd服务状态</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@dncp-103 ~]# systemctl status dhcpd</span><br></pre></td></tr></table></figure>
+<p>（6）配置dhcpd服务为开机自启动</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@dncp-103 ~]# systemctl enable dhcpd</span><br></pre></td></tr></table></figure>
+<p>（7）配置防火墙，重启服务，使得配置生效</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 配置dhcp服务访问策略，使其能够正常访问</span><br><span class="line">[root@dncp-103 ~]# firewall-cmd --add-service=dhcp --permanent</span><br><span class="line">success</span><br><span class="line"># 重新加载防火墙策略</span><br><span class="line">[root@dncp-103 ~]# firewall-cmd --reload</span><br><span class="line">success</span><br></pre></td></tr></table></figure>
+<h2 id="客户机端"><a href="#客户机端" class="headerlink" title="客户机端"></a>客户机端</h2><p>（1）查看客户机原本ip</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@dncp-113 ~]# ip a</span><br></pre></td></tr></table></figure>
+<p>（2）修改客户机ip为动态，验证DHCP服务器是否能动态的分配ip</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 修改网卡配置文件</span><br><span class="line">[root@dncp-113 ~]# vi /etc/NetworkManager/system-connections/ens32.nmconnection</span><br><span class="line">-------------------ens32.nmconnection-------------------</span><br><span class="line">[connection]</span><br><span class="line">id=ens32</span><br><span class="line">uuid=2bb0f492-19e2-37c0-b8fa-1781d3122a83</span><br><span class="line">type=ethernet</span><br><span class="line">autoconnect-priority=-999</span><br><span class="line">interface-name=ens32</span><br><span class="line">timestamp=1713841073</span><br><span class="line"></span><br><span class="line">[ethernet]</span><br><span class="line"></span><br><span class="line">[ipv4]</span><br><span class="line"># 注释设置静态IP信息</span><br><span class="line">#address1=10.10.2.113/24,10.10.2.1</span><br><span class="line">dns=10.10.2.103;</span><br><span class="line"># 通过 DHCP动态获取 IP 地址</span><br><span class="line">method=auto</span><br><span class="line"></span><br><span class="line">[ipv6]</span><br><span class="line">addr-gen-mode=eui64</span><br><span class="line">method=auto</span><br><span class="line"></span><br><span class="line">[proxy]</span><br><span class="line">-------------------ens32.nmconnection-------------------</span><br></pre></td></tr></table></figure>
+<p>（3）重新加载 NetworkManager 的连接配置，查看分配的动态ip</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 重新加载 NetworkManager 的连接配置</span><br><span class="line">[root@dncp-113 ~]# nmcli c reload</span><br><span class="line"># 连接网络接口 ens32</span><br><span class="line">[root@dncp-113 ~]# nmcli d connect ens32</span><br><span class="line">设备 &quot;ens32&quot; 成功以 &quot;2bb0f492-19e2-37c0-b8fa-1781d3122a83&quot; 激活。</span><br><span class="line"># 查看分配的动态ip</span><br><span class="line">[root@dncp-113 ~]# ip a</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux运维</category>
+        <category>网络服务搭建</category>
+      </categories>
+      <tags>
+        <tag>Linux运维</tag>
+        <tag>DHCP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker Swarm集群部署</title>
+    <url>/yyg/71468332/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>任务平台</strong></p>
+<p>3台虚拟机，一台作为manager 节点，另两台作为work节点。</p>
+<p><strong>部署指南</strong></p>
+<p>[TOC]</p>
+<h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">下载并安装docker文件及依赖</span></span><br><span class="line">yum install -y yum-utils</span><br><span class="line">yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br><span class="line">yum install -y docker-ce docker-ce-cli containerd.io</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">启动docker并设置开机自启</span></span><br><span class="line">systemctl start docker  </span><br><span class="line">systemctl enable docker</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看版本</span></span><br><span class="line">docker -v</span><br></pre></td></tr></table></figure>
+<h3 id="配置防火墙开放端口"><a href="#配置防火墙开放端口" class="headerlink" title="配置防火墙开放端口"></a>配置防火墙开放端口</h3><p>TCP协议端口 2377 ：集群管理端口<br>TCP协议端口 7946 ：节点之间通讯端口（不开放则会负载均衡失效）<br>UDP协议端口 4789 ：overlay网络通讯端口</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=2377/tcp --permanent</span><br><span class="line">firewall-cmd --zone=public --add-port=7946/tcp --permanent</span><br><span class="line">firewall-cmd --zone=public --add-port=7946/udp --permanent</span><br><span class="line">firewall-cmd --zone=public --add-port=4789/tcp --permanent</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">重载防火墙</span></span><br><span class="line">firewall-cmd --reload</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看80端口是否开放</span></span><br><span class="line">firewall-cmd --query-port=80/tcp</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看所有放行的端口</span></span><br><span class="line">firewall-cmd --zone=public --list-ports</span><br></pre></td></tr></table></figure>
+<h3 id="在-manager-节点创建-Swarm-集群"><a href="#在-manager-节点创建-Swarm-集群" class="headerlink" title="在 manager 节点创建 Swarm 集群"></a>在 manager 节点创建 Swarm 集群</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker swarm init --advertise-addr=本机ip:2377 --listen-addr=本机ip:2377</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Swarm initialized: current node (608u180nsa654xbxdthdhl0f6) is now a manager.</p>
+<p>To add a worker to this swarm, run the following command:</p>
+<p>​    <code>docker swarm join --token SWMTKN-1-13dv43qm3tdux7243z3c0najcetizjpgly1urd4uchtcooxe87-4eh15dbayxttxipm34s5tod6t 172.20.1.51:2377</code></p>
+<p>To add a manager to this swarm, run ‘docker swarm join-token manager’ and follow the instructions.</p>
+</blockquote>
+<p>将执行后产生的命令（如上标红的），分别加入到其他主机中，执行后产生如下结果。即为成功加入。</p>
+<p>或者执行下面命令产生令牌，并且是定期轮换计划（推荐）</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker swarm join-token  --rotate worker</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>This node joined a swarm as a worker.</p>
+</blockquote>
+<p>（扩展）加入管理节点的命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker swarm join-token --rotate manager</span><br></pre></td></tr></table></figure>
+<p>在manager节点上输入<code>docker node ls</code> 可查看所有节点。</p>
+<img src="/yyg/71468332/image-20240323221029238-1711203035847-1.png" class="" title="image-20240323221029238">
+<h3 id="创建用于swarm服务的自定义的overlay网络"><a href="#创建用于swarm服务的自定义的overlay网络" class="headerlink" title="创建用于swarm服务的自定义的overlay网络"></a>创建用于swarm服务的自定义的overlay网络</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">方式一</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">--attachable选项表示该网络是可附加的，即其他容器可以连接到该网络</span>  </span><br><span class="line">docker network create -d overlay --attachable my-overlay</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">方式二</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">--subnet:子网 --gateway:网关</span></span><br><span class="line">docker network create --driver overlay --subnet 10.0.9.0/24 --gateway 10.0.9.99 my-overlay</span><br><span class="line">  </span><br><span class="line"><span class="meta prompt_"> #</span><span class="language-bash">查看docker网络</span></span><br><span class="line"> docker network ls</span><br></pre></td></tr></table></figure>
+<h3 id="测试跨主机容器通信"><a href="#测试跨主机容器通信" class="headerlink" title="测试跨主机容器通信"></a>测试跨主机容器通信</h3><ol>
+<li>在三台主机上各部署一个容器，进行相互ping，结果如下图。</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">主机一</span></span><br><span class="line">docker run -it --name master --net=my-overlay ubuntu:latest</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">主机二</span></span><br><span class="line">docker run -it --name node1 --net=my-overlay ubuntu:latest</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">主机三</span></span><br><span class="line">docker run -it --name node2 --net=my-overlay ubuntu:latest</span><br></pre></td></tr></table></figure>
+<ol>
+<li>安装测试工具</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt-get update</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装ping工具</span></span><br><span class="line">apt-get install inetutils-ping -y</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装ip查看工具</span></span><br><span class="line">apt-get install net-tools -y</span><br></pre></td></tr></table></figure>
+<img src="/yyg/71468332/image-20240323221151231-1711203113839-3.png" class="" title="image-20240323221151231">
+]]></content>
+      <categories>
+        <category>容器化</category>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>docker Swarm</tag>
       </tags>
   </entry>
   <entry>
@@ -123,53 +170,6 @@
       <tags>
         <tag>docker</tag>
         <tag>Matomo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker Swarm集群部署</title>
-    <url>/yyg/71468332/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>任务平台</strong></p>
-<p>3台虚拟机，一台作为manager 节点，另两台作为work节点。</p>
-<p><strong>部署指南</strong></p>
-<p>[TOC]</p>
-<h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">下载并安装docker文件及依赖</span></span><br><span class="line">yum install -y yum-utils</span><br><span class="line">yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br><span class="line">yum install -y docker-ce docker-ce-cli containerd.io</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">启动docker并设置开机自启</span></span><br><span class="line">systemctl start docker  </span><br><span class="line">systemctl enable docker</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看版本</span></span><br><span class="line">docker -v</span><br></pre></td></tr></table></figure>
-<h3 id="配置防火墙开放端口"><a href="#配置防火墙开放端口" class="headerlink" title="配置防火墙开放端口"></a>配置防火墙开放端口</h3><p>TCP协议端口 2377 ：集群管理端口<br>TCP协议端口 7946 ：节点之间通讯端口（不开放则会负载均衡失效）<br>UDP协议端口 4789 ：overlay网络通讯端口</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=2377/tcp --permanent</span><br><span class="line">firewall-cmd --zone=public --add-port=7946/tcp --permanent</span><br><span class="line">firewall-cmd --zone=public --add-port=7946/udp --permanent</span><br><span class="line">firewall-cmd --zone=public --add-port=4789/tcp --permanent</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">重载防火墙</span></span><br><span class="line">firewall-cmd --reload</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看80端口是否开放</span></span><br><span class="line">firewall-cmd --query-port=80/tcp</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看所有放行的端口</span></span><br><span class="line">firewall-cmd --zone=public --list-ports</span><br></pre></td></tr></table></figure>
-<h3 id="在-manager-节点创建-Swarm-集群"><a href="#在-manager-节点创建-Swarm-集群" class="headerlink" title="在 manager 节点创建 Swarm 集群"></a>在 manager 节点创建 Swarm 集群</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker swarm init --advertise-addr=本机ip:2377 --listen-addr=本机ip:2377</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Swarm initialized: current node (608u180nsa654xbxdthdhl0f6) is now a manager.</p>
-<p>To add a worker to this swarm, run the following command:</p>
-<p>​    <code>docker swarm join --token SWMTKN-1-13dv43qm3tdux7243z3c0najcetizjpgly1urd4uchtcooxe87-4eh15dbayxttxipm34s5tod6t 172.20.1.51:2377</code></p>
-<p>To add a manager to this swarm, run ‘docker swarm join-token manager’ and follow the instructions.</p>
-</blockquote>
-<p>将执行后产生的命令（如上标红的），分别加入到其他主机中，执行后产生如下结果。即为成功加入。</p>
-<p>或者执行下面命令产生令牌，并且是定期轮换计划（推荐）</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker swarm join-token  --rotate worker</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>This node joined a swarm as a worker.</p>
-</blockquote>
-<p>（扩展）加入管理节点的命令</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker swarm join-token --rotate manager</span><br></pre></td></tr></table></figure>
-<p>在manager节点上输入<code>docker node ls</code> 可查看所有节点。</p>
-<img src="/yyg/71468332/image-20240323221029238-1711203035847-1.png" class="" title="image-20240323221029238">
-<h3 id="创建用于swarm服务的自定义的overlay网络"><a href="#创建用于swarm服务的自定义的overlay网络" class="headerlink" title="创建用于swarm服务的自定义的overlay网络"></a>创建用于swarm服务的自定义的overlay网络</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">方式一</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">--attachable选项表示该网络是可附加的，即其他容器可以连接到该网络</span>  </span><br><span class="line">docker network create -d overlay --attachable my-overlay</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">方式二</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">--subnet:子网 --gateway:网关</span></span><br><span class="line">docker network create --driver overlay --subnet 10.0.9.0/24 --gateway 10.0.9.99 my-overlay</span><br><span class="line">  </span><br><span class="line"><span class="meta prompt_"> #</span><span class="language-bash">查看docker网络</span></span><br><span class="line"> docker network ls</span><br></pre></td></tr></table></figure>
-<h3 id="测试跨主机容器通信"><a href="#测试跨主机容器通信" class="headerlink" title="测试跨主机容器通信"></a>测试跨主机容器通信</h3><ol>
-<li>在三台主机上各部署一个容器，进行相互ping，结果如下图。</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">主机一</span></span><br><span class="line">docker run -it --name master --net=my-overlay ubuntu:latest</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">主机二</span></span><br><span class="line">docker run -it --name node1 --net=my-overlay ubuntu:latest</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">主机三</span></span><br><span class="line">docker run -it --name node2 --net=my-overlay ubuntu:latest</span><br></pre></td></tr></table></figure>
-<ol>
-<li>安装测试工具</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt-get update</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装ping工具</span></span><br><span class="line">apt-get install inetutils-ping -y</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装ip查看工具</span></span><br><span class="line">apt-get install net-tools -y</span><br></pre></td></tr></table></figure>
-<img src="/yyg/71468332/image-20240323221151231-1711203113839-3.png" class="" title="image-20240323221151231">
-]]></content>
-      <categories>
-        <category>容器化</category>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-        <tag>docker Swarm</tag>
       </tags>
   </entry>
   <entry>
@@ -491,6 +491,43 @@
       </tags>
   </entry>
   <entry>
+    <title>NTP服务器搭建</title>
+    <url>/yyg/29b27760/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="服务器端"><a href="#服务器端" class="headerlink" title="服务器端"></a>服务器端</h2><p>（1）通过在线方式安装chrony</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y chrony</span><br></pre></td></tr></table></figure>
+<p>（2）启动chrony服务</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl start chronyd</span><br></pre></td></tr></table></figure>
+<p>（3）查看chrony服务状态</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl status chronyd</span><br></pre></td></tr></table></figure>
+<p>（4）配置chrony服务为开机自启动</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl enable chronyd</span><br></pre></td></tr></table></figure>
+<p>（5）修改chronyd服务配置文件，完成NTP服务器的搭建</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vi /etc/chrony.conf</span><br><span class="line">-------------------chrony.conf-------------------</span><br><span class="line">pool 2.centos.pool.ntp.org iburst</span><br><span class="line">sourcedir /run/chrony-dhcp</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">配置的多个NTP服务器</span></span><br><span class="line">server ftp.aliyun.com iburst</span><br><span class="line">server time1.aliyun.com iburst</span><br><span class="line">server time2.aliyun.com iburst</span><br><span class="line">server time3.aliyun.com iburst</span><br><span class="line">server time4.aliyun.com iburst</span><br><span class="line">server time5.aliyun.com iburst</span><br><span class="line">server 10.10.2.103 iburst</span><br><span class="line">driftfile /var/lib/chrony/drift</span><br><span class="line">makestep 1.0 3</span><br><span class="line">rtcsync</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">允许访问的网段</span></span><br><span class="line">allow 10.10.0.0/16</span><br><span class="line">keyfile /etc/chrony.keys</span><br><span class="line">ntsdumpdir /var/lib/chrony</span><br><span class="line">leapsectz right/UTC</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">日志存储路径</span></span><br><span class="line">logdir /var/log/chrony</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">日志测量统计指标</span></span><br><span class="line">log measurements statistics tracking</span><br><span class="line">-------------------chrony.conf-------------------</span><br></pre></td></tr></table></figure>
+<p>（6）配置防火墙，重启服务，使得配置生效</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 配置ntp服务访问策略，使其能够正常访问</span><br><span class="line">firewall-cmd --permanent --add-service=ntp</span><br><span class="line"># 重新加载防火墙策略</span><br><span class="line">firewall-cmd --reload</span><br><span class="line"># 重启chronyd服务</span><br><span class="line">systemctl restart chronyd</span><br></pre></td></tr></table></figure>
+<p>（7）查看连接NTP服务的客户机</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chronyc clients</span><br></pre></td></tr></table></figure>
+<h2 id="客户机端"><a href="#客户机端" class="headerlink" title="客户机端"></a>客户机端</h2><p>（1）通过在线方式安装chrony</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y chrony</span><br></pre></td></tr></table></figure>
+<p>（2）配置访问chrony服务器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 修改chrony的配置文件</span><br><span class="line">vi /etc/chrony.conf</span><br><span class="line">-------------------chrony.conf-------------------</span><br><span class="line"># Use public servers from the pool.ntp.org project.</span><br><span class="line"># Please consider joining the pool (https://www.pool.ntp.org/join.html).</span><br><span class="line">pool 2.centos.pool.ntp.org iburst</span><br><span class="line"></span><br><span class="line"># Use NTP servers from DHCP.</span><br><span class="line">sourcedir /run/chrony-dhcp</span><br><span class="line"></span><br><span class="line"># Record the rate at which the system clock gains/losses time.</span><br><span class="line">driftfile /var/lib/chrony/drift</span><br><span class="line"># 配置ntp服务器地址</span><br><span class="line">server 10.10.2.103 iburst</span><br><span class="line">#为排版方便此处省略部分提示信息</span><br><span class="line">-----------------------------------------------</span><br></pre></td></tr></table></figure>
+<p>（3）启动chronyd服务，连接NTP服务器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 启动chrony服务</span><br><span class="line">systemctl start chronyd</span><br><span class="line"># 查看chrony服务状态</span><br><span class="line">systemctl status chronyd</span><br><span class="line"># 配置chrony服务为开机自启动</span><br><span class="line">systemctl enable chronyd</span><br></pre></td></tr></table></figure>
+<p>（4）配置防火墙，使得配置生效</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 配置ntp服务访问策略，使其能够正常访问</span><br><span class="line">firewall-cmd --permanent --add-service=ntp</span><br><span class="line"># 重新加载防火墙策略</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<p>（5）验证NTP服务器的连接情况</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 查看源服务器状态</span><br><span class="line"> chronyc sourcestats</span><br><span class="line"># 查看详细同步状态</span><br><span class="line">chronyc sources -v</span><br><span class="line"># 追踪同步情况</span><br><span class="line">chronyc tracking</span><br><span class="line"># 开启网络时间同步</span><br><span class="line">timedatectl set-ntp true</span><br><span class="line"># 查看时间同步状态</span><br><span class="line">timedatectl status</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux运维</category>
+        <category>网络服务搭建</category>
+      </categories>
+      <tags>
+        <tag>Linux运维</tag>
+        <tag>NTP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux实现模拟IPMI</title>
     <url>/yyg/9ec93abd/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="环境准备："><a href="#环境准备：" class="headerlink" title="环境准备："></a>环境准备：</h2><p>（1）使用脚本安装docker、docker-compose</p>
@@ -532,43 +569,6 @@
         <tag>运维</tag>
         <tag>Linux</tag>
         <tag>IPMI</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>NTP服务器搭建</title>
-    <url>/yyg/29b27760/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="服务器端"><a href="#服务器端" class="headerlink" title="服务器端"></a>服务器端</h2><p>（1）通过在线方式安装chrony</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y chrony</span><br></pre></td></tr></table></figure>
-<p>（2）启动chrony服务</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl start chronyd</span><br></pre></td></tr></table></figure>
-<p>（3）查看chrony服务状态</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl status chronyd</span><br></pre></td></tr></table></figure>
-<p>（4）配置chrony服务为开机自启动</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl enable chronyd</span><br></pre></td></tr></table></figure>
-<p>（5）修改chronyd服务配置文件，完成NTP服务器的搭建</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vi /etc/chrony.conf</span><br><span class="line">-------------------chrony.conf-------------------</span><br><span class="line">pool 2.centos.pool.ntp.org iburst</span><br><span class="line">sourcedir /run/chrony-dhcp</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">配置的多个NTP服务器</span></span><br><span class="line">server ftp.aliyun.com iburst</span><br><span class="line">server time1.aliyun.com iburst</span><br><span class="line">server time2.aliyun.com iburst</span><br><span class="line">server time3.aliyun.com iburst</span><br><span class="line">server time4.aliyun.com iburst</span><br><span class="line">server time5.aliyun.com iburst</span><br><span class="line">server 10.10.2.103 iburst</span><br><span class="line">driftfile /var/lib/chrony/drift</span><br><span class="line">makestep 1.0 3</span><br><span class="line">rtcsync</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">允许访问的网段</span></span><br><span class="line">allow 10.10.0.0/16</span><br><span class="line">keyfile /etc/chrony.keys</span><br><span class="line">ntsdumpdir /var/lib/chrony</span><br><span class="line">leapsectz right/UTC</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">日志存储路径</span></span><br><span class="line">logdir /var/log/chrony</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">日志测量统计指标</span></span><br><span class="line">log measurements statistics tracking</span><br><span class="line">-------------------chrony.conf-------------------</span><br></pre></td></tr></table></figure>
-<p>（6）配置防火墙，重启服务，使得配置生效</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 配置ntp服务访问策略，使其能够正常访问</span><br><span class="line">firewall-cmd --permanent --add-service=ntp</span><br><span class="line"># 重新加载防火墙策略</span><br><span class="line">firewall-cmd --reload</span><br><span class="line"># 重启chronyd服务</span><br><span class="line">systemctl restart chronyd</span><br></pre></td></tr></table></figure>
-<p>（7）查看连接NTP服务的客户机</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chronyc clients</span><br></pre></td></tr></table></figure>
-<h2 id="客户机端"><a href="#客户机端" class="headerlink" title="客户机端"></a>客户机端</h2><p>（1）通过在线方式安装chrony</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y chrony</span><br></pre></td></tr></table></figure>
-<p>（2）配置访问chrony服务器</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 修改chrony的配置文件</span><br><span class="line">vi /etc/chrony.conf</span><br><span class="line">-------------------chrony.conf-------------------</span><br><span class="line"># Use public servers from the pool.ntp.org project.</span><br><span class="line"># Please consider joining the pool (https://www.pool.ntp.org/join.html).</span><br><span class="line">pool 2.centos.pool.ntp.org iburst</span><br><span class="line"></span><br><span class="line"># Use NTP servers from DHCP.</span><br><span class="line">sourcedir /run/chrony-dhcp</span><br><span class="line"></span><br><span class="line"># Record the rate at which the system clock gains/losses time.</span><br><span class="line">driftfile /var/lib/chrony/drift</span><br><span class="line"># 配置ntp服务器地址</span><br><span class="line">server 10.10.2.103 iburst</span><br><span class="line">#为排版方便此处省略部分提示信息</span><br><span class="line">-----------------------------------------------</span><br></pre></td></tr></table></figure>
-<p>（3）启动chronyd服务，连接NTP服务器</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 启动chrony服务</span><br><span class="line">systemctl start chronyd</span><br><span class="line"># 查看chrony服务状态</span><br><span class="line">systemctl status chronyd</span><br><span class="line"># 配置chrony服务为开机自启动</span><br><span class="line">systemctl enable chronyd</span><br></pre></td></tr></table></figure>
-<p>（4）配置防火墙，使得配置生效</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 配置ntp服务访问策略，使其能够正常访问</span><br><span class="line">firewall-cmd --permanent --add-service=ntp</span><br><span class="line"># 重新加载防火墙策略</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
-<p>（5）验证NTP服务器的连接情况</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 查看源服务器状态</span><br><span class="line"> chronyc sourcestats</span><br><span class="line"># 查看详细同步状态</span><br><span class="line">chronyc sources -v</span><br><span class="line"># 追踪同步情况</span><br><span class="line">chronyc tracking</span><br><span class="line"># 开启网络时间同步</span><br><span class="line">timedatectl set-ntp true</span><br><span class="line"># 查看时间同步状态</span><br><span class="line">timedatectl status</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux运维</category>
-        <category>网络服务搭建</category>
-      </categories>
-      <tags>
-        <tag>Linux运维</tag>
-        <tag>NTP</tag>
       </tags>
   </entry>
   <entry>
@@ -1919,28 +1919,6 @@ Mastodon:  @Podman_io@fosstodon.org
       </tags>
   </entry>
   <entry>
-    <title>休闲娱乐-1月</title>
-    <url>/yyg/64b9e8e0/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="登山-嵩山"><a href="#登山-嵩山" class="headerlink" title="登山-嵩山"></a>登山-嵩山</h2><p>​    前两天，去了登封爬了嵩山，在登封两天的总体感觉还不错。</p>
-<h3 id="人文风情"><a href="#人文风情" class="headerlink" title="人文风情"></a>人文风情</h3><p>​    之前做攻略看到登封的炒刀削不错。特地去尝了尝，地址是登封汽车客运总站旁的小店，个人觉得味道不错，分量足，价格适中。</p>
-<p>​    登封人民也很热情，找民宿时，遇到的老板都很热心，也都很耐心的解答住宿需求。</p>
-<p>​    登封发展节奏舒缓，城市公共交通以公交为主，并且公交的班次之间时间大都在30分钟以上，出租车很多。</p>
-<h3 id="登山"><a href="#登山" class="headerlink" title="登山"></a>登山</h3><p>​    这次去嵩山爬的是太室山，去年去了少室山。</p>
-<p>​    爬太室山选择的上山路线是嵩阳书院—峻极峰，这次不同于爬泰山时的“特纵兵式”爬法，走走停停，总路程6.2公里，用时3小时。沿途有很多补给点，冬天风景一般。下山路线是峻极峰—卢崖瀑布，这条路线是太室山3条路线中最长的，也是最险峻的。路上会时不时的碰见几只小猫，一线天台阶很陡，还有两座吊桥，这条路山脚有滑雪场，人很多。总路程9.7公里，用时2个半小时。</p>
-<p>​    登山之后需要及时进行肌肉拉伸恢复，不然会出现腿部肌肉酸胀的情况。我这次就是没有进行及时的拉伸，导致爬后的第二天，大腿外侧肌肉和小腿内侧肌肉酸疼。</p>
-<p><mark>登山之后的当天晚上做肌肉拉伸、泡脚、洗热水澡，对缓解肌肉酸胀和恢复很有帮助。</mark></p>
-]]></content>
-      <categories>
-        <category>漫谈</category>
-        <category>休闲娱乐</category>
-      </categories>
-      <tags>
-        <tag>休闲娱乐</tag>
-        <tag>旅游</tag>
-        <tag>爬山</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>一些免费的gpt网站</title>
     <url>/yyg/30035ff1/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><div title="CodeNews" referrerPolicy="no-referrer" class="card_box" style="background-color: #333; width:96px; height:80px;">
@@ -2052,6 +2030,111 @@ Mastodon:  @Podman_io@fosstodon.org
       </tags>
   </entry>
   <entry>
+    <title>休闲娱乐-1月</title>
+    <url>/yyg/64b9e8e0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="登山-嵩山"><a href="#登山-嵩山" class="headerlink" title="登山-嵩山"></a>登山-嵩山</h2><p>​    前两天，去了登封爬了嵩山，在登封两天的总体感觉还不错。</p>
+<h3 id="人文风情"><a href="#人文风情" class="headerlink" title="人文风情"></a>人文风情</h3><p>​    之前做攻略看到登封的炒刀削不错。特地去尝了尝，地址是登封汽车客运总站旁的小店，个人觉得味道不错，分量足，价格适中。</p>
+<p>​    登封人民也很热情，找民宿时，遇到的老板都很热心，也都很耐心的解答住宿需求。</p>
+<p>​    登封发展节奏舒缓，城市公共交通以公交为主，并且公交的班次之间时间大都在30分钟以上，出租车很多。</p>
+<h3 id="登山"><a href="#登山" class="headerlink" title="登山"></a>登山</h3><p>​    这次去嵩山爬的是太室山，去年去了少室山。</p>
+<p>​    爬太室山选择的上山路线是嵩阳书院—峻极峰，这次不同于爬泰山时的“特纵兵式”爬法，走走停停，总路程6.2公里，用时3小时。沿途有很多补给点，冬天风景一般。下山路线是峻极峰—卢崖瀑布，这条路线是太室山3条路线中最长的，也是最险峻的。路上会时不时的碰见几只小猫，一线天台阶很陡，还有两座吊桥，这条路山脚有滑雪场，人很多。总路程9.7公里，用时2个半小时。</p>
+<p>​    登山之后需要及时进行肌肉拉伸恢复，不然会出现腿部肌肉酸胀的情况。我这次就是没有进行及时的拉伸，导致爬后的第二天，大腿外侧肌肉和小腿内侧肌肉酸疼。</p>
+<p><mark>登山之后的当天晚上做肌肉拉伸、泡脚、洗热水澡，对缓解肌肉酸胀和恢复很有帮助。</mark></p>
+]]></content>
+      <categories>
+        <category>漫谈</category>
+        <category>休闲娱乐</category>
+      </categories>
+      <tags>
+        <tag>休闲娱乐</tag>
+        <tag>旅游</tag>
+        <tag>爬山</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ELK | 使用 docker部署三节点 Elasticsearch 集群</title>
+    <url>/yyg/56088d5a/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><ol>
+<li><p>硬件环境</p>
+<p>操作系统：Centos Stream 9</p>
+<p>CPU：4颗</p>
+<p>内存：8GB</p>
+<p>硬盘：50GB</p>
+</li>
+<li><p>软件环境</p>
+<p>docker版本：26.1.0</p>
+<p>docker compose版本：v2.26.1</p>
+</li>
+</ol>
+<h2 id="部署过程"><a href="#部署过程" class="headerlink" title="部署过程"></a>部署过程</h2><h3 id="准备基础环境，安装Docker"><a href="#准备基础环境，安装Docker" class="headerlink" title="准备基础环境，安装Docker"></a>准备基础环境，安装Docker</h3><p>1、安装 yum-utils 软件包（提供 yum-config-manager 实用程序）并设置存储库，命令如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 安装 yum-utils 软件包</span><br><span class="line">yum install -y yum-utils</span><br><span class="line"># 设置docker-ce存储库</span><br><span class="line">yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+<p>2、安装最新版docker及其组件，命令如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</span><br></pre></td></tr></table></figure>
+<p>3、启动Docker服务，并设置为开机自启动，命令如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 启动Docker服务</span><br><span class="line">systemctl start docker</span><br><span class="line"># 设置Docker为开机自启动</span><br><span class="line">systemctl enable docker</span><br><span class="line"># 查看Docker服务状态</span><br><span class="line">systemctl status docker</span><br></pre></td></tr></table></figure>
+<p>4、修改Docker的数据目录为“/data/dockerData”，并重启docker服务使配置生效。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 创建Docker守护进程配置文件</span><br><span class="line"># 编辑配置文件/etc/docker/daemon.json，配置docker数据目录</span><br><span class="line">vi /etc/docker/daemon.json</span><br><span class="line">**************************daemon.json**************************</span><br><span class="line">&#123;</span><br><span class="line">  &quot;data-root&quot;: &quot;/data/dockerData&quot;</span><br><span class="line">&#125;</span><br><span class="line">**************************daemon.json**************************</span><br><span class="line"></span><br><span class="line"># 重启docker服务，使配置生效</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+<p>5、设置与内存映射相关的内核参数为262144，查看应用到系统的内核参数。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo &quot;vm.max_map_count=262144&quot; &gt;&gt; /etc/sysctl.conf</span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+<p>6、配置防火墙策略</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">firewall-cmd --add-port=9200/tcp --permanent</span><br><span class="line">firewall-cmd --add-port=80/tcp --permanent</span><br><span class="line">firewall-cmd --add-port=443/tcp --permanent</span><br><span class="line">firewall-cmd --add-port=5601/tcp --permanent</span><br><span class="line">firewall-cmd --reload</span><br><span class="line">firewall-cmd --list-all</span><br></pre></td></tr></table></figure>
+<h3 id="部署elk集群"><a href="#部署elk集群" class="headerlink" title="部署elk集群"></a>部署elk集群</h3><p>1、创建构建容器所需要的文件目录，并赋予相应的访问权限。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /data</span><br><span class="line">mkdir es-node1  es-node2  es-node3  elk-kibana</span><br><span class="line">chmod g+rwx es-node1  es-node2  es-node3  elk-kibana</span><br><span class="line">chgrp 0 es-node1  es-node2  es-node3  elk-kibana</span><br></pre></td></tr></table></figure>
+<p>2、在/data/script 目录下，创建并编辑 .env 文件，用来配置elk的环境变量。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /data/script</span><br><span class="line">vi /data/script/.env</span><br><span class="line">**************************.env**************************</span><br><span class="line"># Elasticsearch的密码</span><br><span class="line">ELASTIC_PASSWORD=elk#bd@123</span><br><span class="line"># Kibana的密码</span><br><span class="line">KIBANA_PASSWORD=elk#bd@123</span><br><span class="line"># Elastic Stack的版本号</span><br><span class="line">STACK_VERSION=8.13.3</span><br><span class="line"># Elastic Stack的集群名称</span><br><span class="line">CLUSTER_NAME=ELK-docker-Cluster</span><br><span class="line"># 指定Elastic Stack的许可证类型</span><br><span class="line">LICENSE=basic</span><br><span class="line"># 指定Elasticsearch的端口号</span><br><span class="line">ES_PORT=9200</span><br><span class="line"># 指定Kibana的端口号</span><br><span class="line">KIBANA_PORT=5601</span><br><span class="line"># 指定内存限制</span><br><span class="line">MEM_LIMIT=2147483648</span><br><span class="line"># 指定Docker Compose项目的名称</span><br><span class="line">COMPOSE_PROJECT_NAME=elk-docker-project</span><br><span class="line">**************************.env**************************</span><br></pre></td></tr></table></figure>
+<p>3、创建logstash容器所需的目录和配置文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir -p logstash/config logstash/pipeline</span><br><span class="line">echo &#x27;http.host: &quot;0.0.0.0&quot;&#x27; &gt; /data/logstash/config/logstash.yml</span><br><span class="line">vi /data/logstash/pipeline/logstash.conf</span><br><span class="line">**************************logstash.conf**************************</span><br><span class="line">input &#123;</span><br><span class="line">  beats &#123;</span><br><span class="line">    port =&gt; 5044</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">  elasticsearch &#123;</span><br><span class="line">    hosts =&gt; [&quot;https://es-node1:9200&quot;]</span><br><span class="line">    index =&gt; &quot;%&#123;[@metadata][beat]&#125;-%&#123;[@metadata][version]&#125;-%&#123;+YYYY.MM.dd&#125;&quot;</span><br><span class="line">    user =&gt; &quot;elastic&quot;</span><br><span class="line">    password =&gt; &quot;elk#bd@123&quot;</span><br><span class="line">    cacert=&gt; &quot;/usr/share/logstash/config/certs/ca/ca.crt&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">**************************logstash.conf**************************</span><br></pre></td></tr></table></figure>
+<p>4、创建docker compose文件，编排创建es初始化节点、es三节点、Kibana、logstash容器。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vi /data/script/elk.yml</span><br><span class="line">**************************elk.yml**************************</span><br><span class="line">services:</span><br><span class="line">  es-setup:</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:$&#123;STACK_VERSION&#125;</span><br><span class="line">    container_name: es-setup</span><br><span class="line">    volumes:</span><br><span class="line">      - /data/elk-certs:/usr/share/elasticsearch/config/certs</span><br><span class="line">    user: &quot;0&quot;</span><br><span class="line">    networks:</span><br><span class="line">      net:</span><br><span class="line">        ipv4_address: 172.20.100.10</span><br><span class="line">    command: &gt;</span><br><span class="line">      bash -c &#x27;</span><br><span class="line">        if [ x$&#123;ELASTIC_PASSWORD&#125; == x ]; then</span><br><span class="line">          echo &quot;Set the ELASTIC_PASSWORD environment variable in the .env file&quot;;</span><br><span class="line">          exit 1;</span><br><span class="line">        elif [ x$&#123;KIBANA_PASSWORD&#125; == x ]; then</span><br><span class="line">          echo &quot;Set the KIBANA_PASSWORD environment variable in the .env file&quot;;</span><br><span class="line">          exit 1;</span><br><span class="line">        fi;</span><br><span class="line">        </span><br><span class="line">        if [ ! -f config/certs/ca.zip ]; then</span><br><span class="line">          echo &quot;Creating CA&quot;;</span><br><span class="line">          bin/elasticsearch-certutil ca --silent --pem -out config/certs/ca.zip;</span><br><span class="line">          unzip config/certs/ca.zip -d config/certs;</span><br><span class="line">        fi;</span><br><span class="line">        if [ ! -f config/certs/certs.zip ]; then</span><br><span class="line">          echo &quot;Creating certs&quot;;</span><br><span class="line">          echo -ne \</span><br><span class="line">          &quot;instances:\n&quot;\</span><br><span class="line">          &quot;  - name: es-node1\n&quot;\</span><br><span class="line">          &quot;    dns:\n&quot;\</span><br><span class="line">          &quot;      - es-node1\n&quot;\</span><br><span class="line">          &quot;      - localhost\n&quot;\</span><br><span class="line">          &quot;    ip:\n&quot;\</span><br><span class="line">          &quot;      - 127.0.0.1\n&quot;\</span><br><span class="line">          &quot;  - name: es-node2\n&quot;\</span><br><span class="line">          &quot;    dns:\n&quot;\</span><br><span class="line">          &quot;      - es-node2\n&quot;\</span><br><span class="line">          &quot;      - localhost\n&quot;\</span><br><span class="line">          &quot;    ip:\n&quot;\</span><br><span class="line">          &quot;      - 127.0.0.1\n&quot;\</span><br><span class="line">          &quot;  - name: es-node3\n&quot;\</span><br><span class="line">          &quot;    dns:\n&quot;\</span><br><span class="line">          &quot;      - es-node3\n&quot;\</span><br><span class="line">          &quot;      - localhost\n&quot;\</span><br><span class="line">          &quot;    ip:\n&quot;\</span><br><span class="line">          &quot;      - 127.0.0.1\n&quot;\</span><br><span class="line">          &gt; config/certs/instances.yml;</span><br><span class="line">          bin/elasticsearch-certutil cert --silent --pem -out config/certs/certs.zip --in config/certs/instances.yml --ca-cert config/certs/ca/ca.crt --ca-key config/certs/ca/ca.key;</span><br><span class="line">          unzip config/certs/certs.zip -d config/certs;</span><br><span class="line">        fi;</span><br><span class="line"></span><br><span class="line">        echo &quot;Setting file permissions&quot;;</span><br><span class="line">        chown -R root:root config/certs;</span><br><span class="line">        find . -type d -exec chmod 750 \&#123;\&#125; \;;</span><br><span class="line">        find . -type f -exec chmod 640 \&#123;\&#125; \;;</span><br><span class="line">        echo &quot;Waiting for Elasticsearch availability&quot;;</span><br><span class="line">        until curl -s --cacert config/certs/ca/ca.crt https://es-node1:9200 | grep -q &quot;missing authentication credentials&quot;; do sleep 30; done;</span><br><span class="line">        echo &quot;Setting kibana_system password&quot;;</span><br><span class="line">        until curl -s -X POST --cacert config/certs/ca/ca.crt -u &quot;elastic:$&#123;ELASTIC_PASSWORD&#125;&quot; -H &quot;Content-Type: application/json&quot; https://es-node1:9200/_security/user/kibana_system/_password -d &quot;&#123;\&quot;password\&quot;:\&quot;$&#123;KIBANA_PASSWORD&#125;\&quot;&#125;&quot; | grep -q &quot;^&#123;&#125;&quot;; do sleep 10; done;</span><br><span class="line">        echo &quot;All done!&quot;;</span><br><span class="line">      &#x27;</span><br><span class="line">    healthcheck:</span><br><span class="line">      test: [&quot;CMD-&quot;, &quot;[ -f config/certs/es-node1/es-node1.crt ]&quot;]</span><br><span class="line">      interval: 1s</span><br><span class="line">      timeout: 5s</span><br><span class="line">      retries: 120</span><br><span class="line"></span><br><span class="line">  es-node1:</span><br><span class="line">    depends_on:</span><br><span class="line">      es-setup:</span><br><span class="line">        condition: service_healthy</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:$&#123;STACK_VERSION&#125;</span><br><span class="line">    container_name: es-node1</span><br><span class="line">    restart: always</span><br><span class="line">    networks:</span><br><span class="line">      net:</span><br><span class="line">        ipv4_address: 172.20.100.11</span><br><span class="line">    volumes:</span><br><span class="line">      - /data/elk-certs:/usr/share/elasticsearch/config/certs</span><br><span class="line">      - /data/es-node1:/usr/share/elasticsearch/data</span><br><span class="line">    ports:</span><br><span class="line">      - $&#123;ES_PORT&#125;:9200</span><br><span class="line">    environment:</span><br><span class="line">      - node.name=es-node1</span><br><span class="line">      - cluster.name=$&#123;CLUSTER_NAME&#125;</span><br><span class="line">      - cluster.initial_master_nodes=es-node1,es-node2,es-node3</span><br><span class="line">      - discovery.seed_hosts=es-node2,es-node3</span><br><span class="line">      - ELASTIC_PASSWORD=$&#123;ELASTIC_PASSWORD&#125;</span><br><span class="line">      - bootstrap.memory_lock=true</span><br><span class="line">      - xpack.security.enabled=true</span><br><span class="line">      - xpack.security.http.ssl.enabled=true</span><br><span class="line">      - xpack.security.http.ssl.key=certs/es-node1/es-node1.key</span><br><span class="line">      - xpack.security.http.ssl.certificate=certs/es-node1/es-node1.crt</span><br><span class="line">      - xpack.security.http.ssl.certificate_authorities=certs/ca/ca.crt</span><br><span class="line">      - xpack.security.transport.ssl.enabled=true</span><br><span class="line">      - xpack.security.transport.ssl.key=certs/es-node1/es-node1.key</span><br><span class="line">      - xpack.security.transport.ssl.certificate=certs/es-node1/es-node1.crt</span><br><span class="line">      - xpack.security.transport.ssl.certificate_authorities=certs/ca/ca.crt</span><br><span class="line">      - xpack.security.transport.ssl.verification_mode=certificate</span><br><span class="line">      - xpack.license.self_generated.type=$&#123;LICENSE&#125;</span><br><span class="line">    mem_limit: $&#123;MEM_LIMIT&#125;</span><br><span class="line">    ulimits:</span><br><span class="line">      memlock:</span><br><span class="line">        soft: -1</span><br><span class="line">        hard: -1</span><br><span class="line">    healthcheck:</span><br><span class="line">      test:</span><br><span class="line">        [</span><br><span class="line">          &quot;CMD-&quot;,</span><br><span class="line">          &quot;curl -s --cacert config/certs/ca/ca.crt https://localhost:9200 | grep -q &#x27;missing authentication credentials&#x27;&quot;,</span><br><span class="line">        ]</span><br><span class="line">      interval: 10s</span><br><span class="line">      timeout: 10s</span><br><span class="line">      retries: 120</span><br><span class="line">    extra_hosts:</span><br><span class="line">      - &quot;es-node1:172.20.100.11&quot;</span><br><span class="line">      - &quot;es-node2:172.20.100.12&quot;</span><br><span class="line">      - &quot;es-node3:172.20.100.13&quot;</span><br><span class="line"></span><br><span class="line">  es-node2:</span><br><span class="line">    depends_on:</span><br><span class="line">      - es-node1</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:$&#123;STACK_VERSION&#125;</span><br><span class="line">    container_name: es-node2</span><br><span class="line">    restart: always</span><br><span class="line">    networks:</span><br><span class="line">      net:</span><br><span class="line">        ipv4_address: 172.20.100.12</span><br><span class="line">    volumes:</span><br><span class="line">      - /data/elk-certs:/usr/share/elasticsearch/config/certs</span><br><span class="line">      - /data/es-node2:/usr/share/elasticsearch/data</span><br><span class="line">    environment:</span><br><span class="line">      - node.name=es-node2</span><br><span class="line">      - cluster.name=$&#123;CLUSTER_NAME&#125;</span><br><span class="line">      - cluster.initial_master_nodes=es-node1,es-node2,es-node3</span><br><span class="line">      - discovery.seed_hosts=es-node1,es-node3</span><br><span class="line">      - bootstrap.memory_lock=true</span><br><span class="line">      - xpack.security.enabled=true</span><br><span class="line">      - xpack.security.http.ssl.enabled=true</span><br><span class="line">      - xpack.security.http.ssl.key=certs/es-node2/es-node2.key</span><br><span class="line">      - xpack.security.http.ssl.certificate=certs/es-node2/es-node2.crt</span><br><span class="line">      - xpack.security.http.ssl.certificate_authorities=certs/ca/ca.crt</span><br><span class="line">      - xpack.security.transport.ssl.enabled=true</span><br><span class="line">      - xpack.security.transport.ssl.key=certs/es-node2/es-node2.key</span><br><span class="line">      - xpack.security.transport.ssl.certificate=certs/es-node2/es-node2.crt</span><br><span class="line">      - xpack.security.transport.ssl.certificate_authorities=certs/ca/ca.crt</span><br><span class="line">      - xpack.security.transport.ssl.verification_mode=certificate</span><br><span class="line">      - xpack.license.self_generated.type=$&#123;LICENSE&#125;</span><br><span class="line">    mem_limit: $&#123;MEM_LIMIT&#125;</span><br><span class="line">    ulimits:</span><br><span class="line">      memlock:</span><br><span class="line">        soft: -1</span><br><span class="line">        hard: -1</span><br><span class="line">    healthcheck:</span><br><span class="line">      test:</span><br><span class="line">        [</span><br><span class="line">          &quot;CMD-&quot;,</span><br><span class="line">          &quot;curl -s --cacert config/certs/ca/ca.crt https://localhost:9200 | grep -q &#x27;missing authentication credentials&#x27;&quot;,</span><br><span class="line">        ]</span><br><span class="line">      interval: 10s</span><br><span class="line">      timeout: 10s</span><br><span class="line">      retries: 120</span><br><span class="line">    extra_hosts:</span><br><span class="line">      - &quot;es-node1:172.20.100.11&quot;</span><br><span class="line">      - &quot;es-node2:172.20.100.12&quot;</span><br><span class="line">      - &quot;es-node3:172.20.100.13&quot;</span><br><span class="line"></span><br><span class="line">  es-node3:</span><br><span class="line">    depends_on:</span><br><span class="line">      - es-node2</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:$&#123;STACK_VERSION&#125;</span><br><span class="line">    container_name: es-node3</span><br><span class="line">    restart: always</span><br><span class="line">    networks:</span><br><span class="line">      net:</span><br><span class="line">        ipv4_address: 172.20.100.13</span><br><span class="line">    volumes:</span><br><span class="line">      - /data/elk-certs:/usr/share/elasticsearch/config/certs</span><br><span class="line">      - /data/es-node3:/usr/share/elasticsearch/data</span><br><span class="line">    environment:</span><br><span class="line">      - node.name=es-node3</span><br><span class="line">      - cluster.name=$&#123;CLUSTER_NAME&#125;</span><br><span class="line">      - cluster.initial_master_nodes=es-node1,es-node2,es-node3</span><br><span class="line">      - discovery.seed_hosts=es-node1,es-node2</span><br><span class="line">      - bootstrap.memory_lock=true</span><br><span class="line">      - xpack.security.enabled=true</span><br><span class="line">      - xpack.security.http.ssl.enabled=true</span><br><span class="line">      - xpack.security.http.ssl.key=certs/es-node3/es-node3.key</span><br><span class="line">      - xpack.security.http.ssl.certificate=certs/es-node3/es-node3.crt</span><br><span class="line">      - xpack.security.http.ssl.certificate_authorities=certs/ca/ca.crt</span><br><span class="line">      - xpack.security.transport.ssl.enabled=true</span><br><span class="line">      - xpack.security.transport.ssl.key=certs/es-node3/es-node3.key</span><br><span class="line">      - xpack.security.transport.ssl.certificate=certs/es-node3/es-node3.crt</span><br><span class="line">      - xpack.security.transport.ssl.certificate_authorities=certs/ca/ca.crt</span><br><span class="line">      - xpack.security.transport.ssl.verification_mode=certificate</span><br><span class="line">      - xpack.license.self_generated.type=$&#123;LICENSE&#125;</span><br><span class="line">    mem_limit: $&#123;MEM_LIMIT&#125;</span><br><span class="line">    ulimits:</span><br><span class="line">      memlock:</span><br><span class="line">        soft: -1</span><br><span class="line">        hard: -1</span><br><span class="line">    healthcheck:</span><br><span class="line">      test:</span><br><span class="line">        [</span><br><span class="line">          &quot;CMD-&quot;,</span><br><span class="line">          &quot;curl -s --cacert config/certs/ca/ca.crt https://localhost:9200 | grep -q &#x27;missing authentication credentials&#x27;&quot;,</span><br><span class="line">        ]</span><br><span class="line">      interval: 10s</span><br><span class="line">      timeout: 10s</span><br><span class="line">      retries: 120</span><br><span class="line">    extra_hosts:</span><br><span class="line">      - &quot;es-node1:172.20.100.11&quot;</span><br><span class="line">      - &quot;es-node2:172.20.100.12&quot;</span><br><span class="line">      - &quot;es-node3:172.20.100.13&quot;</span><br><span class="line"></span><br><span class="line">  kibana:</span><br><span class="line">    depends_on:</span><br><span class="line">      es-node1:</span><br><span class="line">        condition: service_healthy</span><br><span class="line">      es-node2:</span><br><span class="line">        condition: service_healthy</span><br><span class="line">      es-node3:</span><br><span class="line">        condition: service_healthy</span><br><span class="line">    image: docker.elastic.co/kibana/kibana:$&#123;STACK_VERSION&#125;</span><br><span class="line">    container_name: kibana</span><br><span class="line">    restart: always</span><br><span class="line">    networks:</span><br><span class="line">      net:</span><br><span class="line">        ipv4_address: 172.20.100.14</span><br><span class="line">    volumes:</span><br><span class="line">      - /data/elk-certs:/usr/share/kibana/config/certs</span><br><span class="line">      - /data/kibana:/usr/share/kibana/data</span><br><span class="line">    ports:</span><br><span class="line">      - $&#123;KIBANA_PORT&#125;:5601</span><br><span class="line">    environment:</span><br><span class="line">      - SERVERNAME=kibana</span><br><span class="line">      - ELASTICSEARCH_HOSTS=https://es-node1:9200</span><br><span class="line">      - ELASTICSEARCH_USERNAME=kibana_system</span><br><span class="line">      - ELASTICSEARCH_PASSWORD=$&#123;KIBANA_PASSWORD&#125;</span><br><span class="line">      - ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES=config/certs/ca/ca.crt</span><br><span class="line">    mem_limit: $&#123;MEM_LIMIT&#125;</span><br><span class="line">    healthcheck:</span><br><span class="line">      test:</span><br><span class="line">        [</span><br><span class="line">          &quot;CMD-&quot;,</span><br><span class="line">          &quot;curl -s -I http://localhost:5601 | grep -q &#x27;HTTP/1.1 302 Found&#x27;&quot;,</span><br><span class="line">        ]</span><br><span class="line">      interval: 10s</span><br><span class="line">      timeout: 10s</span><br><span class="line">      retries: 120</span><br><span class="line">  logstash:</span><br><span class="line">    image: docker.elastic.co/logstash/logstash:$&#123;STACK_VERSION&#125;</span><br><span class="line">    container_name: logstash</span><br><span class="line">    volumes:</span><br><span class="line">      - /data/elk-certs:/usr/share/logstash/config/certs</span><br><span class="line">      - /data/logstash/pipeline:/usr/share/logstash/pipeline</span><br><span class="line">      - /data/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml</span><br><span class="line">    user: &quot;0&quot;</span><br><span class="line">    restart: always</span><br><span class="line">    ports:</span><br><span class="line">      - 5044:5044</span><br><span class="line">    networks:</span><br><span class="line">      net:</span><br><span class="line">        ipv4_address: 172.20.100.15</span><br><span class="line">    extra_hosts:</span><br><span class="line">      - &quot;es-node1:172.20.100.11&quot;</span><br><span class="line">      - &quot;es-node2:172.20.100.12&quot;</span><br><span class="line">      - &quot;es-node3:172.20.100.13&quot;</span><br><span class="line">networks:</span><br><span class="line">  net:</span><br><span class="line">    driver: bridge</span><br><span class="line">    ipam:</span><br><span class="line">      config:</span><br><span class="line">        - subnet: 172.20.100.0/24</span><br><span class="line">**************************elk.yml**************************</span><br></pre></td></tr></table></figure>
+<p>执行命令，创建容器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker compose -f /data/script/elk.yml up -d</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[+] Running 42/16<br>✔ es-node3 Pulled 35.6s<br>✔ es-setup Pulled 35.6s<br>✔ logstash Pulled 96.0s<br>✔ kibana Pulled 99.3s<br>✔ es-node2 Pulled 35.6s<br>✔ es-node1 Pulled 35.6s</p>
+<p>[+] Running 7/7<br>✔ Network elk-docker-project_net Crea… 0.6s<br>✔ Container es-setup Healthy 21.6s<br>✔ Container logstash Started 12.5s<br>✔ Container es-node1 Healthy 72.5s<br>✔ Container es-node2 Healthy 72.5s<br>✔ Container es-node3 Healthy 73.0s<br>✔ Container kibana Started 73.4s</p>
+</blockquote>
+<p>容器创建完成后，查看各容器状态是否正常</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES<br>5b591d4ade82 docker.elastic.co/kibana/kibana:8.13.3 “/bin/tini — /usr/l…” 5 minutes ago Up 4 minutes (healthy) 0.0.0.0:5601-&gt;5601/tcp, :::5601-&gt;5601/tcp kibana<br>e2e75a54149e docker.elastic.co/elasticsearch/elasticsearch:8.13.3 “/bin/tini — /usr/l…” 5 minutes ago Up 5 minutes (healthy) 9200/tcp, 9300/tcp es-node3<br>b8c8357f3634 docker.elastic.co/elasticsearch/elasticsearch:8.13.3 “/bin/tini — /usr/l…” 5 minutes ago Up 5 minutes (healthy) 9200/tcp, 9300/tcp es-node2<br>c552940bd559 docker.elastic.co/elasticsearch/elasticsearch:8.13.3 “/bin/tini — /usr/l…” 5 minutes ago Up 5 minutes (healthy) 0.0.0.0:9200-&gt;9200/tcp, :::9200-&gt;9200/tcp, 9300/tcp es-node1<br>0366974065d8 docker.elastic.co/logstash/logstash:8.13.3 “/usr/local/bin/dock…” 5 minutes ago Up 5 minutes 0.0.0.0:5044-&gt;5044/tcp, :::5044-&gt;5044/tcp, 9600/tcp logstash</p>
+</blockquote>
+<p>5、修改kibana的配置文件，将其语言转化为中文。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker cp kibana:/usr/share/kibana/config/kibana.yml .</span><br><span class="line">vi kibana.yml</span><br><span class="line">**************************kibana.yml**************************</span><br><span class="line"> #</span><br><span class="line"># ** THIS IS AN AUTO-GENERATED FILE **</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line"># Default Kibana configuration for docker target</span><br><span class="line">server.host: &quot;0.0.0.0&quot;</span><br><span class="line">server.shutdownTimeout: &quot;5s&quot;</span><br><span class="line">elasticsearch.hosts: [ &quot;http://elasticsearch:9200&quot; ]</span><br><span class="line">monitoring.ui.container.elasticsearch.enabled: true</span><br><span class="line">i18n.locale: &quot;zh-CN&quot;</span><br><span class="line">server.publicBaseUrl: &quot;http://localhost:5601/&quot;</span><br><span class="line">**************************kibana.yml**************************</span><br><span class="line">docker cp kibana.yml  kibana:/usr/share/kibana/config/kibana.yml</span><br><span class="line">docker restart kibana</span><br></pre></td></tr></table></figure>
+<p>6、在浏览器中分别访问<code>https://10.10.2.103:9200/</code>和<code>http://10.10.2.103:5601/</code>，输入账户和密码，进行查看，如下图所示。</p>
+<img src="/yyg/56088d5a/1.png" class="" title="img">
+<img src="/yyg/56088d5a/2.png" class="" title="img">
+<img src="/yyg/56088d5a/3.png" class="" title="img">
+<h3 id="推送Linux日志，验证部署"><a href="#推送Linux日志，验证部署" class="headerlink" title="推送Linux日志，验证部署"></a>推送Linux日志，验证部署</h3><p>1、安装Filebeat日志采集器</p>
+<p>（1）通过rpm方式安装Filebeat日志采集器。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#下载rpm包</span><br><span class="line">curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.13.3-x86_64.rpm</span><br><span class="line">#执行安装</span><br><span class="line">rpm -vi filebeat-8.13.3-x86_64.rpm</span><br></pre></td></tr></table></figure>
+<p>（2）配置Filebeat</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#启动Filebeat</span><br><span class="line">systemctl start filebeat</span><br><span class="line">#查看Filebeat运行状态</span><br><span class="line">systemctl status filebeat</span><br><span class="line">#设置Filebeat为开机自启</span><br><span class="line">systemctl enable filebeat</span><br></pre></td></tr></table></figure>
+<p>2、配置Filebeat收集Linux日志</p>
+<p>（1）配置filebeat文件，将日志发送到 Logstash 服务。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 修改filebeat配置文件</span><br><span class="line">mv /etc/filebeat/filebeat.yml /etc/filebeat/filebeat.yml.bak</span><br><span class="line"># 新建filebeat配置文件</span><br><span class="line">vi /etc/filebeat/filebeat.yml</span><br><span class="line">**************************filebeat-dns.yml**************************</span><br><span class="line"># 配置文件输入，监视日志文件</span><br><span class="line">filebeat.inputs:</span><br><span class="line">- type: log</span><br><span class="line">  enabled: true</span><br><span class="line">  # 指定 DNS 日志文件路径</span><br><span class="line">  paths:</span><br><span class="line">    - /var/log/messages* </span><br><span class="line">  # 标识日志类型为elk-linux</span><br><span class="line">  fields:</span><br><span class="line">    type: elk-linux      </span><br><span class="line">  # 将额外的字段添加到根级别    </span><br><span class="line">  fields_under_root: true        </span><br><span class="line"></span><br><span class="line"># 配置输出到 Logstash</span><br><span class="line"># 指定 Logstash 服务的地址和端口</span><br><span class="line">output.logstash:</span><br><span class="line">  hosts: [&quot;10.10.2.103:5044&quot;]   </span><br><span class="line">**************************filebeat-dns.yml**************************</span><br></pre></td></tr></table></figure>
+<p>（2）重启filebeat服务，验证配置是否生效</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 重启filebeat</span><br><span class="line">systemctl restart filebeat</span><br><span class="line"># 删除锁文件后，重新启动 Filebeat 服务</span><br><span class="line">rm -rf /var/lib/filebeat/filebeat.lock</span><br><span class="line"># 运行并查看 Filebeat 的运行日志</span><br><span class="line">filebeat -e -c /etc/filebeat/filebeat.yml</span><br></pre></td></tr></table></figure>
+<p>3、在浏览器中登录Kibana，点击左侧菜单中的 “Stack Management”，管理创建数据视图。如下图所示。</p>
+<img src="/yyg/56088d5a/4.png" class="" title="img">
+<p>4、在“Stack Management”界面中，点击“数据视图”，选择索引模式，创建“elk-linux”视图。如下图所示。</p>
+<img src="/yyg/56088d5a/5.png" class="" title="img">
+<img src="/yyg/56088d5a/6.png" class="" title="img">
+<p>5、数据视图创建完成后，选择左侧菜单中的“Discover”，查看Linux日志详细内容。如下图所示。由此，elk集群搭建完成。</p>
+<img src="/yyg/56088d5a/7.png" class="" title="img">
+<img src="/yyg/56088d5a/8.png" class="" title="img">]]></content>
+      <categories>
+        <category>日志分析</category>
+        <category>ELK</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>日志分析</tag>
+        <tag>ELK</tag>
+        <tag>Elasticsearch</tag>
+        <tag>Kibana</tag>
+        <tag>Logstash</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用cephadm方式部署ceph集群</title>
     <url>/yyg/89bdf9b5/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="任务目标"><a href="#任务目标" class="headerlink" title="任务目标"></a>任务目标</h2><ol>
@@ -2147,89 +2230,6 @@ Mastodon:  @Podman_io@fosstodon.org
       </tags>
   </entry>
   <entry>
-    <title>ELK | 使用 docker部署三节点 Elasticsearch 集群</title>
-    <url>/yyg/56088d5a/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><ol>
-<li><p>硬件环境</p>
-<p>操作系统：Centos Stream 9</p>
-<p>CPU：4颗</p>
-<p>内存：8GB</p>
-<p>硬盘：50GB</p>
-</li>
-<li><p>软件环境</p>
-<p>docker版本：26.1.0</p>
-<p>docker compose版本：v2.26.1</p>
-</li>
-</ol>
-<h2 id="部署过程"><a href="#部署过程" class="headerlink" title="部署过程"></a>部署过程</h2><h3 id="准备基础环境，安装Docker"><a href="#准备基础环境，安装Docker" class="headerlink" title="准备基础环境，安装Docker"></a>准备基础环境，安装Docker</h3><p>1、安装 yum-utils 软件包（提供 yum-config-manager 实用程序）并设置存储库，命令如下。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 安装 yum-utils 软件包</span><br><span class="line">yum install -y yum-utils</span><br><span class="line"># 设置docker-ce存储库</span><br><span class="line">yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
-<p>2、安装最新版docker及其组件，命令如下。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</span><br></pre></td></tr></table></figure>
-<p>3、启动Docker服务，并设置为开机自启动，命令如下。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 启动Docker服务</span><br><span class="line">systemctl start docker</span><br><span class="line"># 设置Docker为开机自启动</span><br><span class="line">systemctl enable docker</span><br><span class="line"># 查看Docker服务状态</span><br><span class="line">systemctl status docker</span><br></pre></td></tr></table></figure>
-<p>4、修改Docker的数据目录为“/data/dockerData”，并重启docker服务使配置生效。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 创建Docker守护进程配置文件</span><br><span class="line"># 编辑配置文件/etc/docker/daemon.json，配置docker数据目录</span><br><span class="line">vi /etc/docker/daemon.json</span><br><span class="line">**************************daemon.json**************************</span><br><span class="line">&#123;</span><br><span class="line">  &quot;data-root&quot;: &quot;/data/dockerData&quot;</span><br><span class="line">&#125;</span><br><span class="line">**************************daemon.json**************************</span><br><span class="line"></span><br><span class="line"># 重启docker服务，使配置生效</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
-<p>5、设置与内存映射相关的内核参数为262144，查看应用到系统的内核参数。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo &quot;vm.max_map_count=262144&quot; &gt;&gt; /etc/sysctl.conf</span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
-<p>6、配置防火墙策略</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">firewall-cmd --add-port=9200/tcp --permanent</span><br><span class="line">firewall-cmd --add-port=80/tcp --permanent</span><br><span class="line">firewall-cmd --add-port=443/tcp --permanent</span><br><span class="line">firewall-cmd --add-port=5601/tcp --permanent</span><br><span class="line">firewall-cmd --reload</span><br><span class="line">firewall-cmd --list-all</span><br></pre></td></tr></table></figure>
-<h3 id="部署elk集群"><a href="#部署elk集群" class="headerlink" title="部署elk集群"></a>部署elk集群</h3><p>1、创建构建容器所需要的文件目录，并赋予相应的访问权限。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /data</span><br><span class="line">mkdir es-node1  es-node2  es-node3  elk-kibana</span><br><span class="line">chmod g+rwx es-node1  es-node2  es-node3  elk-kibana</span><br><span class="line">chgrp 0 es-node1  es-node2  es-node3  elk-kibana</span><br></pre></td></tr></table></figure>
-<p>2、在/data/script 目录下，创建并编辑 .env 文件，用来配置elk的环境变量。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir /data/script</span><br><span class="line">vi /data/script/.env</span><br><span class="line">**************************.env**************************</span><br><span class="line"># Elasticsearch的密码</span><br><span class="line">ELASTIC_PASSWORD=elk#bd@123</span><br><span class="line"># Kibana的密码</span><br><span class="line">KIBANA_PASSWORD=elk#bd@123</span><br><span class="line"># Elastic Stack的版本号</span><br><span class="line">STACK_VERSION=8.13.3</span><br><span class="line"># Elastic Stack的集群名称</span><br><span class="line">CLUSTER_NAME=ELK-docker-Cluster</span><br><span class="line"># 指定Elastic Stack的许可证类型</span><br><span class="line">LICENSE=basic</span><br><span class="line"># 指定Elasticsearch的端口号</span><br><span class="line">ES_PORT=9200</span><br><span class="line"># 指定Kibana的端口号</span><br><span class="line">KIBANA_PORT=5601</span><br><span class="line"># 指定内存限制</span><br><span class="line">MEM_LIMIT=2147483648</span><br><span class="line"># 指定Docker Compose项目的名称</span><br><span class="line">COMPOSE_PROJECT_NAME=elk-docker-project</span><br><span class="line">**************************.env**************************</span><br></pre></td></tr></table></figure>
-<p>3、创建logstash容器所需的目录和配置文件。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir -p logstash/config logstash/pipeline</span><br><span class="line">echo &#x27;http.host: &quot;0.0.0.0&quot;&#x27; &gt; /data/logstash/config/logstash.yml</span><br><span class="line">vi /data/logstash/pipeline/logstash.conf</span><br><span class="line">**************************logstash.conf**************************</span><br><span class="line">input &#123;</span><br><span class="line">  beats &#123;</span><br><span class="line">    port =&gt; 5044</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">  elasticsearch &#123;</span><br><span class="line">    hosts =&gt; [&quot;https://es-node1:9200&quot;]</span><br><span class="line">    index =&gt; &quot;%&#123;[@metadata][beat]&#125;-%&#123;[@metadata][version]&#125;-%&#123;+YYYY.MM.dd&#125;&quot;</span><br><span class="line">    user =&gt; &quot;elastic&quot;</span><br><span class="line">    password =&gt; &quot;elk#bd@123&quot;</span><br><span class="line">    cacert=&gt; &quot;/usr/share/logstash/config/certs/ca/ca.crt&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">**************************logstash.conf**************************</span><br></pre></td></tr></table></figure>
-<p>4、创建docker compose文件，编排创建es初始化节点、es三节点、Kibana、logstash容器。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vi /data/script/elk.yml</span><br><span class="line">**************************elk.yml**************************</span><br><span class="line">services:</span><br><span class="line">  es-setup:</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:$&#123;STACK_VERSION&#125;</span><br><span class="line">    container_name: es-setup</span><br><span class="line">    volumes:</span><br><span class="line">      - /data/elk-certs:/usr/share/elasticsearch/config/certs</span><br><span class="line">    user: &quot;0&quot;</span><br><span class="line">    networks:</span><br><span class="line">      net:</span><br><span class="line">        ipv4_address: 172.20.100.10</span><br><span class="line">    command: &gt;</span><br><span class="line">      bash -c &#x27;</span><br><span class="line">        if [ x$&#123;ELASTIC_PASSWORD&#125; == x ]; then</span><br><span class="line">          echo &quot;Set the ELASTIC_PASSWORD environment variable in the .env file&quot;;</span><br><span class="line">          exit 1;</span><br><span class="line">        elif [ x$&#123;KIBANA_PASSWORD&#125; == x ]; then</span><br><span class="line">          echo &quot;Set the KIBANA_PASSWORD environment variable in the .env file&quot;;</span><br><span class="line">          exit 1;</span><br><span class="line">        fi;</span><br><span class="line">        </span><br><span class="line">        if [ ! -f config/certs/ca.zip ]; then</span><br><span class="line">          echo &quot;Creating CA&quot;;</span><br><span class="line">          bin/elasticsearch-certutil ca --silent --pem -out config/certs/ca.zip;</span><br><span class="line">          unzip config/certs/ca.zip -d config/certs;</span><br><span class="line">        fi;</span><br><span class="line">        if [ ! -f config/certs/certs.zip ]; then</span><br><span class="line">          echo &quot;Creating certs&quot;;</span><br><span class="line">          echo -ne \</span><br><span class="line">          &quot;instances:\n&quot;\</span><br><span class="line">          &quot;  - name: es-node1\n&quot;\</span><br><span class="line">          &quot;    dns:\n&quot;\</span><br><span class="line">          &quot;      - es-node1\n&quot;\</span><br><span class="line">          &quot;      - localhost\n&quot;\</span><br><span class="line">          &quot;    ip:\n&quot;\</span><br><span class="line">          &quot;      - 127.0.0.1\n&quot;\</span><br><span class="line">          &quot;  - name: es-node2\n&quot;\</span><br><span class="line">          &quot;    dns:\n&quot;\</span><br><span class="line">          &quot;      - es-node2\n&quot;\</span><br><span class="line">          &quot;      - localhost\n&quot;\</span><br><span class="line">          &quot;    ip:\n&quot;\</span><br><span class="line">          &quot;      - 127.0.0.1\n&quot;\</span><br><span class="line">          &quot;  - name: es-node3\n&quot;\</span><br><span class="line">          &quot;    dns:\n&quot;\</span><br><span class="line">          &quot;      - es-node3\n&quot;\</span><br><span class="line">          &quot;      - localhost\n&quot;\</span><br><span class="line">          &quot;    ip:\n&quot;\</span><br><span class="line">          &quot;      - 127.0.0.1\n&quot;\</span><br><span class="line">          &gt; config/certs/instances.yml;</span><br><span class="line">          bin/elasticsearch-certutil cert --silent --pem -out config/certs/certs.zip --in config/certs/instances.yml --ca-cert config/certs/ca/ca.crt --ca-key config/certs/ca/ca.key;</span><br><span class="line">          unzip config/certs/certs.zip -d config/certs;</span><br><span class="line">        fi;</span><br><span class="line"></span><br><span class="line">        echo &quot;Setting file permissions&quot;;</span><br><span class="line">        chown -R root:root config/certs;</span><br><span class="line">        find . -type d -exec chmod 750 \&#123;\&#125; \;;</span><br><span class="line">        find . -type f -exec chmod 640 \&#123;\&#125; \;;</span><br><span class="line">        echo &quot;Waiting for Elasticsearch availability&quot;;</span><br><span class="line">        until curl -s --cacert config/certs/ca/ca.crt https://es-node1:9200 | grep -q &quot;missing authentication credentials&quot;; do sleep 30; done;</span><br><span class="line">        echo &quot;Setting kibana_system password&quot;;</span><br><span class="line">        until curl -s -X POST --cacert config/certs/ca/ca.crt -u &quot;elastic:$&#123;ELASTIC_PASSWORD&#125;&quot; -H &quot;Content-Type: application/json&quot; https://es-node1:9200/_security/user/kibana_system/_password -d &quot;&#123;\&quot;password\&quot;:\&quot;$&#123;KIBANA_PASSWORD&#125;\&quot;&#125;&quot; | grep -q &quot;^&#123;&#125;&quot;; do sleep 10; done;</span><br><span class="line">        echo &quot;All done!&quot;;</span><br><span class="line">      &#x27;</span><br><span class="line">    healthcheck:</span><br><span class="line">      test: [&quot;CMD-&quot;, &quot;[ -f config/certs/es-node1/es-node1.crt ]&quot;]</span><br><span class="line">      interval: 1s</span><br><span class="line">      timeout: 5s</span><br><span class="line">      retries: 120</span><br><span class="line"></span><br><span class="line">  es-node1:</span><br><span class="line">    depends_on:</span><br><span class="line">      es-setup:</span><br><span class="line">        condition: service_healthy</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:$&#123;STACK_VERSION&#125;</span><br><span class="line">    container_name: es-node1</span><br><span class="line">    restart: always</span><br><span class="line">    networks:</span><br><span class="line">      net:</span><br><span class="line">        ipv4_address: 172.20.100.11</span><br><span class="line">    volumes:</span><br><span class="line">      - /data/elk-certs:/usr/share/elasticsearch/config/certs</span><br><span class="line">      - /data/es-node1:/usr/share/elasticsearch/data</span><br><span class="line">    ports:</span><br><span class="line">      - $&#123;ES_PORT&#125;:9200</span><br><span class="line">    environment:</span><br><span class="line">      - node.name=es-node1</span><br><span class="line">      - cluster.name=$&#123;CLUSTER_NAME&#125;</span><br><span class="line">      - cluster.initial_master_nodes=es-node1,es-node2,es-node3</span><br><span class="line">      - discovery.seed_hosts=es-node2,es-node3</span><br><span class="line">      - ELASTIC_PASSWORD=$&#123;ELASTIC_PASSWORD&#125;</span><br><span class="line">      - bootstrap.memory_lock=true</span><br><span class="line">      - xpack.security.enabled=true</span><br><span class="line">      - xpack.security.http.ssl.enabled=true</span><br><span class="line">      - xpack.security.http.ssl.key=certs/es-node1/es-node1.key</span><br><span class="line">      - xpack.security.http.ssl.certificate=certs/es-node1/es-node1.crt</span><br><span class="line">      - xpack.security.http.ssl.certificate_authorities=certs/ca/ca.crt</span><br><span class="line">      - xpack.security.transport.ssl.enabled=true</span><br><span class="line">      - xpack.security.transport.ssl.key=certs/es-node1/es-node1.key</span><br><span class="line">      - xpack.security.transport.ssl.certificate=certs/es-node1/es-node1.crt</span><br><span class="line">      - xpack.security.transport.ssl.certificate_authorities=certs/ca/ca.crt</span><br><span class="line">      - xpack.security.transport.ssl.verification_mode=certificate</span><br><span class="line">      - xpack.license.self_generated.type=$&#123;LICENSE&#125;</span><br><span class="line">    mem_limit: $&#123;MEM_LIMIT&#125;</span><br><span class="line">    ulimits:</span><br><span class="line">      memlock:</span><br><span class="line">        soft: -1</span><br><span class="line">        hard: -1</span><br><span class="line">    healthcheck:</span><br><span class="line">      test:</span><br><span class="line">        [</span><br><span class="line">          &quot;CMD-&quot;,</span><br><span class="line">          &quot;curl -s --cacert config/certs/ca/ca.crt https://localhost:9200 | grep -q &#x27;missing authentication credentials&#x27;&quot;,</span><br><span class="line">        ]</span><br><span class="line">      interval: 10s</span><br><span class="line">      timeout: 10s</span><br><span class="line">      retries: 120</span><br><span class="line">    extra_hosts:</span><br><span class="line">      - &quot;es-node1:172.20.100.11&quot;</span><br><span class="line">      - &quot;es-node2:172.20.100.12&quot;</span><br><span class="line">      - &quot;es-node3:172.20.100.13&quot;</span><br><span class="line"></span><br><span class="line">  es-node2:</span><br><span class="line">    depends_on:</span><br><span class="line">      - es-node1</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:$&#123;STACK_VERSION&#125;</span><br><span class="line">    container_name: es-node2</span><br><span class="line">    restart: always</span><br><span class="line">    networks:</span><br><span class="line">      net:</span><br><span class="line">        ipv4_address: 172.20.100.12</span><br><span class="line">    volumes:</span><br><span class="line">      - /data/elk-certs:/usr/share/elasticsearch/config/certs</span><br><span class="line">      - /data/es-node2:/usr/share/elasticsearch/data</span><br><span class="line">    environment:</span><br><span class="line">      - node.name=es-node2</span><br><span class="line">      - cluster.name=$&#123;CLUSTER_NAME&#125;</span><br><span class="line">      - cluster.initial_master_nodes=es-node1,es-node2,es-node3</span><br><span class="line">      - discovery.seed_hosts=es-node1,es-node3</span><br><span class="line">      - bootstrap.memory_lock=true</span><br><span class="line">      - xpack.security.enabled=true</span><br><span class="line">      - xpack.security.http.ssl.enabled=true</span><br><span class="line">      - xpack.security.http.ssl.key=certs/es-node2/es-node2.key</span><br><span class="line">      - xpack.security.http.ssl.certificate=certs/es-node2/es-node2.crt</span><br><span class="line">      - xpack.security.http.ssl.certificate_authorities=certs/ca/ca.crt</span><br><span class="line">      - xpack.security.transport.ssl.enabled=true</span><br><span class="line">      - xpack.security.transport.ssl.key=certs/es-node2/es-node2.key</span><br><span class="line">      - xpack.security.transport.ssl.certificate=certs/es-node2/es-node2.crt</span><br><span class="line">      - xpack.security.transport.ssl.certificate_authorities=certs/ca/ca.crt</span><br><span class="line">      - xpack.security.transport.ssl.verification_mode=certificate</span><br><span class="line">      - xpack.license.self_generated.type=$&#123;LICENSE&#125;</span><br><span class="line">    mem_limit: $&#123;MEM_LIMIT&#125;</span><br><span class="line">    ulimits:</span><br><span class="line">      memlock:</span><br><span class="line">        soft: -1</span><br><span class="line">        hard: -1</span><br><span class="line">    healthcheck:</span><br><span class="line">      test:</span><br><span class="line">        [</span><br><span class="line">          &quot;CMD-&quot;,</span><br><span class="line">          &quot;curl -s --cacert config/certs/ca/ca.crt https://localhost:9200 | grep -q &#x27;missing authentication credentials&#x27;&quot;,</span><br><span class="line">        ]</span><br><span class="line">      interval: 10s</span><br><span class="line">      timeout: 10s</span><br><span class="line">      retries: 120</span><br><span class="line">    extra_hosts:</span><br><span class="line">      - &quot;es-node1:172.20.100.11&quot;</span><br><span class="line">      - &quot;es-node2:172.20.100.12&quot;</span><br><span class="line">      - &quot;es-node3:172.20.100.13&quot;</span><br><span class="line"></span><br><span class="line">  es-node3:</span><br><span class="line">    depends_on:</span><br><span class="line">      - es-node2</span><br><span class="line">    image: docker.elastic.co/elasticsearch/elasticsearch:$&#123;STACK_VERSION&#125;</span><br><span class="line">    container_name: es-node3</span><br><span class="line">    restart: always</span><br><span class="line">    networks:</span><br><span class="line">      net:</span><br><span class="line">        ipv4_address: 172.20.100.13</span><br><span class="line">    volumes:</span><br><span class="line">      - /data/elk-certs:/usr/share/elasticsearch/config/certs</span><br><span class="line">      - /data/es-node3:/usr/share/elasticsearch/data</span><br><span class="line">    environment:</span><br><span class="line">      - node.name=es-node3</span><br><span class="line">      - cluster.name=$&#123;CLUSTER_NAME&#125;</span><br><span class="line">      - cluster.initial_master_nodes=es-node1,es-node2,es-node3</span><br><span class="line">      - discovery.seed_hosts=es-node1,es-node2</span><br><span class="line">      - bootstrap.memory_lock=true</span><br><span class="line">      - xpack.security.enabled=true</span><br><span class="line">      - xpack.security.http.ssl.enabled=true</span><br><span class="line">      - xpack.security.http.ssl.key=certs/es-node3/es-node3.key</span><br><span class="line">      - xpack.security.http.ssl.certificate=certs/es-node3/es-node3.crt</span><br><span class="line">      - xpack.security.http.ssl.certificate_authorities=certs/ca/ca.crt</span><br><span class="line">      - xpack.security.transport.ssl.enabled=true</span><br><span class="line">      - xpack.security.transport.ssl.key=certs/es-node3/es-node3.key</span><br><span class="line">      - xpack.security.transport.ssl.certificate=certs/es-node3/es-node3.crt</span><br><span class="line">      - xpack.security.transport.ssl.certificate_authorities=certs/ca/ca.crt</span><br><span class="line">      - xpack.security.transport.ssl.verification_mode=certificate</span><br><span class="line">      - xpack.license.self_generated.type=$&#123;LICENSE&#125;</span><br><span class="line">    mem_limit: $&#123;MEM_LIMIT&#125;</span><br><span class="line">    ulimits:</span><br><span class="line">      memlock:</span><br><span class="line">        soft: -1</span><br><span class="line">        hard: -1</span><br><span class="line">    healthcheck:</span><br><span class="line">      test:</span><br><span class="line">        [</span><br><span class="line">          &quot;CMD-&quot;,</span><br><span class="line">          &quot;curl -s --cacert config/certs/ca/ca.crt https://localhost:9200 | grep -q &#x27;missing authentication credentials&#x27;&quot;,</span><br><span class="line">        ]</span><br><span class="line">      interval: 10s</span><br><span class="line">      timeout: 10s</span><br><span class="line">      retries: 120</span><br><span class="line">    extra_hosts:</span><br><span class="line">      - &quot;es-node1:172.20.100.11&quot;</span><br><span class="line">      - &quot;es-node2:172.20.100.12&quot;</span><br><span class="line">      - &quot;es-node3:172.20.100.13&quot;</span><br><span class="line"></span><br><span class="line">  kibana:</span><br><span class="line">    depends_on:</span><br><span class="line">      es-node1:</span><br><span class="line">        condition: service_healthy</span><br><span class="line">      es-node2:</span><br><span class="line">        condition: service_healthy</span><br><span class="line">      es-node3:</span><br><span class="line">        condition: service_healthy</span><br><span class="line">    image: docker.elastic.co/kibana/kibana:$&#123;STACK_VERSION&#125;</span><br><span class="line">    container_name: kibana</span><br><span class="line">    restart: always</span><br><span class="line">    networks:</span><br><span class="line">      net:</span><br><span class="line">        ipv4_address: 172.20.100.14</span><br><span class="line">    volumes:</span><br><span class="line">      - /data/elk-certs:/usr/share/kibana/config/certs</span><br><span class="line">      - /data/kibana:/usr/share/kibana/data</span><br><span class="line">    ports:</span><br><span class="line">      - $&#123;KIBANA_PORT&#125;:5601</span><br><span class="line">    environment:</span><br><span class="line">      - SERVERNAME=kibana</span><br><span class="line">      - ELASTICSEARCH_HOSTS=https://es-node1:9200</span><br><span class="line">      - ELASTICSEARCH_USERNAME=kibana_system</span><br><span class="line">      - ELASTICSEARCH_PASSWORD=$&#123;KIBANA_PASSWORD&#125;</span><br><span class="line">      - ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES=config/certs/ca/ca.crt</span><br><span class="line">    mem_limit: $&#123;MEM_LIMIT&#125;</span><br><span class="line">    healthcheck:</span><br><span class="line">      test:</span><br><span class="line">        [</span><br><span class="line">          &quot;CMD-&quot;,</span><br><span class="line">          &quot;curl -s -I http://localhost:5601 | grep -q &#x27;HTTP/1.1 302 Found&#x27;&quot;,</span><br><span class="line">        ]</span><br><span class="line">      interval: 10s</span><br><span class="line">      timeout: 10s</span><br><span class="line">      retries: 120</span><br><span class="line">  logstash:</span><br><span class="line">    image: docker.elastic.co/logstash/logstash:$&#123;STACK_VERSION&#125;</span><br><span class="line">    container_name: logstash</span><br><span class="line">    volumes:</span><br><span class="line">      - /data/elk-certs:/usr/share/logstash/config/certs</span><br><span class="line">      - /data/logstash/pipeline:/usr/share/logstash/pipeline</span><br><span class="line">      - /data/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml</span><br><span class="line">    user: &quot;0&quot;</span><br><span class="line">    restart: always</span><br><span class="line">    ports:</span><br><span class="line">      - 5044:5044</span><br><span class="line">    networks:</span><br><span class="line">      net:</span><br><span class="line">        ipv4_address: 172.20.100.15</span><br><span class="line">    extra_hosts:</span><br><span class="line">      - &quot;es-node1:172.20.100.11&quot;</span><br><span class="line">      - &quot;es-node2:172.20.100.12&quot;</span><br><span class="line">      - &quot;es-node3:172.20.100.13&quot;</span><br><span class="line">networks:</span><br><span class="line">  net:</span><br><span class="line">    driver: bridge</span><br><span class="line">    ipam:</span><br><span class="line">      config:</span><br><span class="line">        - subnet: 172.20.100.0/24</span><br><span class="line">**************************elk.yml**************************</span><br></pre></td></tr></table></figure>
-<p>执行命令，创建容器</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker compose -f /data/script/elk.yml up -d</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>[+] Running 42/16<br>✔ es-node3 Pulled 35.6s<br>✔ es-setup Pulled 35.6s<br>✔ logstash Pulled 96.0s<br>✔ kibana Pulled 99.3s<br>✔ es-node2 Pulled 35.6s<br>✔ es-node1 Pulled 35.6s</p>
-<p>[+] Running 7/7<br>✔ Network elk-docker-project_net Crea… 0.6s<br>✔ Container es-setup Healthy 21.6s<br>✔ Container logstash Started 12.5s<br>✔ Container es-node1 Healthy 72.5s<br>✔ Container es-node2 Healthy 72.5s<br>✔ Container es-node3 Healthy 73.0s<br>✔ Container kibana Started 73.4s</p>
-</blockquote>
-<p>容器创建完成后，查看各容器状态是否正常</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES<br>5b591d4ade82 docker.elastic.co/kibana/kibana:8.13.3 “/bin/tini — /usr/l…” 5 minutes ago Up 4 minutes (healthy) 0.0.0.0:5601-&gt;5601/tcp, :::5601-&gt;5601/tcp kibana<br>e2e75a54149e docker.elastic.co/elasticsearch/elasticsearch:8.13.3 “/bin/tini — /usr/l…” 5 minutes ago Up 5 minutes (healthy) 9200/tcp, 9300/tcp es-node3<br>b8c8357f3634 docker.elastic.co/elasticsearch/elasticsearch:8.13.3 “/bin/tini — /usr/l…” 5 minutes ago Up 5 minutes (healthy) 9200/tcp, 9300/tcp es-node2<br>c552940bd559 docker.elastic.co/elasticsearch/elasticsearch:8.13.3 “/bin/tini — /usr/l…” 5 minutes ago Up 5 minutes (healthy) 0.0.0.0:9200-&gt;9200/tcp, :::9200-&gt;9200/tcp, 9300/tcp es-node1<br>0366974065d8 docker.elastic.co/logstash/logstash:8.13.3 “/usr/local/bin/dock…” 5 minutes ago Up 5 minutes 0.0.0.0:5044-&gt;5044/tcp, :::5044-&gt;5044/tcp, 9600/tcp logstash</p>
-</blockquote>
-<p>5、修改kibana的配置文件，将其语言转化为中文。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker cp kibana:/usr/share/kibana/config/kibana.yml .</span><br><span class="line">vi kibana.yml</span><br><span class="line">**************************kibana.yml**************************</span><br><span class="line"> #</span><br><span class="line"># ** THIS IS AN AUTO-GENERATED FILE **</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line"># Default Kibana configuration for docker target</span><br><span class="line">server.host: &quot;0.0.0.0&quot;</span><br><span class="line">server.shutdownTimeout: &quot;5s&quot;</span><br><span class="line">elasticsearch.hosts: [ &quot;http://elasticsearch:9200&quot; ]</span><br><span class="line">monitoring.ui.container.elasticsearch.enabled: true</span><br><span class="line">i18n.locale: &quot;zh-CN&quot;</span><br><span class="line">server.publicBaseUrl: &quot;http://localhost:5601/&quot;</span><br><span class="line">**************************kibana.yml**************************</span><br><span class="line">docker cp kibana.yml  kibana:/usr/share/kibana/config/kibana.yml</span><br><span class="line">docker restart kibana</span><br></pre></td></tr></table></figure>
-<p>6、在浏览器中分别访问<code>https://10.10.2.103:9200/</code>和<code>http://10.10.2.103:5601/</code>，输入账户和密码，进行查看，如下图所示。</p>
-<img src="/yyg/56088d5a/1.png" class="" title="img">
-<img src="/yyg/56088d5a/2.png" class="" title="img">
-<img src="/yyg/56088d5a/3.png" class="" title="img">
-<h3 id="推送Linux日志，验证部署"><a href="#推送Linux日志，验证部署" class="headerlink" title="推送Linux日志，验证部署"></a>推送Linux日志，验证部署</h3><p>1、安装Filebeat日志采集器</p>
-<p>（1）通过rpm方式安装Filebeat日志采集器。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#下载rpm包</span><br><span class="line">curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.13.3-x86_64.rpm</span><br><span class="line">#执行安装</span><br><span class="line">rpm -vi filebeat-8.13.3-x86_64.rpm</span><br></pre></td></tr></table></figure>
-<p>（2）配置Filebeat</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#启动Filebeat</span><br><span class="line">systemctl start filebeat</span><br><span class="line">#查看Filebeat运行状态</span><br><span class="line">systemctl status filebeat</span><br><span class="line">#设置Filebeat为开机自启</span><br><span class="line">systemctl enable filebeat</span><br></pre></td></tr></table></figure>
-<p>2、配置Filebeat收集Linux日志</p>
-<p>（1）配置filebeat文件，将日志发送到 Logstash 服务。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 修改filebeat配置文件</span><br><span class="line">mv /etc/filebeat/filebeat.yml /etc/filebeat/filebeat.yml.bak</span><br><span class="line"># 新建filebeat配置文件</span><br><span class="line">vi /etc/filebeat/filebeat.yml</span><br><span class="line">**************************filebeat-dns.yml**************************</span><br><span class="line"># 配置文件输入，监视日志文件</span><br><span class="line">filebeat.inputs:</span><br><span class="line">- type: log</span><br><span class="line">  enabled: true</span><br><span class="line">  # 指定 DNS 日志文件路径</span><br><span class="line">  paths:</span><br><span class="line">    - /var/log/messages* </span><br><span class="line">  # 标识日志类型为elk-linux</span><br><span class="line">  fields:</span><br><span class="line">    type: elk-linux      </span><br><span class="line">  # 将额外的字段添加到根级别    </span><br><span class="line">  fields_under_root: true        </span><br><span class="line"></span><br><span class="line"># 配置输出到 Logstash</span><br><span class="line"># 指定 Logstash 服务的地址和端口</span><br><span class="line">output.logstash:</span><br><span class="line">  hosts: [&quot;10.10.2.103:5044&quot;]   </span><br><span class="line">**************************filebeat-dns.yml**************************</span><br></pre></td></tr></table></figure>
-<p>（2）重启filebeat服务，验证配置是否生效</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 重启filebeat</span><br><span class="line">systemctl restart filebeat</span><br><span class="line"># 删除锁文件后，重新启动 Filebeat 服务</span><br><span class="line">rm -rf /var/lib/filebeat/filebeat.lock</span><br><span class="line"># 运行并查看 Filebeat 的运行日志</span><br><span class="line">filebeat -e -c /etc/filebeat/filebeat.yml</span><br></pre></td></tr></table></figure>
-<p>3、在浏览器中登录Kibana，点击左侧菜单中的 “Stack Management”，管理创建数据视图。如下图所示。</p>
-<img src="/yyg/56088d5a/4.png" class="" title="img">
-<p>4、在“Stack Management”界面中，点击“数据视图”，选择索引模式，创建“elk-linux”视图。如下图所示。</p>
-<img src="/yyg/56088d5a/5.png" class="" title="img">
-<img src="/yyg/56088d5a/6.png" class="" title="img">
-<p>5、数据视图创建完成后，选择左侧菜单中的“Discover”，查看Linux日志详细内容。如下图所示。由此，elk集群搭建完成。</p>
-<img src="/yyg/56088d5a/7.png" class="" title="img">
-<img src="/yyg/56088d5a/8.png" class="" title="img">]]></content>
-      <categories>
-        <category>日志分析</category>
-        <category>ELK</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-        <tag>日志分析</tag>
-        <tag>ELK</tag>
-        <tag>Elasticsearch</tag>
-        <tag>Kibana</tag>
-        <tag>Logstash</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用portainer管理容器</title>
     <url>/yyg/c60df0d6/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="基础环境"><a href="#基础环境" class="headerlink" title="基础环境"></a>基础环境</h2><p>系统环境：</p>
@@ -2289,36 +2289,6 @@ Mastodon:  @Podman_io@fosstodon.org
       </tags>
   </entry>
   <entry>
-    <title>安装Winlogbeat日志采集器</title>
-    <url>/yyg/f547e2a9/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ol>
-<li>Winlogbeat安装程序可通过其官网（<a href="https://www.elastic.co/cn/beats/winlogbeat）下载。">https://www.elastic.co/cn/beats/winlogbeat）下载。</a></li>
-<li>双击启动安装程序，进入安装向导后勾选“I accept the terms in the License Agreement”，单击【Install】，如图所示。</li>
-</ol>
-<img src="/yyg/f547e2a9/4.png" class="" title="img">
-<ol>
-<li>按安装向导安装完成后，单击【Finish】，完成安装并打开安装目录。如图所示。</li>
-</ol>
-<img src="/yyg/f547e2a9/3.png" class="" title="img">
-<img src="/yyg/f547e2a9/2.png" class="" title="img">
-<ol>
-<li><p>以管理员身份打开 PowerShell 提示符（右键单击 PowerShell 图标，然后选择以管理员身份运行），允许在本地主机上创建winlogbeat服务，创建成功后允许winlogbeat服务并验证。如图所示。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PS C:\Windows\system32&gt; cd &quot;C:\Program Files\Elastic\Beats\8.13.2\winlogbeat&quot;</span><br><span class="line"># 允许在本地计算机上编写的未签名脚本自由运行</span><br><span class="line">PS C:\Program Files\Elastic\Beats\8.13.2\winlogbeat&gt; set-executionpolicy remotesigned</span><br><span class="line"></span><br><span class="line">执行策略更改</span><br><span class="line">执行策略可帮助你防止执行不信任的脚本。更改执行策略可能会产生安全风险，如 https:/go.microsoft.com/fwlink/?LinkID=135170</span><br><span class="line">中的 about_Execution_Policies 帮助主题所述。是否要更改执行策略?</span><br><span class="line">[Y] 是(Y)  [A] 全是(A)  [N] 否(N)  [L] 全否(L)  [S] 暂停(S)  [?] 帮助 (默认值为“N”): y</span><br><span class="line"># 允许脚本在系统上运行</span><br><span class="line">PS C:\Program Files\Elastic\Beats\8.13.2\winlogbeat&gt; set-executionpolicy Bypass</span><br><span class="line"></span><br><span class="line">执行策略更改</span><br><span class="line">执行策略可帮助你防止执行不信任的脚本。更改执行策略可能会产生安全风险，如 https:/go.microsoft.com/fwlink/?LinkID=135170</span><br><span class="line">中的 about_Execution_Policies 帮助主题所述。是否要更改执行策略?</span><br><span class="line">[Y] 是(Y)  [A] 全是(A)  [N] 否(N)  [L] 全否(L)  [S] 暂停(S)  [?] 帮助 (默认值为“N”): y</span><br><span class="line"># 创建winlogbeat服务</span><br><span class="line">PS C:\Program Files\Elastic\Beats\8.13.2\winlogbeat&gt; .\install-service-winlogbeat.ps1</span><br><span class="line">[SC] DeleteService 成功</span><br><span class="line"></span><br><span class="line">Status   Name               DisplayName</span><br><span class="line">------   ----               -----------</span><br><span class="line">Stopped  winlogbeat         winlogbeat</span><br><span class="line"></span><br><span class="line"># 启动winlogbeat服务</span><br><span class="line">PS C:\Program Files\Elastic\Beats\8.13.2\winlogbeat&gt; Start-Service winlogbeat</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<img src="/yyg/f547e2a9/1.png" class="" title="img">]]></content>
-      <categories>
-        <category>日志分析</category>
-        <category>ELK</category>
-      </categories>
-      <tags>
-        <tag>日志分析</tag>
-        <tag>ELK</tag>
-        <tag>日志采集器</tag>
-        <tag>Winlogbeat</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）</title>
     <url>/yyg/5ea27f40/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）"><a href="#在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）" class="headerlink" title="在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）"></a>在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在搭建<code>云野阁</code>博客网站期间，看了好多具有个人特色的博客网站，有不少都有RSS订阅功能，那RSS是什么呢？咱们先唠唠。</p>
@@ -2358,6 +2328,36 @@ Mastodon:  @Podman_io@fosstodon.org
         <tag>魔改</tag>
         <tag>在线rss阅读器</tag>
         <tag>GitHub Pages</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安装Winlogbeat日志采集器</title>
+    <url>/yyg/f547e2a9/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ol>
+<li>Winlogbeat安装程序可通过其官网（<a href="https://www.elastic.co/cn/beats/winlogbeat）下载。">https://www.elastic.co/cn/beats/winlogbeat）下载。</a></li>
+<li>双击启动安装程序，进入安装向导后勾选“I accept the terms in the License Agreement”，单击【Install】，如图所示。</li>
+</ol>
+<img src="/yyg/f547e2a9/4.png" class="" title="img">
+<ol>
+<li>按安装向导安装完成后，单击【Finish】，完成安装并打开安装目录。如图所示。</li>
+</ol>
+<img src="/yyg/f547e2a9/3.png" class="" title="img">
+<img src="/yyg/f547e2a9/2.png" class="" title="img">
+<ol>
+<li><p>以管理员身份打开 PowerShell 提示符（右键单击 PowerShell 图标，然后选择以管理员身份运行），允许在本地主机上创建winlogbeat服务，创建成功后允许winlogbeat服务并验证。如图所示。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PS C:\Windows\system32&gt; cd &quot;C:\Program Files\Elastic\Beats\8.13.2\winlogbeat&quot;</span><br><span class="line"># 允许在本地计算机上编写的未签名脚本自由运行</span><br><span class="line">PS C:\Program Files\Elastic\Beats\8.13.2\winlogbeat&gt; set-executionpolicy remotesigned</span><br><span class="line"></span><br><span class="line">执行策略更改</span><br><span class="line">执行策略可帮助你防止执行不信任的脚本。更改执行策略可能会产生安全风险，如 https:/go.microsoft.com/fwlink/?LinkID=135170</span><br><span class="line">中的 about_Execution_Policies 帮助主题所述。是否要更改执行策略?</span><br><span class="line">[Y] 是(Y)  [A] 全是(A)  [N] 否(N)  [L] 全否(L)  [S] 暂停(S)  [?] 帮助 (默认值为“N”): y</span><br><span class="line"># 允许脚本在系统上运行</span><br><span class="line">PS C:\Program Files\Elastic\Beats\8.13.2\winlogbeat&gt; set-executionpolicy Bypass</span><br><span class="line"></span><br><span class="line">执行策略更改</span><br><span class="line">执行策略可帮助你防止执行不信任的脚本。更改执行策略可能会产生安全风险，如 https:/go.microsoft.com/fwlink/?LinkID=135170</span><br><span class="line">中的 about_Execution_Policies 帮助主题所述。是否要更改执行策略?</span><br><span class="line">[Y] 是(Y)  [A] 全是(A)  [N] 否(N)  [L] 全否(L)  [S] 暂停(S)  [?] 帮助 (默认值为“N”): y</span><br><span class="line"># 创建winlogbeat服务</span><br><span class="line">PS C:\Program Files\Elastic\Beats\8.13.2\winlogbeat&gt; .\install-service-winlogbeat.ps1</span><br><span class="line">[SC] DeleteService 成功</span><br><span class="line"></span><br><span class="line">Status   Name               DisplayName</span><br><span class="line">------   ----               -----------</span><br><span class="line">Stopped  winlogbeat         winlogbeat</span><br><span class="line"></span><br><span class="line"># 启动winlogbeat服务</span><br><span class="line">PS C:\Program Files\Elastic\Beats\8.13.2\winlogbeat&gt; Start-Service winlogbeat</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<img src="/yyg/f547e2a9/1.png" class="" title="img">]]></content>
+      <categories>
+        <category>日志分析</category>
+        <category>ELK</category>
+      </categories>
+      <tags>
+        <tag>日志分析</tag>
+        <tag>ELK</tag>
+        <tag>日志采集器</tag>
+        <tag>Winlogbeat</tag>
       </tags>
   </entry>
   <entry>
@@ -2507,72 +2507,6 @@ Mastodon:  @Podman_io@fosstodon.org
         <tag>跨城搬家</tag>
         <tag>复盘</tag>
         <tag>乔迁新居</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>项目漏洞问题记录</title>
-    <url>/yyg/8a0457d3/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="SSL-2-0-和-3-0-的漏洞修复："><a href="#SSL-2-0-和-3-0-的漏洞修复：" class="headerlink" title="SSL 2.0 和 3.0 的漏洞修复："></a><strong>SSL 2.0 和 3.0 的漏洞修复：</strong></h2><p>SSL (Secure Sockets Layer) 是一种加密协议，曾被广泛用于网络通信中以确保数据的安全传输。SSL 2.0 和 3.0 是早期的版本，但它们已经被认为不再安全，因此被现代协议（如 TLS 1.2 和 TLS 1.3）所取代。</p>
-<p>SSL 2.0 和 3.0 的漏洞：</p>
-<ul>
-<li>SSL 2.0：存在多个安全漏洞，包括较弱的加密算法、缺乏安全性验证等。它已经被广泛弃用。</li>
-<li>SSL 3.0：虽然相较于 SSL 2.0 改进了加密算法，但仍然存在诸如 POODLE 攻击（Padding Oracle On Downgraded Legacy Encryption）等严重的安全问题，因此它也已经不再推荐使用。</li>
-</ul>
-<p>如何检测 SSL 2.0 和 SSL 3.0：</p>
-<ol>
-<li>使用工具扫描：许多安全扫描工具（如 OpenSSL）可以帮助检测网站是否支持 SSL 2.0 和 SSL 3.0。</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl s_client -connect &lt;hostname&gt;:443 -ssl2</span><br><span class="line">openssl s_client -connect &lt;hostname&gt;:443 -ssl3</span><br></pre></td></tr></table></figure>
-<p>如果连接成功，表示该协议被服务器支持。</p>
-<ol>
-<li>服务器配置检查：你可以检查服务器上的 SSL/TLS 配置，确保不再支持 SSL 2.0 或 SSL 3.0。</li>
-</ol>
-<ul>
-<li>对于 Apache，检查 <code>ssl.conf</code> 或 <code>httpd.conf</code> 文件中的 <code>SSLProtocol</code> 配置：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SSLProtocol all -SSLv2 -SSLv3</span><br></pre></td></tr></table></figure>
-<ul>
-<li>对于 Nginx，检查 <code>nginx.conf</code> 文件中的 <code>ssl_protocols</code> 配置：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssl_protocols TLSv1.2 TLSv1.3;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>在浏览器开发者工具中检查：你也可以通过浏览器的开发者工具（如 Chrome 或 Firefox）来查看网络请求的加密协议版本。在开发者工具的“网络”选项卡中，查看 HTTPS 请求的详细信息，协议版本会在响应头部显示。</li>
-<li>自动化扫描工具：可以使用自动化工具（如 Nmap）来扫描服务器支持的 SSL/TLS 协议。例如：</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nmap --script ssl-enum-ciphers -p 443 &lt;hostname&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="“SWEET32”-："><a href="#“SWEET32”-：" class="headerlink" title="“SWEET32” ："></a><strong>“SWEET32” ：</strong></h2><p>“SWEET32” 是一种针对 TLS 和 SSL 协议中的 中等强度加密套件（如 3DES）的攻击方式，主要用于 2-块碰撞攻击（birthday bound attack）。具体来说，它影响的是 使用 64 位块大小的加密算法，比如 3DES 和一些较老的加密套件。</p>
-<h3 id="为什么中等强度加密套件不安全？"><a href="#为什么中等强度加密套件不安全？" class="headerlink" title="为什么中等强度加密套件不安全？"></a>为什么中等强度加密套件不安全？</h3><ul>
-<li>SWEET32 攻击原理： 由于 3DES（和其他基于 64 位块的加密算法）的设计缺陷，攻击者可以在长时间的数据流量中找到加密数据块的碰撞，从而泄露信息。攻击的成功概率随着加密数据量的增加而增加。</li>
-<li>推荐的做法： 由于这种攻击在大数据传输中更容易成功（比如长时间的 HTTPS 会话），现代的最佳实践是禁用所有 64 位块大小的加密算法，如 3DES。</li>
-</ul>
-<p>查看服务器支持的所有加密套件：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl s_client -connect example.com:443 -cipher &#x27;ALL&#x27;</span><br></pre></td></tr></table></figure>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ol>
-<li>禁用中等强度的加密套件（如 3DES）： 服务器应该配置为只支持 强加密套件，例如 AES 加密和 ChaCha20，同时禁用 3DES、RC4 等不安全的套件。</li>
-</ol>
-<p>如果你有访问服务器配置的权限，可以根据使用的 Web 服务器（如 Apache、Nginx 等）进行相应配置。</p>
-<p>例如，在 Apache 中，你可以在 <code>ssl.conf</code> 文件中禁用 3DES 和其他弱套件：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SSLCipherSuite HIGH:!aNULL:!MD5:!3DES</span><br></pre></td></tr></table></figure>
-<p>对于 Nginx，可以使用类似的配置：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssl_ciphers &#x27;TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:!3DES&#x27;;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>启用现代的加密套件： 推荐启用 AES 或 ChaCha20 等现代加密套件。确保启用的套件符合 TLS 1.2 或 TLS 1.3 的标准。</li>
-</ol>
-<p>例如，下面是一个推荐的加密套件配置，它仅启用了强加密算法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SSLProtocol TLSv1.2 TLSv1.3</span><br><span class="line">SSLCipherSuite ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384</span><br></pre></td></tr></table></figure>
-<ol>
-<li>升级到 TLS 1.2 或 TLS 1.3： 确保服务器仅支持 TLS 1.2 或 TLS 1.3，而 SSLv3 和 TLS 1.0/1.1 应该被禁用。现代的加密套件和协议版本可以有效地降低 SWEET32 攻击的风险。</li>
-</ol>
-<p>在服务器的配置文件ssl.conf中，确保禁用了旧的协议版本：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SSLProtocol TLSv1.2 TLSv1.3</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>梳理总结</category>
-        <category>项目问题总结</category>
-      </categories>
-      <tags>
-        <tag>运维</tag>
-        <tag>项目问题总结</tag>
-        <tag>漏洞扫描</tag>
       </tags>
   </entry>
   <entry>
@@ -2831,6 +2765,72 @@ track_script &#123;
         <tag>Kubeadm</tag>
         <tag>k8s集群</tag>
         <tag>高可用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>项目漏洞问题记录</title>
+    <url>/yyg/8a0457d3/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="SSL-2-0-和-3-0-的漏洞修复："><a href="#SSL-2-0-和-3-0-的漏洞修复：" class="headerlink" title="SSL 2.0 和 3.0 的漏洞修复："></a><strong>SSL 2.0 和 3.0 的漏洞修复：</strong></h2><p>SSL (Secure Sockets Layer) 是一种加密协议，曾被广泛用于网络通信中以确保数据的安全传输。SSL 2.0 和 3.0 是早期的版本，但它们已经被认为不再安全，因此被现代协议（如 TLS 1.2 和 TLS 1.3）所取代。</p>
+<p>SSL 2.0 和 3.0 的漏洞：</p>
+<ul>
+<li>SSL 2.0：存在多个安全漏洞，包括较弱的加密算法、缺乏安全性验证等。它已经被广泛弃用。</li>
+<li>SSL 3.0：虽然相较于 SSL 2.0 改进了加密算法，但仍然存在诸如 POODLE 攻击（Padding Oracle On Downgraded Legacy Encryption）等严重的安全问题，因此它也已经不再推荐使用。</li>
+</ul>
+<p>如何检测 SSL 2.0 和 SSL 3.0：</p>
+<ol>
+<li>使用工具扫描：许多安全扫描工具（如 OpenSSL）可以帮助检测网站是否支持 SSL 2.0 和 SSL 3.0。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl s_client -connect &lt;hostname&gt;:443 -ssl2</span><br><span class="line">openssl s_client -connect &lt;hostname&gt;:443 -ssl3</span><br></pre></td></tr></table></figure>
+<p>如果连接成功，表示该协议被服务器支持。</p>
+<ol>
+<li>服务器配置检查：你可以检查服务器上的 SSL/TLS 配置，确保不再支持 SSL 2.0 或 SSL 3.0。</li>
+</ol>
+<ul>
+<li>对于 Apache，检查 <code>ssl.conf</code> 或 <code>httpd.conf</code> 文件中的 <code>SSLProtocol</code> 配置：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SSLProtocol all -SSLv2 -SSLv3</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对于 Nginx，检查 <code>nginx.conf</code> 文件中的 <code>ssl_protocols</code> 配置：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssl_protocols TLSv1.2 TLSv1.3;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>在浏览器开发者工具中检查：你也可以通过浏览器的开发者工具（如 Chrome 或 Firefox）来查看网络请求的加密协议版本。在开发者工具的“网络”选项卡中，查看 HTTPS 请求的详细信息，协议版本会在响应头部显示。</li>
+<li>自动化扫描工具：可以使用自动化工具（如 Nmap）来扫描服务器支持的 SSL/TLS 协议。例如：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nmap --script ssl-enum-ciphers -p 443 &lt;hostname&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="“SWEET32”-："><a href="#“SWEET32”-：" class="headerlink" title="“SWEET32” ："></a><strong>“SWEET32” ：</strong></h2><p>“SWEET32” 是一种针对 TLS 和 SSL 协议中的 中等强度加密套件（如 3DES）的攻击方式，主要用于 2-块碰撞攻击（birthday bound attack）。具体来说，它影响的是 使用 64 位块大小的加密算法，比如 3DES 和一些较老的加密套件。</p>
+<h3 id="为什么中等强度加密套件不安全？"><a href="#为什么中等强度加密套件不安全？" class="headerlink" title="为什么中等强度加密套件不安全？"></a>为什么中等强度加密套件不安全？</h3><ul>
+<li>SWEET32 攻击原理： 由于 3DES（和其他基于 64 位块的加密算法）的设计缺陷，攻击者可以在长时间的数据流量中找到加密数据块的碰撞，从而泄露信息。攻击的成功概率随着加密数据量的增加而增加。</li>
+<li>推荐的做法： 由于这种攻击在大数据传输中更容易成功（比如长时间的 HTTPS 会话），现代的最佳实践是禁用所有 64 位块大小的加密算法，如 3DES。</li>
+</ul>
+<p>查看服务器支持的所有加密套件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl s_client -connect example.com:443 -cipher &#x27;ALL&#x27;</span><br></pre></td></tr></table></figure>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ol>
+<li>禁用中等强度的加密套件（如 3DES）： 服务器应该配置为只支持 强加密套件，例如 AES 加密和 ChaCha20，同时禁用 3DES、RC4 等不安全的套件。</li>
+</ol>
+<p>如果你有访问服务器配置的权限，可以根据使用的 Web 服务器（如 Apache、Nginx 等）进行相应配置。</p>
+<p>例如，在 Apache 中，你可以在 <code>ssl.conf</code> 文件中禁用 3DES 和其他弱套件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SSLCipherSuite HIGH:!aNULL:!MD5:!3DES</span><br></pre></td></tr></table></figure>
+<p>对于 Nginx，可以使用类似的配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssl_ciphers &#x27;TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:!3DES&#x27;;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>启用现代的加密套件： 推荐启用 AES 或 ChaCha20 等现代加密套件。确保启用的套件符合 TLS 1.2 或 TLS 1.3 的标准。</li>
+</ol>
+<p>例如，下面是一个推荐的加密套件配置，它仅启用了强加密算法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SSLProtocol TLSv1.2 TLSv1.3</span><br><span class="line">SSLCipherSuite ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384</span><br></pre></td></tr></table></figure>
+<ol>
+<li>升级到 TLS 1.2 或 TLS 1.3： 确保服务器仅支持 TLS 1.2 或 TLS 1.3，而 SSLv3 和 TLS 1.0/1.1 应该被禁用。现代的加密套件和协议版本可以有效地降低 SWEET32 攻击的风险。</li>
+</ol>
+<p>在服务器的配置文件ssl.conf中，确保禁用了旧的协议版本：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SSLProtocol TLSv1.2 TLSv1.3</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>梳理总结</category>
+        <category>项目问题总结</category>
+      </categories>
+      <tags>
+        <tag>运维</tag>
+        <tag>项目问题总结</tag>
+        <tag>漏洞扫描</tag>
       </tags>
   </entry>
   <entry>
