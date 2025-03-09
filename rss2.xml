@@ -28,9 +28,7 @@
         
           
           
-      <description>&lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h2&gt;&lt;p&gt;　　今天终于彻底完成了从A城到B城的跨城搬家，开始在B城开启生活的新篇章。&lt;/p&gt;
-&lt;h2 id=&quot;搬家全过程&quot;&gt;&lt;a href=&quot;#搬家全过程&quot; class=&quot;headerlink&quot; title=&quot;搬家全过程&quot;&gt;&lt;/a&gt;搬家全过程&lt;/h2&gt;&lt;p&gt;　　年后从老家回到A城之后，开始正式着手考虑搬到B城的事情，此时离房租到期还有半个多月的时间。&lt;/p&gt;
-&lt;h3 id=&quot;找房和看房&quot;&gt;&lt;a href=&quot;#找房和看房&quot;</description>
+      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot;</description>
           
         
       
@@ -63,9 +61,7 @@
         
           
           
-      <description>&lt;h2 id=&quot;登山-嵩山&quot;&gt;&lt;a href=&quot;#登山-嵩山&quot; class=&quot;headerlink&quot; title=&quot;登山-嵩山&quot;&gt;&lt;/a&gt;登山-嵩山&lt;/h2&gt;&lt;p&gt;​    前两天，去了登封爬了嵩山，在登封两天的总体感觉还不错。&lt;/p&gt;
-&lt;h3 id=&quot;人文风情&quot;&gt;&lt;a href=&quot;#人文风情&quot; class=&quot;headerlink&quot; title=&quot;人文风情&quot;&gt;&lt;/a&gt;人文风情&lt;/h3&gt;&lt;p&gt;​    之前做攻略看到登封的炒刀削不错。特地去尝了尝，地址是登封汽车客运总站旁的小店，个人觉得味道不错，分量足，价格适中。&lt;/p&gt;
-&lt;p&gt;​   </description>
+      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;h2 id=&quot;登山-嵩山&quot;&gt;&lt;a href=&quot;#登山-嵩山&quot; class=&quot;headerlink&quot; title=&quot;登山-嵩山&quot;&gt;&lt;/a&gt;登山-嵩山&lt;/h2&gt;&lt;p&gt;​   </description>
           
         
       
@@ -98,14 +94,10 @@
         
           
           
-      <description>&lt;h1 id=&quot;任务目标&quot;&gt;&lt;a href=&quot;#任务目标&quot; class=&quot;headerlink&quot; title=&quot;任务目标&quot;&gt;&lt;/a&gt;任务目标&lt;/h1&gt;&lt;ol&gt;
+      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;h1 id=&quot;任务目标&quot;&gt;&lt;a href=&quot;#任务目标&quot; class=&quot;headerlink&quot; title=&quot;任务目标&quot;&gt;&lt;/a&gt;任务目标&lt;/h1&gt;&lt;ol&gt;
 &lt;li&gt;完成高可用k8s集群安装部署&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h1 id=&quot;任务平台&quot;&gt;&lt;a href=&quot;#任务平台&quot; class=&quot;headerlink&quot; title=&quot;任务平台&quot;&gt;&lt;/a&gt;任务平台&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;物理设备—&lt;/li&gt;
-&lt;li&gt;操作系统：openEuler 22.03 LTS SP2&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&quot;部署指南&quot;&gt;&lt;a href=&quot;#部署指南&quot; class=&quot;headerlink&quot;</description>
+&lt;h1</description>
           
         
       
@@ -148,8 +140,7 @@
         
           
           
-      <description>&lt;h2 id=&quot;SSL-2-0-和-3-0-的漏洞修复：&quot;&gt;&lt;a href=&quot;#SSL-2-0-和-3-0-的漏洞修复：&quot; class=&quot;headerlink&quot; title=&quot;SSL 2.0 和 3.0 的漏洞修复：&quot;&gt;&lt;/a&gt;&lt;strong&gt;SSL 2.0 和 3.0 的漏洞修复：&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;SSL (Secure Sockets Layer) 是一种加密协议，曾被广泛用于网络通信中以确保数据的安全传输。SSL 2.0 和 3.0 是早期的版本，但它们已经被认为不再安全，因此被现代协议（如 TLS 1.2 和 TLS 1.3）所取代。&lt;/p&gt;
-&lt;p&gt;SSL 2.0 和</description>
+      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;h2 id=&quot;SSL-2-0-和-3-0-的漏洞修复：&quot;&gt;&lt;a href=&quot;#SSL-2-0-和-3-0-的漏洞修复：&quot; class=&quot;headerlink&quot; title=&quot;SSL 2.0 和 3.0</description>
           
         
       
@@ -205,14 +196,10 @@
         
           
           
-      <description>&lt;h2 id=&quot;任务目标&quot;&gt;&lt;a href=&quot;#任务目标&quot; class=&quot;headerlink&quot; title=&quot;任务目标&quot;&gt;&lt;/a&gt;任务目标&lt;/h2&gt;&lt;ol&gt;
+      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;h2 id=&quot;任务目标&quot;&gt;&lt;a href=&quot;#任务目标&quot; class=&quot;headerlink&quot; title=&quot;任务目标&quot;&gt;&lt;/a&gt;任务目标&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;完成高可用k8s集群安装部署&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&quot;任务平台&quot;&gt;&lt;a href=&quot;#任务平台&quot; class=&quot;headerlink&quot; title=&quot;任务平台&quot;&gt;&lt;/a&gt;任务平台&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;物理设备—&lt;/li&gt;
-&lt;li&gt;操作系统：openEuler 22.03 LTS SP2&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;部署指南&quot;&gt;&lt;a href=&quot;#部署指南&quot; class=&quot;headerlink&quot;</description>
+&lt;h2</description>
           
         
       
@@ -249,9 +236,8 @@
         
           
           
-      <description>&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h3 id=&quot;方案一：docker-swarm集群&quot;&gt;&lt;a href=&quot;#方案一：docker-swarm集群&quot; class=&quot;headerlink&quot; title=&quot;方案一：docker swarm集群&quot;&gt;&lt;/a&gt;方案一：docker swarm集群&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/AMCUL/article/details/132913280&quot;&gt;https://blog.csdn.net/AMCUL/article/details/132913280&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;方案二：直接路由法&quot;&gt;&lt;a</description>
+      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h3 id=&quot;方案一：docker-swarm集群&quot;&gt;&lt;a href=&quot;#方案一：docker-swarm集群&quot; class=&quot;headerlink&quot; title=&quot;方案一：docker</description>
           
         
       
@@ -284,11 +270,7 @@
         
           
           
-      <description>&lt;h2 id=&quot;任务目标&quot;&gt;&lt;a href=&quot;#任务目标&quot; class=&quot;headerlink&quot; title=&quot;任务目标&quot;&gt;&lt;/a&gt;任务目标&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;完成Nextcloud私有云盘的搭建&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;部署指南&quot;&gt;&lt;a href=&quot;#部署指南&quot; class=&quot;headerlink&quot; title=&quot;部署指南&quot;&gt;&lt;/a&gt;部署指南&lt;/h2&gt;&lt;h3 id=&quot;基础环境准备&quot;&gt;&lt;a href=&quot;#基础环境准备&quot; class=&quot;headerlink&quot; title=&quot;基础环境准备&quot;&gt;&lt;/a&gt;基础环境准备&lt;/h3&gt;&lt;p&gt;配置防火墙策略&lt;/p&gt;
-&lt;figure</description>
+      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;h2 id=&quot;任务目标&quot;&gt;&lt;a href=&quot;#任务目标&quot; class=&quot;headerlink&quot;</description>
           
         
       
@@ -310,46 +292,6 @@
     </item>
     
     <item>
-      <title>使用portainer管理容器</title>
-      <link>https://marsperl.github.io/yyg/c60df0d6/</link>
-      <guid>https://marsperl.github.io/yyg/c60df0d6/</guid>
-      <pubDate>Tue, 31 Dec 2024 13:26:18 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;基础环境&quot;&gt;&lt;a href=&quot;#基础环境&quot; class=&quot;headerlink&quot; title=&quot;基础环境&quot;&gt;&lt;/a&gt;基础环境&lt;/h2&gt;&lt;p&gt;系统环境：&lt;/p&gt;
-&lt;p&gt;操作系统：CentOS 7.9&lt;/p&gt;
-&lt;p&gt;软件环境：&lt;/p&gt;
-&lt;p&gt;Docker-26.1.4、Docker Compose-2.27.1 、portainer-2.20.3&lt;/p&gt;
-&lt;p&gt;配置阿里yum源 :&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://MarsperL.github.io/categories/Linux%E8%BF%90%E7%BB%B4/">Linux运维</category>
-      
-      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
-      
-      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</category>
-      
-      <category domain="https://MarsperL.github.io/categories/Linux%E8%BF%90%E7%BB%B4/%E5%AE%B9%E5%99%A8%E7%AE%A1%E7%90%86/">容器管理</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/docker/">docker</category>
-      
-      <category domain="https://MarsperL.github.io/tags/portainer/">portainer</category>
-      
-      
-      <comments>https://marsperl.github.io/yyg/c60df0d6/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
       <title>在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）</title>
       <link>https://marsperl.github.io/yyg/5ea27f40/</link>
       <guid>https://marsperl.github.io/yyg/5ea27f40/</guid>
@@ -359,7 +301,7 @@
         
           
           
-      <description>&lt;h1 id=&quot;在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）&quot;&gt;&lt;a href=&quot;#在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）&quot; class=&quot;headerlink&quot; title=&quot;在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）&quot;&gt;&lt;/a&gt;在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</description>
+      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;h1 id=&quot;在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）&quot;&gt;&lt;a href=&quot;#在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）&quot; class=&quot;headerlink&quot;</description>
           
         
       
@@ -394,11 +336,8 @@
         
           
           
-      <description>&lt;ol&gt;
-&lt;li&gt;Winlogbeat安装程序可通过其官网（&lt;a href=&quot;https://www.elastic.co/cn/beats/winlogbeat）下载。&quot;&gt;https://www.elastic.co/cn/beats/winlogbeat）下载。&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;双击启动安装程序，进入安装向导后勾选“I accept the terms in the License Agreement”，单击【Install】，如图所示。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;img src=&quot;/yyg/f547e2a9/4.png&quot; class=&quot;&quot;</description>
+      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;ol&gt;
+&lt;li&gt;Winlogbeat安装程序可通过其官网（&lt;a</description>
           
         
       
@@ -424,6 +363,42 @@
     </item>
     
     <item>
+      <title>使用portainer管理容器</title>
+      <link>https://marsperl.github.io/yyg/c60df0d6/</link>
+      <guid>https://marsperl.github.io/yyg/c60df0d6/</guid>
+      <pubDate>Tue, 31 Dec 2024 13:26:18 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;h2 id=&quot;基础环境&quot;&gt;&lt;a href=&quot;#基础环境&quot; class=&quot;headerlink&quot; title=&quot;基础环境&quot;&gt;&lt;/a&gt;基础环境&lt;/h2&gt;&lt;p&gt;系统环境：&lt;/p&gt;
+&lt;p&gt;操作系统：CentOS</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/Linux%E8%BF%90%E7%BB%B4/">Linux运维</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</category>
+      
+      <category domain="https://MarsperL.github.io/categories/Linux%E8%BF%90%E7%BB%B4/%E5%AE%B9%E5%99%A8%E7%AE%A1%E7%90%86/">容器管理</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/docker/">docker</category>
+      
+      <category domain="https://MarsperL.github.io/tags/portainer/">portainer</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/c60df0d6/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
       <title>ELK | 使用 docker部署三节点 Elasticsearch 集群</title>
       <link>https://marsperl.github.io/yyg/56088d5a/</link>
       <guid>https://marsperl.github.io/yyg/56088d5a/</guid>
@@ -433,19 +408,9 @@
         
           
           
-      <description>&lt;h2 id=&quot;环境准备&quot;&gt;&lt;a href=&quot;#环境准备&quot; class=&quot;headerlink&quot; title=&quot;环境准备&quot;&gt;&lt;/a&gt;环境准备&lt;/h2&gt;&lt;ol&gt;
+      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;h2 id=&quot;环境准备&quot;&gt;&lt;a href=&quot;#环境准备&quot; class=&quot;headerlink&quot; title=&quot;环境准备&quot;&gt;&lt;/a&gt;环境准备&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;硬件环境&lt;/p&gt;
-&lt;p&gt;操作系统：Centos Stream 9&lt;/p&gt;
-&lt;p&gt;CPU：4颗&lt;/p&gt;
-&lt;p&gt;内存：8GB&lt;/p&gt;
-&lt;p&gt;硬盘：50GB&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;软件环境&lt;/p&gt;
-&lt;p&gt;docker版本：26.1.0&lt;/p&gt;
-&lt;p&gt;docker compose版本：v2.26.1&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;部署过程&quot;&gt;&lt;a href=&quot;#部署过程&quot;</description>
+&lt;p&gt;操作系统：Centos</description>
           
         
       
@@ -484,14 +449,7 @@
         
           
           
-      <description>&lt;h2 id=&quot;任务目标&quot;&gt;&lt;a href=&quot;#任务目标&quot; class=&quot;headerlink&quot; title=&quot;任务目标&quot;&gt;&lt;/a&gt;任务目标&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;完成使用cephadm方式部署ceph集群&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;任务平台&quot;&gt;&lt;a href=&quot;#任务平台&quot; class=&quot;headerlink&quot; title=&quot;任务平台&quot;&gt;&lt;/a&gt;任务平台&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;物理设备—&lt;/li&gt;
-&lt;li&gt;操作系统：openEuler 22.03 LTS SP2&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;部署指南&quot;&gt;&lt;a href=&quot;#部署指南&quot;</description>
+      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;h2 id=&quot;任务目标&quot;&gt;&lt;a href=&quot;#任务目标&quot; class=&quot;headerlink&quot;</description>
           
         
       
@@ -526,12 +484,7 @@
         
           
           
-      <description>&lt;h2 id=&quot;基础环境&quot;&gt;&lt;a href=&quot;#基础环境&quot; class=&quot;headerlink&quot; title=&quot;基础环境&quot;&gt;&lt;/a&gt;基础环境&lt;/h2&gt;&lt;p&gt;系统：Windows 10&lt;/p&gt;
-&lt;p&gt;硬件：双网卡（本篇中使用的是两个无线网卡）&lt;/p&gt;
-&lt;p&gt;所需软件：QEMU、tap-windows&lt;/p&gt;
-&lt;p&gt;所需软件固件：QEMU_EFI.fd&lt;/p&gt;
-&lt;p&gt;ARM镜像：openEuler-22.03-LTS-SP4-aarch64-dvd.iso&lt;/p&gt;
-&lt;h2 id=&quot;环境准备&quot;&gt;&lt;a href=&quot;#环境准备&quot; class=&quot;headerlink&quot;</description>
+      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;h2 id=&quot;基础环境&quot;&gt;&lt;a href=&quot;#基础环境&quot; class=&quot;headerlink&quot; title=&quot;基础环境&quot;&gt;&lt;/a&gt;基础环境&lt;/h2&gt;&lt;p&gt;系统：Windows</description>
           
         
       
@@ -568,10 +521,7 @@
         
           
           
-      <description>&lt;h2 id=&quot;基础环境&quot;&gt;&lt;a href=&quot;#基础环境&quot; class=&quot;headerlink&quot; title=&quot;基础环境&quot;&gt;&lt;/a&gt;基础环境&lt;/h2&gt;&lt;p&gt;操作系统：openEuler 22.03 (LTS-SP2)&lt;/p&gt;
-&lt;p&gt;软件：Docker-26.1.2 、Docker Compose-v2.27.0&lt;/p&gt;
-&lt;h2 id=&quot;安装Docker&quot;&gt;&lt;a href=&quot;#安装Docker&quot; class=&quot;headerlink&quot; title=&quot;安装Docker&quot;&gt;&lt;/a&gt;安装Docker&lt;/h2&gt;&lt;p&gt;（1）配置yum源下载docker。&lt;/p&gt;
-&lt;figure</description>
+      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;h2 id=&quot;基础环境&quot;&gt;&lt;a href=&quot;#基础环境&quot; class=&quot;headerlink&quot; title=&quot;基础环境&quot;&gt;&lt;/a&gt;基础环境&lt;/h2&gt;&lt;p&gt;操作系统：openEuler 22.03</description>
           
         
       
@@ -587,9 +537,9 @@
       <category domain="https://MarsperL.github.io/categories/Linux%E8%BF%90%E7%BB%B4/%E5%AE%B9%E5%99%A8%E7%AE%A1%E7%90%86/">容器管理</category>
       
       
-      <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
-      
       <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
       
       <category domain="https://MarsperL.github.io/tags/x86-ARM/">x86-ARM</category>
       
@@ -612,13 +562,7 @@
         
           
           
-      <description>&lt;div title=&quot;CodeNews&quot; referrerPolicy=&quot;no-referrer&quot; class=&quot;card_box&quot; style=&quot;background-color: #333; width:96px; height:80px;&quot;&gt;
-    &lt;div class=&quot;card_mask&quot;&gt;
-      &lt;span class=&quot;tooltiptext&quot;&gt;免费免登录&lt;/span&gt;
-      &lt;a href=&quot;https://codenews.cc/chatgpt&quot;&gt;查看详情&lt;/a&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;card_top&quot;&gt;
-      &lt;i</description>
+      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;div title=&quot;CodeNews&quot; referrerPolicy=&quot;no-referrer&quot; class=&quot;card_box&quot; style=&quot;background-color: #333; width:96px;</description>
           
         
       
@@ -649,9 +593,7 @@
         
           
           
-      <description>&lt;h2 id=&quot;基础环境&quot;&gt;&lt;a href=&quot;#基础环境&quot; class=&quot;headerlink&quot; title=&quot;基础环境&quot;&gt;&lt;/a&gt;基础环境&lt;/h2&gt;&lt;p&gt;系统：openEuler 22.03 (LTS-SP4) X86&lt;/p&gt;
-&lt;p&gt;软件：docker-26.1.3、 docker compose-2.27.0&lt;/p&gt;
-&lt;h2 id=&quot;关于Watchtower&quot;&gt;&lt;a href=&quot;#关于Watchtower&quot; class=&quot;headerlink&quot; title=&quot;关于Watchtower&quot;&gt;&lt;/a&gt;关于Watchtower&lt;/h2&gt;&lt;p&gt;Watchtower 是一个应用程序，监控正在运行的</description>
+      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;h2 id=&quot;基础环境&quot;&gt;&lt;a href=&quot;#基础环境&quot; class=&quot;headerlink&quot; title=&quot;基础环境&quot;&gt;&lt;/a&gt;基础环境&lt;/h2&gt;&lt;p&gt;系统：openEuler 22.03 (LTS-SP4)</description>
           
         
       
@@ -665,9 +607,9 @@
       
       <category domain="https://MarsperL.github.io/tags/docker/">docker</category>
       
-      <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
-      
       <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
       
       <category domain="https://MarsperL.github.io/tags/Watchtower/">Watchtower</category>
       
@@ -688,9 +630,7 @@
         
           
           
-      <description>&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;details class=&quot;folding-tag&quot; cyan&gt;&lt;summary&gt; 🔜Slim🔚 &lt;/summary&gt;
-              &lt;div class=&#39;content&#39;&gt;
-              &lt;p&gt;&lt;a href=&quot;https://github.com/slimtoolkit/slim&quot;&gt;GitHub - slimtoolkit/slim： Slim（toolkit）：不要更改容器镜像中的任何内容，并将其缩小多达 30</description>
+      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;details class=&quot;folding-tag&quot; cyan&gt;&lt;summary&gt;</description>
           
         
       
@@ -704,9 +644,9 @@
       
       <category domain="https://MarsperL.github.io/tags/docker/">docker</category>
       
-      <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
-      
       <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
       
       <category domain="https://MarsperL.github.io/tags/Slim/">Slim</category>
       
@@ -727,9 +667,7 @@
         
           
           
-      <description>&lt;h2 id=&quot;基础环境&quot;&gt;&lt;a href=&quot;#基础环境&quot; class=&quot;headerlink&quot; title=&quot;基础环境&quot;&gt;&lt;/a&gt;基础环境&lt;/h2&gt;&lt;p&gt;系统：openEuler 22.03 (LTS-SP4) X86&lt;/p&gt;
-&lt;p&gt;软件：podman-5.1.2、podman-compose-1.2.0&lt;/p&gt;
-&lt;h2 id=&quot;配置yum源&quot;&gt;&lt;a href=&quot;#配置yum源&quot; class=&quot;headerlink&quot; title=&quot;配置yum源&quot;&gt;&lt;/a&gt;配置yum源&lt;/h2&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</description>
+      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;h2 id=&quot;基础环境&quot;&gt;&lt;a href=&quot;#基础环境&quot; class=&quot;headerlink&quot; title=&quot;基础环境&quot;&gt;&lt;/a&gt;基础环境&lt;/h2&gt;&lt;p&gt;系统：openEuler 22.03 (LTS-SP4)</description>
           
         
       
@@ -741,9 +679,9 @@
       <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/podman/">podman</category>
       
       
-      <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
-      
       <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
       
       <category domain="https://MarsperL.github.io/tags/podman/">podman</category>
       
@@ -762,9 +700,7 @@
         
           
           
-      <description>&lt;h2 id=&quot;基础环境&quot;&gt;&lt;a href=&quot;#基础环境&quot; class=&quot;headerlink&quot; title=&quot;基础环境&quot;&gt;&lt;/a&gt;基础环境&lt;/h2&gt;&lt;p&gt;系统环境：CentOS Stream 9&lt;/p&gt;
-&lt;p&gt;软件环境：nginx-1.20.1、mysql-8.0.36（mariaDB）、php-8.0.30&lt;/p&gt;
-&lt;h2 id=&quot;部署过程&quot;&gt;&lt;a href=&quot;#部署过程&quot; class=&quot;headerlink&quot; title=&quot;部署过程&quot;&gt;&lt;/a&gt;部署过程&lt;/h2&gt;&lt;h3 id=&quot;方案一：yum安装&quot;&gt;&lt;a href=&quot;#方案一：yum安装&quot; class=&quot;headerlink&quot;</description>
+      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;h2 id=&quot;基础环境&quot;&gt;&lt;a href=&quot;#基础环境&quot; class=&quot;headerlink&quot; title=&quot;基础环境&quot;&gt;&lt;/a&gt;基础环境&lt;/h2&gt;&lt;p&gt;系统环境：CentOS Stream</description>
           
         
       
