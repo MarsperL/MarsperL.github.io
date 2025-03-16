@@ -197,29 +197,6 @@
     </item>
     
     <item>
-      <title>项目问题总结</title>
-      <link>https://marsperl.github.io/yyg/2855a772/</link>
-      <guid>https://marsperl.github.io/yyg/2855a772/</guid>
-      <pubDate>Tue, 31 Dec 2024 13:26:18 GMT</pubDate>
-      
-      <description>有东西被加密了, 请输入密码查看.</description>
-      
-      
-      
-      
-      <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E6%80%BB%E7%BB%93/">总结</category>
-      
-      
-      <comments>https://marsperl.github.io/yyg/2855a772/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
       <title>高可用k8s集群部署指南</title>
       <link>https://marsperl.github.io/yyg/612a796b/</link>
       <guid>https://marsperl.github.io/yyg/612a796b/</guid>
@@ -260,33 +237,25 @@
     </item>
     
     <item>
-      <title>实现Nextcloud私有云盘</title>
-      <link>https://marsperl.github.io/yyg/f7b8055d/</link>
-      <guid>https://marsperl.github.io/yyg/f7b8055d/</guid>
+      <title>项目问题总结</title>
+      <link>https://marsperl.github.io/yyg/2855a772/</link>
+      <guid>https://marsperl.github.io/yyg/2855a772/</guid>
       <pubDate>Tue, 31 Dec 2024 13:26:18 GMT</pubDate>
       
-        
-        
-          
-          
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;h2 id=&quot;任务目标&quot;&gt;&lt;a href=&quot;#任务目标&quot; class=&quot;headerlink&quot;</description>
-          
-        
+      <description>有东西被加密了, 请输入密码查看.</description>
       
       
       
       
-      <category domain="https://MarsperL.github.io/categories/Linux%E8%BF%90%E7%BB%B4/">Linux运维</category>
+      <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
       
       
-      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
+      <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
       
-      <category domain="https://MarsperL.github.io/tags/Nextcloud/">Nextcloud</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E7%A7%81%E6%9C%89%E4%BA%91%E7%9B%98/">私有云盘</category>
+      <category domain="https://MarsperL.github.io/tags/%E6%80%BB%E7%BB%93/">总结</category>
       
       
-      <comments>https://marsperl.github.io/yyg/f7b8055d/#disqus_thread</comments>
+      <comments>https://marsperl.github.io/yyg/2855a772/#disqus_thread</comments>
       
     </item>
     
@@ -325,37 +294,33 @@
     </item>
     
     <item>
-      <title>在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）</title>
-      <link>https://marsperl.github.io/yyg/5ea27f40/</link>
-      <guid>https://marsperl.github.io/yyg/5ea27f40/</guid>
+      <title>实现Nextcloud私有云盘</title>
+      <link>https://marsperl.github.io/yyg/f7b8055d/</link>
+      <guid>https://marsperl.github.io/yyg/f7b8055d/</guid>
       <pubDate>Tue, 31 Dec 2024 13:26:18 GMT</pubDate>
       
         
         
           
           
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;h1 id=&quot;在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）&quot;&gt;&lt;a href=&quot;#在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）&quot; class=&quot;headerlink&quot;</description>
+      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;h2 id=&quot;任务目标&quot;&gt;&lt;a href=&quot;#任务目标&quot; class=&quot;headerlink&quot;</description>
           
         
       
       
       
       
-      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
-      
-      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/rss%E9%98%85%E8%AF%BB%E5%99%A8/">rss阅读器</category>
+      <category domain="https://MarsperL.github.io/categories/Linux%E8%BF%90%E7%BB%B4/">Linux运维</category>
       
       
-      <category domain="https://MarsperL.github.io/tags/%E5%8D%9A%E5%AE%A2/">博客</category>
+      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
       
-      <category domain="https://MarsperL.github.io/tags/%E9%AD%94%E6%94%B9/">魔改</category>
+      <category domain="https://MarsperL.github.io/tags/Nextcloud/">Nextcloud</category>
       
-      <category domain="https://MarsperL.github.io/tags/%E5%9C%A8%E7%BA%BFrss%E9%98%85%E8%AF%BB%E5%99%A8/">在线rss阅读器</category>
-      
-      <category domain="https://MarsperL.github.io/tags/GitHub-Pages/">GitHub Pages</category>
+      <category domain="https://MarsperL.github.io/tags/%E7%A7%81%E6%9C%89%E4%BA%91%E7%9B%98/">私有云盘</category>
       
       
-      <comments>https://marsperl.github.io/yyg/5ea27f40/#disqus_thread</comments>
+      <comments>https://marsperl.github.io/yyg/f7b8055d/#disqus_thread</comments>
       
     </item>
     
@@ -432,37 +397,37 @@
     </item>
     
     <item>
-      <title>使用cephadm方式部署ceph集群</title>
-      <link>https://marsperl.github.io/yyg/89bdf9b5/</link>
-      <guid>https://marsperl.github.io/yyg/89bdf9b5/</guid>
+      <title>在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）</title>
+      <link>https://marsperl.github.io/yyg/5ea27f40/</link>
+      <guid>https://marsperl.github.io/yyg/5ea27f40/</guid>
       <pubDate>Tue, 31 Dec 2024 13:26:18 GMT</pubDate>
       
         
         
           
           
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;h2 id=&quot;任务目标&quot;&gt;&lt;a href=&quot;#任务目标&quot; class=&quot;headerlink&quot;</description>
+      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;h1 id=&quot;在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）&quot;&gt;&lt;a href=&quot;#在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）&quot; class=&quot;headerlink&quot;</description>
           
         
       
       
       
       
-      <category domain="https://MarsperL.github.io/categories/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/">存储系统</category>
+      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/ceph/">ceph</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/ceph/">ceph</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E5%85%B1%E4%BA%AB%E5%AD%98%E5%82%A8/">共享存储</category>
-      
-      <category domain="https://MarsperL.github.io/tags/ceph%E9%9B%86%E7%BE%A4/">ceph集群</category>
-      
-      <category domain="https://MarsperL.github.io/tags/cephadm/">cephadm</category>
+      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/rss%E9%98%85%E8%AF%BB%E5%99%A8/">rss阅读器</category>
       
       
-      <comments>https://marsperl.github.io/yyg/89bdf9b5/#disqus_thread</comments>
+      <category domain="https://MarsperL.github.io/tags/%E5%8D%9A%E5%AE%A2/">博客</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E9%AD%94%E6%94%B9/">魔改</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E5%9C%A8%E7%BA%BFrss%E9%98%85%E8%AF%BB%E5%99%A8/">在线rss阅读器</category>
+      
+      <category domain="https://MarsperL.github.io/tags/GitHub-Pages/">GitHub Pages</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/5ea27f40/#disqus_thread</comments>
       
     </item>
     
@@ -504,6 +469,41 @@
       
       
       <comments>https://marsperl.github.io/yyg/56088d5a/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>使用cephadm方式部署ceph集群</title>
+      <link>https://marsperl.github.io/yyg/89bdf9b5/</link>
+      <guid>https://marsperl.github.io/yyg/89bdf9b5/</guid>
+      <pubDate>Tue, 31 Dec 2024 13:26:18 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;h2 id=&quot;任务目标&quot;&gt;&lt;a href=&quot;#任务目标&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/">存储系统</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F/ceph/">ceph</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/ceph/">ceph</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E5%85%B1%E4%BA%AB%E5%AD%98%E5%82%A8/">共享存储</category>
+      
+      <category domain="https://MarsperL.github.io/tags/ceph%E9%9B%86%E7%BE%A4/">ceph集群</category>
+      
+      <category domain="https://MarsperL.github.io/tags/cephadm/">cephadm</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/89bdf9b5/#disqus_thread</comments>
       
     </item>
     
