@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>专注时钟</title>
+<link rel="icon" type="image/x-ico" href="time/img/iconmonstr-time.png"/>
+  <link rel="stylesheet" href="time4/clock.css">
+  <link rel="stylesheet" href="time/yiyan.css">
+   <link rel="stylesheet" href="time/youjian.css">
+</head>
+<style>
+#clock{
+  color: #FFFFFF;
+  font-size: 150px;
+  font-family: 'Helvetica';
+  text-shadow: 0 0 20px rgb(0, 0, 0), 0 2px 0 rgb(0, 0, 0);
+  position: absolute;
+    top: 35%;
+    left:30%;
+}
+</style>
+<body>
+<!-- 右键菜单 -->
+	<ul id="rightMenu" style="width: 100px;">
+		<li id="open">开启常亮</li>
+		<li id="close">关闭常亮</li>
+		<li onclick="javascript :history.go(-1);">返回上页</li>
+		<li>#3</li>
+	</ul>
+	<div class="view-fullscreen">
+<div id="clock" class="cancel-fullscreen">
+</div>
+</div>
+	
+
+
+  <!-- 一言 -->
+<div class="poem-wrap yiyan" onclick="location.href='time.4.html'">
+   <p id="hitokoto_text">loading...</p>
+</div>
+<script src="time/NoSleep.min.js"></script>
+	<script src="time/NoSleepWindow.js"></script>
+	<script src="time/youjian.js"></script>
+  <script src="time4/clock.js"></script>
+  <script src="time/quanping.js"></script>
+  <script src="time/yiyan.js"></script>
+</body>
+</html>
