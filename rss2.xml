@@ -524,9 +524,9 @@
       <category domain="https://MarsperL.github.io/categories/Linux%E8%BF%90%E7%BB%B4/%E5%AE%B9%E5%99%A8%E7%AE%A1%E7%90%86/">容器管理</category>
       
       
-      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
-      
       <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
+      
+      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
       
       <category domain="https://MarsperL.github.io/tags/x86-ARM/">x86-ARM</category>
       
@@ -563,9 +563,9 @@
       
       <category domain="https://MarsperL.github.io/tags/docker/">docker</category>
       
-      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
-      
       <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
+      
+      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
       
       <category domain="https://MarsperL.github.io/tags/Watchtower/">Watchtower</category>
       
@@ -600,9 +600,9 @@
       
       <category domain="https://MarsperL.github.io/tags/docker/">docker</category>
       
-      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
-      
       <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
+      
+      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
       
       <category domain="https://MarsperL.github.io/tags/Slim/">Slim</category>
       
@@ -635,9 +635,9 @@
       <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/podman/">podman</category>
       
       
-      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
-      
       <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
+      
+      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
       
       <category domain="https://MarsperL.github.io/tags/podman/">podman</category>
       
@@ -670,11 +670,11 @@
       
       <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
       
-      <category domain="https://MarsperL.github.io/tags/Nginx/">Nginx</category>
-      
       <category domain="https://MarsperL.github.io/tags/Mysql/">Mysql</category>
       
       <category domain="https://MarsperL.github.io/tags/PHP/">PHP</category>
+      
+      <category domain="https://MarsperL.github.io/tags/Nginx/">Nginx</category>
       
       
       <comments>https://marsperl.github.io/yyg/776a1cd4/#disqus_thread</comments>
