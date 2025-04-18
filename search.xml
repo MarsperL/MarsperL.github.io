@@ -1439,35 +1439,6 @@
     
     
     <entry>
-      <title>docker安装mysql</title>
-      <link href="/yyg/25ae9841/"/>
-      <url>/yyg/25ae9841/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote><p><code>docker pull mysql</code> #拉取mysql镜像(最新版)</p></blockquote><p>若安装特定版本如6.0，则命令如下：</p><p><code>docker pull mysql:6.0</code></p><p>运行mysql，并分配3306端口，该命令如下：(<strong>注：下面的是一条命令</strong>)</p><p>此命令中的<code>jiamian</code>为小编的liunx系统的用户名，用时需替换为自己的用户名</p><p><code>MYSQL_ROOT_PASSWORD</code>后填的是mysql的密码，可自行替换</p><p><code>--name</code>后填的mysql-1是运行的mysql容器的名称，也可自行替换</p><blockquote><p>docker run -d -p 3306:3306 —privileged=true -v /jiamian/mysql/log:/var/log/mysql</p><p>-v /jiamian/mysql/data:/var/lib/mysql -v /jiamian/mysql/conf:/etc/mysql/conf.d </p><p>-e MYSQL_ROOT_PASSWORD=123456 —name mysql-1 mysql</p></blockquote><p>此命令也可解决在删除mysql容器后，而出现的数据库数据丢失的问题。若要找回数据，则只需重新运行命令即可。</p><img src="/yyg/25ae9841/image-20230410201124021.png" class="" title="image-20230410201124021"><p>运行<code>docker ps</code>命令，可查看到mysql正在运行</p><img src="/yyg/25ae9841/image-20230410201052873.png" class="" title="image-20230410201052873"><h2 id="解决mysql插入中文乱码的情况"><a href="#解决mysql插入中文乱码的情况" class="headerlink" title="解决mysql插入中文乱码的情况"></a>解决mysql插入中文乱码的情况</h2><p>然后输入命令<code>cd /jiamian/mysql/conf</code>。进入该目录后，输入命令<code>vim my.cnf</code>，新建my.cnf文件，</p><p>并输入以下代码</p><blockquote><p>[client]<br>default_character_set=utf8<br>[mysqld]<br>collation_server = utf8_general_ci<br>character_set_server = utf8</p></blockquote><p>保存退出后，输入 <code>docker restart mysql-1</code>，重启mysql。</p><p>再输入<code>docker exec -it mysql-1 /bin/bash</code>进入mysql环境，此时汉字可正常显示</p><img src="/yyg/25ae9841/image-20230410202120798.png" class="" title="image-20230410202120798">]]></content>
-      
-      
-      <categories>
-          
-          <category> 容器化 </category>
-          
-          <category> docker </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> docker </tag>
-            
-            <tag> mysql </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>docker基础知识</title>
       <link href="/yyg/7b36b89c/"/>
       <url>/yyg/7b36b89c/</url>
@@ -1491,6 +1462,35 @@
             <tag> docker </tag>
             
             <tag> docker基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>docker安装mysql</title>
+      <link href="/yyg/25ae9841/"/>
+      <url>/yyg/25ae9841/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote><p><code>docker pull mysql</code> #拉取mysql镜像(最新版)</p></blockquote><p>若安装特定版本如6.0，则命令如下：</p><p><code>docker pull mysql:6.0</code></p><p>运行mysql，并分配3306端口，该命令如下：(<strong>注：下面的是一条命令</strong>)</p><p>此命令中的<code>jiamian</code>为小编的liunx系统的用户名，用时需替换为自己的用户名</p><p><code>MYSQL_ROOT_PASSWORD</code>后填的是mysql的密码，可自行替换</p><p><code>--name</code>后填的mysql-1是运行的mysql容器的名称，也可自行替换</p><blockquote><p>docker run -d -p 3306:3306 —privileged=true -v /jiamian/mysql/log:/var/log/mysql</p><p>-v /jiamian/mysql/data:/var/lib/mysql -v /jiamian/mysql/conf:/etc/mysql/conf.d </p><p>-e MYSQL_ROOT_PASSWORD=123456 —name mysql-1 mysql</p></blockquote><p>此命令也可解决在删除mysql容器后，而出现的数据库数据丢失的问题。若要找回数据，则只需重新运行命令即可。</p><img src="/yyg/25ae9841/image-20230410201124021.png" class="" title="image-20230410201124021"><p>运行<code>docker ps</code>命令，可查看到mysql正在运行</p><img src="/yyg/25ae9841/image-20230410201052873.png" class="" title="image-20230410201052873"><h2 id="解决mysql插入中文乱码的情况"><a href="#解决mysql插入中文乱码的情况" class="headerlink" title="解决mysql插入中文乱码的情况"></a>解决mysql插入中文乱码的情况</h2><p>然后输入命令<code>cd /jiamian/mysql/conf</code>。进入该目录后，输入命令<code>vim my.cnf</code>，新建my.cnf文件，</p><p>并输入以下代码</p><blockquote><p>[client]<br>default_character_set=utf8<br>[mysqld]<br>collation_server = utf8_general_ci<br>character_set_server = utf8</p></blockquote><p>保存退出后，输入 <code>docker restart mysql-1</code>，重启mysql。</p><p>再输入<code>docker exec -it mysql-1 /bin/bash</code>进入mysql环境，此时汉字可正常显示</p><img src="/yyg/25ae9841/image-20230410202120798.png" class="" title="image-20230410202120798">]]></content>
+      
+      
+      <categories>
+          
+          <category> 容器化 </category>
+          
+          <category> docker </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+            <tag> mysql </tag>
             
         </tags>
       
