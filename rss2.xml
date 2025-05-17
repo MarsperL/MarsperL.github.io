@@ -106,13 +106,13 @@
       
       
       
-      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
-      
       <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/k8s/">k8s</category>
+      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
       
       <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/k8s/">k8s</category>
       
       
       <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
@@ -546,6 +546,43 @@
     </item>
     
     <item>
+      <title>Slim缩小容器镜像大小</title>
+      <link>https://marsperl.github.io/yyg/fd02fe22/</link>
+      <guid>https://marsperl.github.io/yyg/fd02fe22/</guid>
+      <pubDate>Thu, 05 Sep 2024 15:14:53 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;details class=&quot;folding-tag&quot; cyan&gt;&lt;summary&gt;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
+      
+      <category domain="https://MarsperL.github.io/tags/docker/">docker</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
+      
+      <category domain="https://MarsperL.github.io/tags/Slim/">Slim</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E7%BC%A9%E5%B0%8F%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F%E5%A4%A7%E5%B0%8F/">缩小容器镜像大小</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/fd02fe22/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
       <title>docker 部署 SkyWalking</title>
       <link>https://marsperl.github.io/yyg/f5933c9f/</link>
       <guid>https://marsperl.github.io/yyg/f5933c9f/</guid>
@@ -583,43 +620,6 @@
       
       
       <comments>https://marsperl.github.io/yyg/f5933c9f/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>Slim缩小容器镜像大小</title>
-      <link>https://marsperl.github.io/yyg/fd02fe22/</link>
-      <guid>https://marsperl.github.io/yyg/fd02fe22/</guid>
-      <pubDate>Thu, 05 Sep 2024 15:14:53 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot; class=&quot;aplayer-secondary-script-marker&quot;&gt;&lt;/script&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;details class=&quot;folding-tag&quot; cyan&gt;&lt;summary&gt;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
-      
-      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
-      
-      <category domain="https://MarsperL.github.io/tags/docker/">docker</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Slim/">Slim</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E7%BC%A9%E5%B0%8F%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F%E5%A4%A7%E5%B0%8F/">缩小容器镜像大小</category>
-      
-      
-      <comments>https://marsperl.github.io/yyg/fd02fe22/#disqus_thread</comments>
       
     </item>
     
