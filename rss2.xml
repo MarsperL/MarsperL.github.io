@@ -111,18 +111,18 @@
       
       <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/k8s/">k8s</category>
-      
       <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/k8s/">k8s</category>
       
       <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
       
       
-      <category domain="https://MarsperL.github.io/tags/k8s/">k8s</category>
+      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
       
       <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
       
-      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
+      <category domain="https://MarsperL.github.io/tags/k8s/">k8s</category>
       
       <category domain="https://MarsperL.github.io/tags/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
       
@@ -160,9 +160,9 @@
       
       <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
-      
       <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
       
       <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/Jenkins/">Jenkins</category>
       
@@ -171,9 +171,9 @@
       <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/Jenkins/GitLab/SonarQube/">SonarQube</category>
       
       
-      <category domain="https://MarsperL.github.io/tags/SonarQube/">SonarQube</category>
-      
       <category domain="https://MarsperL.github.io/tags/Linux%E8%BF%90%E7%BB%B4/">Linux运维</category>
+      
+      <category domain="https://MarsperL.github.io/tags/SonarQube/">SonarQube</category>
       
       <category domain="https://MarsperL.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
       
@@ -250,9 +250,9 @@
       
       <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
-      
       <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
       
       <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/Ansible/">Ansible</category>
       
@@ -399,11 +399,11 @@
       <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</category>
       
       
+      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
+      
       <category domain="https://MarsperL.github.io/tags/docker/">docker</category>
       
       <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
       
       <category domain="https://MarsperL.github.io/tags/DevOps/">DevOps</category>
       
@@ -483,11 +483,11 @@
       <category domain="https://MarsperL.github.io/categories/Linux%E8%BF%90%E7%BB%B4/QEMU/">QEMU</category>
       
       
-      <category domain="https://MarsperL.github.io/tags/x86-ARM/">x86-ARM</category>
-      
       <category domain="https://MarsperL.github.io/tags/x86%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85ARM%E8%99%9A%E6%8B%9F%E6%9C%BA/">x86环境安装ARM虚拟机</category>
       
       <category domain="https://MarsperL.github.io/tags/QEMU/">QEMU</category>
+      
+      <category domain="https://MarsperL.github.io/tags/x86-ARM/">x86-ARM</category>
       
       
       <comments>https://marsperl.github.io/yyg/a785f75e/#disqus_thread</comments>
@@ -517,9 +517,9 @@
       
       <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
       
-      <category domain="https://MarsperL.github.io/categories/Linux%E8%BF%90%E7%BB%B4/%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90/">网络分析</category>
-      
       <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      <category domain="https://MarsperL.github.io/categories/Linux%E8%BF%90%E7%BB%B4/%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90/">网络分析</category>
       
       
       <category domain="https://MarsperL.github.io/tags/ensp%E6%A8%A1%E6%8B%9F%E4%BB%BF%E7%9C%9F/">ensp模拟仿真</category>
@@ -554,13 +554,13 @@
       <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</category>
       
       
-      <category domain="https://MarsperL.github.io/tags/docker/">docker</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
-      
       <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
       
+      <category domain="https://MarsperL.github.io/tags/docker/">docker</category>
+      
       <category domain="https://MarsperL.github.io/tags/IPMI/">IPMI</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
       
       
       <comments>https://marsperl.github.io/yyg/9ec93abd/#disqus_thread</comments>
@@ -591,13 +591,13 @@
       <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</category>
       
       
+      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
+      
       <category domain="https://MarsperL.github.io/tags/docker/">docker</category>
       
       <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
       
       <category domain="https://MarsperL.github.io/tags/Slim/">Slim</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
       
       <category domain="https://MarsperL.github.io/tags/%E7%BC%A9%E5%B0%8F%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F%E5%A4%A7%E5%B0%8F/">缩小容器镜像大小</category>
       
@@ -630,11 +630,11 @@
       <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</category>
       
       
+      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
+      
       <category domain="https://MarsperL.github.io/tags/docker/">docker</category>
       
       <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
       
       <category domain="https://MarsperL.github.io/tags/SkyWalking/">SkyWalking</category>
       
@@ -745,11 +745,11 @@
       <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</category>
       
       
+      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
+      
       <category domain="https://MarsperL.github.io/tags/docker/">docker</category>
       
       <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
       
       <category domain="https://MarsperL.github.io/tags/Watchtower/">Watchtower</category>
       
