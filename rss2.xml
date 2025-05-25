@@ -15,8 +15,43 @@
     <atom:link href="https://marsperl.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>闲云野鹤，八方逍遥</description>
-    <pubDate>Sat, 17 May 2025 11:49:13 GMT</pubDate>
+    <pubDate>Mon, 19 May 2025 13:36:49 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Android手机安装docker</title>
+      <link>https://marsperl.github.io/yyg/46758d12/</link>
+      <guid>https://marsperl.github.io/yyg/46758d12/</guid>
+      <pubDate>Sat, 17 May 2025 11:45:50 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;Android手机使用ALPINE-TERM-安装docker&quot;&gt;&lt;a href=&quot;#Android手机使用ALPINE-TERM-安装docker&quot; class=&quot;headerlink&quot; title=&quot;Android手机使用ALPINE-TERM 安装docker&quot;&gt;&lt;/a&gt;Android手机使用ALPINE-TERM 安装docker&lt;/h2&gt;&lt;p&gt;Alpine Term 是一款基于 &lt;strong&gt;Termux&lt;/strong&gt; 的安卓应用，集成了 &lt;strong&gt;QEMU 虚拟机&lt;/strong&gt; 和 &lt;strong&gt;Alpine</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/%E7%8E%A9%E6%9C%BA/">玩机</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/%E7%8E%A9%E6%9C%BA/">玩机</category>
+      
+      <category domain="https://MarsperL.github.io/tags/Android/">Android</category>
+      
+      <category domain="https://MarsperL.github.io/tags/Android%E6%89%8B%E6%9C%BA%E5%AE%89%E8%A3%85docker/">Android手机安装docker</category>
+      
+      <category domain="https://MarsperL.github.io/tags/ALPINE-TERM/">ALPINE-TERM</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/46758d12/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>Android手机安装ubuntu</title>
@@ -55,41 +90,6 @@
     </item>
     
     <item>
-      <title>Android手机安装docker</title>
-      <link>https://marsperl.github.io/yyg/46758d12/</link>
-      <guid>https://marsperl.github.io/yyg/46758d12/</guid>
-      <pubDate>Sat, 17 May 2025 11:45:50 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;Android手机使用ALPINE-TERM-安装docker&quot;&gt;&lt;a href=&quot;#Android手机使用ALPINE-TERM-安装docker&quot; class=&quot;headerlink&quot; title=&quot;Android手机使用ALPINE-TERM 安装docker&quot;&gt;&lt;/a&gt;Android手机使用ALPINE-TERM 安装docker&lt;/h2&gt;&lt;p&gt;Alpine Term 是一款基于 &lt;strong&gt;Termux&lt;/strong&gt; 的安卓应用，集成了 &lt;strong&gt;QEMU 虚拟机&lt;/strong&gt; 和 &lt;strong&gt;Alpine</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
-      
-      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/%E7%8E%A9%E6%9C%BA/">玩机</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/%E7%8E%A9%E6%9C%BA/">玩机</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Android/">Android</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Android%E6%89%8B%E6%9C%BA%E5%AE%89%E8%A3%85docker/">Android手机安装docker</category>
-      
-      <category domain="https://MarsperL.github.io/tags/ALPINE-TERM/">ALPINE-TERM</category>
-      
-      
-      <comments>https://marsperl.github.io/yyg/46758d12/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
       <title>Kubernetes知识梳理-核心组件</title>
       <link>https://marsperl.github.io/yyg/dc35290c/</link>
       <guid>https://marsperl.github.io/yyg/dc35290c/</guid>
@@ -113,9 +113,9 @@
       
       <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/k8s/">k8s</category>
-      
       <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/k8s/">k8s</category>
       
       
       <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
