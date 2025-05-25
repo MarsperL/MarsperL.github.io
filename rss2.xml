@@ -15,43 +15,8 @@
     <atom:link href="https://marsperl.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>闲云野鹤，八方逍遥</description>
-    <pubDate>Mon, 19 May 2025 13:36:49 GMT</pubDate>
+    <pubDate>Sat, 17 May 2025 11:49:13 GMT</pubDate>
     <generator>http://hexo.io/</generator>
-    
-    <item>
-      <title>Android手机安装docker</title>
-      <link>https://marsperl.github.io/yyg/46758d12/</link>
-      <guid>https://marsperl.github.io/yyg/46758d12/</guid>
-      <pubDate>Sat, 17 May 2025 11:45:50 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;Android手机使用ALPINE-TERM-安装docker&quot;&gt;&lt;a href=&quot;#Android手机使用ALPINE-TERM-安装docker&quot; class=&quot;headerlink&quot; title=&quot;Android手机使用ALPINE-TERM 安装docker&quot;&gt;&lt;/a&gt;Android手机使用ALPINE-TERM 安装docker&lt;/h2&gt;&lt;p&gt;Alpine Term 是一款基于 &lt;strong&gt;Termux&lt;/strong&gt; 的安卓应用，集成了 &lt;strong&gt;QEMU 虚拟机&lt;/strong&gt; 和 &lt;strong&gt;Alpine</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
-      
-      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/%E7%8E%A9%E6%9C%BA/">玩机</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/%E7%8E%A9%E6%9C%BA/">玩机</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Android/">Android</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Android%E6%89%8B%E6%9C%BA%E5%AE%89%E8%A3%85docker/">Android手机安装docker</category>
-      
-      <category domain="https://MarsperL.github.io/tags/ALPINE-TERM/">ALPINE-TERM</category>
-      
-      
-      <comments>https://marsperl.github.io/yyg/46758d12/#disqus_thread</comments>
-      
-    </item>
     
     <item>
       <title>Android手机安装ubuntu</title>
@@ -86,6 +51,41 @@
       
       
       <comments>https://marsperl.github.io/yyg/c86be486/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Android手机安装docker</title>
+      <link>https://marsperl.github.io/yyg/46758d12/</link>
+      <guid>https://marsperl.github.io/yyg/46758d12/</guid>
+      <pubDate>Sat, 17 May 2025 11:45:50 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;Android手机使用ALPINE-TERM-安装docker&quot;&gt;&lt;a href=&quot;#Android手机使用ALPINE-TERM-安装docker&quot; class=&quot;headerlink&quot; title=&quot;Android手机使用ALPINE-TERM 安装docker&quot;&gt;&lt;/a&gt;Android手机使用ALPINE-TERM 安装docker&lt;/h2&gt;&lt;p&gt;Alpine Term 是一款基于 &lt;strong&gt;Termux&lt;/strong&gt; 的安卓应用，集成了 &lt;strong&gt;QEMU 虚拟机&lt;/strong&gt; 和 &lt;strong&gt;Alpine</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/%E7%8E%A9%E6%9C%BA/">玩机</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/%E7%8E%A9%E6%9C%BA/">玩机</category>
+      
+      <category domain="https://MarsperL.github.io/tags/Android/">Android</category>
+      
+      <category domain="https://MarsperL.github.io/tags/Android%E6%89%8B%E6%9C%BA%E5%AE%89%E8%A3%85docker/">Android手机安装docker</category>
+      
+      <category domain="https://MarsperL.github.io/tags/ALPINE-TERM/">ALPINE-TERM</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/46758d12/#disqus_thread</comments>
       
     </item>
     
