@@ -1,0 +1,932 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>云野阁 | 云野阁</title><meta name="author" content="云野阁"><meta name="copyright" content="云野阁"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="软件好用软件推荐PC端移动端浏览器插件            文本编辑器                         电脑                 Notepad++                             Markdown编辑器       查看详情                        电脑                 Typora">
+<meta property="og:type" content="website">
+<meta property="og:title" content="云野阁">
+<meta property="og:url" content="https://marsperl.github.io/sand/index.html">
+<meta property="og:site_name" content="云野阁">
+<meta property="og:description" content="软件好用软件推荐PC端移动端浏览器插件            文本编辑器                         电脑                 Notepad++                             Markdown编辑器       查看详情                        电脑                 Typora">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img520.com/iNvl5J.png">
+<meta property="article:published_time" content="2024-08-04T12:31:32.000Z">
+<meta property="article:modified_time" content="2025-05-23T10:33:35.463Z">
+<meta property="article:author" content="云野阁">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img520.com/iNvl5J.png"><link rel="shortcut icon" href="https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@1.2/img/icon.png"><link rel="canonical" href="https://marsperl.github.io/sand/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.3.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"top_n_per_article":-1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '云野阁',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'page'
+}</script><link rel="stylesheet" href="/css/parts.css"><link rel="stylesheet" href="/css/link.css"><script src="https://npm.elemecdn.com/echarts@4.9.0/dist/echarts.min.js"></script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/rss2.xml" title="云野阁" type="application/rss+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img520.com/iNvl5J.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">51</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">97</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">33</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa-solid fa-blog"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="javascript:randomPost();"><i class="fa-fw fa-solid fa-shuffle"></i><span> 随机一篇</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa-brands fa-get-pocket"></i><span> 蓝口袋</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/pintree/index.html"><i class="fa-fw fa fa-search-plus"></i><span> 导航</span></a></li><li><a class="site-page child" href="/sand/"><i class="fa-fw fa fa-cube"></i><span> 繁沙</span></a></li><li><a class="site-page child" href="/trip/index.html"><i class="fa-fw fa-solid fa-earth-asia"></i><span> 星游记</span></a></li><li><a class="site-page child" href="/share/"><i class="fa-fw fa-solid fa-star"></i><span> 书•影•音</span></a></li><li><a class="site-page child" href="/focusclock/time.html"><i class="fa-fw fas fa-clock"></i><span> 专注时钟</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-comments"></i><span> 聊天室</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></li><li><a class="site-page child" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 心语亭</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/yygrss/index.html"><i class="fa-fw fa-solid fa-square-rss"></i><span> 文界</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img520.com/iNvl5J.png" alt="Logo"><span class="site-name">云野阁</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa-solid fa-blog"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="javascript:randomPost();"><i class="fa-fw fa-solid fa-shuffle"></i><span> 随机一篇</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa-brands fa-get-pocket"></i><span> 蓝口袋</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/pintree/index.html"><i class="fa-fw fa fa-search-plus"></i><span> 导航</span></a></li><li><a class="site-page child" href="/sand/"><i class="fa-fw fa fa-cube"></i><span> 繁沙</span></a></li><li><a class="site-page child" href="/trip/index.html"><i class="fa-fw fa-solid fa-earth-asia"></i><span> 星游记</span></a></li><li><a class="site-page child" href="/share/"><i class="fa-fw fa-solid fa-star"></i><span> 书•影•音</span></a></li><li><a class="site-page child" href="/focusclock/time.html"><i class="fa-fw fas fa-clock"></i><span> 专注时钟</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-comments"></i><span> 聊天室</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></li><li><a class="site-page child" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 心语亭</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/yygrss/index.html"><i class="fa-fw fa-solid fa-square-rss"></i><span> 文界</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><h1 class="title-seo">云野阁</h1></header><main class="layout hide-aside" id="content-inner"><div id="page"><div class="container" id="article-container"><h2 id=""><a href="#" class="headerlink" title=""></a><span class="hide-inline"><button type="button" class="hide-button" style="background-color: #de4489;color: #fff">软件</button><span class="hide-content">好用软件推荐</span></span></h2><div class="tabs"><div class="nav-tabs"><button type="button" class="tab active"><i class="fa fa-desktop"></i>PC端</button><button type="button" class="tab"><i class="fa fa-mobile-phone"></i>移动端</button><button type="button" class="tab"><i class="fa-solid fa-cubes"></i>浏览器插件</button></div><div class="tab-contents"><div class="tab-item-content active"><div title="Notepad++" referrerPolicy="no-referrer" class="card_box" style="background-image: url(https://ts2.cn.mm.bing.net/th?id=OSAAS.A4F732E4754592537BEB02AB71740620&w=72&h=72&c=17&rs=1&o=6&dpr=1.3&pid=5.1); width:100px; height:90px;">
+    <div class="card_mask">
+      <span class="tooltiptext">文本编辑器</span>
+
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-tools"></i>
+      <span>电脑</span>
+    </div>
+    <div class="card_content">
+      <span>Notepad++</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="Typora" referrerPolicy="no-referrer" class="card_box" style="background-image: url(https://typoraio.cn/img/favicon-128.png); width:100px; height:90px;">
+    <div class="card_mask">
+      <span class="tooltiptext">Markdown编辑器</span>
+      <a target="_blank" rel="noopener" href="https://typoraio.cn/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-tools"></i>
+      <span>电脑</span>
+    </div>
+    <div class="card_content">
+      <span>Typora</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="MarkText" referrerPolicy="no-referrer" class="card_box" style="background-image: url(https://www.markdown.xyz/assets/images/tool-icons/mark-text.png); width:100px; height:90px;">
+    <div class="card_mask">
+      <span class="tooltiptext">Markdown编辑器</span>
+      <a target="_blank" rel="noopener" href="https://www.marktext.cc/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-tools"></i>
+      <span>电脑</span>
+    </div>
+    <div class="card_content">
+      <span>MarkText</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="FastStone Capture" referrerPolicy="no-referrer" class="card_box" style="background-image: url(https://www.faststonecapture.cn/wp-content/themes/faststonecapture/images/logo.png); width:100px; height:90px;">
+    <div class="card_mask">
+      <span class="tooltiptext">截图工具</span>
+
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-tools"></i>
+      <span>电脑</span>
+    </div>
+    <div class="card_content">
+      <span>FastStone Capture</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="星愿浏览器" referrerPolicy="no-referrer" class="card_box" style="background-image: url(https://www.twinkstar.com/favicon.ico); width:100px; height:90px;">
+    <div class="card_mask">
+      <span class="tooltiptext">浏览器</span>
+      <a target="_blank" rel="noopener" href="https://www.twinkstar.com/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-icons"></i>
+      <span>电脑</span>
+    </div>
+    <div class="card_content">
+      <span>星愿浏览器</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="MobaXterm" referrerPolicy="no-referrer" class="card_box" style="background-image: url(https://mobaxterm.mobatek.net/img/moba/xterm_logo.png); width:100px; height:90px;">
+    <div class="card_mask">
+      <span class="tooltiptext">远程连接工具</span>
+      <a target="_blank" rel="noopener" href="https://mobaxterm.mobatek.net/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-tools"></i>
+      <span>电脑</span>
+    </div>
+    <div class="card_content">
+      <span>MobaXterm</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="Camtasia" referrerPolicy="no-referrer" class="card_box" style="background-image: url(https://www.techsmith.com/blog/wp-content/uploads/2022/08/icon-camtasia.svg); width:100px; height:90px;">
+    <div class="card_mask">
+      <span class="tooltiptext">录像剪辑软件</span>
+
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-tools"></i>
+      <span>电脑</span>
+    </div>
+    <div class="card_content">
+      <span>Camtasia</span>
+      <div></div>
+    </div>
+  </div></div><div class="tab-item-content"></div><div class="tab-item-content"><div title="Elmo Chat" referrerPolicy="no-referrer" class="card_box" style="background-image: url(https://www.elmo.chat/icon.svg); width:100px; height:90px;">
+    <div class="card_mask">
+      <span class="tooltiptext">AI总结插件</span>
+      <a target="_blank" rel="noopener" href="https://www.elmo.chat/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-cubes"></i>
+      <span>插件</span>
+    </div>
+    <div class="card_content">
+      <span>Elmo Chat</span>
+      <div></div>
+    </div>
+  </div> 
+
+<div title="SeekAll" referrerPolicy="no-referrer" class="card_box" style="background-image: url(https://seekall.ai/img/icon.png); width:100px; height:90px;">
+    <div class="card_mask">
+      <span class="tooltiptext">AI搜索集合</span>
+      <a target="_blank" rel="noopener" href="https://seekall.ai/zh/index.html">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-cubes"></i>
+      <span>插件</span>
+    </div>
+    <div class="card_content">
+      <span>SeekAll</span>
+      <div></div>
+    </div>
+  </div> 
+
+<div title="SeekAll" referrerPolicy="no-referrer" class="card_box" style="background-image: url(https://s.immersivetranslate.com/static/official-static/img/logo.png); width:100px; height:90px;">
+    <div class="card_mask">
+      <span class="tooltiptext">沉浸式翻译：全网口碑炸裂的双语对照网页翻译插件</span>
+      <a target="_blank" rel="noopener" href="https://immersivetranslate.com/zh-Hans/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-cubes"></i>
+      <span>插件</span>
+    </div>
+    <div class="card_content">
+      <span>SeekAll</span>
+      <div></div>
+    </div>
+  </div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+<h2 id="-1"><a href="#-1" class="headerlink" title=""></a><span class="hide-inline"><button type="button" class="hide-button" style="background-color: #de4489;color: #fff">网站</button><span class="hide-content">一些好用网站</span></span></h2><div class="tabs"><div class="nav-tabs"><button type="button" class="tab active"><i class="fas fa-paperclip"></i>网站</button><button type="button" class="tab"><i class="fa-solid fa-book-open"></i>开源技术文档/书籍</button><button type="button" class="tab"><i class="fa-solid fa-brain"></i>AI相关</button></div><div class="tab-contents"><div class="tab-item-content active"><div title="InfoQ" referrerPolicy="no-referrer" class="card_box" style="background-image: url(https://img-aig.min2k.com/v1/200/81/818905-c5e5bdb241ef2c11eb4ef60068293a24.webp); width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">促进软件开发领域知识与创新的传播</span>
+      <a target="_blank" rel="noopener" href="https://www.infoq.com/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fas fa-paperclip"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>InfoQ</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="DEV社区" referrerPolicy="no-referrer" class="card_box" style="background-image: url(https://img-aig.min2k.com/v1/200/81/818905-c5e5bdb241ef2c11eb4ef60068293a24.webp); width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">程序员分享、保持最新状态并发展他们职业生涯的地方</span>
+      <a target="_blank" rel="noopener" href="https://dev.to/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fas fa-paperclip"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>DEV社区</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="Hello&emsp;GitHub" referrerPolicy="no-referrer" class="card_box" style="background-image: url(https://img-aig.min2k.com/v1/200/81/818905-c5e5bdb241ef2c11eb4ef60068293a24.webp); width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">一个发现和分享有趣、入门级开源项目的平台</span>
+      <a target="_blank" rel="noopener" href="https://hellogithub.com/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fas fa-paperclip"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>Hello&emsp;GitHub</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="GitHub 可用网站" referrerPolicy="no-referrer" class="card_box" style="background-color: #333; width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">GitHub 可用网站</span>
+      <a target="_blank" rel="noopener" href="https://www.ooopn.com/tool/github/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fas fa-paperclip"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>GitHub 可用网站</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="0xFFFF社区" referrerPolicy="no-referrer" class="card_box" style="background-color: #333; width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">一个面向计算机领域学习的在线交流社区</span>
+      <a target="_blank" rel="noopener" href="https://0xffff.one/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fas fa-paperclip"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>0xFFFF社区</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="pkgs.org" referrerPolicy="no-referrer" class="card_box" style="background-color: #333; width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">Linux和Unix的rpm包网站</span>
+      <a target="_blank" rel="noopener" href="https://pkgs.org/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fas fa-paperclip"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>pkgs.org</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="DoGet" referrerPolicy="no-referrer" class="card_box" style="background-image: url(https://img-aig.min2k.com/v1/200/81/818905-c5e5bdb241ef2c11eb4ef60068293a24.webp); width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">github下载加速</span>
+      <a target="_blank" rel="noopener" href="https://doget.nocsdn.com/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fas fa-paperclip"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>DoGet</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="加速你的Github" referrerPolicy="no-referrer" class="card_box" style="background-color: #333; width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">github下载加速</span>
+      <a target="_blank" rel="noopener" href="https://github.zhlh6.cn/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fas fa-paperclip"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>加速你的Github</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="GitHub 加速下载" referrerPolicy="no-referrer" class="card_box" style="background-color: #333; width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">github下载加速</span>
+      <a target="_blank" rel="noopener" href="https://github.ur1.fun/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fas fa-paperclip"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>GitHub 加速下载</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="镜像加速仓库" referrerPolicy="no-referrer" class="card_box" style="background-color: #333; width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">docker镜像加速仓库</span>
+      <a target="_blank" rel="noopener" href="https://github.com/gebangfeng/docker-mirror?tab=readme-ov-file">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fas fa-paperclip"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>镜像加速仓库</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="Docker Proxy" referrerPolicy="no-referrer" class="card_box" style="background-color: #333; width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">docker镜像加速</span>
+      <a target="_blank" rel="noopener" href="https://dockerproxy.github.io/#/index">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fas fa-paperclip"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>Docker Proxy</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="镜像加速" referrerPolicy="no-referrer" class="card_box" style="background-color: #333; width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">docker镜像加速</span>
+      <a target="_blank" rel="noopener" href="https://github.com/anjia0532/gcr.io_mirror">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fas fa-paperclip"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>镜像加速</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="云原生" referrerPolicy="no-referrer" class="card_box" style="background-color: #333; width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">开源云原生工具、软件、教程列表</span>
+      <a target="_blank" rel="noopener" href="https://jimmysong.io/awesome-cloud-native/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fas fa-paperclip"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>云原生</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="Bookbrief" referrerPolicy="no-referrer" class="card_box" style="background-color: #333; width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">超过 2 000+ 有史以来阅读量最大的书籍的书籍摘要</span>
+      <a target="_blank" rel="noopener" href="https://bookbrief.io/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fas fa-paperclip"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>Bookbrief</span>
+      <div></div>
+    </div>
+  </div></div><div class="tab-item-content"><div title="Just Laws" referrerPolicy="no-referrer" class="card_box" style="background-image: url(https://img-aig.min2k.com/v1/200/81/818905-c5e5bdb241ef2c11eb4ef60068293a24.webp); width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">一个简洁且便捷的中华人民共和国法律文库</span>
+      <a target="_blank" rel="noopener" href="https://www.justlaws.cn/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-book-open"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>Just Laws</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="0xFFFF Wiki" referrerPolicy="no-referrer" class="card_box" style="background-color: #333; width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">一个面向计算机爱好者的 Wiki 网站</span>
+      <a target="_blank" rel="noopener" href="https://wiki.0xffff.one/about">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-book-open"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>0xFFFF Wiki</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="动手学大模型应用开发" referrerPolicy="no-referrer" class="card_box" style="background-color: #333; width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">动手学大模型应用开发</span>
+      <a target="_blank" rel="noopener" href="https://datawhalechina.github.io/llm-universe/#/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-book-open"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>动手学大模型应用开发</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="Hello算法" referrerPolicy="no-referrer" class="card_box" style="background-image: url(https://img-aig.min2k.com/v1/200/81/818905-c5e5bdb241ef2c11eb4ef60068293a24.webp); width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">动画图解、一键运行的数据结构与算法教程</span>
+      <a target="_blank" rel="noopener" href="https://www.hello-algo.com/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-book-open"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>Hello算法</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="k8s 教程" referrerPolicy="no-referrer" class="card_box" style="background-color: #333; width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">k8s 教程</span>
+      <a target="_blank" rel="noopener" href="https://github.com/guangzhengli/k8s-tutorials">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-book-open"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>k8s 教程</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="k8s_PaaS" referrerPolicy="no-referrer" class="card_box" style="background-color: #333; width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">基于Kubernetes(K8S)一步步部署成PaaS/DevOps</span>
+      <a target="_blank" rel="noopener" href="https://github.com/ben1234560/k8s_PaaS?tab=readme-ov-file">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-book-open"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>k8s_PaaS</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="Kubernetes 入门" referrerPolicy="no-referrer" class="card_box" style="background-color: #333; width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">Kubernetes Ultimate 动手实验和教程入门</span>
+      <a target="_blank" rel="noopener" href="https://collabnix.github.io/kubelabs/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-book-open"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>Kubernetes 入门</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="Docker 入门" referrerPolicy="no-referrer" class="card_box" style="background-color: #333; width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">Docker 入门</span>
+      <a target="_blank" rel="noopener" href="https://dockerlabs.collabnix.com/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-book-open"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>Docker 入门</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="Kubernetes 工具" referrerPolicy="no-referrer" class="card_box" style="background-color: #333; width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">Kubetools - Kubernetes 工具的精选列表</span>
+      <a target="_blank" rel="noopener" href="https://github.com/collabnix/kubetools">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-book-open"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>Kubernetes 工具</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="Docker 扩展" referrerPolicy="no-referrer" class="card_box" style="background-color: #333; width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">Docker 扩展</span>
+      <a target="_blank" rel="noopener" href="https://collabnix.github.io/docker-community-extensions/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-book-open"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>Docker 扩展</span>
+      <div></div>
+    </div>
+  </div></div><div class="tab-item-content"><div title="AI图片生成与搜索" referrerPolicy="no-referrer" class="card_box" style="background-color: #333; width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">AI图片生成与搜索</span>
+      <a target="_blank" rel="noopener" href="https://www.ai-img-gen.com/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-brain"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>AI图片生成与搜索</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="秘塔AI搜索" referrerPolicy="no-referrer" class="card_box" style="background-image: url(https://img-aig.min2k.com/v1/200/81/818905-c5e5bdb241ef2c11eb4ef60068293a24.webp); width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">国内AI搜索引擎</span>
+      <a target="_blank" rel="noopener" href="https://metaso.cn/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-brain"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>秘塔AI搜索</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="Andi" referrerPolicy="no-referrer" class="card_box" style="background-color: #333; width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">AI搜索</span>
+      <a target="_blank" rel="noopener" href="https://andisearch.com/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-brain"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>Andi</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="iAsk" referrerPolicy="no-referrer" class="card_box" style="background-color: #333; width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">AI搜索</span>
+      <a target="_blank" rel="noopener" href="https://iask.ai/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-brain"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>iAsk</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="Miku" referrerPolicy="no-referrer" class="card_box" style="background-color: #333; width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">AI搜索</span>
+      <a target="_blank" rel="noopener" href="https://www.hellomiku.com/index">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-brain"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>Miku</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="CodeNews" referrerPolicy="no-referrer" class="card_box" style="background-image: url(https://img-aig.min2k.com/v1/200/81/818905-c5e5bdb241ef2c11eb4ef60068293a24.webp); width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">对话，免费免登录</span>
+      <a target="_blank" rel="noopener" href="https://codenews.cc/chatgpt">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-brain"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>CodeNews</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="思妍AI" referrerPolicy="no-referrer" class="card_box" style="background-image: url(https://img-aig.min2k.com/v1/200/81/818905-c5e5bdb241ef2c11eb4ef60068293a24.webp); width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">对话，免费免登录</span>
+      <a target="_blank" rel="noopener" href="https://chat.ttext.cn/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-brain"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>思妍AI</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="FreeGPT" referrerPolicy="no-referrer" class="card_box" style="background-image: url(https://img-aig.min2k.com/v1/200/81/818905-c5e5bdb241ef2c11eb4ef60068293a24.webp); width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">对话，免费免登录</span>
+      <a target="_blank" rel="noopener" href="https://free.netfly.top/#/chat">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-brain"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>FreeGPT</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="智能AI助手" referrerPolicy="no-referrer" class="card_box" style="background-image: url(https://img-aig.min2k.com/v1/200/81/818905-c5e5bdb241ef2c11eb4ef60068293a24.webp); width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">对话，免费免登录</span>
+      <a target="_blank" rel="noopener" href="https://chat.tinycms.xyz:3002/#/chat">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-brain"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>智能AI助手</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="RawChat" referrerPolicy="no-referrer" class="card_box" style="background-image: url(https://img-aig.min2k.com/v1/200/81/818905-c5e5bdb241ef2c11eb4ef60068293a24.webp); width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">对话，免费免登录</span>
+      <a target="_blank" rel="noopener" href="https://sharedchat.cn/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-brain"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>RawChat</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="FreeChat-镜像" referrerPolicy="no-referrer" class="card_box" style="background-image: url(https://img-aig.min2k.com/v1/200/81/818905-c5e5bdb241ef2c11eb4ef60068293a24.webp); width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">ChatGPT镜像网站列表</span>
+      <a target="_blank" rel="noopener" href="https://free-chat.cn/?sockstack&section=table">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-brain"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>FreeChat-镜像</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="SockStack" referrerPolicy="no-referrer" class="card_box" style="background-image: url(https://img-aig.min2k.com/v1/200/81/818905-c5e5bdb241ef2c11eb4ef60068293a24.webp); width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">ChatGPT镜像网站列表</span>
+      <a target="_blank" rel="noopener" href="https://www.sockstack.cn/chat-mirrors">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-brain"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>SockStack</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="Read Medium" referrerPolicy="no-referrer" class="card_box" style="background-image: url(https://img-aig.min2k.com/v1/200/81/818905-c5e5bdb241ef2c11eb4ef60068293a24.webp); width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">使用AI翻译和总结Medium 文章</span>
+      <a target="_blank" rel="noopener" href="https://readmedium.com/">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-brain"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>Read Medium</span>
+      <div></div>
+    </div>
+  </div>
+
+<div title="readweb.ai" referrerPolicy="no-referrer" class="card_box" style="background-image: url(https://img-aig.min2k.com/v1/200/81/818905-c5e5bdb241ef2c11eb4ef60068293a24.webp); width:96px; height:80px;">
+    <div class="card_mask">
+      <span class="tooltiptext">使用AI翻译和分享任何网页</span>
+      <a target="_blank" rel="noopener" href="https://readweb.ai/zh">查看详情</a>
+    </div>
+    <div class="card_top">
+      <i class="fa-solid fa-brain"></i>
+      <span></span>
+    </div>
+    <div class="card_content">
+      <span>readweb.ai</span>
+      <div></div>
+    </div>
+  </div></div></div><div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div>
+</div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By 云野阁</div><div class="footer_custom_text"><div id="runtime"></div> 世界上只有一种真正的英雄主义，那就是看清生活的真相之后，依然热爱生活</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div><script src="/js/utils.js?v=5.3.5"></script><script src="/js/main.js?v=5.3.5"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script defer type="text/javascript" src="https://cdn1.tianli0.top/npm/sweetalert2@8.19.0/dist/sweetalert2.all.js"></script><script defer src="/js/lunar.js"></script><script defer src="/js/day.js"></script><script src="/js/parts.js"></script><script src="/js/background.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.3.5"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="yyg/30035ff1/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://t.alcy.cc/fj" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-08-11</span><a class="blog-slider__title" href="yyg/30035ff1/" alt="">一些免费的gpt网站</a><div class="blog-slider__text">点击查看置顶文章啦~~~</div><a class="blog-slider__button" href="yyg/30035ff1/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="yyg/c60df0d6/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img520.com/iNvl5J.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-07-24</span><a class="blog-slider__title" href="yyg/c60df0d6/" alt="">使用portainer管理容器</a><div class="blog-slider__text">点击查看置顶文章啦~~~</div><a class="blog-slider__button" href="yyg/c60df0d6/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="yyg/4451cec/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picapi.pai.al/api/scenery.php" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-07-31</span><a class="blog-slider__title" href="yyg/4451cec/" alt="">x86服务器构建ARM架构docker镜像</a><div class="blog-slider__text">点击查看置顶文章啦~~~</div><a class="blog-slider__button" href="yyg/4451cec/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="yyg/71468332/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://random-img.pupper.cn/api" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-08</span><a class="blog-slider__title" href="yyg/71468332/" alt="">Docker Swarm集群部署</a><div class="blog-slider__text">点击查看置顶文章啦~~~</div><a class="blog-slider__button" href="yyg/71468332/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="yyg/5ea27f40/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://api.jiangyuhui.top/aliyun/randomCover" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-08-26</span><a class="blog-slider__title" href="yyg/5ea27f40/" alt="">在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）</a><div class="blog-slider__text">点击查看置顶文章啦~~~</div><a class="blog-slider__button" href="yyg/5ea27f40/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="yyg/ca46b09/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tu.ltyuanfang.cn/api/fengjing.php" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-08-07</span><a class="blog-slider__title" href="yyg/ca46b09/" alt="">Hexo-Butterfly美化教程-[9]繁沙</a><div class="blog-slider__text">点击查看置顶文章啦~~~</div><a class="blog-slider__button" href="yyg/ca46b09/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="yyg/60ed202a/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://imgapi.cn/api.php?fl=fengjing&amp;gs=images" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-08</span><a class="blog-slider__title" href="yyg/60ed202a/" alt="">实现Docker 容器跨主机通讯</a><div class="blog-slider__text">点击查看置顶文章啦~~~</div><a class="blog-slider__button" href="yyg/60ed202a/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>

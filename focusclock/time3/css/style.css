@@ -1,0 +1,17 @@
+body{
+		margin: 0;
+		padding: 0;
+		overflow:hidden;
+}
+#clock{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+.liuxing-object{
+	width:100%;
+	height:100vh;
+	z-index:-1;
+	
+}

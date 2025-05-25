@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />  
+<title>专注时钟</title>
+<link rel="stylesheet" type="text/css" href="commonCss.css">
+<link rel="stylesheet" type="text/css" href="tomato_css.css">
+<style type="text/css">
+.set_list.set_time_list.s_t_1,
+.set_list.set_time_list.s_t {
+	padding-top: 10px;
+}
+</style>
+</head>
+
+<body>
+	
+	<!--番茄主体-->
+    <div id="wrap" class="clear">
+    	<button id="menu">菜单</button>
+        <div id="tomato">00:00</div>
+        <img id="close_tomato" src="close_tomato.png" />
+        <button id="start" onClick="javascript:todo.start()">开始专注</button>
+        <!--进度条-->
+        <div id="wrap_progress_bar">
+            <div id="progress_bar"></div>
+        </div> 
+    </div>
+    
+    <!--设置弹窗-->
+    <div id="alert_window">
+    		<!--设置主菜单-->
+    	<div class="set_menu">
+        	<ul class="clear">
+            <li id="set_time" class="tab_select">番茄时间</li>
+            <li id="set_music">提醒音乐</li>
+            </ul>
+        </div>
+        
+    	<div class="set_list">
+        	<!--设置时间清单-->
+        	<ul class="set_time_list" style="display:block">
+                <li>
+                <span>番茄时长</span>
+             <input id="s_t" value="" placeholder="自定义时间" ></input> 
+              <!--   <select id="s_t">
+		    <option value="25">25分钟</option>
+                    <option value="30">30分钟</option>
+		    <option value="45">45分钟</option>
+                    <option value="50">50分钟</option>
+		    <option value="60"  selected>60分钟</option>
+		       <option value="90">90分钟</option>
+                </select> -->
+                </li>
+                <li><span class="ts">休息时长</span><input id="s_r_t" value="5"></input></li>
+            
+            </ul>
+            <!--设置音效清单-->
+            <ul class="set_music_list"  style="display:none">
+                <li><span>提示音效</span>
+                <select id="w_t">
+                    <option value="女声">女声</option>
+		    <option value="布谷鸟">布谷鸟</option>
+                    <option value="过关">过关</option>
+                </select>
+                </li>
+                <li><span>工作背景音效</span>
+                 <select id="b_m">
+                    <option value="平静下雨">平静下雨</option>
+		    <option value="轻音乐">轻音乐</option>
+                    <option value="时针走动">时针走动</option>
+                </select>
+                </li>
+            
+            </ul>
+        </div>
+    </div>
+ 	<!--提醒弹窗-->
+    <div class="remind_alert">   
+    </div>
+    <div class="remind_content">
+    	<p>完成了一个番茄时钟</p>
+    </div>
+</body>
+<script src="tomato_js.js"></script>
+</html>

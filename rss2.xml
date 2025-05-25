@@ -1,0 +1,799 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>云野阁</title>
+    <link>https://MarsperL.github.io/</link>
+    
+    <image>
+      <url>https://marsperl.github.io/icon.png</url>
+      <title>云野阁</title>
+      <link>https://MarsperL.github.io/</link>
+    </image>
+    
+    <atom:link href="https://marsperl.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
+    
+    <description>闲云野鹤，八方逍遥</description>
+    <pubDate>Mon, 19 May 2025 13:36:49 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Android手机安装docker</title>
+      <link>https://marsperl.github.io/yyg/46758d12/</link>
+      <guid>https://marsperl.github.io/yyg/46758d12/</guid>
+      <pubDate>Sat, 17 May 2025 11:45:50 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;Android手机使用ALPINE-TERM-安装docker&quot;&gt;&lt;a href=&quot;#Android手机使用ALPINE-TERM-安装docker&quot; class=&quot;headerlink&quot; title=&quot;Android手机使用ALPINE-TERM 安装docker&quot;&gt;&lt;/a&gt;Android手机使用ALPINE-TERM 安装docker&lt;/h2&gt;&lt;p&gt;Alpine Term 是一款基于 &lt;strong&gt;Termux&lt;/strong&gt; 的安卓应用，集成了 &lt;strong&gt;QEMU 虚拟机&lt;/strong&gt; 和 &lt;strong&gt;Alpine</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/%E7%8E%A9%E6%9C%BA/">玩机</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/%E7%8E%A9%E6%9C%BA/">玩机</category>
+      
+      <category domain="https://MarsperL.github.io/tags/Android/">Android</category>
+      
+      <category domain="https://MarsperL.github.io/tags/Android%E6%89%8B%E6%9C%BA%E5%AE%89%E8%A3%85docker/">Android手机安装docker</category>
+      
+      <category domain="https://MarsperL.github.io/tags/ALPINE-TERM/">ALPINE-TERM</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/46758d12/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Android手机安装ubuntu</title>
+      <link>https://marsperl.github.io/yyg/c86be486/</link>
+      <guid>https://marsperl.github.io/yyg/c86be486/</guid>
+      <pubDate>Sat, 17 May 2025 11:45:50 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在闲置的Android旧手机（无需root）安装ubuntu&lt;/p&gt;
+&lt;h2 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h2&gt;&lt;p&gt;下载termux app，对应链接&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/%E7%8E%A9%E6%9C%BA/">玩机</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/%E7%8E%A9%E6%9C%BA/">玩机</category>
+      
+      <category domain="https://MarsperL.github.io/tags/Android/">Android</category>
+      
+      <category domain="https://MarsperL.github.io/tags/ubuntu/">ubuntu</category>
+      
+      <category domain="https://MarsperL.github.io/tags/termux/">termux</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/c86be486/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Kubernetes知识梳理-核心组件</title>
+      <link>https://marsperl.github.io/yyg/dc35290c/</link>
+      <guid>https://marsperl.github.io/yyg/dc35290c/</guid>
+      <pubDate>Sat, 17 May 2025 11:08:26 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;pod&quot;&gt;&lt;a href=&quot;#pod&quot; class=&quot;headerlink&quot; title=&quot;pod&quot;&gt;&lt;/a&gt;pod&lt;/h2&gt;&lt;p&gt;在kubernetes中基本所有资源的一级属性都是一样的，主要包含5部分：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;apiVersion &amp;lt;string&amp;gt;&lt;/code&gt; 版本，由kubernetes内部定义，版本号必须可以用kubectl api-versions查询到&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;kind &amp;lt;string&amp;gt;&lt;/code&gt;类型，由kubernetes内部定义，版本号必须可以用kubectl</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/k8s/">k8s</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
+      
+      <category domain="https://MarsperL.github.io/tags/k8s/">k8s</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      <category domain="https://MarsperL.github.io/tags/pod/">pod</category>
+      
+      <category domain="https://MarsperL.github.io/tags/Service/">Service</category>
+      
+      <category domain="https://MarsperL.github.io/tags/Ingress/">Ingress</category>
+      
+      <category domain="https://MarsperL.github.io/tags/PV-PVC/">PV/PVC</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/dc35290c/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Jenkins知识梳理</title>
+      <link>https://marsperl.github.io/yyg/f0979e05/</link>
+      <guid>https://marsperl.github.io/yyg/f0979e05/</guid>
+      <pubDate>Sat, 17 May 2025 10:47:41 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;details class=&quot;folding-tag&quot; cyan&gt;&lt;summary&gt; 🔜什么是Jenkins？🔚 &lt;/summary&gt;
+              &lt;div class=&#39;content&#39;&gt;
+              &lt;p&gt;Jenkins是一款基于Java开发的开源 CI&amp;amp;CD</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/Jenkins/">Jenkins</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/Jenkins/GitLab/">GitLab</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/Jenkins/GitLab/SonarQube/">SonarQube</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/Linux%E8%BF%90%E7%BB%B4/">Linux运维</category>
+      
+      <category domain="https://MarsperL.github.io/tags/SonarQube/">SonarQube</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
+      
+      <category domain="https://MarsperL.github.io/tags/CI-CD/">CI/CD</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      <category domain="https://MarsperL.github.io/tags/Jenkins/">Jenkins</category>
+      
+      <category domain="https://MarsperL.github.io/tags/GitLab/">GitLab</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/f0979e05/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Ansible最新版安装</title>
+      <link>https://marsperl.github.io/yyg/10ac2e4/</link>
+      <guid>https://marsperl.github.io/yyg/10ac2e4/</guid>
+      <pubDate>Sat, 12 Apr 2025 09:35:43 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;pip方式安装&quot;&gt;&lt;a href=&quot;#pip方式安装&quot; class=&quot;headerlink&quot; title=&quot;pip方式安装&quot;&gt;&lt;/a&gt;pip方式安装&lt;/h2&gt;&lt;h3 id=&quot;基础环境准备&quot;&gt;&lt;a href=&quot;#基础环境准备&quot; class=&quot;headerlink&quot; title=&quot;基础环境准备&quot;&gt;&lt;/a&gt;基础环境准备&lt;/h3&gt;&lt;p&gt;（1）安装软件依赖&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/Ansible/">Ansible</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/Linux%E8%BF%90%E7%BB%B4/">Linux运维</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
+      
+      <category domain="https://MarsperL.github.io/tags/CI-CD/">CI/CD</category>
+      
+      <category domain="https://MarsperL.github.io/tags/Ansible/">Ansible</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/10ac2e4/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Ansible知识梳理</title>
+      <link>https://marsperl.github.io/yyg/e80721f/</link>
+      <guid>https://marsperl.github.io/yyg/e80721f/</guid>
+      <pubDate>Mon, 31 Mar 2025 11:45:26 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;details class=&quot;folding-tag&quot; cyan&gt;&lt;summary&gt; 🔜什么是Ansible？🔚 &lt;/summary&gt;
+              &lt;div class=&#39;content&#39;&gt;
+              &lt;p&gt;Ansible 是一款 IT 自动化工具。主要应用场景有配置系统、软件部署、持续发布及不停服平滑滚动更新的高级任务编排。&lt;/p&gt;&lt;p&gt;Ansible 提供开源自动化，可降低复杂性并在任何地方运行。使用 Ansible 可以自动执行几乎任何任务。&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/details&gt;
+&lt;h2</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/Ansible/">Ansible</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/Linux%E8%BF%90%E7%BB%B4/">Linux运维</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
+      
+      <category domain="https://MarsperL.github.io/tags/CI-CD/">CI/CD</category>
+      
+      <category domain="https://MarsperL.github.io/tags/Ansible/">Ansible</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/e80721f/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Hexo-Butterfly美化教程-[2]Butterfly主题安装</title>
+      <link>https://marsperl.github.io/yyg/80ffa402/</link>
+      <guid>https://marsperl.github.io/yyg/80ffa402/</guid>
+      <pubDate>Mon, 10 Mar 2025 07:14:39 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;拉取主题代码&quot;&gt;&lt;a href=&quot;#拉取主题代码&quot; class=&quot;headerlink&quot; title=&quot;拉取主题代码&quot;&gt;&lt;/a&gt;拉取主题代码&lt;/h2&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git clone -b master</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/Hexo/">Hexo</category>
+      
+      <category domain="https://MarsperL.github.io/tags/Butterfly/">Butterfly</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/80ffa402/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>跨城搬家总结</title>
+      <link>https://marsperl.github.io/yyg/4c3a1bc3/</link>
+      <guid>https://marsperl.github.io/yyg/4c3a1bc3/</guid>
+      <pubDate>Thu, 06 Mar 2025 09:11:21 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h2&gt;&lt;p&gt;　　今天终于彻底完成了从A城到B城的跨城搬家，开始在B城开启生活的新篇章。&lt;/p&gt;
+&lt;h2 id=&quot;搬家全过程&quot;&gt;&lt;a href=&quot;#搬家全过程&quot; class=&quot;headerlink&quot; title=&quot;搬家全过程&quot;&gt;&lt;/a&gt;搬家全过程&lt;/h2&gt;&lt;p&gt;　　年后从老家回到A城之后，开始正式着手考虑搬到B城的事情，此时离房租到期还有半个多月的时间。&lt;/p&gt;
+&lt;h3 id=&quot;找房和看房&quot;&gt;&lt;a href=&quot;#找房和看房&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/%E6%90%AC%E5%AE%B6/">搬家</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/%E8%B7%A8%E5%9F%8E%E6%90%AC%E5%AE%B6/">跨城搬家</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E5%A4%8D%E7%9B%98/">复盘</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E4%B9%94%E8%BF%81%E6%96%B0%E5%B1%85/">乔迁新居</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/4c3a1bc3/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>休闲娱乐-1月</title>
+      <link>https://marsperl.github.io/yyg/64b9e8e0/</link>
+      <guid>https://marsperl.github.io/yyg/64b9e8e0/</guid>
+      <pubDate>Sun, 12 Jan 2025 02:01:59 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;登山-嵩山&quot;&gt;&lt;a href=&quot;#登山-嵩山&quot; class=&quot;headerlink&quot; title=&quot;登山-嵩山&quot;&gt;&lt;/a&gt;登山-嵩山&lt;/h2&gt;&lt;p&gt;​    前两天，去了登封爬了嵩山，在登封两天的总体感觉还不错。&lt;/p&gt;
+&lt;h3 id=&quot;人文风情&quot;&gt;&lt;a href=&quot;#人文风情&quot; class=&quot;headerlink&quot; title=&quot;人文风情&quot;&gt;&lt;/a&gt;人文风情&lt;/h3&gt;&lt;p&gt;​    之前做攻略看到登封的炒刀削不错。特地去尝了尝，地址是登封汽车客运总站旁的小店，个人觉得味道不错，分量足，价格适中。&lt;/p&gt;
+&lt;p&gt;​   </description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/%E4%BC%91%E9%97%B2%E5%A8%B1%E4%B9%90/">休闲娱乐</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/%E4%BC%91%E9%97%B2%E5%A8%B1%E4%B9%90/">休闲娱乐</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E6%97%85%E6%B8%B8/">旅游</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E7%88%AC%E5%B1%B1/">爬山</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/64b9e8e0/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>docker部署SonarQube</title>
+      <link>https://marsperl.github.io/yyg/12643dd2/</link>
+      <guid>https://marsperl.github.io/yyg/12643dd2/</guid>
+      <pubDate>Tue, 24 Dec 2024 14:29:13 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;details class=&quot;folding-tag&quot; cyan&gt;&lt;summary&gt; 🔜什么是SonarQube？🔚 &lt;/summary&gt;
+              &lt;div class=&#39;content&#39;&gt;
+              &lt;blockquote&gt;&lt;p&gt; SonarQube是一个开源的代码质量管理平台，通过一系列的规则库对代码的扫描检查，提升代码的质量。&lt;/p&gt;&lt;p&gt;运行 SonarQube 服务器分析需要三个组件：SonarQube</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
+      
+      <category domain="https://MarsperL.github.io/tags/docker/">docker</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
+      
+      <category domain="https://MarsperL.github.io/tags/DevOps/">DevOps</category>
+      
+      <category domain="https://MarsperL.github.io/tags/SonarQube/">SonarQube</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90/">代码分析</category>
+      
+      <category domain="https://MarsperL.github.io/tags/SonarScanner/">SonarScanner</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/12643dd2/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>项目漏洞问题记录</title>
+      <link>https://marsperl.github.io/yyg/8a0457d3/</link>
+      <guid>https://marsperl.github.io/yyg/8a0457d3/</guid>
+      <pubDate>Sat, 30 Nov 2024 14:59:22 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;SSL-2-0-和-3-0-的漏洞修复：&quot;&gt;&lt;a href=&quot;#SSL-2-0-和-3-0-的漏洞修复：&quot; class=&quot;headerlink&quot; title=&quot;SSL 2.0 和 3.0 的漏洞修复：&quot;&gt;&lt;/a&gt;&lt;strong&gt;SSL 2.0 和 3.0 的漏洞修复：&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;SSL (Secure Sockets Layer) 是一种加密协议，曾被广泛用于网络通信中以确保数据的安全传输。SSL 2.0 和 3.0 是早期的版本，但它们已经被认为不再安全，因此被现代协议（如 TLS 1.2 和 TLS 1.3）所取代。&lt;/p&gt;
+&lt;p&gt;SSL 2.0 和</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">项目问题总结</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">项目问题总结</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F/">漏洞扫描</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/8a0457d3/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Windows 10（x86_64）使用QEMU安装ARM虚拟机</title>
+      <link>https://marsperl.github.io/yyg/a785f75e/</link>
+      <guid>https://marsperl.github.io/yyg/a785f75e/</guid>
+      <pubDate>Sat, 02 Nov 2024 16:06:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;基础环境&quot;&gt;&lt;a href=&quot;#基础环境&quot; class=&quot;headerlink&quot; title=&quot;基础环境&quot;&gt;&lt;/a&gt;基础环境&lt;/h2&gt;&lt;p&gt;系统：Windows 10&lt;/p&gt;
+&lt;p&gt;硬件：双网卡（本篇中使用的是两个无线网卡）&lt;/p&gt;
+&lt;p&gt;所需软件：QEMU、tap-windows&lt;/p&gt;
+&lt;p&gt;所需软件固件：QEMU_EFI.fd&lt;/p&gt;
+&lt;p&gt;ARM镜像：openEuler-22.03-LTS-SP4-aarch64-dvd.iso&lt;/p&gt;
+&lt;h2 id=&quot;环境准备&quot;&gt;&lt;a href=&quot;#环境准备&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/Linux%E8%BF%90%E7%BB%B4/">Linux运维</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      <category domain="https://MarsperL.github.io/categories/Linux%E8%BF%90%E7%BB%B4/QEMU/">QEMU</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/x86%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85ARM%E8%99%9A%E6%8B%9F%E6%9C%BA/">x86环境安装ARM虚拟机</category>
+      
+      <category domain="https://MarsperL.github.io/tags/QEMU/">QEMU</category>
+      
+      <category domain="https://MarsperL.github.io/tags/x86-ARM/">x86-ARM</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/a785f75e/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>eNSP模拟网络设备访问真实网络</title>
+      <link>https://marsperl.github.io/yyg/f5b762ea/</link>
+      <guid>https://marsperl.github.io/yyg/f5b762ea/</guid>
+      <pubDate>Thu, 24 Oct 2024 14:20:45 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;添加Loopback环回网卡&quot;&gt;&lt;a href=&quot;#添加Loopback环回网卡&quot; class=&quot;headerlink&quot; title=&quot;添加Loopback环回网卡&quot;&gt;&lt;/a&gt;添加Loopback环回网卡&lt;/h2&gt;&lt;p&gt;（1）使用Win+ R调出”运行“，输入&lt;code&gt;hdwwiz&lt;/code&gt;，确定后开始添加新硬件向导。&lt;/p&gt;
+&lt;p&gt;（2）按向导操作，选择&lt;code&gt;安装我手动从列表选择的硬件(高级)(M)&lt;/code&gt;。&lt;/p&gt;
+&lt;img src=&quot;/yyg/f5b762ea/1.png&quot; class=&quot;&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/Linux%E8%BF%90%E7%BB%B4/">Linux运维</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      <category domain="https://MarsperL.github.io/categories/Linux%E8%BF%90%E7%BB%B4/%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90/">网络分析</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/ensp%E6%A8%A1%E6%8B%9F%E4%BB%BF%E7%9C%9F/">ensp模拟仿真</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/">网络设备</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/f5b762ea/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Linux实现模拟IPMI</title>
+      <link>https://marsperl.github.io/yyg/9ec93abd/</link>
+      <guid>https://marsperl.github.io/yyg/9ec93abd/</guid>
+      <pubDate>Thu, 10 Oct 2024 13:45:47 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;环境准备：&quot;&gt;&lt;a href=&quot;#环境准备：&quot; class=&quot;headerlink&quot; title=&quot;环境准备：&quot;&gt;&lt;/a&gt;环境准备：&lt;/h2&gt;&lt;p&gt;（1）使用脚本安装docker、docker-compose&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;bash &amp;lt;(curl -sSL</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
+      
+      <category domain="https://MarsperL.github.io/tags/docker/">docker</category>
+      
+      <category domain="https://MarsperL.github.io/tags/IPMI/">IPMI</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/9ec93abd/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Slim缩小容器镜像大小</title>
+      <link>https://marsperl.github.io/yyg/fd02fe22/</link>
+      <guid>https://marsperl.github.io/yyg/fd02fe22/</guid>
+      <pubDate>Thu, 05 Sep 2024 15:14:53 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;details class=&quot;folding-tag&quot; cyan&gt;&lt;summary&gt; 🔜Slim🔚 &lt;/summary&gt;
+              &lt;div class=&#39;content&#39;&gt;
+              &lt;p&gt;&lt;a href=&quot;https://github.com/slimtoolkit/slim&quot;&gt;GitHub - slimtoolkit/slim： Slim（toolkit）：不要更改容器镜像中的任何内容，并将其缩小多达 30</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
+      
+      <category domain="https://MarsperL.github.io/tags/docker/">docker</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
+      
+      <category domain="https://MarsperL.github.io/tags/Slim/">Slim</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E7%BC%A9%E5%B0%8F%E5%AE%B9%E5%99%A8%E9%95%9C%E5%83%8F%E5%A4%A7%E5%B0%8F/">缩小容器镜像大小</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/fd02fe22/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>docker 部署 SkyWalking</title>
+      <link>https://marsperl.github.io/yyg/f5933c9f/</link>
+      <guid>https://marsperl.github.io/yyg/f5933c9f/</guid>
+      <pubDate>Thu, 05 Sep 2024 15:14:53 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;details class=&quot;folding-tag&quot; cyan&gt;&lt;summary&gt; 🔜什么是SkyWalking？🔚 &lt;/summary&gt;
+              &lt;div class=&#39;content&#39;&gt;
+              &lt;blockquote&gt;&lt;p&gt;是一款优秀的国产 APM</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
+      
+      <category domain="https://MarsperL.github.io/tags/docker/">docker</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
+      
+      <category domain="https://MarsperL.github.io/tags/SkyWalking/">SkyWalking</category>
+      
+      <category domain="https://MarsperL.github.io/tags/APM%E5%B7%A5%E5%85%B7/">APM工具</category>
+      
+      <category domain="https://MarsperL.github.io/tags/DevOps/">DevOps</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA/">分布式链路追踪</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/f5933c9f/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）</title>
+      <link>https://marsperl.github.io/yyg/5ea27f40/</link>
+      <guid>https://marsperl.github.io/yyg/5ea27f40/</guid>
+      <pubDate>Mon, 26 Aug 2024 14:43:31 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）&quot;&gt;&lt;a href=&quot;#在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）&quot; class=&quot;headerlink&quot; title=&quot;在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）&quot;&gt;&lt;/a&gt;在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/rss%E9%98%85%E8%AF%BB%E5%99%A8/">rss阅读器</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/%E5%8D%9A%E5%AE%A2/">博客</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E9%AD%94%E6%94%B9/">魔改</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E5%9C%A8%E7%BA%BFrss%E9%98%85%E8%AF%BB%E5%99%A8/">在线rss阅读器</category>
+      
+      <category domain="https://MarsperL.github.io/tags/GitHub-Pages/">GitHub Pages</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/5ea27f40/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>一些免费的gpt网站</title>
+      <link>https://marsperl.github.io/yyg/30035ff1/</link>
+      <guid>https://marsperl.github.io/yyg/30035ff1/</guid>
+      <pubDate>Sun, 11 Aug 2024 14:34:20 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;div title=&quot;CodeNews&quot; referrerPolicy=&quot;no-referrer&quot; class=&quot;card_box&quot; style=&quot;background-color: #333; width:96px; height:80px;&quot;&gt;
+    &lt;div class=&quot;card_mask&quot;&gt;
+      &lt;span class=&quot;tooltiptext&quot;&gt;免费免登录&lt;/span&gt;
+      &lt;a href=&quot;https://codenews.cc/chatgpt&quot;&gt;查看详情&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;card_top&quot;&gt;
+      &lt;i</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/%E5%85%8D%E8%B4%B9gpt%E7%BD%91%E7%AB%99/">免费gpt网站</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8A%A9%E6%89%8B/">人工智能助手</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E5%85%8D%E8%B4%B9gpt/">免费gpt</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/30035ff1/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Watchtower自动更新docker容器</title>
+      <link>https://marsperl.github.io/yyg/d3a49a0e/</link>
+      <guid>https://marsperl.github.io/yyg/d3a49a0e/</guid>
+      <pubDate>Sat, 10 Aug 2024 14:50:43 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;基础环境&quot;&gt;&lt;a href=&quot;#基础环境&quot; class=&quot;headerlink&quot; title=&quot;基础环境&quot;&gt;&lt;/a&gt;基础环境&lt;/h2&gt;&lt;p&gt;系统：openEuler 22.03 (LTS-SP4) X86&lt;/p&gt;
+&lt;p&gt;软件：docker-26.1.3、 docker compose-2.27.0&lt;/p&gt;
+&lt;h2 id=&quot;关于Watchtower&quot;&gt;&lt;a href=&quot;#关于Watchtower&quot; class=&quot;headerlink&quot; title=&quot;关于Watchtower&quot;&gt;&lt;/a&gt;关于Watchtower&lt;/h2&gt;&lt;p&gt;Watchtower 是一个应用程序，监控正在运行的</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
+      
+      <category domain="https://MarsperL.github.io/tags/docker/">docker</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
+      
+      <category domain="https://MarsperL.github.io/tags/Watchtower/">Watchtower</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E5%AE%B9%E5%99%A8/">自动更新容器</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/d3a49a0e/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Hexo-Butterfly美化教程-[9]繁沙</title>
+      <link>https://marsperl.github.io/yyg/ca46b09/</link>
+      <guid>https://marsperl.github.io/yyg/ca46b09/</guid>
+      <pubDate>Wed, 07 Aug 2024 15:43:30 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;平时在工作和生活中，有一些很好用的软件、网站，就想着找一个地方都给记下来。在创建hexo博客时，看到了有在博客里添加网站导航的，感觉这样挺不错的，也就有了&lt;code&gt;繁沙&lt;/code&gt;：一个搜录（个人）好用软件和网站的地方。样式借用了&lt;a href=&quot;https://blog.leonus.cn/&quot;&gt;Leonus &lt;/a&gt;博主的&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E7%BE%8E%E5%8C%96%E6%95%99%E7%A8%8B/">美化教程</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/Hexo/">Hexo</category>
+      
+      <category domain="https://MarsperL.github.io/tags/Butterfly/">Butterfly</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      
+      <category domain="https://MarsperL.github.io/tags/%E7%BE%8E%E5%8C%96%E6%95%99%E7%A8%8B/">美化教程</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/ca46b09/#disqus_thread</comments>
+      
+    </item>
+    
+  </channel>
+</rss>

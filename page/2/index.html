@@ -1,0 +1,367 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>云野阁 - 潇洒是一种态度</title><meta name="author" content="云野阁"><meta name="copyright" content="云野阁"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="闲云野鹤，八方逍遥">
+<meta property="og:type" content="website">
+<meta property="og:title" content="云野阁">
+<meta property="og:url" content="https://marsperl.github.io/page/2/index.html">
+<meta property="og:site_name" content="云野阁">
+<meta property="og:description" content="闲云野鹤，八方逍遥">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img520.com/iNvl5J.png">
+<meta property="article:author" content="云野阁">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img520.com/iNvl5J.png"><link rel="shortcut icon" href="https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@1.2/img/icon.png"><link rel="canonical" href="https://marsperl.github.io/page/2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.3.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"top_n_per_article":-1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '云野阁',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><link rel="stylesheet" href="/css/parts.css"><link rel="stylesheet" href="/css/link.css"><script src="https://npm.elemecdn.com/echarts@4.9.0/dist/echarts.min.js"></script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/rss2.xml" title="云野阁" type="application/rss+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img520.com/iNvl5J.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">51</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">97</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">33</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa-solid fa-blog"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="javascript:randomPost();"><i class="fa-fw fa-solid fa-shuffle"></i><span> 随机一篇</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa-brands fa-get-pocket"></i><span> 蓝口袋</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/pintree/index.html"><i class="fa-fw fa fa-search-plus"></i><span> 导航</span></a></li><li><a class="site-page child" href="/sand/"><i class="fa-fw fa fa-cube"></i><span> 繁沙</span></a></li><li><a class="site-page child" href="/trip/index.html"><i class="fa-fw fa-solid fa-earth-asia"></i><span> 星游记</span></a></li><li><a class="site-page child" href="/share/"><i class="fa-fw fa-solid fa-star"></i><span> 书•影•音</span></a></li><li><a class="site-page child" href="/focusclock/time.html"><i class="fa-fw fas fa-clock"></i><span> 专注时钟</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-comments"></i><span> 聊天室</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></li><li><a class="site-page child" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 心语亭</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/yygrss/index.html"><i class="fa-fw fa-solid fa-square-rss"></i><span> 文界</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img520.com/iNvl5J.png" alt="Logo"><span class="site-name">云野阁</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa-solid fa-blog"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="javascript:randomPost();"><i class="fa-fw fa-solid fa-shuffle"></i><span> 随机一篇</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa-brands fa-get-pocket"></i><span> 蓝口袋</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/pintree/index.html"><i class="fa-fw fa fa-search-plus"></i><span> 导航</span></a></li><li><a class="site-page child" href="/sand/"><i class="fa-fw fa fa-cube"></i><span> 繁沙</span></a></li><li><a class="site-page child" href="/trip/index.html"><i class="fa-fw fa-solid fa-earth-asia"></i><span> 星游记</span></a></li><li><a class="site-page child" href="/share/"><i class="fa-fw fa-solid fa-star"></i><span> 书•影•音</span></a></li><li><a class="site-page child" href="/focusclock/time.html"><i class="fa-fw fas fa-clock"></i><span> 专注时钟</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-comments"></i><span> 聊天室</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></li><li><a class="site-page child" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 心语亭</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/yygrss/index.html"><i class="fa-fw fa-solid fa-square-rss"></i><span> 文界</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">云野阁</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/MarsperL" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:MjcxMTYxMzE4MkBxcS5jb20=" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/rss2.xml" target="_blank" title=""><i class="fas fa-rss"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc masonry" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="post_cover"><a href="/yyg/f5b762ea/" title="eNSP模拟网络设备访问真实网络"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://api.vvhan.com/api/wallpaper/views" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="eNSP模拟网络设备访问真实网络"></a></div><div class="recent-post-info"><a class="article-title" href="/yyg/f5b762ea/" title="eNSP模拟网络设备访问真实网络">eNSP模拟网络设备访问真实网络</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-24T14:20:45.000Z" title="发表于 2024-10-24 22:20:45">2024-10-24</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-24T14:35:19.000Z" title="更新于 2024-10-24 22:35:19">2024-10-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Linux%E8%BF%90%E7%BB%B4/">Linux运维</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Linux%E8%BF%90%E7%BB%B4/%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90/">网络分析</a></span></div><div class="content">添加Loopback环回网卡（1）使用Win+...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/yyg/9ec93abd/" title="Linux实现模拟IPMI"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img520.com/iNvl5J.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux实现模拟IPMI"></a></div><div class="recent-post-info"><a class="article-title" href="/yyg/9ec93abd/" title="Linux实现模拟IPMI">Linux实现模拟IPMI</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-10T13:45:47.000Z" title="发表于 2024-10-10 21:45:47">2024-10-10</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-24T14:35:19.000Z" title="更新于 2024-10-24 22:35:19">2024-10-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</a></span></div><div class="content">环境准备：（1）使用脚本安装docker、docker-compose 1bash &lt;(curl -sSL...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/yyg/fd02fe22/" title="Slim缩小容器镜像大小"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://random-img.pupper.cn/api" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Slim缩小容器镜像大小"></a></div><div class="recent-post-info"><a class="article-title" href="/yyg/fd02fe22/" title="Slim缩小容器镜像大小">Slim缩小容器镜像大小</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-09-05T15:14:53.000Z" title="发表于 2024-09-05 23:14:53">2024-09-05</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-24T14:35:19.000Z" title="更新于 2024-10-24 22:35:19">2024-10-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</a></span></div><div class="content">前言 🔜Slim🔚                               GitHub - slimtoolkit/slim： Slim（toolkit）：不要更改容器镜像中的任何内容，并将其缩小多达 30...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/yyg/f5933c9f/" title="docker 部署 SkyWalking"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picapi.pai.al/api/scenery.php" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker 部署 SkyWalking"></a></div><div class="recent-post-info"><a class="article-title" href="/yyg/f5933c9f/" title="docker 部署 SkyWalking">docker 部署 SkyWalking</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-09-05T15:14:53.000Z" title="发表于 2024-09-05 23:14:53">2024-09-05</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-24T14:35:19.000Z" title="更新于 2024-10-24 22:35:19">2024-10-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</a></span></div><div class="content">前言 🔜什么是SkyWalking？🔚                               是一款优秀的国产 APM...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/yyg/5ea27f40/" title="在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://api.jiangyuhui.top/aliyun/randomCover" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）"></a></div><div class="recent-post-info"><a class="article-title" href="/yyg/5ea27f40/" title="在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）">在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-08-26T14:43:31.000Z" title="发表于 2024-08-26 22:43:31">2024-08-26</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-08-30T15:28:25.000Z" title="更新于 2024-08-30 23:28:25">2024-08-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/rss%E9%98%85%E8%AF%BB%E5%99%A8/">rss阅读器</a></span></div><div class="content">在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）前言在搭建云野阁博客网站期间，看了好多具有个人特色的博客网站，有不少都有RSS订阅功能，那RSS是什么呢？咱们先唠唠。  🔜RSS🔚            ...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/yyg/d3a49a0e/" title="Watchtower自动更新docker容器"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://imgapi.cn/api.php?fl=fengjing&amp;gs=images" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Watchtower自动更新docker容器"></a></div><div class="recent-post-info"><a class="article-title" href="/yyg/d3a49a0e/" title="Watchtower自动更新docker容器">Watchtower自动更新docker容器</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-08-10T14:50:43.000Z" title="发表于 2024-08-10 22:50:43">2024-08-10</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-08-12T14:06:41.000Z" title="更新于 2024-08-12 22:06:41">2024-08-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</a></span></div><div class="content">基础环境系统：openEuler 22.03 (LTS-SP4) X86 软件：docker-26.1.3、 docker compose-2.27.0 关于WatchtowerWatchtower 是一个应用程序，监控正在运行的...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/yyg/3b57c0c6/" title="docker容器日志配置管理"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/04/03/542674_9ad613de0540a41a.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker容器日志配置管理"></a></div><div class="recent-post-info"><a class="article-title" href="/yyg/3b57c0c6/" title="docker容器日志配置管理">docker容器日志配置管理</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-08-07T15:43:30.000Z" title="发表于 2024-08-07 23:43:30">2024-08-07</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-08-10T15:53:09.000Z" title="更新于 2024-08-10 23:53:09">2024-08-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</a></span></div><div class="content">运行的项目容器突然就停了，查看容器日志发现磁盘空间不足，导致容器没法运行了。  Error response from daemon: Cannot restart container docker-p: mkdir...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/yyg/c10999ab/" title="podman-5.1.2 部署"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://random-img.pupper.cn/api" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="podman-5.1.2 部署"></a></div><div class="recent-post-info"><a class="article-title" href="/yyg/c10999ab/" title="podman-5.1.2 部署">podman-5.1.2 部署</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-08-04T05:14:44.000Z" title="发表于 2024-08-04 13:14:44">2024-08-04</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-08-10T15:51:53.000Z" title="更新于 2024-08-10 23:51:53">2024-08-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/podman/">podman</a></span></div><div class="content">基础环境系统：openEuler 22.03 (LTS-SP4) X86 软件：podman-5.1.2、podman-compose-1.2.0 配置yum源123456789echo...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/yyg/4451cec/" title="x86服务器构建ARM架构docker镜像"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picapi.pai.al/api/scenery.php" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="x86服务器构建ARM架构docker镜像"></a></div><div class="recent-post-info"><a class="article-title" href="/yyg/4451cec/" title="x86服务器构建ARM架构docker镜像">x86服务器构建ARM架构docker镜像</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-31T14:45:03.000Z" title="发表于 2024-07-31 22:45:03">2024-07-31</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-08-20T15:02:09.000Z" title="更新于 2024-08-20 23:02:09">2024-08-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Linux%E8%BF%90%E7%BB%B4/">Linux运维</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Linux%E8%BF%90%E7%BB%B4/%E5%AE%B9%E5%99%A8%E7%AE%A1%E7%90%86/">容器管理</a></span></div><div class="content">基础环境操作系统：openEuler 22.03 (LTS-SP2) 软件：Docker-26.1.2 、Docker...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/yyg/c60df0d6/" title="使用portainer管理容器"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img520.com/iNvl5J.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="使用portainer管理容器"></a></div><div class="recent-post-info"><a class="article-title" href="/yyg/c60df0d6/" title="使用portainer管理容器">使用portainer管理容器</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-24T14:30:25.000Z" title="发表于 2024-07-24 22:30:25">2024-07-24</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-08-10T14:57:21.000Z" title="更新于 2024-08-10 22:57:21">2024-08-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Linux%E8%BF%90%E7%BB%B4/">Linux运维</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Linux%E8%BF%90%E7%BB%B4/%E5%AE%B9%E5%99%A8%E7%AE%A1%E7%90%86/">容器管理</a></span></div><div class="content">基础环境系统环境： 操作系统：CentOS 7.9 软件环境： Docker-26.1.4、Docker Compose-2.27.1 、portainer-2.20.3 配置阿里yum源 : 123cd...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/yyg/56088d5a/" title="ELK | 使用 docker部署三节点 Elasticsearch 集群"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tu.ltyuanfang.cn/api/fengjing.php" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ELK | 使用 docker部署三节点 Elasticsearch 集群"></a></div><div class="recent-post-info"><a class="article-title" href="/yyg/56088d5a/" title="ELK | 使用 docker部署三节点 Elasticsearch 集群">ELK | 使用 docker部署三节点 Elasticsearch 集群</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-23T17:50:47.000Z" title="发表于 2024-07-24 01:50:47">2024-07-24</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-08-10T15:57:44.000Z" title="更新于 2024-08-10 23:57:44">2024-08-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/">日志分析</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/ELK/">ELK</a></span></div><div class="content">环境准备 硬件环境 操作系统：Centos Stream 9 CPU：4颗 内存：8GB 硬盘：50GB  软件环境 docker版本：26.1.0 docker...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/yyg/2855a772/" title="项目问题总结"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://imgapi.cn/api.php?fl=fengjing&amp;gs=images" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="项目问题总结"></a></div><div class="recent-post-info"><a class="article-title" href="/yyg/2855a772/" title="项目问题总结">项目问题总结</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-23T17:50:47.000Z" title="发表于 2024-07-24 01:50:47">2024-07-24</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-08-10T15:53:20.000Z" title="更新于 2024-08-10 23:53:20">2024-08-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</a></span></div><div class="content">  ...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/yyg/e102aa73/" title="Hexo-Butterfly美化教程-[1]基础环境"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/04/03/542674_9ad613de0540a41a.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo-Butterfly美化教程-[1]基础环境"></a></div><div class="recent-post-info"><a class="article-title" href="/yyg/e102aa73/" title="Hexo-Butterfly美化教程-[1]基础环境">Hexo-Butterfly美化教程-[1]基础环境</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-15T07:14:39.000Z" title="发表于 2024-07-15 15:14:39">2024-07-15</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-19T05:22:26.000Z" title="更新于 2025-04-19 13:22:26">2025-04-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</a></span></div><div class="content">...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/yyg/776a1cd4/" title="LNMP部署"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://imgapi.cn/api.php?fl=fengjing&amp;gs=images" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LNMP部署"></a></div><div class="recent-post-info"><a class="article-title" href="/yyg/776a1cd4/" title="LNMP部署">LNMP部署</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-05-11T15:41:08.000Z" title="发表于 2024-05-11 23:41:08">2024-05-11</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-23T17:50:47.000Z" title="更新于 2024-07-24 01:50:47">2024-07-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Linux%E8%BF%90%E7%BB%B4/">Linux运维</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Linux%E8%BF%90%E7%BB%B4/Web%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E9%83%A8%E7%BD%B2/">Web服务架构部署</a></span></div><div class="content">基础环境系统环境：CentOS Stream 9 软件环境：nginx-1.20.1、mysql-8.0.36（mariaDB）、php-8.0.30 部署过程方案一：yum安装步骤一：配置安全策略123456#...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><a class="page-number" href="/page/4/#content-inner">4</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a><div class="toPageGroup"><input id="toPageText" maxlength="3" oninput="value=value.replace(/[^0-9]/g,'')" onkeyup="if (this.value === '0') this.value = ''" title="跳转到指定页面"><a id="toPageButton" data-pjax-state="" onclick="icattoPage.toPage()"><i class="fa-solid fa-angles-right"></i></a></div></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img520.com/iNvl5J.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">云野阁</div><div class="author-info-description">闲云野鹤，八方逍遥</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">51</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">97</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">33</div></a></div><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/MarsperL" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:MjcxMTYxMzE4MkBxcS5jb20=" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/rss2.xml" target="_blank" title=""><i class="fas fa-rss"></i></a></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/yyg/46758d12/" title="Android手机安装docker"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img520.com/iNvl5J.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Android手机安装docker"/></a><div class="content"><a class="title" href="/yyg/46758d12/" title="Android手机安装docker">Android手机安装docker</a><time datetime="2025-05-17T11:45:50.000Z" title="发表于 2025-05-17 19:45:50">2025-05-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/yyg/c86be486/" title="Android手机安装ubuntu"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://api.vvhan.com/api/wallpaper/views" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Android手机安装ubuntu"/></a><div class="content"><a class="title" href="/yyg/c86be486/" title="Android手机安装ubuntu">Android手机安装ubuntu</a><time datetime="2025-05-17T11:45:50.000Z" title="发表于 2025-05-17 19:45:50">2025-05-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/yyg/dc35290c/" title="Kubernetes知识梳理-核心组件"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picapi.pai.al/api/scenery.php" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Kubernetes知识梳理-核心组件"/></a><div class="content"><a class="title" href="/yyg/dc35290c/" title="Kubernetes知识梳理-核心组件">Kubernetes知识梳理-核心组件</a><time datetime="2025-05-17T11:08:26.000Z" title="发表于 2025-05-17 19:08:26">2025-05-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/yyg/f0979e05/" title="Jenkins知识梳理"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tu.ltyuanfang.cn/api/fengjing.php" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Jenkins知识梳理"/></a><div class="content"><a class="title" href="/yyg/f0979e05/" title="Jenkins知识梳理">Jenkins知识梳理</a><time datetime="2025-05-17T10:47:41.000Z" title="发表于 2025-05-17 18:47:41">2025-05-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/yyg/10ac2e4/" title="Ansible最新版安装"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/04/03/542674_9ad613de0540a41a.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ansible最新版安装"/></a><div class="content"><a class="title" href="/yyg/10ac2e4/" title="Ansible最新版安装">Ansible最新版安装</a><time datetime="2025-04-12T09:35:43.000Z" title="发表于 2025-04-12 17:35:43">2025-04-12</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+      <i class="fas fa-angle-right"></i></a>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux%E8%BF%90%E7%BB%B4/"><span class="card-category-list-name">Linux运维</span><span class="card-category-list-count">14</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux%E8%BF%90%E7%BB%B4/QEMU/"><span class="card-category-list-name">QEMU</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux%E8%BF%90%E7%BB%B4/Web%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E9%83%A8%E7%BD%B2/"><span class="card-category-list-name">Web服务架构部署</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux%E8%BF%90%E7%BB%B4/%E5%AE%B9%E5%99%A8%E7%AE%A1%E7%90%86/"><span class="card-category-list-name">容器管理</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux%E8%BF%90%E7%BB%B4/%E7%9B%91%E6%8E%A7/"><span class="card-category-list-name">监控</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux%E8%BF%90%E7%BB%B4/%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90/"><span class="card-category-list-name">网络分析</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux%E8%BF%90%E7%BB%B4/%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/"><span class="card-category-list-name">网络服务搭建</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux%E8%BF%90%E7%BB%B4/%E8%84%9A%E6%9C%AC/"><span class="card-category-list-name">脚本</span><span class="card-category-list-count">1</span></a></li></ul></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Linux%E8%BF%90%E7%BB%B4/" style="font-size: 1.3em; color: rgb(50, 147, 190);">Linux运维<sup>6</sup></a><a href="/tags/DHCP/" style="font-size: 1.15em; color: rgb(50, 50, 129);">DHCP<sup>1</sup></a><a href="/tags/DNS/" style="font-size: 1.15em; color: rgb(174, 50, 156);">DNS<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 1.38em; color: rgb(136, 187, 75);">Linux<sup>15</sup></a><a href="/tags/Nginx/" style="font-size: 1.15em; color: rgb(173, 72, 50);">Nginx<sup>1</sup></a><a href="/tags/Mysql/" style="font-size: 1.22em; color: rgb(50, 75, 128);">Mysql<sup>2</sup></a><a href="/tags/PHP/" style="font-size: 1.22em; color: rgb(99, 79, 75);">PHP<sup>2</sup></a><a href="/tags/Apache/" style="font-size: 1.15em; color: rgb(51, 77, 72);">Apache<sup>1</sup></a><a href="/tags/docker/" style="font-size: 1.45em; color: rgb(50, 93, 137);">docker<sup>21</sup></a><a href="/tags/IPMI/" style="font-size: 1.15em; color: rgb(50, 67, 50);">IPMI<sup>1</sup></a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      <a class="card-more-btn" href="/archives/"
+            title="查看更多">
+            <i class="fas fa-angle-right"></i>
+          </a>
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/05/">
+            <span class="card-archive-list-date">
+              2025 五月
+            </span>
+            <span class="card-archive-list-count">4</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/04/">
+            <span class="card-archive-list-date">
+              2025 四月
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/03/">
+            <span class="card-archive-list-date">
+              2025 三月
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/01/">
+            <span class="card-archive-list-date">
+              2025 一月
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/12/">
+            <span class="card-archive-list-date">
+              2024 十二月
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/11/">
+            <span class="card-archive-list-date">
+              2024 十一月
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/10/">
+            <span class="card-archive-list-date">
+              2024 十月
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/09/">
+            <span class="card-archive-list-date">
+              2024 九月
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">51</div></div><div class="webinfo-item"><div class="item-name">运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2024-03-07T13:51:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">87.2k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-05-25T08:12:09.345Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By 云野阁</div><div class="footer_custom_text"><div id="runtime"></div> 世界上只有一种真正的英雄主义，那就是看清生活的真相之后，依然热爱生活</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div><script src="/js/utils.js?v=5.3.5"></script><script src="/js/main.js?v=5.3.5"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: subtitleType => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  },
+  processSubtitle: (content, extraContents = []) => {
+    if (true) {
+      const sub = ["世界上只有一种真正的英雄主义，那就是看清生活的真相之后，依然热爱生活","罗曼罗兰"].slice()
+
+      if (extraContents.length > 0) {
+        sub.unshift(...extraContents)
+      }
+
+      if (typeof content === 'string') {
+        sub.unshift(content)
+      } else if (Array.isArray(content)) {
+        sub.unshift(...content)
+      }
+
+      sub.length > 0 && typedJSFn.init(sub)
+    } else {
+      document.getElementById('subtitle').textContent = typeof content === 'string' ? content :
+        (Array.isArray(content) && content.length > 0 ? content[0] : '')
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      const from = '出自 ' + data.from
+      typedJSFn.processSubtitle(data.hitokoto, [from])
+    })
+    .catch(err => {
+      console.error('Failed to get the Hitokoto API:', err)
+      typedJSFn.processSubtitle(["世界上只有一种真正的英雄主义，那就是看清生活的真相之后，依然热爱生活","罗曼罗兰"])
+    })
+}
+typedJSFn.run(subtitleType)
+</script><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script defer type="text/javascript" src="https://cdn1.tianli0.top/npm/sweetalert2@8.19.0/dist/sweetalert2.all.js"></script><script defer src="/js/lunar.js"></script><script defer src="/js/day.js"></script><script src="/js/parts.js"></script><script src="/js/background.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.3.5"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="yyg/30035ff1/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://t.alcy.cc/fj" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-08-11</span><a class="blog-slider__title" href="yyg/30035ff1/" alt="">一些免费的gpt网站</a><div class="blog-slider__text">点击查看置顶文章啦~~~</div><a class="blog-slider__button" href="yyg/30035ff1/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="yyg/c60df0d6/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img520.com/iNvl5J.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-07-24</span><a class="blog-slider__title" href="yyg/c60df0d6/" alt="">使用portainer管理容器</a><div class="blog-slider__text">点击查看置顶文章啦~~~</div><a class="blog-slider__button" href="yyg/c60df0d6/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="yyg/4451cec/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picapi.pai.al/api/scenery.php" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-07-31</span><a class="blog-slider__title" href="yyg/4451cec/" alt="">x86服务器构建ARM架构docker镜像</a><div class="blog-slider__text">点击查看置顶文章啦~~~</div><a class="blog-slider__button" href="yyg/4451cec/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="yyg/71468332/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://random-img.pupper.cn/api" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-08</span><a class="blog-slider__title" href="yyg/71468332/" alt="">Docker Swarm集群部署</a><div class="blog-slider__text">点击查看置顶文章啦~~~</div><a class="blog-slider__button" href="yyg/71468332/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="yyg/5ea27f40/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://api.jiangyuhui.top/aliyun/randomCover" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-08-26</span><a class="blog-slider__title" href="yyg/5ea27f40/" alt="">在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）</a><div class="blog-slider__text">点击查看置顶文章啦~~~</div><a class="blog-slider__button" href="yyg/5ea27f40/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="yyg/ca46b09/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tu.ltyuanfang.cn/api/fengjing.php" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-08-07</span><a class="blog-slider__title" href="yyg/ca46b09/" alt="">Hexo-Butterfly美化教程-[9]繁沙</a><div class="blog-slider__text">点击查看置顶文章啦~~~</div><a class="blog-slider__button" href="yyg/ca46b09/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="yyg/60ed202a/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://imgapi.cn/api.php?fl=fengjing&amp;gs=images" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-08</span><a class="blog-slider__title" href="yyg/60ed202a/" alt="">实现Docker 容器跨主机通讯</a><div class="blog-slider__text">点击查看置顶文章啦~~~</div><a class="blog-slider__button" href="yyg/60ed202a/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>docker容器日志配置管理 | 云野阁</title><meta name="author" content="云野阁"><meta name="copyright" content="云野阁"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="运行的项目容器突然就停了，查看容器日志发现磁盘空间不足，导致容器没法运行了。  Error response from daemon: Cannot restart container docker-p: mkdir &#x2F;home&#x2F;dockerData&#x2F;overlay2&#x2F;7bef1e2fa4788ab4d5db7e2e850d7ceeed09185b55c175f20c1500d28a0cc874d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker容器日志配置管理">
+<meta property="og:url" content="https://marsperl.github.io/yyg/3b57c0c6/index.html">
+<meta property="og:site_name" content="云野阁">
+<meta property="og:description" content="运行的项目容器突然就停了，查看容器日志发现磁盘空间不足，导致容器没法运行了。  Error response from daemon: Cannot restart container docker-p: mkdir &#x2F;home&#x2F;dockerData&#x2F;overlay2&#x2F;7bef1e2fa4788ab4d5db7e2e850d7ceeed09185b55c175f20c1500d28a0cc874d">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.picgo.net/2024/04/03/542674_9ad613de0540a41a.jpeg">
+<meta property="article:published_time" content="2024-08-07T15:43:30.000Z">
+<meta property="article:modified_time" content="2024-08-10T15:53:09.000Z">
+<meta property="article:author" content="云野阁">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="docker">
+<meta property="article:tag" content="运维">
+<meta property="article:tag" content="知识梳理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.picgo.net/2024/04/03/542674_9ad613de0540a41a.jpeg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "docker容器日志配置管理",
+  "url": "https://marsperl.github.io/yyg/3b57c0c6/",
+  "image": "https://img.picgo.net/2024/04/03/542674_9ad613de0540a41a.jpeg",
+  "datePublished": "2024-08-07T15:43:30.000Z",
+  "dateModified": "2024-08-10T15:53:09.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "云野阁",
+      "url": "https://marsperl.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@1.2/img/icon.png"><link rel="canonical" href="https://marsperl.github.io/yyg/3b57c0c6/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.3.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"top_n_per_article":-1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'docker容器日志配置管理',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/parts.css"><link rel="stylesheet" href="/css/link.css"><script src="https://npm.elemecdn.com/echarts@4.9.0/dist/echarts.min.js"></script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/rss2.xml" title="云野阁" type="application/rss+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img520.com/iNvl5J.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">51</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">97</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">33</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa-solid fa-blog"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="javascript:randomPost();"><i class="fa-fw fa-solid fa-shuffle"></i><span> 随机一篇</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa-brands fa-get-pocket"></i><span> 蓝口袋</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/pintree/index.html"><i class="fa-fw fa fa-search-plus"></i><span> 导航</span></a></li><li><a class="site-page child" href="/sand/"><i class="fa-fw fa fa-cube"></i><span> 繁沙</span></a></li><li><a class="site-page child" href="/trip/index.html"><i class="fa-fw fa-solid fa-earth-asia"></i><span> 星游记</span></a></li><li><a class="site-page child" href="/share/"><i class="fa-fw fa-solid fa-star"></i><span> 书•影•音</span></a></li><li><a class="site-page child" href="/focusclock/time.html"><i class="fa-fw fas fa-clock"></i><span> 专注时钟</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-comments"></i><span> 聊天室</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></li><li><a class="site-page child" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 心语亭</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/yygrss/index.html"><i class="fa-fw fa-solid fa-square-rss"></i><span> 文界</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://img.picgo.net/2024/04/03/542674_9ad613de0540a41a.jpeg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img520.com/iNvl5J.png" alt="Logo"><span class="site-name">云野阁</span></a><a class="nav-page-title" href="/"><span class="site-name">docker容器日志配置管理</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa-solid fa-blog"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="javascript:randomPost();"><i class="fa-fw fa-solid fa-shuffle"></i><span> 随机一篇</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa-brands fa-get-pocket"></i><span> 蓝口袋</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/pintree/index.html"><i class="fa-fw fa fa-search-plus"></i><span> 导航</span></a></li><li><a class="site-page child" href="/sand/"><i class="fa-fw fa fa-cube"></i><span> 繁沙</span></a></li><li><a class="site-page child" href="/trip/index.html"><i class="fa-fw fa-solid fa-earth-asia"></i><span> 星游记</span></a></li><li><a class="site-page child" href="/share/"><i class="fa-fw fa-solid fa-star"></i><span> 书•影•音</span></a></li><li><a class="site-page child" href="/focusclock/time.html"><i class="fa-fw fas fa-clock"></i><span> 专注时钟</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-comments"></i><span> 聊天室</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></li><li><a class="site-page child" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 心语亭</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/yygrss/index.html"><i class="fa-fw fa-solid fa-square-rss"></i><span> 文界</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">docker容器日志配置管理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-08-07T15:43:30.000Z" title="发表于 2024-08-07 23:43:30">2024-08-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-08-10T15:53:09.000Z" title="更新于 2024-08-10 23:53:09">2024-08-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">433</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>运行的项目容器突然就停了，查看容器日志发现磁盘空间不足，导致容器没法运行了。</p>
+<blockquote>
+<p>Error response from daemon: Cannot restart container docker-p: mkdir /home/dockerData/overlay2/7bef1e2fa4788ab4d5db7e2e850d7ceeed09185b55c175f20c1500d28a0cc874d: <mark>no space left on device</mark></p>
+</blockquote>
+<p>先使用<code>df -h</code>看下磁盘使用情况。</p>
+<blockquote>
+<p>overlay                     413G  413G  0   100% /home/dockerData/overlay2/fea24dfbbe9f7d6d8309……/merged<br>overlay                     413G  413G  0   100% /home/dockerData/overlay2/7bef1e2fa4788ab4d5db……/merged</p>
+</blockquote>
+<p>容器的存储目录<code>/home/dockerData/</code>（其默认存储目录是<code>/var/lib/docker</code>，我这儿是重新配置的）直接把磁盘用完了。</p>
+<p>找到原因就好办了，直接到容器的存储目录<code>/home/dockerData/</code>先后使用<code>du -sh</code>命令分别查看<code>overlay2</code>和<code>containers</code>两个目录以及里面的文件。发现containers目录里的容器文件<code>98bbe7f17fa335f1b6e17......</code>占用了409G。 </p>
+<blockquote>
+<p>du -sh overlay2<br>3.7G    overlay2</p>
+<p> du -sh containers/98bbe7f17fa335f1b6e17……<br>409G    containers/98bbe7f17fa335f1b6e17……</p>
+</blockquote>
+<p>再深入容器文件发现，源头是容器的日志文件<code>98bbe7f17fa335f1b6e17......-json.log</code>。</p>
+<p>把这个日志文件进行删除之后，再重启容器，业务就恢复正常了。</p>
+<p>为防止这种情况再次发生，需要在 Docker 守护程序<code>/etc/docker/daemon.json</code>配置日志记录驱动程序，配置具体内容如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;log-driver&quot;</span><span class="punctuation">:</span><span class="string">&quot;json-file&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;log-opts&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span><span class="attr">&quot;max-size&quot;</span> <span class="punctuation">:</span><span class="string">&quot;50m&quot;</span><span class="punctuation">,</span><span class="attr">&quot;max-file&quot;</span><span class="punctuation">:</span><span class="string">&quot;2&quot;</span><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>&quot;log-driver&quot;:&quot;json-file&quot;</code>   Docker的默认日志记录驱动程序。日志格式为JSON。</p>
+<p><code>&quot;max-size&quot; :&quot;50m&quot;</code>  日志切割前的最大为50M。</p>
+<p><code>&quot;max-file&quot;:&quot;2&quot;</code>  保留的最大日志文件数量为2。</p>
+</blockquote>
+<p>配置完成后，重启docker。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+<p>关于docker的日志更多相关内容，可参考下面链接中的内容。</p>
+<div class="tag link"><a class="link-card" title="Docker 日志管理最佳实践！看这篇就够了！" target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000023144155"><div class="left"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.pixabay.com/photo/2022/07/08/10/37/books-7309019_960_720.png"/></div><div class="right"><p class="text">Docker 日志管理最佳实践！看这篇就够了！</p><p class="url">https://segmentfault.com/a/1190000023144155</p></div></a></div>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://marsperl.github.io/">云野阁</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://marsperl.github.io/yyg/3b57c0c6/">https://marsperl.github.io/yyg/3b57c0c6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://MarsperL.github.io" target="_blank">云野阁</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a><a class="post-meta__tags" href="/tags/docker/">docker</a><a class="post-meta__tags" href="/tags/%E8%BF%90%E7%BB%B4/">运维</a><a class="post-meta__tags" href="/tags/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</a></div><div class="post-share"><div class="social-share" data-image="https://img.picgo.net/2024/04/03/542674_9ad613de0540a41a.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/yyg/d3a49a0e/" title="Watchtower自动更新docker容器"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://imgapi.cn/api.php?fl=fengjing&amp;gs=images" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">Watchtower自动更新docker容器</div></div><div class="info-2"><div class="info-item-1">基础环境系统：openEuler 22.03 (LTS-SP4) X86 软件：docker-26.1.3、 docker compose-2.27.0 关于WatchtowerWatchtower 是一个应用程序，监控正在运行的...</div><div class="content">基础环境系统：openEuler 22.03 (LTS-SP4) X86
+软件：docker-26.1.3、 docker compose-2.27.0
+关于WatchtowerWatchtower 是一个应用程序，监控正在运行的 Dock ...</div></div></div></a><a class="pagination-related" href="/yyg/ca46b09/" title="Hexo-Butterfly美化教程-[9]繁沙"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tu.ltyuanfang.cn/api/fengjing.php" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Hexo-Butterfly美化教程-[9]繁沙</div></div><div class="info-2"><div class="info-item-1">前言平时在工作和生活中，有一些很好用的软件、网站，就想着找一个地方都给记下来。在创建hexo博客时，看到了有在博客里添加网站导航的，感觉这样挺不错的，也就有了繁沙：一个搜录（个人）好用软件和网站的地方。样式借用了Leonus...</div><div class="content">前言平时在工作和生活中，有一些很好用的软件、网站，就想着找一个地方都给记下来。在创建hexo博客时，看到了有在博客里添加网站导航的，感觉这样挺不错的，也就有了繁沙：一个搜录（个人）好用软件和网站的地方。样式借用了Leonus 博主的作品推荐 ...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/yyg/5c56de6f/" title="docker知识梳理"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://random-img.pupper.cn/api" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-24</div><div class="info-item-2">docker知识梳理</div></div><div class="info">
+  e720fb8297af95c5ceb1b2b23a14166113f676c1d922569bd3835ccc599188b9a2b61cee022cd32f80a50dd00a8e93de64b1f8a3bafd3d390d9ad ...</div><div class="info-2"><div class="info-item-1">  ...</div></div></div></a><a class="pagination-related" href="/yyg/9ec93abd/" title="Linux实现模拟IPMI"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img520.com/iNvl5J.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-10</div><div class="info-item-2">Linux实现模拟IPMI</div></div><div class="info">环境准备：（1）使用脚本安装docker、docker-compose
+1bash &lt;(curl -sSL https://linuxmirrors.cn/docker.sh)
+（2）配置镜像加速
+123456789101112131 ...</div><div class="info-2"><div class="info-item-1">环境准备：（1）使用脚本安装docker、docker-compose 1bash &lt;(curl -sSL...</div></div></div></a><a class="pagination-related" href="/yyg/d3a49a0e/" title="Watchtower自动更新docker容器"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://imgapi.cn/api.php?fl=fengjing&gs=images" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-08-10</div><div class="info-item-2">Watchtower自动更新docker容器</div></div><div class="info">基础环境系统：openEuler 22.03 (LTS-SP4) X86
+软件：docker-26.1.3、 docker compose-2.27.0
+关于WatchtowerWatchtower 是一个应用程序，监控正在运行的 Dock ...</div><div class="info-2"><div class="info-item-1">基础环境系统：openEuler 22.03 (LTS-SP4) X86 软件：docker-26.1.3、 docker compose-2.27.0 关于WatchtowerWatchtower 是一个应用程序，监控正在运行的...</div></div></div></a><a class="pagination-related" href="/yyg/fd02fe22/" title="Slim缩小容器镜像大小"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://random-img.pupper.cn/api" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-05</div><div class="info-item-2">Slim缩小容器镜像大小</div></div><div class="info">前言 🔜Slim🔚 
+              
+              GitHub - slimtoolkit/slim： Slim（toolkit）：不要更改容器镜像中的任何内容，并将其缩小多达 30 倍（对于编译语言甚至更 ...</div><div class="info-2"><div class="info-item-1">前言 🔜Slim🔚                               GitHub - slimtoolkit/slim： Slim（toolkit）：不要更改容器镜像中的任何内容，并将其缩小多达 30...</div></div></div></a><a class="pagination-related" href="/yyg/f5933c9f/" title="docker 部署 SkyWalking"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picapi.pai.al/api/scenery.php" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-05</div><div class="info-item-2">docker 部署 SkyWalking</div></div><div class="info">前言 🔜什么是SkyWalking？🔚 
+              
+              是一款优秀的国产 APM 工具。分布式系统的应用程序性能监视工具，专为微服务、云原生架构和基于容器（Docker、K8s、Mesos）架 ...</div><div class="info-2"><div class="info-item-1">前言 🔜什么是SkyWalking？🔚                               是一款优秀的国产 APM...</div></div></div></a><a class="pagination-related" href="/yyg/12643dd2/" title="docker部署SonarQube"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/04/03/542674_9ad613de0540a41a.jpeg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-24</div><div class="info-item-2">docker部署SonarQube</div></div><div class="info">前言 🔜什么是SonarQube？🔚 
+              
+               SonarQube是一个开源的代码质量管理平台，通过一系列的规则库对代码的扫描检查，提升代码的质量。运行 SonarQube 服务器分析 ...</div><div class="info-2"><div class="info-item-1">前言 🔜什么是SonarQube？🔚                                SonarQube是一个开源的代码质量管理平台，通过一系列的规则库对代码的扫描检查，提升代码的质量。运行 SonarQube...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div class="comment-switch"><span class="first-comment">Giscus</span><span id="switch-btn"></span><span class="second-comment">Gitalk</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img520.com/iNvl5J.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">云野阁</div><div class="author-info-description">闲云野鹤，八方逍遥</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">51</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">97</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">33</div></a></div><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/MarsperL" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:MjcxMTYxMzE4MkBxcS5jb20=" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/rss2.xml" target="_blank" title=""><i class="fas fa-rss"></i></a></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/yyg/46758d12/" title="Android手机安装docker"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img520.com/iNvl5J.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Android手机安装docker"/></a><div class="content"><a class="title" href="/yyg/46758d12/" title="Android手机安装docker">Android手机安装docker</a><time datetime="2025-05-17T11:45:50.000Z" title="发表于 2025-05-17 19:45:50">2025-05-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/yyg/c86be486/" title="Android手机安装ubuntu"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://api.vvhan.com/api/wallpaper/views" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Android手机安装ubuntu"/></a><div class="content"><a class="title" href="/yyg/c86be486/" title="Android手机安装ubuntu">Android手机安装ubuntu</a><time datetime="2025-05-17T11:45:50.000Z" title="发表于 2025-05-17 19:45:50">2025-05-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/yyg/dc35290c/" title="Kubernetes知识梳理-核心组件"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picapi.pai.al/api/scenery.php" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Kubernetes知识梳理-核心组件"/></a><div class="content"><a class="title" href="/yyg/dc35290c/" title="Kubernetes知识梳理-核心组件">Kubernetes知识梳理-核心组件</a><time datetime="2025-05-17T11:08:26.000Z" title="发表于 2025-05-17 19:08:26">2025-05-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/yyg/f0979e05/" title="Jenkins知识梳理"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tu.ltyuanfang.cn/api/fengjing.php" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Jenkins知识梳理"/></a><div class="content"><a class="title" href="/yyg/f0979e05/" title="Jenkins知识梳理">Jenkins知识梳理</a><time datetime="2025-05-17T10:47:41.000Z" title="发表于 2025-05-17 18:47:41">2025-05-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/yyg/10ac2e4/" title="Ansible最新版安装"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.picgo.net/2024/04/03/542674_9ad613de0540a41a.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ansible最新版安装"/></a><div class="content"><a class="title" href="/yyg/10ac2e4/" title="Ansible最新版安装">Ansible最新版安装</a><time datetime="2025-04-12T09:35:43.000Z" title="发表于 2025-04-12 17:35:43">2025-04-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By 云野阁</div><div class="footer_custom_text"><div id="runtime"></div> 世界上只有一种真正的英雄主义，那就是看清生活的真相之后，依然热爱生活</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div><script src="/js/utils.js?v=5.3.5"></script><script src="/js/main.js?v=5.3.5"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = {"data-lang":"zh-CN","data-input-position":"bottom"}
+
+  const getGiscusTheme = theme => theme === 'dark' ? 'noborder_dark' : 'noborder_light'
+
+  const createScriptElement = config => {
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => {
+      ele.setAttribute(key, value)
+    })
+    return ele
+  }
+
+  const loadGiscus = (el = document, key) => {
+    const mappingConfig = isShuoshuo
+      ? { 'data-mapping': 'specific', 'data-term': key }
+      : { 'data-mapping': (option && option['data-mapping']) || 'pathname' }
+
+    const giscusConfig = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'MarsperL/MarsperL.github.io',
+      'data-repo-id': 'R_kgDOHV6bsQ',
+      'data-category-id': 'DIC_kwDOHV6bsc4Cd54m',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      ...mappingConfig
+    }
+
+    const scriptElement = createScriptElement(giscusConfig)
+
+    el.querySelector('#giscus-wrap').appendChild(scriptElement)
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGiscus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const changeGiscusTheme = theme => {
+    const iframe = document.querySelector('#giscus-wrap iframe')
+    if (iframe) {
+      const message = {
+        giscus: {
+          setConfig: {
+            theme: getGiscusTheme(theme)
+          }
+        }
+      }
+      iframe.contentWindow.postMessage(message, 'https://giscus.app')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if (isShuoshuo) {
+    'Giscus' === 'Giscus'
+      ? window.shuoshuoComment = { loadComment: loadGiscus }
+      : window.loadOtherComment = loadGiscus
+    return
+  }
+
+  if ('Giscus' === 'Giscus' || !false) {
+    if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = {"language":"zh-CN","perPage":10,"distractionFreeMode":false,"pagerDirection":"last","labels":["Gitalk"],"enableHotKey":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"}
+
+  const commentCount = n => {
+    const isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+    if (isCommentCount) {
+      isCommentCount.textContent= n
+    }
+  }
+
+  const initGitalk = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGitalk = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const gitalk = new Gitalk({
+      clientID: 'Ov23lihCNRWnXie4OU7t',
+      clientSecret: '29543cc1a69d0e6b735d7dab092aba69ca62a5b2',
+      repo: 'yygrss',
+      owner: 'MarsperL',
+      admin: ['MarsperL'],
+      updateCountCallback: commentCount,
+      ...option,
+      id: isShuoshuo ? path : (option && option.id) || '3642d0bbbe6db7c7ae47c6fe1134ae7b'
+    })
+
+    gitalk.render('gitalk-container')
+  }
+
+  const loadGitalk = async(el, path) => {
+    if (typeof Gitalk === 'function') initGitalk(el, path)
+    else {
+      await btf.getCSS('https://cdn.jsdelivr.net/npm/gitalk@1.8.0/dist/gitalk.min.css')
+      await btf.getScript('https://cdn.jsdelivr.net/npm/gitalk@1.8.0/dist/gitalk.min.js')
+      initGitalk(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Giscus' === 'Gitalk'
+      ? window.shuoshuoComment = { loadComment: loadGitalk }
+      : window.loadOtherComment = loadGitalk
+    return
+  }
+
+  if ('Giscus' === 'Gitalk' || !false) {
+    if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+    else loadGitalk()
+  } else {
+    window.loadOtherComment = loadGitalk
+  }
+})()</script></div><script defer type="text/javascript" src="https://cdn1.tianli0.top/npm/sweetalert2@8.19.0/dist/sweetalert2.all.js"></script><script defer src="/js/lunar.js"></script><script defer src="/js/day.js"></script><script src="/js/parts.js"></script><script src="/js/background.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.3.5"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="yyg/30035ff1/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://t.alcy.cc/fj" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-08-11</span><a class="blog-slider__title" href="yyg/30035ff1/" alt="">一些免费的gpt网站</a><div class="blog-slider__text">点击查看置顶文章啦~~~</div><a class="blog-slider__button" href="yyg/30035ff1/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="yyg/c60df0d6/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img520.com/iNvl5J.png" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-07-24</span><a class="blog-slider__title" href="yyg/c60df0d6/" alt="">使用portainer管理容器</a><div class="blog-slider__text">点击查看置顶文章啦~~~</div><a class="blog-slider__button" href="yyg/c60df0d6/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="yyg/4451cec/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://picapi.pai.al/api/scenery.php" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-07-31</span><a class="blog-slider__title" href="yyg/4451cec/" alt="">x86服务器构建ARM架构docker镜像</a><div class="blog-slider__text">点击查看置顶文章啦~~~</div><a class="blog-slider__button" href="yyg/4451cec/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="yyg/71468332/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://random-img.pupper.cn/api" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-08</span><a class="blog-slider__title" href="yyg/71468332/" alt="">Docker Swarm集群部署</a><div class="blog-slider__text">点击查看置顶文章啦~~~</div><a class="blog-slider__button" href="yyg/71468332/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="yyg/5ea27f40/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://api.jiangyuhui.top/aliyun/randomCover" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-08-26</span><a class="blog-slider__title" href="yyg/5ea27f40/" alt="">在Github上使用OsmosFeed搭建在线RSS阅读器（无需服务器）</a><div class="blog-slider__text">点击查看置顶文章啦~~~</div><a class="blog-slider__button" href="yyg/5ea27f40/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="yyg/ca46b09/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://tu.ltyuanfang.cn/api/fengjing.php" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-08-07</span><a class="blog-slider__title" href="yyg/ca46b09/" alt="">Hexo-Butterfly美化教程-[9]繁沙</a><div class="blog-slider__text">点击查看置顶文章啦~~~</div><a class="blog-slider__button" href="yyg/ca46b09/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="yyg/60ed202a/" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://imgapi.cn/api.php?fl=fengjing&amp;gs=images" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-08</span><a class="blog-slider__title" href="yyg/60ed202a/" alt="">实现Docker 容器跨主机通讯</a><div class="blog-slider__text">点击查看置顶文章啦~~~</div><a class="blog-slider__button" href="yyg/60ed202a/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
