@@ -780,3 +780,23 @@ div#runtime {
     color: #000;
 }
 /**************************页脚显示网站运行时间**************************/
+
+
+/**************************分类页-文章分类统计图**************************/
+  #categories-chart {
+    aspect-ratio: 16/9;
+    transition: height 0.3s;
+  }
+  @media (max-width: 768px) {
+    #categories-chart {
+      aspect-ratio: unset;
+      height: 60vh !important;
+    }
+  }
+  .echarts-label rich {
+    white-space: pre-wrap !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+    line-height: 1.2 !important;
+  }
+ /**************************分类页-文章分类统计图**************************/
