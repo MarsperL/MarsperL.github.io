@@ -438,47 +438,62 @@ i.fa-solid.fa-angles-right::before {
     background: rgba(255, 255, 255, 0.8);
 }
 [data-theme="dark"] #recent-posts>.recent-post-item,.layout_page>div:first-child:not(.recent-posts),.layout_post>#page,.layout_post>#post,.read-mode .layout_post>#post {
-    background: rgba(18, 18, 18, 0.8);
+    background: #282c34c4;
 }
 
 #aside-content .card-widget {
     background: rgba(255, 255, 255, 0.8);
 }
 [data-theme="dark"] #aside-content .card-widget {
-    background: rgba(18, 18, 18, 0.8);
+    background: #282c34c4;
 }
 div#archive {
     background: rgba(255, 255, 255, 0.8);
 }
 [data-theme="dark"] div#archive {
-    background: rgba(18, 18, 18, 0.8);
+    background: #282c34c4;
 }
 div#page {
     background: rgba(255, 255, 255, 0.8);
 }
 [data-theme="dark"] div#page {
-    background: rgba(18, 18, 18, 0.8);
+    background: #282c34c4;
 }
 
 div#post {
     background: rgba(255, 255, 255, 0.8);
 }
 [data-theme="dark"] div#post {
-    background: rgba(18, 18, 18, 0.8);
+    background: #282c34c4;
 }
 
 div#tag {
     background: rgba(255, 255, 255, 0.8);
 }
 [data-theme="dark"] div#tag {
-    background: rgba(18, 18, 18, 0.8);
+    background: #282c34c4;
 }
 
 div#category {
     background: rgba(255, 255, 255, 0.8);
 }
 [data-theme="dark"] div#category {
-    background: rgba(18, 18, 18, 0.8);
+    background: #282c34c4;
+}
+[data-theme="dark"] #recent-posts .recent-post-item {
+    background: #282c34c4;
+}
+[data-theme="dark"] #article-container .shuoshuo-item {
+    background: #282c34c4;
+}
+[data-theme="dark"] .layout .pagination > *:not(.space)  {
+    background: #282c34c4;
+}
+[data-theme="dark"] #nav .menus_items .menus_item:hover .menus_item_child {
+    background: #282c34c4;
+}
+[data-theme="dark"] .search-dialog {
+    background: #282c34c4;
 }
 /***********************全局半透明背景***********************/
 
