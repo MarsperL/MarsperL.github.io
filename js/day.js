@@ -168,6 +168,15 @@ if ((lunar["IMonthCn"] == "九月" && lunar["IDayCn"] == "初九")) {
     }
 }
 
+//博客运行周年
+if (m == 3 && dd == 7) {
+    if (sessionStorage.getItem("isPopupWindow") != "1") {
+        Swal.fire("博客运行" + (y - 2024).toString() + "周年了啦😎");
+        sessionStorage.setItem("isPopupWindow", "1");
+    }
+}
+
+
 // 切换主题提醒
 // if (y == 2022 && m == 12 && (dd >= 18 && dd <= 20)) {
 //     if (sessionStorage.getItem("isPopupWindow") != "1") {
