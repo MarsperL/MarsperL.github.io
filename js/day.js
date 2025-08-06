@@ -74,6 +74,12 @@ if (m == 4 && dd == 1) {//愚人节，随机谎话
         sessionStorage.setItem("isPopupWindow", "1");
     }
 }
+if (m == 4 && dd == 23) {//世界读书日
+    if (sessionStorage.getItem("isPopupWindow") != "1") {
+        Swal.fire("今天是世界读书日哟！");
+        sessionStorage.setItem("isPopupWindow", "1");
+    }
+}
 if (m == 5 && dd == 1) {//劳动节
     if (sessionStorage.getItem("isPopupWindow") != "1") {
         Swal.fire("劳动节快乐\n为各行各业辛勤工作的人们致敬！");
