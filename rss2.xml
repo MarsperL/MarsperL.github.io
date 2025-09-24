@@ -37,20 +37,20 @@
       
       <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/k8s/">k8s</category>
-      
       <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
-      
-      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/HELM/">HELM</category>
       
       <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
       
+      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/k8s/">k8s</category>
       
-      <category domain="https://MarsperL.github.io/tags/k8s/">k8s</category>
+      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/HELM/">HELM</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
       
       <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
       
-      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
+      <category domain="https://MarsperL.github.io/tags/k8s/">k8s</category>
       
       <category domain="https://MarsperL.github.io/tags/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
       
@@ -60,6 +60,44 @@
       
       
       <comments>https://marsperl.github.io/yyg/986299a9/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>私有化部署DeepSeek</title>
+      <link>https://marsperl.github.io/yyg/4789a872/</link>
+      <guid>https://marsperl.github.io/yyg/4789a872/</guid>
+      <pubDate>Sat, 16 Aug 2025 09:12:50 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在linux环境下，使用docker部署&lt;code&gt;ollama&lt;/code&gt;+&lt;code&gt;deepseek-r1:1.5b&lt;/code&gt;+&lt;code&gt;open-webui&lt;/code&gt;，实现私有化部署DeepSeek。&lt;/p&gt;
+&lt;h2 id=&quot;部署过程&quot;&gt;&lt;a href=&quot;#部署过程&quot; class=&quot;headerlink&quot; title=&quot;部署过程&quot;&gt;&lt;/a&gt;部署过程&lt;/h2&gt;&lt;h3 id=&quot;安装docker&quot;&gt;&lt;a href=&quot;#安装docker&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/AI/">AI</category>
+      
+      
+      <category domain="https://MarsperL.github.io/tags/AI/">AI</category>
+      
+      <category domain="https://MarsperL.github.io/tags/DeepSeek/">DeepSeek</category>
+      
+      <category domain="https://MarsperL.github.io/tags/ollama/">ollama</category>
+      
+      <category domain="https://MarsperL.github.io/tags/open-webui/">open-webui</category>
+      
+      <category domain="https://MarsperL.github.io/tags/AI%E7%9F%A5%E8%AF%86%E5%BA%93/">AI知识库</category>
+      
+      
+      <comments>https://marsperl.github.io/yyg/4789a872/#disqus_thread</comments>
       
     </item>
     
@@ -91,9 +129,9 @@
       
       <category domain="https://MarsperL.github.io/tags/%E9%AD%94%E6%94%B9/">魔改</category>
       
-      <category domain="https://MarsperL.github.io/tags/GitHub-Pages/">GitHub Pages</category>
-      
       <category domain="https://MarsperL.github.io/tags/GitHub-Actions/">GitHub Actions</category>
+      
+      <category domain="https://MarsperL.github.io/tags/GitHub-Pages/">GitHub Pages</category>
       
       
       <comments>https://marsperl.github.io/yyg/37098f8c/#disqus_thread</comments>
@@ -433,18 +471,18 @@
       
       <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/k8s/">k8s</category>
-      
       <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
       
       <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
       
+      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/k8s/">k8s</category>
       
-      <category domain="https://MarsperL.github.io/tags/k8s/">k8s</category>
+      
+      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
       
       <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
       
-      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
+      <category domain="https://MarsperL.github.io/tags/k8s/">k8s</category>
       
       <category domain="https://MarsperL.github.io/tags/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
       
@@ -480,22 +518,22 @@
       
       
       
-      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
-      
       <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/Jenkins/">Jenkins</category>
-      
       <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/Jenkins/">Jenkins</category>
       
       <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/GitLab/">GitLab</category>
       
       <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/SonarQube/">SonarQube</category>
       
       
-      <category domain="https://MarsperL.github.io/tags/SonarQube/">SonarQube</category>
-      
       <category domain="https://MarsperL.github.io/tags/Linux%E8%BF%90%E7%BB%B4/">Linux运维</category>
+      
+      <category domain="https://MarsperL.github.io/tags/SonarQube/">SonarQube</category>
       
       <category domain="https://MarsperL.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
       
@@ -570,13 +608,13 @@
       
       
       
-      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
-      
       <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/Ansible/">Ansible</category>
-      
       <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
+      
+      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/Ansible/">Ansible</category>
       
       
       <category domain="https://MarsperL.github.io/tags/Linux%E8%BF%90%E7%BB%B4/">Linux运维</category>
@@ -721,11 +759,11 @@
       <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</category>
       
       
+      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
+      
       <category domain="https://MarsperL.github.io/tags/docker/">docker</category>
       
       <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
       
       <category domain="https://MarsperL.github.io/tags/DevOps/">DevOps</category>
       
@@ -737,40 +775,6 @@
       
       
       <comments>https://marsperl.github.io/yyg/12643dd2/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>项目漏洞问题记录</title>
-      <link>https://marsperl.github.io/yyg/8a0457d3/</link>
-      <guid>https://marsperl.github.io/yyg/8a0457d3/</guid>
-      <pubDate>Sat, 30 Nov 2024 14:59:22 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;SSL-2-0-和-3-0-的漏洞修复：&quot;&gt;&lt;a href=&quot;#SSL-2-0-和-3-0-的漏洞修复：&quot; class=&quot;headerlink&quot; title=&quot;SSL 2.0 和 3.0 的漏洞修复：&quot;&gt;&lt;/a&gt;&lt;strong&gt;SSL 2.0 和 3.0 的漏洞修复：&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;SSL (Secure Sockets Layer) 是一种加密协议，曾被广泛用于网络通信中以确保数据的安全传输。SSL 2.0 和 3.0 是早期的版本，但它们已经被认为不再安全，因此被现代协议（如 TLS 1.2 和 TLS 1.3）所取代。&lt;/p&gt;
-&lt;p&gt;SSL 2.0 和</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
-      
-      <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">项目问题总结</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">项目问题总结</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F/">漏洞扫描</category>
-      
-      
-      <comments>https://marsperl.github.io/yyg/8a0457d3/#disqus_thread</comments>
       
     </item>
     
