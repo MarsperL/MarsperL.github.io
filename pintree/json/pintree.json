@@ -163,40 +163,33 @@
   {
     "type": "folder",
     "addDate": 1645439425028,
-    "title": "其他收藏夹",
+    "title": "博客",
     "children": [
       {
         "type": "folder",
         "addDate": 1589399825690,
-        "title": "Chrome",
+        "title": "博客备份网站",
         "children": [
           {
             "type": "link",
             "addDate": 1586626254409,
-            "title": "Chrome网上应用店",
-            "icon": "https://logo.clearbit.com/www.kguowai.com",
-            "url": "http://www.kguowai.com/html/25686.html"
+            "title": "github pages",
+            "icon": "https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@2.1/img/icon.png",
+            "url": "https://marsperl.github.io/"
           },
           {
             "type": "link",
             "addDate": 1589401228130,
-            "title": "Chrome 网上应用店 - 扩展程序",
-            "icon": "https://logo.clearbit.com/chrome.google.com",
-            "url": "https://chrome.google.com/webstore/category/extensions?hl=zh-CN"
+            "title": "framagit pages",
+            "icon": "https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@2.1/img/icon.png",
+            "url": "https://yyg.frama.io/"
           },
           {
             "type": "link",
             "addDate": 1589401918956,
-            "title": "Chrome插件,谷歌插件,最新Chrome浏览器下载,最新谷歌浏览器.",
-            "icon": "https://logo.clearbit.com/www.chrome666.com",
-            "url": "https://www.chrome666.com/"
-          },
-          {
-            "type": "link",
-            "addDate": 1590582200070,
-            "title": "Google Chrome插件下载|谷歌浏览器插件商店|谷歌浏览器下载-Chrome网上应用店",
-            "icon": "https://logo.clearbit.com/www.gugeapps.net",
-            "url": "https://www.gugeapps.net/"
+            "title": "codeberg pages",
+            "icon": "https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@2.1/img/icon.png",
+            "url": "https://yyg.codeberg.page/"
           }
         ]
       }
