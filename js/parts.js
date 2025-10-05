@@ -1,15 +1,34 @@
 /*************************随机一篇*************************/
-// 发现有时会和当前页面重复，加一个判断
 function randomPost() {
-    fetch('/baidusitemap.xml').then(res => res.text()).then(str => (new window.DOMParser()).parseFromString(str, "text/xml")).then(data => {
-        let ls = data.querySelectorAll('url loc');
-        while (true) {
-            let url = ls[Math.floor(Math.random() * ls.length)].innerHTML;
-            if (location.href == url) continue;
-            location.href = url;
-            return;
-        }
-    })
+    // 使用相对路径获取sitemap，不依赖域名
+    fetch('/baidusitemap.xml')
+        .then(res => res.text())
+        .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+        .then(data => {
+            let ls = data.querySelectorAll('url loc');
+            let currentUrl = window.location.pathname; // 只使用路径部分，不包含域名
+            
+            // 过滤掉当前页面的URL
+            let availableUrls = Array.from(ls)
+                .map(loc => {
+                    // 从完整URL中提取路径部分
+                    let url = new URL(loc.innerHTML);
+                    return url.pathname;
+                })
+                .filter(url => url !== currentUrl);
+            
+            if (availableUrls.length === 0) {
+                console.warn('No different URLs found in sitemap');
+                return;
+            }
+            
+            // 随机选择一个URL并跳转
+            let randomIndex = Math.floor(Math.random() * availableUrls.length);
+            window.location.href = availableUrls[randomIndex];
+        })
+        .catch(error => {
+            console.error('Failed to fetch or parse sitemap:', error);
+        });
 }
 /*************************随机一篇*************************/
 
