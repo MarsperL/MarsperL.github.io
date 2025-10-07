@@ -754,26 +754,6 @@ div#category {
 /**************************文章双栏样式微调**************************/
 
 
-/**************************上下篇文章描述显示**************************/
-#pagination .pagination-related .info-2 .info-item-1 {
-  display: none;
-
-}
-#pagination .content {
- display: -webkit-box;          
-  -webkit-line-clamp: 4;         
-  -webkit-box-orient: vertical;  
-  overflow: hidden;              
-  text-align: left;              
-
-}
-@media (max-width: 768px) {
-  #pagination .content {
-    -webkit-line-clamp: 3;
-  }
-}
-/**************************上下篇文章描述显示**************************/
-
 
 /**************************页脚显示网站运行时间**************************/
 div#runtime {
