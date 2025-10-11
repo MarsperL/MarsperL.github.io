@@ -1,18 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="rss2.xsl" ?>
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="extension/rss2.xsl" ?>
 <rss version="2.0"
   xmlns:atom="http://www.w3.org/2005/Atom"
   xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>云野阁</title>
-    <link>https://MarsperL.github.io/</link>
+    <link>https://yyg.js.cool/</link>
     
     <image>
-      <url>https://marsperl.github.io/icon.png</url>
+      <url>https://yyg.js.cool/icon.png</url>
       <title>云野阁</title>
-      <link>https://MarsperL.github.io/</link>
+      <link>https://yyg.js.cool/</link>
     </image>
     
-    <atom:link href="https://marsperl.github.io/rss2.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://yyg.js.cool/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>闲云野鹤，八方逍遥</description>
     <pubDate>Thu, 09 Oct 2025 15:36:40 GMT</pubDate>
@@ -20,8 +20,8 @@
     
     <item>
       <title>Gitalk自动创建评论Issues</title>
-      <link>https://marsperl.github.io/yyg/2eca17c7/</link>
-      <guid>https://marsperl.github.io/yyg/2eca17c7/</guid>
+      <link>https://yyg.js.cool/yyg/2eca17c7/</link>
+      <guid>https://yyg.js.cool/yyg/2eca17c7/</guid>
       <pubDate>Wed, 08 Oct 2025 14:06:07 GMT</pubDate>
       
         
@@ -29,35 +29,35 @@
           
           
       <description>&lt;p&gt;博客加入Gitalk评论后，需要访问相应页面，才在存放评论的仓库创建Issues。本文通过脚本自动访问文章页面完成Gitalk自动创建评论Issues。脚本自&lt;a href=&quot;https://github.com/attson/hexo-gitalk-init&quot;&gt;attson/hexo-gitalk-init: Hexo gitalk 极简初始化脚本&lt;/a&gt;基础上修改而来（是在windows本地运行）。&lt;/p&gt;
-&lt;div class=&quot;tip info&quot;&gt;&lt;p&gt;这是一个用于 Hexo 博客的 Gitalk 评论系统自动初始化脚本。它能自动扫描所有文章，识别出尚未创建评论 Issue</description>
+&lt;div class=&quot;tip info&quot;&gt;&lt;p&gt;这是一个用于 Hexo 博客的 Gitalk 评论系统自动初始化脚本。它能自动扫描所有文章，识别出尚未创建评论 Issue 的页面，并通过模拟浏览器访问来触发 Gitalk 自动完成 Issue</description>
           
         
       
       
       
       
-      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/Gitalk%E8%AF%84%E8%AE%BA/">Gitalk评论</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/%E5%8D%9A%E5%AE%A2/">博客</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E9%AD%94%E6%94%B9/">魔改</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Issues/">Issues</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Gitalk/">Gitalk</category>
+      <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/Gitalk%E8%AF%84%E8%AE%BA/">Gitalk评论</category>
       
       
-      <comments>https://marsperl.github.io/yyg/2eca17c7/#disqus_thread</comments>
+      <category domain="https://yyg.js.cool/tags/%E5%8D%9A%E5%AE%A2/">博客</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E9%AD%94%E6%94%B9/">魔改</category>
+      
+      <category domain="https://yyg.js.cool/tags/Gitalk/">Gitalk</category>
+      
+      <category domain="https://yyg.js.cool/tags/Issues/">Issues</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/2eca17c7/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>k8s知识梳理--进阶</title>
-      <link>https://marsperl.github.io/yyg/986299a9/</link>
-      <guid>https://marsperl.github.io/yyg/986299a9/</guid>
+      <link>https://yyg.js.cool/yyg/986299a9/</link>
+      <guid>https://yyg.js.cool/yyg/986299a9/</guid>
       <pubDate>Fri, 22 Aug 2025 10:17:22 GMT</pubDate>
       
         
@@ -71,38 +71,38 @@
       
       
       
-      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
+      <category domain="https://yyg.js.cool/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/k8s/">k8s</category>
+      <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
+      <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/HELM/">HELM</category>
+      <category domain="https://yyg.js.cool/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/k8s/">k8s</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/k8s/">k8s</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6%E9%AB%98%E5%8F%AF%E7%94%A8k8s%E9%9B%86%E7%BE%A4/">二进制高可用k8s集群</category>
-      
-      <category domain="https://MarsperL.github.io/tags/HELM/">HELM</category>
+      <category domain="https://yyg.js.cool/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/HELM/">HELM</category>
       
       
-      <comments>https://marsperl.github.io/yyg/986299a9/#disqus_thread</comments>
+      <category domain="https://yyg.js.cool/tags/%E8%BF%90%E7%BB%B4/">运维</category>
+      
+      <category domain="https://yyg.js.cool/tags/k8s/">k8s</category>
+      
+      <category domain="https://yyg.js.cool/tags/HELM/">HELM</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      <category domain="https://yyg.js.cool/tags/Linux/">Linux</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6%E9%AB%98%E5%8F%AF%E7%94%A8k8s%E9%9B%86%E7%BE%A4/">二进制高可用k8s集群</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/986299a9/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>私有化部署DeepSeek</title>
-      <link>https://marsperl.github.io/yyg/4789a872/</link>
-      <guid>https://marsperl.github.io/yyg/4789a872/</guid>
+      <link>https://yyg.js.cool/yyg/4789a872/</link>
+      <guid>https://yyg.js.cool/yyg/4789a872/</guid>
       <pubDate>Sat, 16 Aug 2025 09:12:50 GMT</pubDate>
       
         
@@ -110,37 +110,37 @@
           
           
       <description>&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在linux环境下，使用docker部署&lt;code&gt;ollama&lt;/code&gt;+&lt;code&gt;deepseek-r1:1.5b&lt;/code&gt;+&lt;code&gt;open-webui&lt;/code&gt;，实现私有化部署DeepSeek。&lt;/p&gt;
-&lt;h2 id=&quot;部署过程&quot;&gt;&lt;a href=&quot;#部署过程&quot; class=&quot;headerlink&quot; title=&quot;部署过程&quot;&gt;&lt;/a&gt;部署过程&lt;/h2&gt;&lt;h3 id=&quot;安装docker&quot;&gt;&lt;a href=&quot;#安装docker&quot;</description>
+&lt;h2 id=&quot;部署过程&quot;&gt;&lt;a href=&quot;#部署过程&quot; class=&quot;headerlink&quot; title=&quot;部署过程&quot;&gt;&lt;/a&gt;部署过程&lt;/h2&gt;&lt;h3 id=&quot;安装docker&quot;&gt;&lt;a href=&quot;#安装docker&quot; class=&quot;headerlink&quot;</description>
           
         
       
       
       
       
-      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
+      <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/AI/">AI</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/AI/">AI</category>
-      
-      <category domain="https://MarsperL.github.io/tags/DeepSeek/">DeepSeek</category>
-      
-      <category domain="https://MarsperL.github.io/tags/ollama/">ollama</category>
-      
-      <category domain="https://MarsperL.github.io/tags/open-webui/">open-webui</category>
-      
-      <category domain="https://MarsperL.github.io/tags/AI%E7%9F%A5%E8%AF%86%E5%BA%93/">AI知识库</category>
+      <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/AI/">AI</category>
       
       
-      <comments>https://marsperl.github.io/yyg/4789a872/#disqus_thread</comments>
+      <category domain="https://yyg.js.cool/tags/AI/">AI</category>
+      
+      <category domain="https://yyg.js.cool/tags/AI%E7%9F%A5%E8%AF%86%E5%BA%93/">AI知识库</category>
+      
+      <category domain="https://yyg.js.cool/tags/ollama/">ollama</category>
+      
+      <category domain="https://yyg.js.cool/tags/DeepSeek/">DeepSeek</category>
+      
+      <category domain="https://yyg.js.cool/tags/open-webui/">open-webui</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/4789a872/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>使用GitHub Actions实现Hexo博客的自动化发布</title>
-      <link>https://marsperl.github.io/yyg/37098f8c/</link>
-      <guid>https://marsperl.github.io/yyg/37098f8c/</guid>
+      <link>https://yyg.js.cool/yyg/37098f8c/</link>
+      <guid>https://yyg.js.cool/yyg/37098f8c/</guid>
       <pubDate>Sun, 06 Jul 2025 13:43:23 GMT</pubDate>
       
         
@@ -156,28 +156,28 @@
       
       
       
-      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E5%8D%9A%E5%AE%A2%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8F%91%E5%B8%83/">博客自动化发布</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/%E5%8D%9A%E5%AE%A2/">博客</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E9%AD%94%E6%94%B9/">魔改</category>
-      
-      <category domain="https://MarsperL.github.io/tags/GitHub-Actions/">GitHub Actions</category>
-      
-      <category domain="https://MarsperL.github.io/tags/GitHub-Pages/">GitHub Pages</category>
+      <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E5%8D%9A%E5%AE%A2%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8F%91%E5%B8%83/">博客自动化发布</category>
       
       
-      <comments>https://marsperl.github.io/yyg/37098f8c/#disqus_thread</comments>
+      <category domain="https://yyg.js.cool/tags/%E5%8D%9A%E5%AE%A2/">博客</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E9%AD%94%E6%94%B9/">魔改</category>
+      
+      <category domain="https://yyg.js.cool/tags/GitHub-Pages/">GitHub Pages</category>
+      
+      <category domain="https://yyg.js.cool/tags/GitHub-Actions/">GitHub Actions</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/37098f8c/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>观影感受--雄狮少年2</title>
-      <link>https://marsperl.github.io/yyg/9e02bef8/</link>
-      <guid>https://marsperl.github.io/yyg/9e02bef8/</guid>
+      <link>https://yyg.js.cool/yyg/9e02bef8/</link>
+      <guid>https://yyg.js.cool/yyg/9e02bef8/</guid>
       <pubDate>Wed, 04 Jun 2025 03:35:51 GMT</pubDate>
       
         
@@ -194,26 +194,26 @@
       
       
       
-      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
+      <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/%E4%BC%91%E9%97%B2%E5%A8%B1%E4%B9%90/">休闲娱乐</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/%E4%BC%91%E9%97%B2%E5%A8%B1%E4%B9%90/">休闲娱乐</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E7%94%B5%E5%BD%B1/">电影</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E8%A7%82%E5%BD%B1%E6%84%9F%E5%8F%97/">观影感受</category>
+      <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/%E4%BC%91%E9%97%B2%E5%A8%B1%E4%B9%90/">休闲娱乐</category>
       
       
-      <comments>https://marsperl.github.io/yyg/9e02bef8/#disqus_thread</comments>
+      <category domain="https://yyg.js.cool/tags/%E7%94%B5%E5%BD%B1/">电影</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E4%BC%91%E9%97%B2%E5%A8%B1%E4%B9%90/">休闲娱乐</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E8%A7%82%E5%BD%B1%E6%84%9F%E5%8F%97/">观影感受</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/9e02bef8/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Hexo-Butterfly美化教程-[8]随鼠标变幻的动态粒子线条背景</title>
-      <link>https://marsperl.github.io/yyg/5f747cff/</link>
-      <guid>https://marsperl.github.io/yyg/5f747cff/</guid>
+      <link>https://yyg.js.cool/yyg/5f747cff/</link>
+      <guid>https://yyg.js.cool/yyg/5f747cff/</guid>
       <pubDate>Fri, 23 May 2025 15:52:39 GMT</pubDate>
       
         
@@ -227,26 +227,26 @@
       
       
       
-      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/Hexo/">Hexo</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Butterfly/">Butterfly</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</category>
       
       
-      <comments>https://marsperl.github.io/yyg/5f747cff/#disqus_thread</comments>
+      <category domain="https://yyg.js.cool/tags/Hexo/">Hexo</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      
+      <category domain="https://yyg.js.cool/tags/Butterfly/">Butterfly</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/5f747cff/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Hexo-Butterfly美化教程-[6]开启博客评论</title>
-      <link>https://marsperl.github.io/yyg/5986cad/</link>
-      <guid>https://marsperl.github.io/yyg/5986cad/</guid>
+      <link>https://yyg.js.cool/yyg/5986cad/</link>
+      <guid>https://yyg.js.cool/yyg/5986cad/</guid>
       <pubDate>Wed, 21 May 2025 14:21:16 GMT</pubDate>
       
         
@@ -254,33 +254,33 @@
           
           
       <description>&lt;h2 id=&quot;Giscus&quot;&gt;&lt;a href=&quot;#Giscus&quot; class=&quot;headerlink&quot; title=&quot;Giscus&quot;&gt;&lt;/a&gt;Giscus&lt;/h2&gt;&lt;h3 id=&quot;创建新仓库&quot;&gt;&lt;a href=&quot;#创建新仓库&quot; class=&quot;headerlink&quot; title=&quot;创建新仓库&quot;&gt;&lt;/a&gt;创建新仓库&lt;/h3&gt;&lt;p&gt;在github上创建一个新仓库，名称任意，设置为仓库公开，在Features中勾选Discussions。&lt;/p&gt;
-&lt;h3 id=&quot;安装配置Giscus&quot;&gt;&lt;a href=&quot;#安装配置Giscus&quot; class=&quot;headerlink&quot;</description>
+&lt;h3 id=&quot;安装配置Giscus&quot;&gt;&lt;a href=&quot;#安装配置Giscus&quot; class=&quot;headerlink&quot; title=&quot;安装配置Giscus&quot;&gt;&lt;/a&gt;安装配置Giscus&lt;/h3&gt;&lt;p&gt;（1）点击链接安装配置Giscus：&lt;a</description>
           
         
       
       
       
       
-      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/Hexo/">Hexo</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Butterfly/">Butterfly</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</category>
       
       
-      <comments>https://marsperl.github.io/yyg/5986cad/#disqus_thread</comments>
+      <category domain="https://yyg.js.cool/tags/Hexo/">Hexo</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      
+      <category domain="https://yyg.js.cool/tags/Butterfly/">Butterfly</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/5986cad/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Hexo-Butterfly美化教程-[7]功能魔改(源码方式)</title>
-      <link>https://marsperl.github.io/yyg/5baeb6c6/</link>
-      <guid>https://marsperl.github.io/yyg/5baeb6c6/</guid>
+      <link>https://yyg.js.cool/yyg/5baeb6c6/</link>
+      <guid>https://yyg.js.cool/yyg/5baeb6c6/</guid>
       <pubDate>Tue, 20 May 2025 09:01:06 GMT</pubDate>
       
         
@@ -294,26 +294,26 @@
       
       
       
-      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/Hexo/">Hexo</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Butterfly/">Butterfly</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</category>
       
       
-      <comments>https://marsperl.github.io/yyg/5baeb6c6/#disqus_thread</comments>
+      <category domain="https://yyg.js.cool/tags/Hexo/">Hexo</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      
+      <category domain="https://yyg.js.cool/tags/Butterfly/">Butterfly</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/5baeb6c6/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Hexo-Butterfly美化教程-[5]安装常用插件</title>
-      <link>https://marsperl.github.io/yyg/23010111/</link>
-      <guid>https://marsperl.github.io/yyg/23010111/</guid>
+      <link>https://yyg.js.cool/yyg/23010111/</link>
+      <guid>https://yyg.js.cool/yyg/23010111/</guid>
       <pubDate>Mon, 19 May 2025 10:58:52 GMT</pubDate>
       
         
@@ -321,33 +321,35 @@
           
           
       <description>&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;以下是小站建设过程中用到的一些常用插件&lt;/p&gt;
-&lt;h2 id=&quot;图片路径转asset-img&quot;&gt;&lt;a href=&quot;#图片路径转asset-img&quot; class=&quot;headerlink&quot; title=&quot;图片路径转asset_img&quot;&gt;&lt;/a&gt;图片路径转asset_img&lt;/h2&gt;&lt;p&gt;将 markdown 图像路径转换为 asset_img 语法，使图像在 typora 和 hexo</description>
+&lt;h2 id=&quot;图片路径转asset-img&quot;&gt;&lt;a href=&quot;#图片路径转asset-img&quot; class=&quot;headerlink&quot; title=&quot;图片路径转asset_img&quot;&gt;&lt;/a&gt;图片路径转asset_img&lt;/h2&gt;&lt;p&gt;将 markdown 图像路径转换为 asset_img 语法，使图像在 typora 和 hexo 中都显示。&lt;/p&gt;
+&lt;p&gt;在blog目录下的命令指示符中执行：&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</description>
           
         
       
       
       
       
-      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/Hexo/">Hexo</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Butterfly/">Butterfly</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</category>
       
       
-      <comments>https://marsperl.github.io/yyg/23010111/#disqus_thread</comments>
+      <category domain="https://yyg.js.cool/tags/Hexo/">Hexo</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      
+      <category domain="https://yyg.js.cool/tags/Butterfly/">Butterfly</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/23010111/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Hexo-Butterfly美化教程-[4]修改配置文件</title>
-      <link>https://marsperl.github.io/yyg/8a5ee3aa/</link>
-      <guid>https://marsperl.github.io/yyg/8a5ee3aa/</guid>
+      <link>https://yyg.js.cool/yyg/8a5ee3aa/</link>
+      <guid>https://yyg.js.cool/yyg/8a5ee3aa/</guid>
       <pubDate>Mon, 19 May 2025 10:57:45 GMT</pubDate>
       
         
@@ -355,33 +357,33 @@
           
           
       <description>&lt;h2 id=&quot;Hexo配置文件-config-yml&quot;&gt;&lt;a href=&quot;#Hexo配置文件-config-yml&quot; class=&quot;headerlink&quot; title=&quot;Hexo配置文件(_config.yml)&quot;&gt;&lt;/a&gt;Hexo配置文件(_config.yml)&lt;/h2&gt;&lt;p&gt;打开blog目录下的Hexo的配置文件 &lt;code&gt;_config.yml&lt;/code&gt;，进行自定义配置。（以下显示是通用配置）&lt;/p&gt;
-&lt;figure class=&quot;highlight yaml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</description>
+&lt;figure class=&quot;highlight yaml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span</description>
           
         
       
       
       
       
-      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/Hexo/">Hexo</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Butterfly/">Butterfly</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</category>
       
       
-      <comments>https://marsperl.github.io/yyg/8a5ee3aa/#disqus_thread</comments>
+      <category domain="https://yyg.js.cool/tags/Hexo/">Hexo</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      
+      <category domain="https://yyg.js.cool/tags/Butterfly/">Butterfly</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/8a5ee3aa/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Hexo-Butterfly美化教程-[3]建主要页面</title>
-      <link>https://marsperl.github.io/yyg/b2261cee/</link>
-      <guid>https://marsperl.github.io/yyg/b2261cee/</guid>
+      <link>https://yyg.js.cool/yyg/b2261cee/</link>
+      <guid>https://yyg.js.cool/yyg/b2261cee/</guid>
       <pubDate>Mon, 19 May 2025 08:53:35 GMT</pubDate>
       
         
@@ -391,68 +393,68 @@
       <description>&lt;h2 id=&quot;安装Tag-Plugins-Plus-标签外挂插件&quot;&gt;&lt;a href=&quot;#安装Tag-Plugins-Plus-标签外挂插件&quot; class=&quot;headerlink&quot; title=&quot;安装Tag Plugins Plus 标签外挂插件&quot;&gt;&lt;/a&gt;安装Tag Plugins Plus 标签外挂插件&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;安装标签外挂插件，方便之后各主要页面配置使用&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</description>
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td</description>
           
         
       
       
       
       
-      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/Hexo/">Hexo</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Butterfly/">Butterfly</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</category>
       
       
-      <comments>https://marsperl.github.io/yyg/b2261cee/#disqus_thread</comments>
+      <category domain="https://yyg.js.cool/tags/Hexo/">Hexo</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      
+      <category domain="https://yyg.js.cool/tags/Butterfly/">Butterfly</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/b2261cee/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Android手机安装docker</title>
-      <link>https://marsperl.github.io/yyg/46758d12/</link>
-      <guid>https://marsperl.github.io/yyg/46758d12/</guid>
+      <link>https://yyg.js.cool/yyg/46758d12/</link>
+      <guid>https://yyg.js.cool/yyg/46758d12/</guid>
       <pubDate>Sat, 17 May 2025 11:45:50 GMT</pubDate>
       
         
         
           
           
-      <description>&lt;h2 id=&quot;Android手机使用ALPINE-TERM-安装docker&quot;&gt;&lt;a href=&quot;#Android手机使用ALPINE-TERM-安装docker&quot; class=&quot;headerlink&quot; title=&quot;Android手机使用ALPINE-TERM 安装docker&quot;&gt;&lt;/a&gt;Android手机使用ALPINE-TERM 安装docker&lt;/h2&gt;&lt;p&gt;Alpine Term 是一款基于 &lt;strong&gt;Termux&lt;/strong&gt; 的安卓应用，集成了 &lt;strong&gt;QEMU 虚拟机&lt;/strong&gt; 和 &lt;strong&gt;Alpine</description>
+      <description>&lt;h2 id=&quot;Android手机使用ALPINE-TERM-安装docker&quot;&gt;&lt;a href=&quot;#Android手机使用ALPINE-TERM-安装docker&quot; class=&quot;headerlink&quot; title=&quot;Android手机使用ALPINE-TERM 安装docker&quot;&gt;&lt;/a&gt;Android手机使用ALPINE-TERM 安装docker&lt;/h2&gt;&lt;p&gt;Alpine Term 是一款基于 &lt;strong&gt;Termux&lt;/strong&gt; 的安卓应用，集成了 &lt;strong&gt;QEMU 虚拟机&lt;/strong&gt; 和 &lt;strong&gt;Alpine Linux&lt;/strong&gt;，支持在安卓手机上免 Root 运行完整的 Linux 环境，并可直接使用 Docker</description>
           
         
       
       
       
       
-      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
+      <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/%E7%8E%A9%E6%9C%BA/">玩机</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/%E7%8E%A9%E6%9C%BA/">玩机</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Android/">Android</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Android%E6%89%8B%E6%9C%BA%E5%AE%89%E8%A3%85docker/">Android手机安装docker</category>
-      
-      <category domain="https://MarsperL.github.io/tags/ALPINE-TERM/">ALPINE-TERM</category>
+      <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/%E7%8E%A9%E6%9C%BA/">玩机</category>
       
       
-      <comments>https://marsperl.github.io/yyg/46758d12/#disqus_thread</comments>
+      <category domain="https://yyg.js.cool/tags/%E7%8E%A9%E6%9C%BA/">玩机</category>
+      
+      <category domain="https://yyg.js.cool/tags/Android/">Android</category>
+      
+      <category domain="https://yyg.js.cool/tags/ALPINE-TERM/">ALPINE-TERM</category>
+      
+      <category domain="https://yyg.js.cool/tags/Android%E6%89%8B%E6%9C%BA%E5%AE%89%E8%A3%85docker/">Android手机安装docker</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/46758d12/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Android手机安装ubuntu</title>
-      <link>https://marsperl.github.io/yyg/c86be486/</link>
-      <guid>https://marsperl.github.io/yyg/c86be486/</guid>
+      <link>https://yyg.js.cool/yyg/c86be486/</link>
+      <guid>https://yyg.js.cool/yyg/c86be486/</guid>
       <pubDate>Sat, 17 May 2025 11:45:50 GMT</pubDate>
       
         
@@ -460,35 +462,37 @@
           
           
       <description>&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在闲置的Android旧手机（无需root）安装ubuntu&lt;/p&gt;
-&lt;h2 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h2&gt;&lt;p&gt;下载termux app，对应链接&lt;a</description>
+&lt;h2 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h2&gt;&lt;p&gt;下载termux app，对应链接&lt;a href=&quot;https://github.com/termux/termux-app/releases&quot;&gt;https://github.com/termux/termux-app/releases&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;换成国内镜像源&lt;/p&gt;
+&lt;figure class=&quot;highlight</description>
           
         
       
       
       
       
-      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
+      <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/%E7%8E%A9%E6%9C%BA/">玩机</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/%E7%8E%A9%E6%9C%BA/">玩机</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Android/">Android</category>
-      
-      <category domain="https://MarsperL.github.io/tags/ubuntu/">ubuntu</category>
-      
-      <category domain="https://MarsperL.github.io/tags/termux/">termux</category>
+      <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/%E7%8E%A9%E6%9C%BA/">玩机</category>
       
       
-      <comments>https://marsperl.github.io/yyg/c86be486/#disqus_thread</comments>
+      <category domain="https://yyg.js.cool/tags/%E7%8E%A9%E6%9C%BA/">玩机</category>
+      
+      <category domain="https://yyg.js.cool/tags/termux/">termux</category>
+      
+      <category domain="https://yyg.js.cool/tags/ubuntu/">ubuntu</category>
+      
+      <category domain="https://yyg.js.cool/tags/Android/">Android</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/c86be486/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Kubernetes知识梳理-核心组件</title>
-      <link>https://marsperl.github.io/yyg/dc35290c/</link>
-      <guid>https://marsperl.github.io/yyg/dc35290c/</guid>
+      <link>https://yyg.js.cool/yyg/dc35290c/</link>
+      <guid>https://yyg.js.cool/yyg/dc35290c/</guid>
       <pubDate>Sat, 17 May 2025 11:08:26 GMT</pubDate>
       
         
@@ -498,47 +502,48 @@
       <description>&lt;h2 id=&quot;pod&quot;&gt;&lt;a href=&quot;#pod&quot; class=&quot;headerlink&quot; title=&quot;pod&quot;&gt;&lt;/a&gt;pod&lt;/h2&gt;&lt;p&gt;在kubernetes中基本所有资源的一级属性都是一样的，主要包含5部分：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;code&gt;apiVersion &amp;lt;string&amp;gt;&lt;/code&gt; 版本，由kubernetes内部定义，版本号必须可以用kubectl api-versions查询到&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;kind &amp;lt;string&amp;gt;&lt;/code&gt;类型，由kubernetes内部定义，版本号必须可以用kubectl</description>
+&lt;li&gt;&lt;code&gt;kind &amp;lt;string&amp;gt;&lt;/code&gt;类型，由kubernetes内部定义，版本号必须可以用kubectl api-resources查询到&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;metadata</description>
           
         
       
       
       
       
-      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
+      <category domain="https://yyg.js.cool/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/k8s/">k8s</category>
+      <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
+      <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/k8s/">k8s</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E8%BF%90%E7%BB%B4/">运维</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Linux/">Linux</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
-      
-      <category domain="https://MarsperL.github.io/tags/pod/">pod</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Service/">Service</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Ingress/">Ingress</category>
-      
-      <category domain="https://MarsperL.github.io/tags/PV-PVC/">PV/PVC</category>
+      <category domain="https://yyg.js.cool/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/k8s/">k8s</category>
       
       
-      <comments>https://marsperl.github.io/yyg/dc35290c/#disqus_thread</comments>
+      <category domain="https://yyg.js.cool/tags/%E8%BF%90%E7%BB%B4/">运维</category>
+      
+      <category domain="https://yyg.js.cool/tags/k8s/">k8s</category>
+      
+      <category domain="https://yyg.js.cool/tags/pod/">pod</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      <category domain="https://yyg.js.cool/tags/Linux/">Linux</category>
+      
+      <category domain="https://yyg.js.cool/tags/PV-PVC/">PV/PVC</category>
+      
+      <category domain="https://yyg.js.cool/tags/Ingress/">Ingress</category>
+      
+      <category domain="https://yyg.js.cool/tags/Service/">Service</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/dc35290c/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Jenkins知识梳理</title>
-      <link>https://marsperl.github.io/yyg/f0979e05/</link>
-      <guid>https://marsperl.github.io/yyg/f0979e05/</guid>
+      <link>https://yyg.js.cool/yyg/f0979e05/</link>
+      <guid>https://yyg.js.cool/yyg/f0979e05/</guid>
       <pubDate>Sat, 17 May 2025 10:47:41 GMT</pubDate>
       
         
@@ -554,42 +559,42 @@
       
       
       
-      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
+      <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
+      <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/Jenkins/">Jenkins</category>
+      <category domain="https://yyg.js.cool/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      <category domain="https://yyg.js.cool/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/Jenkins/">Jenkins</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/GitLab/">GitLab</category>
+      <category domain="https://yyg.js.cool/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/GitLab/">GitLab</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/SonarQube/">SonarQube</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/SonarQube/">SonarQube</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Linux%E8%BF%90%E7%BB%B4/">Linux运维</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
-      
-      <category domain="https://MarsperL.github.io/tags/CI-CD/">CI/CD</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Jenkins/">Jenkins</category>
-      
-      <category domain="https://MarsperL.github.io/tags/GitLab/">GitLab</category>
+      <category domain="https://yyg.js.cool/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/SonarQube/">SonarQube</category>
       
       
-      <comments>https://marsperl.github.io/yyg/f0979e05/#disqus_thread</comments>
+      <category domain="https://yyg.js.cool/tags/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      <category domain="https://yyg.js.cool/tags/CI-CD/">CI/CD</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
+      
+      <category domain="https://yyg.js.cool/tags/GitLab/">GitLab</category>
+      
+      <category domain="https://yyg.js.cool/tags/Jenkins/">Jenkins</category>
+      
+      <category domain="https://yyg.js.cool/tags/Linux%E8%BF%90%E7%BB%B4/">Linux运维</category>
+      
+      <category domain="https://yyg.js.cool/tags/SonarQube/">SonarQube</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/f0979e05/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Ansible最新版安装</title>
-      <link>https://marsperl.github.io/yyg/10ac2e4/</link>
-      <guid>https://marsperl.github.io/yyg/10ac2e4/</guid>
+      <link>https://yyg.js.cool/yyg/10ac2e4/</link>
+      <guid>https://yyg.js.cool/yyg/10ac2e4/</guid>
       <pubDate>Sat, 12 Apr 2025 09:35:43 GMT</pubDate>
       
         
@@ -597,35 +602,35 @@
           
           
       <description>&lt;h2 id=&quot;pip方式安装&quot;&gt;&lt;a href=&quot;#pip方式安装&quot; class=&quot;headerlink&quot; title=&quot;pip方式安装&quot;&gt;&lt;/a&gt;pip方式安装&lt;/h2&gt;&lt;h3 id=&quot;基础环境准备&quot;&gt;&lt;a href=&quot;#基础环境准备&quot; class=&quot;headerlink&quot; title=&quot;基础环境准备&quot;&gt;&lt;/a&gt;基础环境准备&lt;/h3&gt;&lt;p&gt;（1）安装软件依赖&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td</description>
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yum install</description>
           
         
       
       
       
       
-      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
+      <category domain="https://yyg.js.cool/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/Ansible/">Ansible</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/Linux%E8%BF%90%E7%BB%B4/">Linux运维</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
-      
-      <category domain="https://MarsperL.github.io/tags/CI-CD/">CI/CD</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Ansible/">Ansible</category>
+      <category domain="https://yyg.js.cool/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/Ansible/">Ansible</category>
       
       
-      <comments>https://marsperl.github.io/yyg/10ac2e4/#disqus_thread</comments>
+      <category domain="https://yyg.js.cool/tags/CI-CD/">CI/CD</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
+      
+      <category domain="https://yyg.js.cool/tags/Ansible/">Ansible</category>
+      
+      <category domain="https://yyg.js.cool/tags/Linux%E8%BF%90%E7%BB%B4/">Linux运维</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/10ac2e4/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Ansible知识梳理</title>
-      <link>https://marsperl.github.io/yyg/e80721f/</link>
-      <guid>https://marsperl.github.io/yyg/e80721f/</guid>
+      <link>https://yyg.js.cool/yyg/e80721f/</link>
+      <guid>https://yyg.js.cool/yyg/e80721f/</guid>
       <pubDate>Mon, 31 Mar 2025 11:45:26 GMT</pubDate>
       
         
@@ -637,74 +642,74 @@
               &lt;p&gt;Ansible 是一款 IT 自动化工具。主要应用场景有配置系统、软件部署、持续发布及不停服平滑滚动更新的高级任务编排。&lt;/p&gt;&lt;p&gt;Ansible 提供开源自动化，可降低复杂性并在任何地方运行。使用 Ansible 可以自动执行几乎任何任务。&lt;/p&gt;
               &lt;/div&gt;
             &lt;/details&gt;
-&lt;h2</description>
+&lt;h2 id=&quot;架构&quot;&gt;&lt;a href=&quot;#架构&quot; class=&quot;headerlink&quot;</description>
           
         
       
       
       
       
-      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
+      <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
+      <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/Ansible/">Ansible</category>
+      <category domain="https://yyg.js.cool/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/Linux%E8%BF%90%E7%BB%B4/">Linux运维</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
-      
-      <category domain="https://MarsperL.github.io/tags/CI-CD/">CI/CD</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Ansible/">Ansible</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      <category domain="https://yyg.js.cool/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/Ansible/">Ansible</category>
       
       
-      <comments>https://marsperl.github.io/yyg/e80721f/#disqus_thread</comments>
+      <category domain="https://yyg.js.cool/tags/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      <category domain="https://yyg.js.cool/tags/CI-CD/">CI/CD</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
+      
+      <category domain="https://yyg.js.cool/tags/Ansible/">Ansible</category>
+      
+      <category domain="https://yyg.js.cool/tags/Linux%E8%BF%90%E7%BB%B4/">Linux运维</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/e80721f/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>Hexo-Butterfly美化教程-[2]Butterfly主题安装</title>
-      <link>https://marsperl.github.io/yyg/80ffa402/</link>
-      <guid>https://marsperl.github.io/yyg/80ffa402/</guid>
+      <link>https://yyg.js.cool/yyg/80ffa402/</link>
+      <guid>https://yyg.js.cool/yyg/80ffa402/</guid>
       <pubDate>Mon, 10 Mar 2025 07:14:39 GMT</pubDate>
       
         
         
           
           
-      <description>&lt;h2 id=&quot;拉取主题代码&quot;&gt;&lt;a href=&quot;#拉取主题代码&quot; class=&quot;headerlink&quot; title=&quot;拉取主题代码&quot;&gt;&lt;/a&gt;拉取主题代码&lt;/h2&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git clone -b master</description>
+      <description>&lt;h2 id=&quot;拉取主题代码&quot;&gt;&lt;a href=&quot;#拉取主题代码&quot; class=&quot;headerlink&quot; title=&quot;拉取主题代码&quot;&gt;&lt;/a&gt;拉取主题代码&lt;/h2&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git clone -b master https://github.com/jerryc127/hexo-theme-butterfly.git</description>
           
         
       
       
       
       
-      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/Hexo/">Hexo</category>
-      
-      <category domain="https://MarsperL.github.io/tags/Butterfly/">Butterfly</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</category>
       
       
-      <comments>https://marsperl.github.io/yyg/80ffa402/#disqus_thread</comments>
+      <category domain="https://yyg.js.cool/tags/Hexo/">Hexo</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
+      
+      <category domain="https://yyg.js.cool/tags/Butterfly/">Butterfly</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/80ffa402/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>跨城搬家总结</title>
-      <link>https://marsperl.github.io/yyg/4c3a1bc3/</link>
-      <guid>https://marsperl.github.io/yyg/4c3a1bc3/</guid>
+      <link>https://yyg.js.cool/yyg/4c3a1bc3/</link>
+      <guid>https://yyg.js.cool/yyg/4c3a1bc3/</guid>
       <pubDate>Thu, 06 Mar 2025 09:11:21 GMT</pubDate>
       
         
@@ -713,33 +718,33 @@
           
       <description>&lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h2&gt;&lt;p&gt;　　今天终于彻底完成了从A城到B城的跨城搬家，开始在B城开启生活的新篇章。&lt;/p&gt;
 &lt;h2 id=&quot;搬家全过程&quot;&gt;&lt;a href=&quot;#搬家全过程&quot; class=&quot;headerlink&quot; title=&quot;搬家全过程&quot;&gt;&lt;/a&gt;搬家全过程&lt;/h2&gt;&lt;p&gt;　　年后从老家回到A城之后，开始正式着手考虑搬到B城的事情，此时离房租到期还有半个多月的时间。&lt;/p&gt;
-&lt;h3 id=&quot;找房和看房&quot;&gt;&lt;a href=&quot;#找房和看房&quot;</description>
+&lt;h3 id=&quot;找房和看房&quot;&gt;&lt;a href=&quot;#找房和看房&quot; class=&quot;headerlink&quot;</description>
           
         
       
       
       
       
-      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
+      <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/%E6%90%AC%E5%AE%B6/">搬家</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/%E8%B7%A8%E5%9F%8E%E6%90%AC%E5%AE%B6/">跨城搬家</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E5%A4%8D%E7%9B%98/">复盘</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E4%B9%94%E8%BF%81%E6%96%B0%E5%B1%85/">乔迁新居</category>
+      <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/%E6%90%AC%E5%AE%B6/">搬家</category>
       
       
-      <comments>https://marsperl.github.io/yyg/4c3a1bc3/#disqus_thread</comments>
+      <category domain="https://yyg.js.cool/tags/%E5%A4%8D%E7%9B%98/">复盘</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E4%B9%94%E8%BF%81%E6%96%B0%E5%B1%85/">乔迁新居</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E8%B7%A8%E5%9F%8E%E6%90%AC%E5%AE%B6/">跨城搬家</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/4c3a1bc3/#disqus_thread</comments>
       
     </item>
     
     <item>
       <title>休闲娱乐-1月</title>
-      <link>https://marsperl.github.io/yyg/64b9e8e0/</link>
-      <guid>https://marsperl.github.io/yyg/64b9e8e0/</guid>
+      <link>https://yyg.js.cool/yyg/64b9e8e0/</link>
+      <guid>https://yyg.js.cool/yyg/64b9e8e0/</guid>
       <pubDate>Sun, 12 Jan 2025 02:01:59 GMT</pubDate>
       
         
@@ -748,6 +753,7 @@
           
       <description>&lt;h2 id=&quot;登山-嵩山&quot;&gt;&lt;a href=&quot;#登山-嵩山&quot; class=&quot;headerlink&quot; title=&quot;登山-嵩山&quot;&gt;&lt;/a&gt;登山-嵩山&lt;/h2&gt;&lt;p&gt;​    前两天，去了登封爬了嵩山，在登封两天的总体感觉还不错。&lt;/p&gt;
 &lt;h3 id=&quot;人文风情&quot;&gt;&lt;a href=&quot;#人文风情&quot; class=&quot;headerlink&quot; title=&quot;人文风情&quot;&gt;&lt;/a&gt;人文风情&lt;/h3&gt;&lt;p&gt;​    之前做攻略看到登封的炒刀削不错。特地去尝了尝，地址是登封汽车客运总站旁的小店，个人觉得味道不错，分量足，价格适中。&lt;/p&gt;
+&lt;p&gt;​    登封人民也很热情，找民宿时，遇到的老板都很热心，也都很耐心的解答住宿需求。&lt;/p&gt;
 &lt;p&gt;​   </description>
           
         
@@ -755,19 +761,213 @@
       
       
       
-      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
+      <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
       
-      <category domain="https://MarsperL.github.io/categories/%E6%BC%AB%E8%B0%88/%E4%BC%91%E9%97%B2%E5%A8%B1%E4%B9%90/">休闲娱乐</category>
-      
-      
-      <category domain="https://MarsperL.github.io/tags/%E4%BC%91%E9%97%B2%E5%A8%B1%E4%B9%90/">休闲娱乐</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E6%97%85%E6%B8%B8/">旅游</category>
-      
-      <category domain="https://MarsperL.github.io/tags/%E7%88%AC%E5%B1%B1/">爬山</category>
+      <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/%E4%BC%91%E9%97%B2%E5%A8%B1%E4%B9%90/">休闲娱乐</category>
       
       
-      <comments>https://marsperl.github.io/yyg/64b9e8e0/#disqus_thread</comments>
+      <category domain="https://yyg.js.cool/tags/%E6%97%85%E6%B8%B8/">旅游</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E7%88%AC%E5%B1%B1/">爬山</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E4%BC%91%E9%97%B2%E5%A8%B1%E4%B9%90/">休闲娱乐</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/64b9e8e0/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>docker部署SonarQube</title>
+      <link>https://yyg.js.cool/yyg/12643dd2/</link>
+      <guid>https://yyg.js.cool/yyg/12643dd2/</guid>
+      <pubDate>Tue, 24 Dec 2024 14:29:13 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;details class=&quot;folding-tag&quot; cyan&gt;&lt;summary&gt; 🔜什么是SonarQube？🔚 &lt;/summary&gt;
+              &lt;div class=&#39;content&#39;&gt;
+              &lt;blockquote&gt;&lt;p&gt; SonarQube是一个开源的代码质量管理平台，通过一系列的规则库对代码的扫描检查，提升代码的质量。&lt;/p&gt;&lt;p&gt;运行 SonarQube 服务器分析需要三个组件：SonarQube Server、存储数据库（本文中使用PostgreSQL）、</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://yyg.js.cool/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
+      
+      <category domain="https://yyg.js.cool/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</category>
+      
+      
+      <category domain="https://yyg.js.cool/tags/%E8%BF%90%E7%BB%B4/">运维</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90/">代码分析</category>
+      
+      <category domain="https://yyg.js.cool/tags/Linux/">Linux</category>
+      
+      <category domain="https://yyg.js.cool/tags/DevOps/">DevOps</category>
+      
+      <category domain="https://yyg.js.cool/tags/docker/">docker</category>
+      
+      <category domain="https://yyg.js.cool/tags/SonarQube/">SonarQube</category>
+      
+      <category domain="https://yyg.js.cool/tags/SonarScanner/">SonarScanner</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/12643dd2/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>项目漏洞问题记录</title>
+      <link>https://yyg.js.cool/yyg/8a0457d3/</link>
+      <guid>https://yyg.js.cool/yyg/8a0457d3/</guid>
+      <pubDate>Sat, 30 Nov 2024 14:59:22 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;SSL-2-0-和-3-0-的漏洞修复：&quot;&gt;&lt;a href=&quot;#SSL-2-0-和-3-0-的漏洞修复：&quot; class=&quot;headerlink&quot; title=&quot;SSL 2.0 和 3.0 的漏洞修复：&quot;&gt;&lt;/a&gt;&lt;strong&gt;SSL 2.0 和 3.0 的漏洞修复：&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;SSL (Secure Sockets Layer) 是一种加密协议，曾被广泛用于网络通信中以确保数据的安全传输。SSL 2.0 和 3.0 是早期的版本，但它们已经被认为不再安全，因此被现代协议（如 TLS 1.2 和 TLS 1.3）所取代。&lt;/p&gt;
+&lt;p&gt;SSL 2.0 和 3.0 的漏洞：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SSL</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
+      
+      <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">项目问题总结</category>
+      
+      
+      <category domain="https://yyg.js.cool/tags/%E8%BF%90%E7%BB%B4/">运维</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F/">漏洞扫描</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">项目问题总结</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/8a0457d3/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Windows 10（x86_64）使用QEMU安装ARM虚拟机</title>
+      <link>https://yyg.js.cool/yyg/a785f75e/</link>
+      <guid>https://yyg.js.cool/yyg/a785f75e/</guid>
+      <pubDate>Sat, 02 Nov 2024 16:06:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;基础环境&quot;&gt;&lt;a href=&quot;#基础环境&quot; class=&quot;headerlink&quot; title=&quot;基础环境&quot;&gt;&lt;/a&gt;基础环境&lt;/h2&gt;&lt;p&gt;系统：Windows 10&lt;/p&gt;
+&lt;p&gt;硬件：双网卡（本篇中使用的是两个无线网卡）&lt;/p&gt;
+&lt;p&gt;所需软件：QEMU、tap-windows&lt;/p&gt;
+&lt;p&gt;所需软件固件：QEMU_EFI.fd&lt;/p&gt;
+&lt;p&gt;ARM镜像：openEuler-22.03-LTS-SP4-aarch64-dvd.iso&lt;/p&gt;
+&lt;h2 id=&quot;环境准备&quot;&gt;&lt;a href=&quot;#环境准备&quot; class=&quot;headerlink&quot; title=&quot;环境准备&quot;&gt;&lt;/a&gt;环境准备&lt;/h2&gt;&lt;p&gt;1、进入QEMU官网&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://yyg.js.cool/categories/Linux%E8%BF%90%E7%BB%B4/">Linux运维</category>
+      
+      <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
+      
+      <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      <category domain="https://yyg.js.cool/categories/Linux%E8%BF%90%E7%BB%B4/QEMU/">QEMU</category>
+      
+      
+      <category domain="https://yyg.js.cool/tags/QEMU/">QEMU</category>
+      
+      <category domain="https://yyg.js.cool/tags/x86-ARM/">x86-ARM</category>
+      
+      <category domain="https://yyg.js.cool/tags/x86%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85ARM%E8%99%9A%E6%8B%9F%E6%9C%BA/">x86环境安装ARM虚拟机</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/a785f75e/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>eNSP模拟网络设备访问真实网络</title>
+      <link>https://yyg.js.cool/yyg/f5b762ea/</link>
+      <guid>https://yyg.js.cool/yyg/f5b762ea/</guid>
+      <pubDate>Thu, 24 Oct 2024 14:20:45 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;添加Loopback环回网卡&quot;&gt;&lt;a href=&quot;#添加Loopback环回网卡&quot; class=&quot;headerlink&quot; title=&quot;添加Loopback环回网卡&quot;&gt;&lt;/a&gt;添加Loopback环回网卡&lt;/h2&gt;&lt;p&gt;（1）使用Win+ R调出”运行“，输入&lt;code&gt;hdwwiz&lt;/code&gt;，确定后开始添加新硬件向导。&lt;/p&gt;
+&lt;p&gt;（2）按向导操作，选择&lt;code&gt;安装我手动从列表选择的硬件(高级)(M)&lt;/code&gt;。&lt;/p&gt;
+&lt;img src=&quot;/yyg/f5b762ea/1.png&quot; class=&quot;&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://yyg.js.cool/categories/Linux%E8%BF%90%E7%BB%B4/">Linux运维</category>
+      
+      <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
+      
+      <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      <category domain="https://yyg.js.cool/categories/Linux%E8%BF%90%E7%BB%B4/%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90/">网络分析</category>
+      
+      
+      <category domain="https://yyg.js.cool/tags/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/">网络设备</category>
+      
+      <category domain="https://yyg.js.cool/tags/ensp%E6%A8%A1%E6%8B%9F%E4%BB%BF%E7%9C%9F/">ensp模拟仿真</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/f5b762ea/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Linux实现模拟IPMI</title>
+      <link>https://yyg.js.cool/yyg/9ec93abd/</link>
+      <guid>https://yyg.js.cool/yyg/9ec93abd/</guid>
+      <pubDate>Thu, 10 Oct 2024 13:45:47 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;环境准备：&quot;&gt;&lt;a href=&quot;#环境准备：&quot; class=&quot;headerlink&quot; title=&quot;环境准备：&quot;&gt;&lt;/a&gt;环境准备：&lt;/h2&gt;&lt;p&gt;（1）使用脚本安装docker、docker-compose&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;bash &amp;lt;(curl -sSL</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://yyg.js.cool/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
+      
+      <category domain="https://yyg.js.cool/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</category>
+      
+      
+      <category domain="https://yyg.js.cool/tags/%E8%BF%90%E7%BB%B4/">运维</category>
+      
+      <category domain="https://yyg.js.cool/tags/IPMI/">IPMI</category>
+      
+      <category domain="https://yyg.js.cool/tags/Linux/">Linux</category>
+      
+      <category domain="https://yyg.js.cool/tags/docker/">docker</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/9ec93abd/#disqus_thread</comments>
       
     </item>
     
