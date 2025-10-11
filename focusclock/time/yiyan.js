@@ -1,11 +1,1 @@
-	var xhr = new XMLHttpRequest();
-  xhr.open('get', 'https://v1.hitokoto.cn');
-  xhr.onreadystatechange = function () {
-	    if (xhr.readyState === 4) {
-	        var data = JSON.parse(xhr.responseText);
-	        var hitokoto = document.getElementById('hitokoto_text');
-	        hitokoto.href = 'https://hitokoto.cn/?uuid=' + data.uuid
-	        hitokoto.innerText = data.hitokoto;
-	      }
-	    }
-  xhr.send();
+var xhr=new XMLHttpRequest;xhr.open("get","https://v1.hitokoto.cn"),xhr.onreadystatechange=function(){if(4===xhr.readyState){var t=JSON.parse(xhr.responseText),e=document.getElementById("hitokoto_text");e.href="https://hitokoto.cn/?uuid="+t.uuid,e.innerText=t.hitokoto}},xhr.send();
