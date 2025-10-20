@@ -1,0 +1,266 @@
+[{
+        "type": "folder",
+        "addDate": 1645439425028,
+        "title": "收藏夹栏",
+        "children": [{
+                "type": "folder",
+                "addDate": 1690466959102,
+                "title": "书舍",
+                "children": [{
+                        "type": "link",
+                        "addDate": 1690466922217,
+                        "title": "Free eBooks | Project Gutenberg",
+                        "icon": "https://logo.clearbit.com/www.gutenberg.org",
+                        "url": "https://www.gutenberg.org/"
+                    }, {
+                        "type": "link",
+                        "addDate": 1690467108705,
+                        "title": "epubBooks - Download Free Kindle ePub eBooks",
+                        "icon": "https://logo.clearbit.com/www.epubbooks.com",
+                        "url": "https://www.epubbooks.com/"
+                    }, {
+                        "type": "link",
+                        "addDate": 1690467149608,
+                        "title": "ePub Books - MobileRead Forums",
+                        "icon": "https://logo.clearbit.com/www.mobileread.com",
+                        "url": "https://www.mobileread.com/forums/forumdisplay.php?f=130"
+                    }, {
+                        "type": "link",
+                        "addDate": 1690467736831,
+                        "title": "SaltTiger | 每天一本编程书，每天进步一点点",
+                        "icon": "https://logo.clearbit.com/salttiger.com",
+                        "url": "https://salttiger.com/"
+                    }, {
+                        "type": "link",
+                        "addDate": 1690467743005,
+                        "title": "MobileRead Forums - Search Results",
+                        "icon": "https://logo.clearbit.com/www.mobileread.com",
+                        "url": "https://www.mobileread.com/forums/search.php?searchid=19462171"
+                    }, {
+                        "type": "link",
+                        "addDate": 1690467940852,
+                        "title": "Let Me Read » Best Books to Read in a Lifetime",
+                        "icon": "https://logo.clearbit.com/www.letmeread.net",
+                        "url": "https://www.letmeread.net/"
+                    }, {
+                        "type": "link",
+                        "addDate": 1690468125088,
+                        "title": "100% Free eBooks for All Devices",
+                        "icon": "https://logo.clearbit.com/www.planetebook.com",
+                        "url": "https://www.planetebook.com/"
+                    }, {
+                        "type": "link",
+                        "addDate": 1690468390182,
+                        "title": "E-book library. Search and download for free, instantly.",
+                        "icon": "https://logo.clearbit.com/vdoc.pub",
+                        "url": "https://vdoc.pub/"
+                    }, {
+                        "type": "link",
+                        "addDate": 1690468395104,
+                        "title": "PDF Drive - Search and download PDF files for free.",
+                        "icon": "https://logo.clearbit.com/www.pdfdrive.com",
+                        "url": "https://www.pdfdrive.com/"
+                    }, {
+                        "type": "link",
+                        "addDate": 1690468445430,
+                        "title": "苦瓜书盘",
+                        "icon": "https://logo.clearbit.com/kgbook.com",
+                        "url": "https://kgbook.com/"
+                    }, {
+                        "type": "link",
+                        "addDate": 1690468572124,
+                        "title": "图灵社区",
+                        "icon": "https://logo.clearbit.com/www.ituring.com.cn",
+                        "url": "https://www.ituring.com.cn/"
+                    }, {
+                        "type": "link",
+                        "addDate": 1690468756256,
+                        "title": "zlibrary 简明搜索导航 / Fuyeor Live 导航",
+                        "icon": "https://logo.clearbit.com/search.fuyeor.com",
+                        "url": "https://search.fuyeor.com/zh-cn/zlibrary"
+                    }, {
+                        "type": "link",
+                        "addDate": 1690469120496,
+                        "title": "bookzz",
+                        "icon": "https://logo.clearbit.com/www.bookzz.ggfwzs.net",
+                        "url": "https://www.bookzz.ggfwzs.net/"
+                    }, {
+                        "type": "link",
+                        "addDate": 1690469631032,
+                        "title": "Zlibrary最新地址 Zlibrary最新入口",
+                        "icon": "https://logo.clearbit.com/account.zlib.pro",
+                        "url": "https://account.zlib.pro/"
+                    }, {
+                        "type": "link",
+                        "addDate": 1690469734532,
+                        "title": "Z library入口最新获取方式 | Z library 最新入口 | Z Library 助手 | Z library",
+                        "icon": "https://logo.clearbit.com/bkb.lol",
+                        "url": "https://bkb.lol/"
+                    }, {
+                        "type": "link",
+                        "addDate": 1690469868882,
+                        "title": "书享家_电子书下载导航",
+                        "icon": "https://logo.clearbit.com/www.shuxiangjia.cn",
+                        "url": "http://www.shuxiangjia.cn/"
+                    }, {
+                        "type": "link",
+                        "addDate": 1690470106707,
+                        "title": "Z library入口最新获取方式 | Z library 最新入口 | Z Library 助手 | Z library",
+                        "icon": "https://logo.clearbit.com/looks.wang",
+                        "url": "https://looks.wang/"
+                    }, {
+                        "type": "link",
+                        "addDate": 1690470273080,
+                        "title": "Database of Free Online Computer Science and Programming Books, Textbooks, and Lecture Notes",
+                        "icon": "https://logo.clearbit.com/www.freetechbooks.com",
+                        "url": "http://www.freetechbooks.com/"
+                    }, {
+                        "type": "link",
+                        "addDate": 1690470292121,
+                        "title": "可阅文学网",
+                        "icon": "https://logo.clearbit.com/kepub.net",
+                        "url": "https://kepub.net/"
+                    }, {
+                        "type": "link",
+                        "addDate": 1690470302083,
+                        "title": "50,000+ Free eBooks in the Genres you Love | Manybooks",
+                        "icon": "https://logo.clearbit.com/manybooks.net",
+                        "url": "https://manybooks.net/"
+                    }, {
+                        "type": "link",
+                        "addDate": 1690470318719,
+                        "title": "Free-eBooks.net | Download free Fiction, Health, Romance and many more books",
+                        "icon": "https://logo.clearbit.com/www.free-ebooks.net",
+                        "url": "https://www.free-ebooks.net/"
+                    }
+                ]
+            }
+        ]
+    }, {
+        "type": "folder",
+        "addDate": 1760282799122,
+        "title": "博客",
+        "children": [{
+                "type": "folder",
+                "addDate": 1760282799122,
+                "title": "小站",
+                "children": [{
+                        "type": "link",
+                        "addDate": 1760282799122,
+                        "title": "github pages-0",
+                        "url": "https://marsperl.github.io/",
+                        "icon": "https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@2.1/img/icon.png"
+                    }, {
+                        "type": "link",
+                        "addDate": 1760282799122,
+                        "title": "github pages-1",
+                        "url": "https://yyg.js.cool/",
+                        "icon": "https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@2.1/img/icon.png"
+                    }, {
+                        "type": "link",
+                        "addDate": 1760282799122,
+                        "title": "framagit pages",
+                        "url": "https://yyg.frama.io/",
+                        "icon": "https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@2.1/img/icon.png"
+                    }, {
+                        "type": "link",
+                        "addDate": 1760282799122,
+                        "title": "codeberg pages",
+                        "url": "https://yyg.codeberg.page/",
+                        "icon": "https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@2.1/img/icon.png"
+                    }, {
+                        "type": "folder",
+                        "addDate": 1760282799122,
+                        "title": "瀚文集",
+                        "children": [{
+                                "type": "link",
+                                "addDate": 1760282799122,
+                                "title": "github-0",
+                                "url": "https://marsperl.github.io/yygrss/",
+                                "icon": "https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@2.1/img/icon.png"
+                            }, {
+                                "type": "link",
+                                "addDate": 1760282799122,
+                                "title": "github-1",
+                                "url": "https://yyg.js.cool/yygrss/",
+                                "icon": "https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@2.1/img/icon.png"
+                            }, {
+                                "type": "link",
+                                "addDate": 1760282799123,
+                                "title": "framagit",
+                                "url": "https://yyg.frama.io/yygrss/",
+                                "icon": "https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@2.1/img/icon.png"
+                            }, {
+                                "type": "link",
+                                "addDate": 1760282799123,
+                                "title": "codeberg",
+                                "url": "https://yyg.codeberg.page/yygrss/",
+                                "icon": "https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@2.1/img/icon.png"
+                            }
+                        ]
+                    }, {
+                        "type": "folder",
+                        "addDate": 1760282799123,
+                        "title": "友文说",
+                        "children": [{
+                                "type": "link",
+                                "addDate": 1760282799123,
+                                "title": "github yygyws-0",
+                                "url": "https://marsperl.github.io/fcircle/",
+                                "icon": "https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@2.1/img/icon.png"
+                            }, {
+                                "type": "link",
+                                "addDate": 1760282799123,
+                                "title": "github yygyws-1",
+                                "url": "https://yyg.js.cool/fcircle/",
+                                "icon": "https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@2.1/img/icon.png"
+                            }, {
+                                "type": "link",
+                                "addDate": 1760282799123,
+                                "title": "framagit yygyws",
+                                "url": "https://yyg.frama.io/fcircle/",
+                                "icon": "https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@2.1/img/icon.png"
+                            }, {
+                                "type": "link",
+                                "addDate": 1760282799123,
+                                "title": "codeberg yygyws",
+                                "url": "https://yyg.codeberg.page/fcircle/",
+                                "icon": "https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@2.1/img/icon.png"
+                            }
+                        ]
+                    }, {
+                        "type": "folder",
+                        "addDate": 1760282799123,
+                        "title": "友文说接口",
+                        "children": [{
+                                "type": "link",
+                                "addDate": 1760282799123,
+                                "title": "github yws-api-0",
+                                "url": "https://marsperl.github.io/yygyws/",
+                                "icon": "https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@2.1/img/icon.png"
+                            }, {
+                                "type": "link",
+                                "addDate": 1760282799123,
+                                "title": "github yws-api-1",
+                                "url": "https://yyg.js.cool/yygyws/",
+                                "icon": "https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@2.1/img/icon.png"
+                            }, {
+                                "type": "link",
+                                "addDate": 1760282799123,
+                                "title": "framagit yws-api",
+                                "url": "https://yyg.frama.io/yygyws/",
+                                "icon": "https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@2.1/img/icon.png"
+                            }, {
+                                "type": "link",
+                                "addDate": 1760282799123,
+                                "title": "codeberg yws-api",
+                                "url": "https://yyg.codeberg.page/yygyws/",
+                                "icon": "https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@2.1/img/icon.png"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
