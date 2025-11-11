@@ -464,5 +464,103 @@
                 ]
             }
         ]
+    },
+    {
+        "type": "folder",
+        "addDate": 1762859800203,
+        "title": "博客圈",
+        "children": [
+            {
+                "type": "link",
+                "addDate": 1762859800204,
+                "title": "Blogsclub",
+                "url": "https://www.blogsclub.org/",
+                "icon": "https://www.blogsclub.org/usr/themes/default/favicon.png"
+            },
+            {
+                "type": "link",
+                "addDate": 1762859800204,
+                "title": "博友圈",
+                "url": "https://www.boyouquan.com/home",
+                "icon": "https://www.boyouquan.com/assets/favicon.ico"
+            },
+            {
+                "type": "link",
+                "addDate": 1762859800204,
+                "title": "BlogWe",
+                "url": "https://blogwe.com/",
+                "icon": "https://blogwe.com/favicon.ico"
+            },
+            {
+                "type": "link",
+                "addDate": 1762859800204,
+                "title": "博客圈",
+                "url": "https://bokequan.cn/",
+                "icon": "https://bokequan.cn/wp-content/uploads/2024/10/1730017489-logo.png"
+            },
+            {
+                "type": "link",
+                "addDate": 1762859800204,
+                "title": "博客录",
+                "url": "https://boke.lu/",
+                "icon": "https://boke.lu/博客录新图标透明底圆底(1).png"
+            },
+            {
+                "type": "link",
+                "addDate": 1762859800204,
+                "title": "集博栈",
+                "url": "https://www.zhblogs.net/",
+                "icon": "https://www.zhblogs.net/favicon.png"
+            },
+            {
+                "type": "link",
+                "addDate": 1762859800204,
+                "title": "BlogFinder",
+                "url": "https://bf.zzxworld.com/",
+                "icon": "https://bf.zzxworld.com/images/favicon.png"
+            },
+            {
+                "type": "link",
+                "addDate": 1762859800204,
+                "title": "笔墨迹",
+                "url": "https://blogscn.fun/",
+                "icon": "https://photo.xiangming.site/img/blogscn_icon.png"
+            },
+            {
+                "type": "link",
+                "addDate": 1762859800204,
+                "title": "十年之约",
+                "url": "https://www.foreverblog.cn/",
+                "icon": "https://www.foreverblog.cn/favicon.ico"
+            },
+            {
+                "type": "link",
+                "addDate": 1762859800204,
+                "title": "MoreRSS",
+                "url": "https://morerss.com/zh",
+                "icon": "https://morerss.com/favicon.ico"
+            },
+            {
+                "type": "link",
+                "addDate": 1762859800204,
+                "title": "博客集",
+                "url": "https://bloginc.cn/",
+                "icon": "https://bloginc.cn/favicon.ico"
+            },
+            {
+                "type": "link",
+                "addDate": 1762859800204,
+                "title": "博客说",
+                "url": "https://blogtalk.org/home",
+                "icon": "https://blogtalk.org/favicon.ico"
+            },
+            {
+                "type": "link",
+                "addDate": 1762859800204,
+                "title": "博客星球",
+                "url": "https://blogplanet.cn/",
+                "icon": "https://www.blogplanet.cn/img/bkxq.png"
+            }
+        ]
     }
 ]
