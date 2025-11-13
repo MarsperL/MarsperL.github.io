@@ -352,8 +352,15 @@
                     {
                         "type": "link",
                         "addDate": 1760282799122,
-                        "title": "codeberg pages",
+                        "title": "codeberg pages-0",
                         "url": "https://yyg.codeberg.page/",
+                        "icon": "https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@2.1/img/icon.png"
+                    },
+                    {
+                        "type": "link",
+                        "addDate": 1763026858450,
+                        "title": "codeberg pages-1",
+                        "url": "https://yyg.ldtp.com/",
                         "icon": "https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@2.1/img/icon.png"
                     },
                     {
@@ -385,8 +392,15 @@
                             {
                                 "type": "link",
                                 "addDate": 1760282799123,
-                                "title": "codeberg",
+                                "title": "codeberg-0",
                                 "url": "https://yyg.codeberg.page/yygrss/",
+                                "icon": "https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@2.1/img/icon.png"
+                            },
+                            {
+                                "type": "link",
+                                "addDate": 1763026858450,
+                                "title": "codeberg-1",
+                                "url": "https://yyg.ldtp.com/yygrss/",
                                 "icon": "https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@2.1/img/icon.png"
                             }
                         ]
@@ -420,8 +434,15 @@
                             {
                                 "type": "link",
                                 "addDate": 1760282799123,
-                                "title": "codeberg yygyws",
+                                "title": "codeberg yygyws-0",
                                 "url": "https://yyg.codeberg.page/fcircle/",
+                                "icon": "https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@2.1/img/icon.png"
+                            },
+                            {
+                                "type": "link",
+                                "addDate": 1763026858450,
+                                "title": "codeberg yygyws-1",
+                                "url": "https://yyg.ldtp.com/fcircle/",
                                 "icon": "https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@2.1/img/icon.png"
                             }
                         ]
@@ -455,7 +476,7 @@
                             {
                                 "type": "link",
                                 "addDate": 1760282799123,
-                                "title": "codeberg yws-api",
+                                "title": "codeberg yws-api-0",
                                 "url": "https://yyg.codeberg.page/yygyws/",
                                 "icon": "https://gcore.jsdelivr.net/gh/MarsperL/MarsperL.github.io@2.1/img/icon.png"
                             }
