@@ -73,11 +73,11 @@
       
       <category domain="https://yyg.js.cool/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
       
-      <category domain="https://yyg.js.cool/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/k8s/">k8s</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
       
       <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      <category domain="https://yyg.js.cool/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/k8s/">k8s</category>
       
       <category domain="https://yyg.js.cool/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/HELM/">HELM</category>
       
@@ -512,11 +512,11 @@
       
       <category domain="https://yyg.js.cool/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
       
-      <category domain="https://yyg.js.cool/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/k8s/">k8s</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
       
       <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      <category domain="https://yyg.js.cool/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/k8s/">k8s</category>
       
       
       <category domain="https://yyg.js.cool/tags/%E8%BF%90%E7%BB%B4/">运维</category>
@@ -559,15 +559,15 @@
       
       
       
+      <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
+      
+      <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
       <category domain="https://yyg.js.cool/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
       
       <category domain="https://yyg.js.cool/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/Jenkins/">Jenkins</category>
       
-      <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
-      
       <category domain="https://yyg.js.cool/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/GitLab/">GitLab</category>
-      
-      <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
       
       <category domain="https://yyg.js.cool/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/SonarQube/">SonarQube</category>
       
@@ -649,13 +649,13 @@
       
       
       
-      <category domain="https://yyg.js.cool/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
-      
-      <category domain="https://yyg.js.cool/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/Ansible/">Ansible</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
       
       <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      <category domain="https://yyg.js.cool/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
+      
+      <category domain="https://yyg.js.cool/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/Ansible/">Ansible</category>
       
       
       <category domain="https://yyg.js.cool/tags/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
@@ -921,9 +921,9 @@
       
       <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
       
-      <category domain="https://yyg.js.cool/categories/Linux%E8%BF%90%E7%BB%B4/%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90/">网络分析</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      <category domain="https://yyg.js.cool/categories/Linux%E8%BF%90%E7%BB%B4/%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90/">网络分析</category>
       
       
       <category domain="https://yyg.js.cool/tags/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/">网络设备</category>
