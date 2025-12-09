@@ -1,1 +1,0 @@
-function playPause(){var e=document.getElementById("music2"),t=document.getElementById("music_btn2");e.paused?(e.play(),t.src="time/img/song1.png"):(e.pause(),t.src="time/img/stop1.png")}

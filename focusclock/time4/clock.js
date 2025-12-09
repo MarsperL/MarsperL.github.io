@@ -1,1 +1,0 @@
-function myTime(){const e=new Date,t=e.getHours(),o=e.getMinutes(),n=e.getSeconds();document.getElementById("clock").innerText=Math.floor(t/10)+(t%10+":")+Math.floor(o/10)+o%10+":"+Math.floor(n/10)+n%10}myTime(),setInterval(myTime,1e3);

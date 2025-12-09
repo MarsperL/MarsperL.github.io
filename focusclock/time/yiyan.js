@@ -1,1 +1,0 @@
-var xhr=new XMLHttpRequest;xhr.open("get","https://v1.hitokoto.cn"),xhr.onreadystatechange=function(){if(4===xhr.readyState){var t=JSON.parse(xhr.responseText),e=document.getElementById("hitokoto_text");e.href="https://hitokoto.cn/?uuid="+t.uuid,e.innerText=t.hitokoto}},xhr.send();
