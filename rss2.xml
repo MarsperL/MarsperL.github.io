@@ -330,7 +330,9 @@
         
           
           
-      <description>&lt;div class=&quot;tip info&quot;&gt;&lt;p&gt;本站中使用的动态粒子线条背景基于&lt;a href=&quot;https://git.hust.cc/canvas-nest.js/&quot;&gt;canvas-nest.js&lt;/a&gt;修改实现，可进行自定义设置，自定义配置项位于&lt;code&gt;background.js&lt;/code&gt;的最后&lt;code&gt;/* 自定义修改配置项</description>
+      <description>&lt;div class=&quot;note pink icon-padding flat&quot;&gt;&lt;i class=&quot;note-icon fas fa-bullhorn&quot;&gt;&lt;/i&gt;&lt;p&gt;博客现有背景即为新版动态粒子线条背景&lt;/p&gt;
+&lt;/div&gt;
+&lt;h1 id=&quot;新版&quot;&gt;&lt;a href=&quot;#新版&quot; class=&quot;headerlink&quot; title=&quot;新版&quot;&gt;&lt;/a&gt;新版&lt;/h1&gt;&lt;h2 id=&quot;添加js文件&quot;&gt;&lt;a href=&quot;#添加js文件&quot; class=&quot;headerlink&quot;</description>
           
         
       
