@@ -15,8 +15,199 @@
     <atom:link href="https://yyg.js.cool/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>闲云野鹤，八方逍遥</description>
-    <pubDate>Tue, 24 Feb 2026 04:45:07 GMT</pubDate>
+    <pubDate>Sun, 01 Mar 2026 13:54:58 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>2025年度总结</title>
+      <link>https://yyg.js.cool/yyg/1f59513d/</link>
+      <guid>https://yyg.js.cool/yyg/1f59513d/</guid>
+      <pubDate>Sat, 21 Feb 2026 07:02:29 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;生活&quot;&gt;&lt;a href=&quot;#生活&quot; class=&quot;headerlink&quot; title=&quot;生活&quot;&gt;&lt;/a&gt;生活&lt;/h2&gt;&lt;p&gt;今年游玩的景点中体验较好的是去爬了嵩山、看了万岁山武侠城。&lt;/p&gt;
+&lt;p&gt;登封汽车客运总站旁小店里的炒刀削，很是不错。 登封人民也很热情，找民宿时，遇到的老板都很热心，也都很耐心的解答住宿需求。登封发展节奏舒缓，有种年代剧中城市的滤镜。&lt;/p&gt;
+&lt;p&gt;万岁山中有很多游玩项目，数量多的可以玩几天。夜晚的色彩缤纷、打铁花也十分惊艳。就是人太多，不太好移动。有时还有音乐节，很热闹。&lt;/p&gt;
+&lt;h2 id=&quot;读书&quot;&gt;&lt;a href=&quot;#读书&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://yyg.js.cool/categories/%E6%97%A5%E5%B8%B8/">日常</category>
+      
+      <category domain="https://yyg.js.cool/categories/%E6%97%A5%E5%B8%B8/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/">年度总结</category>
+      
+      
+      <category domain="https://yyg.js.cool/tags/%E5%A4%8D%E7%9B%98/">复盘</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E6%97%A5%E5%B8%B8/">日常</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/">年度总结</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/1f59513d/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>手机使用Vectras VM安装Linux</title>
+      <link>https://yyg.js.cool/yyg/b70ff682/</link>
+      <guid>https://yyg.js.cool/yyg/b70ff682/</guid>
+      <pubDate>Sat, 14 Feb 2026 09:49:13 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;&lt;a href=&quot;https://github.com/xoureldeen/Vectras-VM-Android&quot;&gt;Vectras VM&lt;/a&gt;是一个基于 QEMU 的 Android 虚拟机应用，可在手机实现安装Liunx和Windows虚拟机。支持&lt;code&gt;img&lt;/code&gt;、qcow2、&lt;code&gt;ISO&lt;/code&gt;等格式的镜像文件。&lt;/p&gt;
+&lt;p&gt;本文主要介绍通过ISO镜像方式安装&lt;code&gt;Rocky Linux 8.10&lt;/code&gt;、&lt;code&gt;Debian</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
+      
+      <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/%E7%8E%A9%E6%9C%BA/">玩机</category>
+      
+      
+      <category domain="https://yyg.js.cool/tags/%E5%B7%A5%E5%85%B7/">工具</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E6%BC%AB%E8%B0%88/">漫谈</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E7%8E%A9%E6%9C%BA/">玩机</category>
+      
+      <category domain="https://yyg.js.cool/tags/x86-64/">x86_64</category>
+      
+      <category domain="https://yyg.js.cool/tags/Vectras-VM/">Vectras VM</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/b70ff682/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Termux安装Python</title>
+      <link>https://yyg.js.cool/yyg/138e817c/</link>
+      <guid>https://yyg.js.cool/yyg/138e817c/</guid>
+      <pubDate>Mon, 09 Feb 2026 06:05:13 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;Termux安装配置&quot;&gt;&lt;a href=&quot;#Termux安装配置&quot; class=&quot;headerlink&quot; title=&quot;Termux安装配置&quot;&gt;&lt;/a&gt;Termux安装配置&lt;/h2&gt;&lt;p&gt;文件访问授权&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;termux-setup-storage&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;更换镜像源&lt;/p&gt;
+&lt;figure</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
+      
+      <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/%E7%8E%A9%E6%9C%BA/">玩机</category>
+      
+      
+      <category domain="https://yyg.js.cool/tags/%E5%B7%A5%E5%85%B7/">工具</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E6%BC%AB%E8%B0%88/">漫谈</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E7%8E%A9%E6%9C%BA/">玩机</category>
+      
+      <category domain="https://yyg.js.cool/tags/Termux/">Termux</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/138e817c/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>旧手机搭建博客的一次尝试</title>
+      <link>https://yyg.js.cool/yyg/f72e5a8d/</link>
+      <guid>https://yyg.js.cool/yyg/f72e5a8d/</guid>
+      <pubDate>Wed, 28 Jan 2026 11:29:13 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;初探&quot;&gt;&lt;a href=&quot;#初探&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://yyg.js.cool/categories/%E6%97%A5%E5%B8%B8/">日常</category>
+      
+      <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
+      
+      <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/%E7%8E%A9%E6%9C%BA/">玩机</category>
+      
+      
+      <category domain="https://yyg.js.cool/tags/%E5%8D%9A%E5%AE%A2/">博客</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E6%97%A5%E5%B8%B8/">日常</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E6%BC%AB%E8%B0%88/">漫谈</category>
+      
+      <category domain="https://yyg.js.cool/tags/Typecho/">Typecho</category>
+      
+      <category domain="https://yyg.js.cool/tags/WSToolbox/">WSToolbox</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/f72e5a8d/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>旧手机的新生--私人影视库</title>
+      <link>https://yyg.js.cool/yyg/384455e1/</link>
+      <guid>https://yyg.js.cool/yyg/384455e1/</guid>
+      <pubDate>Tue, 27 Jan 2026 08:15:13 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;如今，许多旧手机的存储容量甚至已经比肩电脑硬盘。如果只是让它们闲置吃灰，或者拿去换把剪刀，未免太可惜了。&lt;br&gt;我的上部手机跟我度过了整个大学时光，也承载着许多回忆。换了新手机后就放在桌面当个数字时钟，还有不小的闲置存储空间。&lt;br&gt;之前看了不少博主用旧手机当NAS、网盘、私人影视库的视频，于是就有了搭建私人影视库的想法，让它迎来第二春。&lt;/p&gt;
+&lt;h1 id=&quot;折腾过程&quot;&gt;&lt;a href=&quot;#折腾过程&quot; class=&quot;headerlink&quot; title=&quot;折腾过程&quot;&gt;&lt;/a&gt;折腾过程&lt;/h1&gt;&lt;p&gt;实现过程其实很简单，在手机上安装&lt;code&gt;Emby</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://yyg.js.cool/categories/%E6%97%A5%E5%B8%B8/">日常</category>
+      
+      <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
+      
+      <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/%E7%8E%A9%E6%9C%BA/">玩机</category>
+      
+      
+      <category domain="https://yyg.js.cool/tags/%E6%97%A5%E5%B8%B8/">日常</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E6%BC%AB%E8%B0%88/">漫谈</category>
+      
+      <category domain="https://yyg.js.cool/tags/Emby/">Emby</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E7%A7%81%E4%BA%BA%E5%BD%B1%E8%A7%86%E5%BA%93/">私人影视库</category>
+      
+      <category domain="https://yyg.js.cool/tags/X-plore/">X-plore</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/384455e1/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>个人密码管理方案</title>
@@ -36,9 +227,9 @@
       
       
       
-      <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%97%A5%E5%B8%B8/">日常</category>
+      
+      <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
       
       <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/%E7%8E%A9%E6%9C%BA/">玩机</category>
       
@@ -776,199 +967,6 @@
       
       
       <comments>https://yyg.js.cool/yyg/10ac2e4/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>Ansible知识梳理</title>
-      <link>https://yyg.js.cool/yyg/e80721f/</link>
-      <guid>https://yyg.js.cool/yyg/e80721f/</guid>
-      <pubDate>Mon, 31 Mar 2025 11:45:26 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;details class=&quot;folding-tag&quot; cyan&gt;&lt;summary&gt; 🔜什么是Ansible？🔚 &lt;/summary&gt;
-              &lt;div class=&#39;content&#39;&gt;
-              &lt;p&gt;Ansible 是一款 IT 自动化工具。主要应用场景有配置系统、软件部署、持续发布及不停服平滑滚动更新的高级任务编排。&lt;/p&gt;&lt;p&gt;Ansible 提供开源自动化，可降低复杂性并在任何地方运行。使用 Ansible 可以自动执行几乎任何任务。&lt;/p&gt;
-              &lt;/div&gt;
-            &lt;/details&gt;
-&lt;h2 id=&quot;架构&quot;&gt;&lt;a href=&quot;#架构&quot; class=&quot;headerlink&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
-      
-      <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
-      
-      <category domain="https://yyg.js.cool/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
-      
-      <category domain="https://yyg.js.cool/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/Ansible/">Ansible</category>
-      
-      
-      <category domain="https://yyg.js.cool/tags/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
-      
-      <category domain="https://yyg.js.cool/tags/CI-CD/">CI/CD</category>
-      
-      <category domain="https://yyg.js.cool/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
-      
-      <category domain="https://yyg.js.cool/tags/Ansible/">Ansible</category>
-      
-      <category domain="https://yyg.js.cool/tags/Linux%E8%BF%90%E7%BB%B4/">Linux运维</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/e80721f/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>Hexo-Butterfly美化教程-[2]Butterfly主题安装</title>
-      <link>https://yyg.js.cool/yyg/80ffa402/</link>
-      <guid>https://yyg.js.cool/yyg/80ffa402/</guid>
-      <pubDate>Mon, 10 Mar 2025 07:14:39 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;拉取主题代码&quot;&gt;&lt;a href=&quot;#拉取主题代码&quot; class=&quot;headerlink&quot; title=&quot;拉取主题代码&quot;&gt;&lt;/a&gt;拉取主题代码&lt;/h2&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git clone -b master https://github.com/jerryc127/hexo-theme-butterfly.git</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
-      
-      <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</category>
-      
-      
-      <category domain="https://yyg.js.cool/tags/Hexo/">Hexo</category>
-      
-      <category domain="https://yyg.js.cool/tags/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
-      
-      <category domain="https://yyg.js.cool/tags/Butterfly/">Butterfly</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/80ffa402/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>跨城搬家总结</title>
-      <link>https://yyg.js.cool/yyg/4c3a1bc3/</link>
-      <guid>https://yyg.js.cool/yyg/4c3a1bc3/</guid>
-      <pubDate>Thu, 06 Mar 2025 09:11:21 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h2&gt;&lt;p&gt;　　今天终于彻底完成了从A城到B城的跨城搬家，开始在B城开启生活的新篇章。&lt;/p&gt;
-&lt;h2 id=&quot;搬家全过程&quot;&gt;&lt;a href=&quot;#搬家全过程&quot; class=&quot;headerlink&quot; title=&quot;搬家全过程&quot;&gt;&lt;/a&gt;搬家全过程&lt;/h2&gt;&lt;p&gt;　　年后从老家回到A城之后，开始正式着手考虑搬到B城的事情，此时离房租到期还有半个多月的时间。&lt;/p&gt;
-&lt;h3 id=&quot;找房和看房&quot;&gt;&lt;a href=&quot;#找房和看房&quot; class=&quot;headerlink&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
-      
-      <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/%E6%90%AC%E5%AE%B6/">搬家</category>
-      
-      
-      <category domain="https://yyg.js.cool/tags/%E5%A4%8D%E7%9B%98/">复盘</category>
-      
-      <category domain="https://yyg.js.cool/tags/%E4%B9%94%E8%BF%81%E6%96%B0%E5%B1%85/">乔迁新居</category>
-      
-      <category domain="https://yyg.js.cool/tags/%E8%B7%A8%E5%9F%8E%E6%90%AC%E5%AE%B6/">跨城搬家</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/4c3a1bc3/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>休闲娱乐-1月</title>
-      <link>https://yyg.js.cool/yyg/64b9e8e0/</link>
-      <guid>https://yyg.js.cool/yyg/64b9e8e0/</guid>
-      <pubDate>Sun, 12 Jan 2025 02:01:59 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;登山-嵩山&quot;&gt;&lt;a href=&quot;#登山-嵩山&quot; class=&quot;headerlink&quot; title=&quot;登山-嵩山&quot;&gt;&lt;/a&gt;登山-嵩山&lt;/h2&gt;&lt;p&gt;​    前两天，去了登封爬了嵩山，在登封两天的总体感觉还不错。&lt;/p&gt;
-&lt;h3 id=&quot;人文风情&quot;&gt;&lt;a href=&quot;#人文风情&quot; class=&quot;headerlink&quot; title=&quot;人文风情&quot;&gt;&lt;/a&gt;人文风情&lt;/h3&gt;&lt;p&gt;​    之前做攻略看到登封的炒刀削不错。特地去尝了尝，地址是登封汽车客运总站旁的小店，个人觉得味道不错，分量足，价格适中。&lt;/p&gt;
-&lt;p&gt;​    登封人民也很热情，找民宿时，遇到的老板都很热心，也都很耐心的解答住宿需求。&lt;/p&gt;
-&lt;p&gt;​   </description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
-      
-      <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/%E4%BC%91%E9%97%B2%E5%A8%B1%E4%B9%90/">休闲娱乐</category>
-      
-      
-      <category domain="https://yyg.js.cool/tags/%E6%97%85%E6%B8%B8/">旅游</category>
-      
-      <category domain="https://yyg.js.cool/tags/%E7%88%AC%E5%B1%B1/">爬山</category>
-      
-      <category domain="https://yyg.js.cool/tags/%E4%BC%91%E9%97%B2%E5%A8%B1%E4%B9%90/">休闲娱乐</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/64b9e8e0/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>docker部署SonarQube</title>
-      <link>https://yyg.js.cool/yyg/12643dd2/</link>
-      <guid>https://yyg.js.cool/yyg/12643dd2/</guid>
-      <pubDate>Tue, 24 Dec 2024 14:29:13 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;details class=&quot;folding-tag&quot; cyan&gt;&lt;summary&gt; 🔜什么是SonarQube？🔚 &lt;/summary&gt;
-              &lt;div class=&#39;content&#39;&gt;
-              &lt;blockquote&gt;&lt;p&gt; SonarQube是一个开源的代码质量管理平台，通过一系列的规则库对代码的扫描检查，提升代码的质量。&lt;/p&gt;&lt;p&gt;运行 SonarQube 服务器分析需要三个组件：SonarQube Server、存储数据库（本文中使用PostgreSQL）、</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://yyg.js.cool/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
-      
-      <category domain="https://yyg.js.cool/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</category>
-      
-      
-      <category domain="https://yyg.js.cool/tags/%E8%BF%90%E7%BB%B4/">运维</category>
-      
-      <category domain="https://yyg.js.cool/tags/%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90/">代码分析</category>
-      
-      <category domain="https://yyg.js.cool/tags/Linux/">Linux</category>
-      
-      <category domain="https://yyg.js.cool/tags/DevOps/">DevOps</category>
-      
-      <category domain="https://yyg.js.cool/tags/docker/">docker</category>
-      
-      <category domain="https://yyg.js.cool/tags/SonarQube/">SonarQube</category>
-      
-      <category domain="https://yyg.js.cool/tags/SonarScanner/">SonarScanner</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/12643dd2/#disqus_thread</comments>
       
     </item>
     
