@@ -36,23 +36,6 @@
     </item>
     
     <item>
-      <title>测试</title>
-      <link>https://yyg.js.cool/yyg/9daba997/</link>
-      <guid>https://yyg.js.cool/yyg/9daba997/</guid>
-      <pubDate>Tue, 05 May 2026 01:26:43 GMT</pubDate>
-      
-      <description>你好 你好呀，这是一篇测试文章  </description>
-      
-      
-      
-      
-      
-      
-      <comments>https://yyg.js.cool/yyg/9daba997/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
       <title>2025年度总结</title>
       <link>https://yyg.js.cool/yyg/1f59513d/</link>
       <guid>https://yyg.js.cool/yyg/1f59513d/</guid>
@@ -914,6 +897,57 @@
       
       
       <comments>https://yyg.js.cool/yyg/dc35290c/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Jenkins知识梳理</title>
+      <link>https://yyg.js.cool/yyg/f0979e05/</link>
+      <guid>https://yyg.js.cool/yyg/f0979e05/</guid>
+      <pubDate>Sat, 17 May 2025 10:47:41 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;details class=&quot;folding-tag&quot; cyan&gt;&lt;summary&gt; 🔜什么是Jenkins？🔚 &lt;/summary&gt;
+              &lt;div class=&#39;content&#39;&gt;
+              &lt;p&gt;Jenkins是一款基于Java开发的开源 CI&amp;amp;CD</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
+      
+      <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      <category domain="https://yyg.js.cool/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
+      
+      <category domain="https://yyg.js.cool/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/Jenkins/">Jenkins</category>
+      
+      <category domain="https://yyg.js.cool/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/GitLab/">GitLab</category>
+      
+      <category domain="https://yyg.js.cool/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/SonarQube/">SonarQube</category>
+      
+      
+      <category domain="https://yyg.js.cool/tags/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
+      
+      <category domain="https://yyg.js.cool/tags/CI-CD/">CI/CD</category>
+      
+      <category domain="https://yyg.js.cool/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/">自动化运维</category>
+      
+      <category domain="https://yyg.js.cool/tags/GitLab/">GitLab</category>
+      
+      <category domain="https://yyg.js.cool/tags/Jenkins/">Jenkins</category>
+      
+      <category domain="https://yyg.js.cool/tags/Linux%E8%BF%90%E7%BB%B4/">Linux运维</category>
+      
+      <category domain="https://yyg.js.cool/tags/SonarQube/">SonarQube</category>
+      
+      
+      <comments>https://yyg.js.cool/yyg/f0979e05/#disqus_thread</comments>
       
     </item>
     
