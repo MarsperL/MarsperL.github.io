@@ -1,968 +1,573 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="extension/rss2.xsl" ?>
-<rss version="2.0"
-  xmlns:atom="http://www.w3.org/2005/Atom"
-  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="extension/rss2.xsl"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>云野阁</title>
     <link>https://yyg.js.cool/</link>
-    
+    <description>潇洒是一种态度</description>
+    <language>zh-CN</language>
+    <copyright>All rights reserved 2026, 云野阁</copyright>
+    <lastBuildDate>Sun, 05 Jul 2026 12:06:27 GMT</lastBuildDate>
+    <generator>Hexo</generator>
     <image>
       <url>https://yyg.js.cool/icon.png</url>
       <title>云野阁</title>
       <link>https://yyg.js.cool/</link>
     </image>
-    
     <atom:link href="https://yyg.js.cool/rss2.xml" rel="self" type="application/rss+xml"/>
-    
-    <description>闲云野鹤，八方逍遥</description>
-    <pubDate>Sun, 05 Jul 2026 12:06:27 GMT</pubDate>
-    <generator>http://hexo.io/</generator>
-    
     <item>
       <title>docker部署Prometheus监控系统</title>
       <link>https://yyg.js.cool/yyg/e821fd2a/</link>
-      <guid>https://yyg.js.cool/yyg/e821fd2a/</guid>
-      <pubDate>Sun, 05 Jul 2026 11:53:46 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;使用docker部署Prometheus+Grafana+Alertmanager监控系统，并集成钉钉告警&lt;/p&gt;
-&lt;h2 id=&quot;环境准备&quot;&gt;&lt;a href=&quot;#环境准备&quot; class=&quot;headerlink&quot; title=&quot;环境准备&quot;&gt;&lt;/a&gt;环境准备&lt;/h2&gt;&lt;p&gt;（1）使用脚本安装docker、docker-compose&lt;/p&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</description>
-          
-        
-      
-      
-      
-      
+      <description>
+        <![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>使用docker部署Prometheus+Grafana+Alertmanager监控系统，并集成钉钉告警</p>
+<h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>（1）使用脚本安装docker、docker-compose</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span]]>
+      </description>
+      <author>云野阁</author>
       <category domain="https://yyg.js.cool/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
-      
       <category domain="https://yyg.js.cool/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/docker/">docker</category>
-      
-      
       <category domain="https://yyg.js.cool/tags/%E8%BF%90%E7%BB%B4/">运维</category>
-      
       <category domain="https://yyg.js.cool/tags/%E9%92%89%E9%92%89%E5%91%8A%E8%AD%A6/">钉钉告警</category>
-      
       <category domain="https://yyg.js.cool/tags/DevOps/">DevOps</category>
-      
       <category domain="https://yyg.js.cool/tags/docker/">docker</category>
-      
       <category domain="https://yyg.js.cool/tags/Grafana/">Grafana</category>
-      
       <category domain="https://yyg.js.cool/tags/Prometheus/">Prometheus</category>
-      
       <category domain="https://yyg.js.cool/tags/Alertmanager/">Alertmanager</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/e821fd2a/#disqus_thread</comments>
-      
+      <enclosure url="https://random-img.pupper.cn/api" type="application/octet-stream"/>
+      <pubDate>Sun, 05 Jul 2026 11:53:46 GMT</pubDate>
+      <content:encoded>
+        <![CDATA[<p><img src="https://random-img.pupper.cn/api" alt="docker部署Prometheus监控系统" /></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>使用docker部署Prometheus+Grafana+Alertmanager监控系统，并集成钉钉告警</p><h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>（1）使用脚本安装docker、docker-compose</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span]]>
+      </content:encoded>
     </item>
-    
     <item>
       <title>窗外的“邻居”</title>
       <link>https://yyg.js.cool/yyg/fc7449c0/</link>
-      <guid>https://yyg.js.cool/yyg/fc7449c0/</guid>
-      <pubDate>Mon, 15 Jun 2026 10:18:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;p&gt;初见时只觉是过客，未料竟成了邻居&lt;br&gt;上周偶然间发现有两只斑鸠时不时在窗边停留，不曾想今天巢都筑好了😂&lt;br&gt;现在雌斑鸠在巢里孵蛋，窗边也多了几分热闹，有时还会叫几声，看来是中意这里&lt;br&gt;万物有灵，这也是一份难得的缘分，那便顺其自然啦&lt;/p&gt;
-&lt;img src=&quot;/yyg/fc7449c0/1.jpg&quot; class=&quot;&quot;</description>
-          
-        
-      
-      
-      
-      
+      <description>
+        <![CDATA[<p>初见时只觉是过客，未料竟成了邻居<br>上周偶然间发现有两只斑鸠时不时在窗边停留，不曾想今天巢都筑好了😂<br>现在雌斑鸠在巢里孵蛋，窗边也多了几分热闹，有时还会叫几声，看来是中意这里<br>万物有灵，这也是一份难得的缘分，那便顺其自然啦</p>
+<img src="/yyg/fc7449c0/1.jpg" class=""]]>
+      </description>
+      <author>云野阁</author>
       <category domain="https://yyg.js.cool/categories/%E6%97%A5%E5%B8%B8/">日常</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%97%A5%E5%B8%B8/%E6%97%A5%E5%B8%B8%E5%88%86%E4%BA%AB/">日常分享</category>
-      
-      
       <category domain="https://yyg.js.cool/tags/%E6%97%A5%E5%B8%B8/">日常</category>
-      
       <category domain="https://yyg.js.cool/tags/%E5%B0%8F%E7%A1%AE%E5%B9%B8/">小确幸</category>
-      
       <category domain="https://yyg.js.cool/tags/%E6%96%B0%E5%8F%91%E7%8E%B0/">新发现</category>
-      
       <category domain="https://yyg.js.cool/tags/%E6%97%A5%E5%B8%B8%E5%88%86%E4%BA%AB/">日常分享</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/fc7449c0/#disqus_thread</comments>
-      
+      <enclosure url="https://tu.ltyuanfang.cn/api/fengjing.php" type="application/octet-stream"/>
+      <pubDate>Mon, 15 Jun 2026 10:18:00 GMT</pubDate>
+      <content:encoded>
+        <![CDATA[<p>初见时只觉是过客，未料竟成了邻居<br>上周偶然间发现有两只斑鸠时不时在窗边停留，不曾想今天巢都筑好了😂<br>现在雌斑鸠在巢里孵蛋，窗边也多了几分热闹，有时还会叫几声，看来是中意这里<br>万物有灵，这也是一份难得的缘分，那便顺其自然啦</p><img src="/yyg/fc7449c0/1.jpg" class=""]]>
+      </content:encoded>
     </item>
-    
     <item>
       <title>2025年度总结</title>
       <link>https://yyg.js.cool/yyg/1f59513d/</link>
-      <guid>https://yyg.js.cool/yyg/1f59513d/</guid>
-      <pubDate>Sat, 21 Feb 2026 07:02:29 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;生活&quot;&gt;&lt;a href=&quot;#生活&quot; class=&quot;headerlink&quot; title=&quot;生活&quot;&gt;&lt;/a&gt;生活&lt;/h2&gt;&lt;p&gt;今年游玩的景点中体验较好的是去爬了嵩山、看了万岁山武侠城。&lt;/p&gt;
-&lt;p&gt;登封汽车客运总站旁小店里的炒刀削，很是不错。 登封人民也很热情，找民宿时，遇到的老板都很热心，也都很耐心的解答住宿需求。登封发展节奏舒缓，有种年代剧中城市的滤镜。&lt;/p&gt;
-&lt;p&gt;万岁山中有很多游玩项目，数量多的可以玩几天。夜晚的色彩缤纷、打铁花也十分惊艳。就是人太多，不太好移动。有时还有音乐节，很热闹。&lt;/p&gt;
-&lt;h2 id=&quot;读书&quot;&gt;&lt;a href=&quot;#读书&quot; class=&quot;headerlink&quot;</description>
-          
-        
-      
-      
-      
-      
+      <description>
+        <![CDATA[<h2 id="生活"><a href="#生活" class="headerlink" title="生活"></a>生活</h2><p>今年游玩的景点中体验较好的是去爬了嵩山、看了万岁山武侠城。</p>
+<p>登封汽车客运总站旁小店里的炒刀削，很是不错。 登封人民也很热情，找民宿时，遇到的老板都很热心，也都很耐心的解答住宿需求。登封发展节奏舒缓，有种年代剧中城市的滤镜。</p>
+<p>万岁山中有很多游玩项目，数量多的可以玩几天。夜晚的色彩缤纷、打铁花也十分惊艳。就是人太多，不太好移动。有时还有音乐节，很热闹。</p>
+<h2 id="读书"><a href="#读书" class="headerlink"]]>
+      </description>
+      <author>云野阁</author>
       <category domain="https://yyg.js.cool/categories/%E6%97%A5%E5%B8%B8/">日常</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%97%A5%E5%B8%B8/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/">年度总结</category>
-      
-      
       <category domain="https://yyg.js.cool/tags/%E5%A4%8D%E7%9B%98/">复盘</category>
-      
       <category domain="https://yyg.js.cool/tags/%E6%97%A5%E5%B8%B8/">日常</category>
-      
       <category domain="https://yyg.js.cool/tags/%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/">年度总结</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/1f59513d/#disqus_thread</comments>
-      
+      <enclosure url="https://www.yumus.cn/api/?target=img&amp;brand=360&amp;type=3" type="application/octet-stream"/>
+      <pubDate>Sat, 21 Feb 2026 07:02:29 GMT</pubDate>
+      <content:encoded>
+        <![CDATA[<p><img src="https://www.yumus.cn/api/?target=img&brand=360&type=3" alt="2025年度总结" /></p>
+<h2 id="生活"><a href="#生活" class="headerlink" title="生活"></a>生活</h2><p>今年游玩的景点中体验较好的是去爬了嵩山、看了万岁山武侠城。</p><p>登封汽车客运总站旁小店里的炒刀削，很是不错。 登封人民也很热情，找民宿时，遇到的老板都很热心，也都很耐心的解答住宿需求。登封发展节奏舒缓，有种年代剧中城市的滤镜。</p><p>万岁山中有很多游玩项目，数量多的可以玩几天。夜晚的色彩缤纷、打铁花也十分惊艳。就是人太多，不太好移动。有时还有音乐节，很热闹。</p><h2 id="读书"><a href="#读书" class="headerlink"]]>
+      </content:encoded>
     </item>
-    
     <item>
       <title>手机使用Vectras VM安装Linux</title>
       <link>https://yyg.js.cool/yyg/b70ff682/</link>
-      <guid>https://yyg.js.cool/yyg/b70ff682/</guid>
-      <pubDate>Sat, 14 Feb 2026 09:49:13 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;p&gt;&lt;a href=&quot;https://github.com/xoureldeen/Vectras-VM-Android&quot;&gt;Vectras VM&lt;/a&gt;是一个基于 QEMU 的 Android 虚拟机应用，可在手机实现安装Liunx和Windows虚拟机。支持&lt;code&gt;img&lt;/code&gt;、qcow2、&lt;code&gt;ISO&lt;/code&gt;等格式的镜像文件。&lt;/p&gt;
-&lt;p&gt;本文主要介绍通过ISO镜像方式安装&lt;code&gt;Rocky Linux 8.10&lt;/code&gt;、&lt;code&gt;Debian</description>
-          
-        
-      
-      
-      
-      
+      <description>
+        <![CDATA[<p><a href="https://github.com/xoureldeen/Vectras-VM-Android">Vectras VM</a>是一个基于 QEMU 的 Android 虚拟机应用，可在手机实现安装Liunx和Windows虚拟机。支持<code>img</code>、qcow2、<code>ISO</code>等格式的镜像文件。</p>
+<p>本文主要介绍通过ISO镜像方式安装<code>Rocky Linux 8.10</code>、<code>Debian]]>
+      </description>
+      <author>云野阁</author>
       <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/%E7%8E%A9%E6%9C%BA/">玩机</category>
-      
-      
       <category domain="https://yyg.js.cool/tags/%E5%B7%A5%E5%85%B7/">工具</category>
-      
       <category domain="https://yyg.js.cool/tags/%E6%BC%AB%E8%B0%88/">漫谈</category>
-      
       <category domain="https://yyg.js.cool/tags/%E7%8E%A9%E6%9C%BA/">玩机</category>
-      
       <category domain="https://yyg.js.cool/tags/x86-64/">x86_64</category>
-      
       <category domain="https://yyg.js.cool/tags/Vectras-VM/">Vectras VM</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/b70ff682/#disqus_thread</comments>
-      
+      <enclosure url="https://wp.upx8.com/api.php?content=风景" type="application/octet-stream"/>
+      <pubDate>Sat, 14 Feb 2026 09:49:13 GMT</pubDate>
+      <content:encoded>
+        <![CDATA[<p><img src="https://wp.upx8.com/api.php?content=风景" alt="手机使用Vectras VM安装Linux" /></p>
+<p><a href="https://github.com/xoureldeen/Vectras-VM-Android">Vectras VM</a>是一个基于 QEMU 的 Android 虚拟机应用，可在手机实现安装Liunx和Windows虚拟机。支持<code>img</code>、qcow2、<code>ISO</code>等格式的镜像文件。</p><p>本文主要介绍通过ISO镜像方式安装<code>Rocky Linux 8.10</code>、<code>Debian]]>
+      </content:encoded>
     </item>
-    
     <item>
       <title>Termux安装Python</title>
       <link>https://yyg.js.cool/yyg/138e817c/</link>
-      <guid>https://yyg.js.cool/yyg/138e817c/</guid>
-      <pubDate>Mon, 09 Feb 2026 06:05:13 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;Termux安装配置&quot;&gt;&lt;a href=&quot;#Termux安装配置&quot; class=&quot;headerlink&quot; title=&quot;Termux安装配置&quot;&gt;&lt;/a&gt;Termux安装配置&lt;/h2&gt;&lt;p&gt;文件访问授权&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;termux-setup-storage&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;更换镜像源&lt;/p&gt;
-&lt;figure</description>
-          
-        
-      
-      
-      
-      
+      <description>
+        <![CDATA[<h2 id="Termux安装配置"><a href="#Termux安装配置" class="headerlink" title="Termux安装配置"></a>Termux安装配置</h2><p>文件访问授权</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">termux-setup-storage</span><br></pre></td></tr></table></figure>
+<p>更换镜像源</p>
+<figure]]>
+      </description>
+      <author>云野阁</author>
       <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/%E7%8E%A9%E6%9C%BA/">玩机</category>
-      
-      
       <category domain="https://yyg.js.cool/tags/%E5%B7%A5%E5%85%B7/">工具</category>
-      
       <category domain="https://yyg.js.cool/tags/%E6%BC%AB%E8%B0%88/">漫谈</category>
-      
       <category domain="https://yyg.js.cool/tags/%E7%8E%A9%E6%9C%BA/">玩机</category>
-      
       <category domain="https://yyg.js.cool/tags/Termux/">Termux</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/138e817c/#disqus_thread</comments>
-      
+      <enclosure url="https://api.mmp.cc/api/pcwallpaper?category=cool&amp;type=jpg" type="application/octet-stream"/>
+      <pubDate>Mon, 09 Feb 2026 06:05:13 GMT</pubDate>
+      <content:encoded>
+        <![CDATA[<p><img src="https://api.mmp.cc/api/pcwallpaper?category=cool&type=jpg" alt="Termux安装Python" /></p>
+<h2 id="Termux安装配置"><a href="#Termux安装配置" class="headerlink" title="Termux安装配置"></a>Termux安装配置</h2><p>文件访问授权</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">termux-setup-storage</span><br></pre></td></tr></table></figure><p>更换镜像源</p><figure]]>
+      </content:encoded>
     </item>
-    
     <item>
       <title>旧手机搭建博客的一次尝试</title>
       <link>https://yyg.js.cool/yyg/f72e5a8d/</link>
-      <guid>https://yyg.js.cool/yyg/f72e5a8d/</guid>
-      <pubDate>Wed, 28 Jan 2026 11:29:13 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h1 id=&quot;初探&quot;&gt;&lt;a href=&quot;#初探&quot; class=&quot;headerlink&quot;</description>
-          
-        
-      
-      
-      
-      
+      <description>
+        <![CDATA[<h1 id="初探"><a href="#初探" class="headerlink"]]>
+      </description>
+      <author>云野阁</author>
       <category domain="https://yyg.js.cool/categories/%E6%97%A5%E5%B8%B8/">日常</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/%E7%8E%A9%E6%9C%BA/">玩机</category>
-      
-      
       <category domain="https://yyg.js.cool/tags/%E5%8D%9A%E5%AE%A2/">博客</category>
-      
       <category domain="https://yyg.js.cool/tags/%E6%97%A5%E5%B8%B8/">日常</category>
-      
       <category domain="https://yyg.js.cool/tags/%E6%BC%AB%E8%B0%88/">漫谈</category>
-      
       <category domain="https://yyg.js.cool/tags/Typecho/">Typecho</category>
-      
       <category domain="https://yyg.js.cool/tags/WSToolbox/">WSToolbox</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/f72e5a8d/#disqus_thread</comments>
-      
+      <enclosure url="https://tu.ltyuanfang.cn/api/fengjing.php" type="application/octet-stream"/>
+      <pubDate>Wed, 28 Jan 2026 11:29:13 GMT</pubDate>
+      <content:encoded>
+        <![CDATA[<p><img src="https://tu.ltyuanfang.cn/api/fengjing.php" alt="旧手机搭建博客的一次尝试" /></p>
+<h1 id="初探"><a href="#初探" class="headerlink"]]>
+      </content:encoded>
     </item>
-    
     <item>
       <title>旧手机的新生--私人影视库</title>
       <link>https://yyg.js.cool/yyg/384455e1/</link>
-      <guid>https://yyg.js.cool/yyg/384455e1/</guid>
-      <pubDate>Tue, 27 Jan 2026 08:15:13 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;如今，许多旧手机的存储容量甚至已经比肩电脑硬盘。如果只是让它们闲置吃灰，或者拿去换把剪刀，未免太可惜了。&lt;br&gt;我的上部手机跟我度过了整个大学时光，也承载着许多回忆。换了新手机后就放在桌面当个数字时钟，还有不小的闲置存储空间。&lt;br&gt;之前看了不少博主用旧手机当NAS、网盘、私人影视库的视频，于是就有了搭建私人影视库的想法，让它迎来第二春。&lt;/p&gt;
-&lt;h1 id=&quot;折腾过程&quot;&gt;&lt;a href=&quot;#折腾过程&quot; class=&quot;headerlink&quot; title=&quot;折腾过程&quot;&gt;&lt;/a&gt;折腾过程&lt;/h1&gt;&lt;p&gt;实现过程其实很简单，在手机上安装&lt;code&gt;Emby</description>
-          
-        
-      
-      
-      
-      
+      <description>
+        <![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>如今，许多旧手机的存储容量甚至已经比肩电脑硬盘。如果只是让它们闲置吃灰，或者拿去换把剪刀，未免太可惜了。<br>我的上部手机跟我度过了整个大学时光，也承载着许多回忆。换了新手机后就放在桌面当个数字时钟，还有不小的闲置存储空间。<br>之前看了不少博主用旧手机当NAS、网盘、私人影视库的视频，于是就有了搭建私人影视库的想法，让它迎来第二春。</p>
+<h1 id="折腾过程"><a href="#折腾过程" class="headerlink" title="折腾过程"></a>折腾过程</h1><p>实现过程其实很简单，在手机上安装<code>Emby]]>
+      </description>
+      <author>云野阁</author>
       <category domain="https://yyg.js.cool/categories/%E6%97%A5%E5%B8%B8/">日常</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/%E7%8E%A9%E6%9C%BA/">玩机</category>
-      
-      
       <category domain="https://yyg.js.cool/tags/%E6%97%A5%E5%B8%B8/">日常</category>
-      
       <category domain="https://yyg.js.cool/tags/%E6%BC%AB%E8%B0%88/">漫谈</category>
-      
       <category domain="https://yyg.js.cool/tags/Emby/">Emby</category>
-      
       <category domain="https://yyg.js.cool/tags/%E7%A7%81%E4%BA%BA%E5%BD%B1%E8%A7%86%E5%BA%93/">私人影视库</category>
-      
       <category domain="https://yyg.js.cool/tags/X-plore/">X-plore</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/384455e1/#disqus_thread</comments>
-      
+      <enclosure url="https://imgapi.cn/api.php?fl=fengjing&amp;gs=images" type="application/octet-stream"/>
+      <pubDate>Tue, 27 Jan 2026 08:15:13 GMT</pubDate>
+      <content:encoded>
+        <![CDATA[<p><img src="https://imgapi.cn/api.php?fl=fengjing&gs=images" alt="旧手机的新生--私人影视库" /></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>如今，许多旧手机的存储容量甚至已经比肩电脑硬盘。如果只是让它们闲置吃灰，或者拿去换把剪刀，未免太可惜了。<br>我的上部手机跟我度过了整个大学时光，也承载着许多回忆。换了新手机后就放在桌面当个数字时钟，还有不小的闲置存储空间。<br>之前看了不少博主用旧手机当NAS、网盘、私人影视库的视频，于是就有了搭建私人影视库的想法，让它迎来第二春。</p><h1 id="折腾过程"><a href="#折腾过程" class="headerlink" title="折腾过程"></a>折腾过程</h1><p>实现过程其实很简单，在手机上安装<code>Emby]]>
+      </content:encoded>
     </item>
-    
     <item>
       <title>个人密码管理方案</title>
       <link>https://yyg.js.cool/yyg/40a44ab2/</link>
-      <guid>https://yyg.js.cool/yyg/40a44ab2/</guid>
-      <pubDate>Sun, 25 Jan 2026 12:28:00 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;最近想着整理一下一些平台的密码，避免到时候找不到密码手忙脚乱的，就收罗了几个软件。&lt;br&gt;经过了一番折腾，最终确定了 &lt;code&gt;KeePassXC&lt;/code&gt; + &lt;code&gt;坚果云的WebDAV&lt;/code&gt; + &lt;code&gt;Keepass2Android&lt;/code&gt; ，作为日常密码的多端管理。&lt;/p&gt;
-&lt;h1 id=&quot;折腾过程&quot;&gt;&lt;a href=&quot;#折腾过程&quot; class=&quot;headerlink&quot; title=&quot;折腾过程&quot;&gt;&lt;/a&gt;折腾过程&lt;/h1&gt;&lt;p&gt;经过了一番筛选，最终确定了从桌面端的 &lt;code&gt;KeePass&lt;/code&gt; 和</description>
-          
-        
-      
-      
-      
-      
+      <description>
+        <![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近想着整理一下一些平台的密码，避免到时候找不到密码手忙脚乱的，就收罗了几个软件。<br>经过了一番折腾，最终确定了 <code>KeePassXC</code> + <code>坚果云的WebDAV</code> + <code>Keepass2Android</code> ，作为日常密码的多端管理。</p>
+<h1 id="折腾过程"><a href="#折腾过程" class="headerlink" title="折腾过程"></a>折腾过程</h1><p>经过了一番筛选，最终确定了从桌面端的 <code>KeePass</code> 和]]>
+      </description>
+      <author>云野阁</author>
       <category domain="https://yyg.js.cool/categories/%E6%97%A5%E5%B8%B8/">日常</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/%E7%8E%A9%E6%9C%BA/">玩机</category>
-      
-      
       <category domain="https://yyg.js.cool/tags/%E6%97%A5%E5%B8%B8/">日常</category>
-      
       <category domain="https://yyg.js.cool/tags/%E6%BC%AB%E8%B0%88/">漫谈</category>
-      
       <category domain="https://yyg.js.cool/tags/WebDAV/">WebDAV</category>
-      
       <category domain="https://yyg.js.cool/tags/KeePassXC/">KeePassXC</category>
-      
       <category domain="https://yyg.js.cool/tags/Keepass2Android/">Keepass2Android</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/40a44ab2/#disqus_thread</comments>
-      
+      <enclosure url="https://random-img.pupper.cn/api" type="application/octet-stream"/>
+      <pubDate>Sun, 25 Jan 2026 12:28:00 GMT</pubDate>
+      <content:encoded>
+        <![CDATA[<p><img src="https://random-img.pupper.cn/api" alt="个人密码管理方案" /></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近想着整理一下一些平台的密码，避免到时候找不到密码手忙脚乱的，就收罗了几个软件。<br>经过了一番折腾，最终确定了 <code>KeePassXC</code> + <code>坚果云的WebDAV</code> + <code>Keepass2Android</code> ，作为日常密码的多端管理。</p><h1 id="折腾过程"><a href="#折腾过程" class="headerlink" title="折腾过程"></a>折腾过程</h1><p>经过了一番筛选，最终确定了从桌面端的 <code>KeePass</code> 和]]>
+      </content:encoded>
     </item>
-    
     <item>
       <title>&quot;朝花夕拾&quot;--专注时钟</title>
       <link>https://yyg.js.cool/yyg/9131dcdb/</link>
-      <guid>https://yyg.js.cool/yyg/9131dcdb/</guid>
-      <pubDate>Mon, 22 Dec 2025 12:53:13 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;p&gt;谁曾想大学期间”灵机一动“而诞生的”专注时钟“自用项目，现在已经使用三年多了。&lt;br&gt;虽说还有许多待完善的地方，不过日常使用也足够了。一直以来，都是我用来当作电脑的屏保显示时间。&lt;br&gt;看看是否有同样需求的朋友，就写了这篇简略的介绍。&lt;br&gt;”专注时钟“，主要是用来极简的显示桌面时间，拥有多种主题，也支持番茄时钟。&lt;br&gt;可通过设置常亮，保持时钟恒定显示不熄屏。&lt;br&gt;有网页端和windows桌面端，也可使用GitHub pages进行部署。&lt;br&gt;网页端：&lt;a href=&quot;https://yyg.js.cool/focusclock/&quot;&gt;专注时钟&lt;/a&gt;&lt;br&gt;windows桌面端：&lt;a</description>
-          
-        
-      
-      
-      
-      
+      <description>
+        <![CDATA[<p>谁曾想大学期间”灵机一动“而诞生的”专注时钟“自用项目，现在已经使用三年多了。<br>虽说还有许多待完善的地方，不过日常使用也足够了。一直以来，都是我用来当作电脑的屏保显示时间。<br>看看是否有同样需求的朋友，就写了这篇简略的介绍。<br>”专注时钟“，主要是用来极简的显示桌面时间，拥有多种主题，也支持番茄时钟。<br>可通过设置常亮，保持时钟恒定显示不熄屏。<br>有网页端和windows桌面端，也可使用GitHub pages进行部署。<br>网页端：<a href="https://yyg.js.cool/focusclock/">专注时钟</a><br>windows桌面端：<a]]>
+      </description>
+      <author>云野阁</author>
       <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/%E4%B8%93%E6%B3%A8%E6%97%B6%E9%92%9F/">专注时钟</category>
-      
-      
       <category domain="https://yyg.js.cool/tags/%E6%BC%AB%E8%B0%88/">漫谈</category>
-      
       <category domain="https://yyg.js.cool/tags/%E4%B8%93%E6%B3%A8%E6%97%B6%E9%92%9F/">专注时钟</category>
-      
       <category domain="https://yyg.js.cool/tags/%E7%95%AA%E8%8C%84%E6%97%B6%E9%92%9F/">番茄时钟</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/9131dcdb/#disqus_thread</comments>
-      
+      <enclosure url="https://yyg.js.cool/focusclock/time/img/iconmonstr-time.png" type="image/png"/>
+      <pubDate>Mon, 22 Dec 2025 12:53:13 GMT</pubDate>
+      <content:encoded>
+        <![CDATA[<p><img src="https://yyg.js.cool/focusclock/time/img/iconmonstr-time.png" alt=""朝花夕拾"--专注时钟" /></p>
+<p>谁曾想大学期间”灵机一动“而诞生的”专注时钟“自用项目，现在已经使用三年多了。<br>虽说还有许多待完善的地方，不过日常使用也足够了。一直以来，都是我用来当作电脑的屏保显示时间。<br>看看是否有同样需求的朋友，就写了这篇简略的介绍。<br>”专注时钟“，主要是用来极简的显示桌面时间，拥有多种主题，也支持番茄时钟。<br>可通过设置常亮，保持时钟恒定显示不熄屏。<br>有网页端和windows桌面端，也可使用GitHub pages进行部署。<br>网页端：<a href="https://yyg.js.cool/focusclock/">专注时钟</a><br>windows桌面端：<a]]>
+      </content:encoded>
     </item>
-    
     <item>
       <title>”新面“之缘</title>
       <link>https://yyg.js.cool/yyg/3f2b07b/</link>
-      <guid>https://yyg.js.cool/yyg/3f2b07b/</guid>
-      <pubDate>Thu, 18 Dec 2025 16:51:34 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;p&gt;偶然间在购物平台上看到了”玉米面条“，很好奇味道如何，就下单买了。&lt;br&gt;今天下午终于到了。迫不及待的想尝尝味道如何。&lt;br&gt;与”麦面“大都是由面粉直接制成生面条不同，”玉米面条“是由玉米处理熟化过的。&lt;br&gt;看了有关玉米面条美食视频后，发现处理过程和麦面大同小异。就简单炒个面尝尝。&lt;br&gt;&lt;img src=&quot;/yyg/3f2b07b/1.png&quot;  style=&quot;zoom:40%&quot; /&gt;&lt;br&gt;口感上来说更像是”土豆粉、米粉“的爽滑、Q弹，可能是蛋白质含量相对较低的原因。&lt;br&gt;再配上一瓶茉莉青提味的强爽8度，好不惬意。&lt;/p&gt;
-&lt;h1 id=&quot;碎碎念&quot;&gt;&lt;a href=&quot;#碎碎念&quot; class=&quot;headerlink&quot;</description>
-          
-        
-      
-      
-      
-      
+      <description>
+        <![CDATA[<p>偶然间在购物平台上看到了”玉米面条“，很好奇味道如何，就下单买了。<br>今天下午终于到了。迫不及待的想尝尝味道如何。<br>与”麦面“大都是由面粉直接制成生面条不同，”玉米面条“是由玉米处理熟化过的。<br>看了有关玉米面条美食视频后，发现处理过程和麦面大同小异。就简单炒个面尝尝。<br><img src="/yyg/3f2b07b/1.png"  style="zoom:40%" /><br>口感上来说更像是”土豆粉、米粉“的爽滑、Q弹，可能是蛋白质含量相对较低的原因。<br>再配上一瓶茉莉青提味的强爽8度，好不惬意。</p>
+<h1 id="碎碎念"><a href="#碎碎念" class="headerlink"]]>
+      </description>
+      <author>云野阁</author>
       <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/%E7%BE%8E%E9%A3%9F/">美食</category>
-      
-      
       <category domain="https://yyg.js.cool/tags/%E6%BC%AB%E8%B0%88/">漫谈</category>
-      
       <category domain="https://yyg.js.cool/tags/%E7%94%9F%E6%B4%BB/">生活</category>
-      
       <category domain="https://yyg.js.cool/tags/%E7%BE%8E%E9%A3%9F/">美食</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/3f2b07b/#disqus_thread</comments>
-      
+      <enclosure url="https://www.yumus.cn/api/?target=img&amp;brand=360&amp;type=3" type="application/octet-stream"/>
+      <pubDate>Thu, 18 Dec 2025 16:51:34 GMT</pubDate>
+      <content:encoded>
+        <![CDATA[<p>偶然间在购物平台上看到了”玉米面条“，很好奇味道如何，就下单买了。<br>今天下午终于到了。迫不及待的想尝尝味道如何。<br>与”麦面“大都是由面粉直接制成生面条不同，”玉米面条“是由玉米处理熟化过的。<br>看了有关玉米面条美食视频后，发现处理过程和麦面大同小异。就简单炒个面尝尝。<br><img src="/yyg/3f2b07b/1.png"  style="zoom:40%" /><br>口感上来说更像是”土豆粉、米粉“的爽滑、Q弹，可能是蛋白质含量相对较低的原因。<br>再配上一瓶茉莉青提味的强爽8度，好不惬意。</p><h1 id="碎碎念"><a href="#碎碎念" class="headerlink"]]>
+      </content:encoded>
     </item>
-    
     <item>
       <title>RssWe--支持PWA的RSS和播客在线阅读器</title>
       <link>https://yyg.js.cool/yyg/fd7b65ac/</link>
-      <guid>https://yyg.js.cool/yyg/fd7b65ac/</guid>
-      <pubDate>Sat, 29 Nov 2025 05:31:50 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;script defer src=&quot;https://nyyg.dpdns.org/q/SnuacsID5&quot;&gt;&lt;/script&gt;
+      <description>
+        <![CDATA[<script defer src="https://nyyg.dpdns.org/q/SnuacsID5"></script>
 
-&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;RssWe 的诞生，源于我对rssTea的真实体验。在订阅播客时，时常遇到音频无法加载或显示的窘境；并且，随着订阅源日益增多，列表变得杂乱无章，难以快速定位。当文章列表过长时，想返回顶部或直接查看特定播客内容也变得异常繁琐。&lt;/p&gt;
-&lt;p&gt;想着解决这些不便，我决定自己动手解决。RssWe 由此诞生。&lt;/p&gt;
-&lt;p&gt;RssWe是一个无需服务器的RSS和播客阅读器，支持PWA，使用GitHub</description>
-          
-        
-      
-      
-      
-      
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>RssWe 的诞生，源于我对rssTea的真实体验。在订阅播客时，时常遇到音频无法加载或显示的窘境；并且，随着订阅源日益增多，列表变得杂乱无章，难以快速定位。当文章列表过长时，想返回顶部或直接查看特定播客内容也变得异常繁琐。</p>
+<p>想着解决这些不便，我决定自己动手解决。RssWe 由此诞生。</p>
+<p>RssWe是一个无需服务器的RSS和播客阅读器，支持PWA，使用GitHub]]>
+      </description>
+      <author>云野阁</author>
       <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/RssWe/">RssWe</category>
-      
-      
       <category domain="https://yyg.js.cool/tags/%E6%92%AD%E5%AE%A2/">播客</category>
-      
       <category domain="https://yyg.js.cool/tags/RSSWe/">RSSWe</category>
-      
       <category domain="https://yyg.js.cool/tags/rss%E9%98%85%E8%AF%BB%E5%99%A8/">rss阅读器</category>
-      
       <category domain="https://yyg.js.cool/tags/RSS%E5%92%8C%E6%92%AD%E5%AE%A2%E8%AE%A2%E9%98%85/">RSS和播客订阅</category>
-      
       <category domain="https://yyg.js.cool/tags/GitHub-Pages/">GitHub Pages</category>
-      
       <category domain="https://yyg.js.cool/tags/GitHub-Actions/">GitHub Actions</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/fd7b65ac/#disqus_thread</comments>
-      
+      <enclosure url="https://yyg.js.cool/yyghub/img/512.png" type="image/png"/>
+      <pubDate>Sat, 29 Nov 2025 05:31:50 GMT</pubDate>
+      <content:encoded>
+        <![CDATA[<p><img src="https://yyg.js.cool/yyghub/img/512.png" alt="RssWe--支持PWA的RSS和播客在线阅读器" /></p>
+<script defer src="https://nyyg.dpdns.org/q/SnuacsID5"></script><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>RssWe 的诞生，源于我对rssTea的真实体验。在订阅播客时，时常遇到音频无法加载或显示的窘境；并且，随着订阅源日益增多，列表变得杂乱无章，难以快速定位。当文章列表过长时，想返回顶部或直接查看特定播客内容也变得异常繁琐。</p><p>想着解决这些不便，我决定自己动手解决。RssWe 由此诞生。</p><p>RssWe是一个无需服务器的RSS和播客阅读器，支持PWA，使用GitHub]]>
+      </content:encoded>
     </item>
-    
     <item>
       <title>Gitalk自动创建评论Issues</title>
       <link>https://yyg.js.cool/yyg/2eca17c7/</link>
-      <guid>https://yyg.js.cool/yyg/2eca17c7/</guid>
-      <pubDate>Wed, 08 Oct 2025 14:06:07 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;p&gt;博客加入Gitalk评论后，需要访问相应页面，才在存放评论的仓库创建Issues。本文通过脚本自动访问文章页面完成Gitalk自动创建评论Issues。脚本自&lt;a href=&quot;https://github.com/attson/hexo-gitalk-init&quot;&gt;attson/hexo-gitalk-init: Hexo gitalk 极简初始化脚本&lt;/a&gt;基础上修改而来（是在windows本地运行）。&lt;/p&gt;
-&lt;div class=&quot;tip info&quot;&gt;&lt;p&gt;这是一个用于 Hexo 博客的 Gitalk 评论系统自动初始化脚本。它能自动扫描所有文章，识别出尚未创建评论 Issue 的页面，并通过模拟浏览器访问来触发 Gitalk 自动完成 Issue</description>
-          
-        
-      
-      
-      
-      
+      <description>
+        <![CDATA[<p>博客加入Gitalk评论后，需要访问相应页面，才在存放评论的仓库创建Issues。本文通过脚本自动访问文章页面完成Gitalk自动创建评论Issues。脚本自<a href="https://github.com/attson/hexo-gitalk-init">attson/hexo-gitalk-init: Hexo gitalk 极简初始化脚本</a>基础上修改而来（是在windows本地运行）。</p>
+<div class="tip info"><p>这是一个用于 Hexo 博客的 Gitalk 评论系统自动初始化脚本。它能自动扫描所有文章，识别出尚未创建评论 Issue 的页面，并通过模拟浏览器访问来触发 Gitalk 自动完成 Issue]]>
+      </description>
+      <author>云野阁</author>
       <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
-      
       <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/Gitalk%E8%AF%84%E8%AE%BA/">Gitalk评论</category>
-      
-      
       <category domain="https://yyg.js.cool/tags/%E5%8D%9A%E5%AE%A2/">博客</category>
-      
       <category domain="https://yyg.js.cool/tags/%E9%AD%94%E6%94%B9/">魔改</category>
-      
       <category domain="https://yyg.js.cool/tags/Gitalk/">Gitalk</category>
-      
       <category domain="https://yyg.js.cool/tags/Issues/">Issues</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/2eca17c7/#disqus_thread</comments>
-      
+      <enclosure url="https://bing.img.run/rand_uhd.php" type="application/octet-stream"/>
+      <pubDate>Wed, 08 Oct 2025 14:06:07 GMT</pubDate>
+      <content:encoded>
+        <![CDATA[<p><img src="https://bing.img.run/rand_uhd.php" alt="Gitalk自动创建评论Issues" /></p>
+<p>博客加入Gitalk评论后，需要访问相应页面，才在存放评论的仓库创建Issues。本文通过脚本自动访问文章页面完成Gitalk自动创建评论Issues。脚本自<a href="https://github.com/attson/hexo-gitalk-init">attson/hexo-gitalk-init: Hexo gitalk 极简初始化脚本</a>基础上修改而来（是在windows本地运行）。</p><div class="tip info"><p>这是一个用于 Hexo 博客的 Gitalk 评论系统自动初始化脚本。它能自动扫描所有文章，识别出尚未创建评论 Issue 的页面，并通过模拟浏览器访问来触发 Gitalk 自动完成 Issue]]>
+      </content:encoded>
     </item>
-    
     <item>
       <title>k8s知识梳理--进阶</title>
       <link>https://yyg.js.cool/yyg/986299a9/</link>
-      <guid>https://yyg.js.cool/yyg/986299a9/</guid>
-      <pubDate>Fri, 22 Aug 2025 10:17:22 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;网络&quot;&gt;&lt;a href=&quot;#网络&quot; class=&quot;headerlink&quot;</description>
-          
-        
-      
-      
-      
-      
+      <description>
+        <![CDATA[<h2 id="网络"><a href="#网络" class="headerlink"]]>
+      </description>
+      <author>云野阁</author>
       <category domain="https://yyg.js.cool/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
-      
       <category domain="https://yyg.js.cool/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/k8s/">k8s</category>
-      
       <category domain="https://yyg.js.cool/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/HELM/">HELM</category>
-      
-      
       <category domain="https://yyg.js.cool/tags/%E8%BF%90%E7%BB%B4/">运维</category>
-      
       <category domain="https://yyg.js.cool/tags/k8s/">k8s</category>
-      
       <category domain="https://yyg.js.cool/tags/HELM/">HELM</category>
-      
       <category domain="https://yyg.js.cool/tags/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
-      
       <category domain="https://yyg.js.cool/tags/Linux/">Linux</category>
-      
       <category domain="https://yyg.js.cool/tags/%E4%BA%8C%E8%BF%9B%E5%88%B6%E9%AB%98%E5%8F%AF%E7%94%A8k8s%E9%9B%86%E7%BE%A4/">二进制高可用k8s集群</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/986299a9/#disqus_thread</comments>
-      
+      <enclosure url="https://imgapi.cn/api.php?fl=fengjing&amp;gs=images" type="application/octet-stream"/>
+      <pubDate>Fri, 22 Aug 2025 10:17:22 GMT</pubDate>
+      <content:encoded>
+        <![CDATA[<p><img src="https://imgapi.cn/api.php?fl=fengjing&gs=images" alt="k8s知识梳理--进阶" /></p>
+<h2 id="网络"><a href="#网络" class="headerlink"]]>
+      </content:encoded>
     </item>
-    
     <item>
       <title>私有化部署DeepSeek</title>
       <link>https://yyg.js.cool/yyg/4789a872/</link>
-      <guid>https://yyg.js.cool/yyg/4789a872/</guid>
-      <pubDate>Sat, 16 Aug 2025 09:12:50 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在linux环境下，使用docker部署&lt;code&gt;ollama&lt;/code&gt;+&lt;code&gt;deepseek-r1:1.5b&lt;/code&gt;+&lt;code&gt;open-webui&lt;/code&gt;，实现私有化部署DeepSeek。&lt;/p&gt;
-&lt;h2 id=&quot;部署过程&quot;&gt;&lt;a href=&quot;#部署过程&quot; class=&quot;headerlink&quot; title=&quot;部署过程&quot;&gt;&lt;/a&gt;部署过程&lt;/h2&gt;&lt;h3 id=&quot;安装docker&quot;&gt;&lt;a href=&quot;#安装docker&quot; class=&quot;headerlink&quot;</description>
-          
-        
-      
-      
-      
-      
+      <description>
+        <![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在linux环境下，使用docker部署<code>ollama</code>+<code>deepseek-r1:1.5b</code>+<code>open-webui</code>，实现私有化部署DeepSeek。</p>
+<h2 id="部署过程"><a href="#部署过程" class="headerlink" title="部署过程"></a>部署过程</h2><h3 id="安装docker"><a href="#安装docker" class="headerlink"]]>
+      </description>
+      <author>云野阁</author>
       <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/AI/">AI</category>
-      
-      
       <category domain="https://yyg.js.cool/tags/AI/">AI</category>
-      
       <category domain="https://yyg.js.cool/tags/AI%E7%9F%A5%E8%AF%86%E5%BA%93/">AI知识库</category>
-      
       <category domain="https://yyg.js.cool/tags/ollama/">ollama</category>
-      
       <category domain="https://yyg.js.cool/tags/DeepSeek/">DeepSeek</category>
-      
       <category domain="https://yyg.js.cool/tags/open-webui/">open-webui</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/4789a872/#disqus_thread</comments>
-      
+      <enclosure url="https://unsplash.it/1600/900?random" type="application/octet-stream"/>
+      <pubDate>Sat, 16 Aug 2025 09:12:50 GMT</pubDate>
+      <content:encoded>
+        <![CDATA[<p><img src="https://unsplash.it/1600/900?random" alt="私有化部署DeepSeek" /></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在linux环境下，使用docker部署<code>ollama</code>+<code>deepseek-r1:1.5b</code>+<code>open-webui</code>，实现私有化部署DeepSeek。</p><h2 id="部署过程"><a href="#部署过程" class="headerlink" title="部署过程"></a>部署过程</h2><h3 id="安装docker"><a href="#安装docker" class="headerlink"]]>
+      </content:encoded>
     </item>
-    
     <item>
       <title>使用GitHub Actions实现Hexo博客的自动化发布</title>
       <link>https://yyg.js.cool/yyg/37098f8c/</link>
-      <guid>https://yyg.js.cool/yyg/37098f8c/</guid>
-      <pubDate>Sun, 06 Jul 2025 13:43:23 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;基础环境&quot;&gt;&lt;a href=&quot;#基础环境&quot; class=&quot;headerlink&quot; title=&quot;基础环境&quot;&gt;&lt;/a&gt;基础环境&lt;/h2&gt;&lt;h3 id=&quot;原环境&quot;&gt;&lt;a href=&quot;#原环境&quot; class=&quot;headerlink&quot; title=&quot;原环境&quot;&gt;&lt;/a&gt;原环境&lt;/h3&gt;&lt;p&gt;仓库：存放静态网页的仓库（公开）&lt;/p&gt;
-&lt;p&gt;工作流：本地撰写博客—&amp;gt;执行编译，生成静态网页—&amp;gt;推送静态网页到仓库—&amp;gt;访问发布的网页&lt;/p&gt;
-&lt;h3 id=&quot;新环境&quot;&gt;&lt;a href=&quot;#新环境&quot; class=&quot;headerlink&quot;</description>
-          
-        
-      
-      
-      
-      
+      <description>
+        <![CDATA[<h2 id="基础环境"><a href="#基础环境" class="headerlink" title="基础环境"></a>基础环境</h2><h3 id="原环境"><a href="#原环境" class="headerlink" title="原环境"></a>原环境</h3><p>仓库：存放静态网页的仓库（公开）</p>
+<p>工作流：本地撰写博客—&gt;执行编译，生成静态网页—&gt;推送静态网页到仓库—&gt;访问发布的网页</p>
+<h3 id="新环境"><a href="#新环境" class="headerlink"]]>
+      </description>
+      <author>云野阁</author>
       <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
-      
       <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E5%8D%9A%E5%AE%A2%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8F%91%E5%B8%83/">博客自动化发布</category>
-      
-      
       <category domain="https://yyg.js.cool/tags/%E5%8D%9A%E5%AE%A2/">博客</category>
-      
       <category domain="https://yyg.js.cool/tags/%E9%AD%94%E6%94%B9/">魔改</category>
-      
       <category domain="https://yyg.js.cool/tags/GitHub-Pages/">GitHub Pages</category>
-      
       <category domain="https://yyg.js.cool/tags/GitHub-Actions/">GitHub Actions</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/37098f8c/#disqus_thread</comments>
-      
+      <enclosure url="https://t.alcy.cc/fj" type="application/octet-stream"/>
+      <pubDate>Sun, 06 Jul 2025 13:43:23 GMT</pubDate>
+      <content:encoded>
+        <![CDATA[<p><img src="https://t.alcy.cc/fj" alt="使用GitHub Actions实现Hexo博客的自动化发布" /></p>
+<h2 id="基础环境"><a href="#基础环境" class="headerlink" title="基础环境"></a>基础环境</h2><h3 id="原环境"><a href="#原环境" class="headerlink" title="原环境"></a>原环境</h3><p>仓库：存放静态网页的仓库（公开）</p><p>工作流：本地撰写博客—&gt;执行编译，生成静态网页—&gt;推送静态网页到仓库—&gt;访问发布的网页</p><h3 id="新环境"><a href="#新环境" class="headerlink"]]>
+      </content:encoded>
     </item>
-    
     <item>
       <title>观影感受--雄狮少年2</title>
       <link>https://yyg.js.cool/yyg/9e02bef8/</link>
-      <guid>https://yyg.js.cool/yyg/9e02bef8/</guid>
-      <pubDate>Wed, 04 Jun 2025 03:35:51 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;div class=&quot;note green icon-padding modern&quot;&gt;&lt;i class=&quot;note-icon fas fa-bullhorn&quot;&gt;&lt;/i&gt;&lt;p&gt;一千个读者眼中有一千个哈姆雷特&lt;/p&gt;
-&lt;p&gt;该篇为主观观影感受，非专业分析，请勿过度解读！&lt;/p&gt;
-&lt;/div&gt;
-&lt;h2 id=&quot;大致剧情&quot;&gt;&lt;a href=&quot;#大致剧情&quot; class=&quot;headerlink&quot;</description>
-          
-        
-      
-      
-      
-      
+      <description>
+        <![CDATA[<div class="note green icon-padding modern"><i class="note-icon fas fa-bullhorn"></i><p>一千个读者眼中有一千个哈姆雷特</p>
+<p>该篇为主观观影感受，非专业分析，请勿过度解读！</p>
+</div>
+<h2 id="大致剧情"><a href="#大致剧情" class="headerlink"]]>
+      </description>
+      <author>云野阁</author>
       <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/%E4%BC%91%E9%97%B2%E5%A8%B1%E4%B9%90/">休闲娱乐</category>
-      
-      
       <category domain="https://yyg.js.cool/tags/%E7%94%B5%E5%BD%B1/">电影</category>
-      
       <category domain="https://yyg.js.cool/tags/%E4%BC%91%E9%97%B2%E5%A8%B1%E4%B9%90/">休闲娱乐</category>
-      
       <category domain="https://yyg.js.cool/tags/%E8%A7%82%E5%BD%B1%E6%84%9F%E5%8F%97/">观影感受</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/9e02bef8/#disqus_thread</comments>
-      
+      <enclosure url="https://yyg.js.cool/img/img01.png" type="image/png"/>
+      <pubDate>Wed, 04 Jun 2025 03:35:51 GMT</pubDate>
+      <content:encoded>
+        <![CDATA[<p><img src="https://yyg.js.cool/img/img01.png" alt="观影感受--雄狮少年2" /></p>
+<div class="note green icon-padding modern"><i class="note-icon fas fa-bullhorn"></i><p>一千个读者眼中有一千个哈姆雷特</p><p>该篇为主观观影感受，非专业分析，请勿过度解读！</p></div><h2 id="大致剧情"><a href="#大致剧情" class="headerlink"]]>
+      </content:encoded>
     </item>
-    
     <item>
       <title>Hexo-Butterfly美化教程-[8]随鼠标变幻的动态粒子线条背景</title>
       <link>https://yyg.js.cool/yyg/5f747cff/</link>
-      <guid>https://yyg.js.cool/yyg/5f747cff/</guid>
-      <pubDate>Fri, 23 May 2025 15:52:39 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;div class=&quot;note pink icon-padding flat&quot;&gt;&lt;i class=&quot;note-icon fas fa-bullhorn&quot;&gt;&lt;/i&gt;&lt;p&gt;博客现有背景即为新版动态粒子线条背景&lt;/p&gt;
-&lt;/div&gt;
-&lt;h1 id=&quot;新版&quot;&gt;&lt;a href=&quot;#新版&quot; class=&quot;headerlink&quot; title=&quot;新版&quot;&gt;&lt;/a&gt;新版&lt;/h1&gt;&lt;h2 id=&quot;添加js文件&quot;&gt;&lt;a href=&quot;#添加js文件&quot; class=&quot;headerlink&quot;</description>
-          
-        
-      
-      
-      
-      
+      <description>
+        <![CDATA[<div class="note pink icon-padding flat"><i class="note-icon fas fa-bullhorn"></i><p>博客现有背景即为新版动态粒子线条背景</p>
+</div>
+<h1 id="新版"><a href="#新版" class="headerlink" title="新版"></a>新版</h1><h2 id="添加js文件"><a href="#添加js文件" class="headerlink"]]>
+      </description>
+      <author>云野阁</author>
       <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
-      
       <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</category>
-      
-      
       <category domain="https://yyg.js.cool/tags/Hexo/">Hexo</category>
-      
       <category domain="https://yyg.js.cool/tags/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
-      
       <category domain="https://yyg.js.cool/tags/Butterfly/">Butterfly</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/5f747cff/#disqus_thread</comments>
-      
+      <enclosure url="https://www.yumus.cn/api/?target=img&amp;brand=360&amp;type=3" type="application/octet-stream"/>
+      <pubDate>Fri, 23 May 2025 15:52:39 GMT</pubDate>
+      <content:encoded>
+        <![CDATA[<p><img src="https://www.yumus.cn/api/?target=img&brand=360&type=3" alt="Hexo-Butterfly美化教程-[8]随鼠标变幻的动态粒子线条背景" /></p>
+<div class="note pink icon-padding flat"><i class="note-icon fas fa-bullhorn"></i><p>博客现有背景即为新版动态粒子线条背景</p></div><h1 id="新版"><a href="#新版" class="headerlink" title="新版"></a>新版</h1><h2 id="添加js文件"><a href="#添加js文件" class="headerlink"]]>
+      </content:encoded>
     </item>
-    
     <item>
       <title>Hexo-Butterfly美化教程-[6]开启博客评论</title>
       <link>https://yyg.js.cool/yyg/5986cad/</link>
-      <guid>https://yyg.js.cool/yyg/5986cad/</guid>
-      <pubDate>Wed, 21 May 2025 14:21:16 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;Giscus&quot;&gt;&lt;a href=&quot;#Giscus&quot; class=&quot;headerlink&quot; title=&quot;Giscus&quot;&gt;&lt;/a&gt;Giscus&lt;/h2&gt;&lt;h3 id=&quot;创建新仓库&quot;&gt;&lt;a href=&quot;#创建新仓库&quot; class=&quot;headerlink&quot; title=&quot;创建新仓库&quot;&gt;&lt;/a&gt;创建新仓库&lt;/h3&gt;&lt;p&gt;在github上创建一个新仓库，名称任意，设置为仓库公开，在Features中勾选Discussions。&lt;/p&gt;
-&lt;h3 id=&quot;安装配置Giscus&quot;&gt;&lt;a href=&quot;#安装配置Giscus&quot; class=&quot;headerlink&quot; title=&quot;安装配置Giscus&quot;&gt;&lt;/a&gt;安装配置Giscus&lt;/h3&gt;&lt;p&gt;（1）点击链接安装配置Giscus：&lt;a</description>
-          
-        
-      
-      
-      
-      
+      <description>
+        <![CDATA[<h2 id="Giscus"><a href="#Giscus" class="headerlink" title="Giscus"></a>Giscus</h2><h3 id="创建新仓库"><a href="#创建新仓库" class="headerlink" title="创建新仓库"></a>创建新仓库</h3><p>在github上创建一个新仓库，名称任意，设置为仓库公开，在Features中勾选Discussions。</p>
+<h3 id="安装配置Giscus"><a href="#安装配置Giscus" class="headerlink" title="安装配置Giscus"></a>安装配置Giscus</h3><p>（1）点击链接安装配置Giscus：<a]]>
+      </description>
+      <author>云野阁</author>
       <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
-      
       <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</category>
-      
-      
       <category domain="https://yyg.js.cool/tags/Hexo/">Hexo</category>
-      
       <category domain="https://yyg.js.cool/tags/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
-      
       <category domain="https://yyg.js.cool/tags/Butterfly/">Butterfly</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/5986cad/#disqus_thread</comments>
-      
+      <enclosure url="https://wp.upx8.com/api.php?content=风景" type="application/octet-stream"/>
+      <pubDate>Wed, 21 May 2025 14:21:16 GMT</pubDate>
+      <content:encoded>
+        <![CDATA[<p><img src="https://wp.upx8.com/api.php?content=风景" alt="Hexo-Butterfly美化教程-[6]开启博客评论" /></p>
+<h2 id="Giscus"><a href="#Giscus" class="headerlink" title="Giscus"></a>Giscus</h2><h3 id="创建新仓库"><a href="#创建新仓库" class="headerlink" title="创建新仓库"></a>创建新仓库</h3><p>在github上创建一个新仓库，名称任意，设置为仓库公开，在Features中勾选Discussions。</p><h3 id="安装配置Giscus"><a href="#安装配置Giscus" class="headerlink" title="安装配置Giscus"></a>安装配置Giscus</h3><p>（1）点击链接安装配置Giscus：<a]]>
+      </content:encoded>
     </item>
-    
     <item>
       <title>Hexo-Butterfly美化教程-[7]功能魔改(源码方式)</title>
       <link>https://yyg.js.cool/yyg/5baeb6c6/</link>
-      <guid>https://yyg.js.cool/yyg/5baeb6c6/</guid>
-      <pubDate>Tue, 20 May 2025 09:01:06 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;最新文章标志&quot;&gt;&lt;a href=&quot;#最新文章标志&quot; class=&quot;headerlink&quot; title=&quot;最新文章标志&quot;&gt;&lt;/a&gt;最新文章标志&lt;/h2&gt;&lt;div class=&quot;tip info&quot;&gt;&lt;p&gt;本站采用的最新文章标志，在参考了博客文章&lt;a href=&quot;https://www.qcqx.cn/article/2ed7d622.html&quot;&gt;轻笑Chuckle | Butterfly文章卡片加上最新文章标志&lt;/a&gt;和&lt;a href=&quot;https://blog.leonus.cn/2022/newpost.html&quot;&gt;Leonus |</description>
-          
-        
-      
-      
-      
-      
+      <description>
+        <![CDATA[<h2 id="最新文章标志"><a href="#最新文章标志" class="headerlink" title="最新文章标志"></a>最新文章标志</h2><div class="tip info"><p>本站采用的最新文章标志，在参考了博客文章<a href="https://www.qcqx.cn/article/2ed7d622.html">轻笑Chuckle | Butterfly文章卡片加上最新文章标志</a>和<a href="https://blog.leonus.cn/2022/newpost.html">Leonus |]]>
+      </description>
+      <author>云野阁</author>
       <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
-      
       <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</category>
-      
-      
       <category domain="https://yyg.js.cool/tags/Hexo/">Hexo</category>
-      
       <category domain="https://yyg.js.cool/tags/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
-      
       <category domain="https://yyg.js.cool/tags/Butterfly/">Butterfly</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/5baeb6c6/#disqus_thread</comments>
-      
+      <enclosure url="https://unsplash.it/1600/900?random" type="application/octet-stream"/>
+      <pubDate>Tue, 20 May 2025 09:01:06 GMT</pubDate>
+      <content:encoded>
+        <![CDATA[<p><img src="https://unsplash.it/1600/900?random" alt="Hexo-Butterfly美化教程-[7]功能魔改(源码方式)" /></p>
+<h2 id="最新文章标志"><a href="#最新文章标志" class="headerlink" title="最新文章标志"></a>最新文章标志</h2><div class="tip info"><p>本站采用的最新文章标志，在参考了博客文章<a href="https://www.qcqx.cn/article/2ed7d622.html">轻笑Chuckle | Butterfly文章卡片加上最新文章标志</a>和<a href="https://blog.leonus.cn/2022/newpost.html">Leonus |]]>
+      </content:encoded>
     </item>
-    
     <item>
       <title>Hexo-Butterfly美化教程-[5]安装常用插件</title>
       <link>https://yyg.js.cool/yyg/23010111/</link>
-      <guid>https://yyg.js.cool/yyg/23010111/</guid>
-      <pubDate>Mon, 19 May 2025 10:58:52 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;以下是小站建设过程中用到的一些常用插件&lt;/p&gt;
-&lt;h2 id=&quot;图片路径转asset-img&quot;&gt;&lt;a href=&quot;#图片路径转asset-img&quot; class=&quot;headerlink&quot; title=&quot;图片路径转asset_img&quot;&gt;&lt;/a&gt;图片路径转asset_img&lt;/h2&gt;&lt;p&gt;将 markdown 图像路径转换为 asset_img 语法，使图像在 typora 和 hexo 中都显示。&lt;/p&gt;
-&lt;p&gt;在blog目录下的命令指示符中执行：&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</description>
-          
-        
-      
-      
-      
-      
+      <description>
+        <![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>以下是小站建设过程中用到的一些常用插件</p>
+<h2 id="图片路径转asset-img"><a href="#图片路径转asset-img" class="headerlink" title="图片路径转asset_img"></a>图片路径转asset_img</h2><p>将 markdown 图像路径转换为 asset_img 语法，使图像在 typora 和 hexo 中都显示。</p>
+<p>在blog目录下的命令指示符中执行：</p>
+<figure class="highlight shell"><table><tr><td]]>
+      </description>
+      <author>云野阁</author>
       <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
-      
       <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</category>
-      
-      
       <category domain="https://yyg.js.cool/tags/Hexo/">Hexo</category>
-      
       <category domain="https://yyg.js.cool/tags/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
-      
       <category domain="https://yyg.js.cool/tags/Butterfly/">Butterfly</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/23010111/#disqus_thread</comments>
-      
+      <enclosure url="https://t.alcy.cc/fj" type="application/octet-stream"/>
+      <pubDate>Mon, 19 May 2025 10:58:52 GMT</pubDate>
+      <content:encoded>
+        <![CDATA[<p><img src="https://t.alcy.cc/fj" alt="Hexo-Butterfly美化教程-[5]安装常用插件" /></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>以下是小站建设过程中用到的一些常用插件</p><h2 id="图片路径转asset-img"><a href="#图片路径转asset-img" class="headerlink" title="图片路径转asset_img"></a>图片路径转asset_img</h2><p>将 markdown 图像路径转换为 asset_img 语法，使图像在 typora 和 hexo 中都显示。</p><p>在blog目录下的命令指示符中执行：</p><figure class="highlight shell"><table><tr><td]]>
+      </content:encoded>
     </item>
-    
     <item>
       <title>Hexo-Butterfly美化教程-[4]修改配置文件</title>
       <link>https://yyg.js.cool/yyg/8a5ee3aa/</link>
-      <guid>https://yyg.js.cool/yyg/8a5ee3aa/</guid>
-      <pubDate>Mon, 19 May 2025 10:57:45 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;Hexo配置文件-config-yml&quot;&gt;&lt;a href=&quot;#Hexo配置文件-config-yml&quot; class=&quot;headerlink&quot; title=&quot;Hexo配置文件(_config.yml)&quot;&gt;&lt;/a&gt;Hexo配置文件(_config.yml)&lt;/h2&gt;&lt;p&gt;打开blog目录下的Hexo的配置文件 &lt;code&gt;_config.yml&lt;/code&gt;，进行自定义配置。（以下显示是通用配置）&lt;/p&gt;
-&lt;figure class=&quot;highlight yaml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span</description>
-          
-        
-      
-      
-      
-      
+      <description>
+        <![CDATA[<h2 id="Hexo配置文件-config-yml"><a href="#Hexo配置文件-config-yml" class="headerlink" title="Hexo配置文件(_config.yml)"></a>Hexo配置文件(_config.yml)</h2><p>打开blog目录下的Hexo的配置文件 <code>_config.yml</code>，进行自定义配置。（以下显示是通用配置）</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span]]>
+      </description>
+      <author>云野阁</author>
       <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
-      
       <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</category>
-      
-      
       <category domain="https://yyg.js.cool/tags/Hexo/">Hexo</category>
-      
       <category domain="https://yyg.js.cool/tags/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
-      
       <category domain="https://yyg.js.cool/tags/Butterfly/">Butterfly</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/8a5ee3aa/#disqus_thread</comments>
-      
+      <enclosure url="https://tu.ltyuanfang.cn/api/fengjing.php" type="application/octet-stream"/>
+      <pubDate>Mon, 19 May 2025 10:57:45 GMT</pubDate>
+      <content:encoded>
+        <![CDATA[<p><img src="https://tu.ltyuanfang.cn/api/fengjing.php" alt="Hexo-Butterfly美化教程-[4]修改配置文件" /></p>
+<h2 id="Hexo配置文件-config-yml"><a href="#Hexo配置文件-config-yml" class="headerlink" title="Hexo配置文件(_config.yml)"></a>Hexo配置文件(_config.yml)</h2><p>打开blog目录下的Hexo的配置文件 <code>_config.yml</code>，进行自定义配置。（以下显示是通用配置）</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span]]>
+      </content:encoded>
     </item>
-    
     <item>
       <title>Hexo-Butterfly美化教程-[3]建主要页面</title>
       <link>https://yyg.js.cool/yyg/b2261cee/</link>
-      <guid>https://yyg.js.cool/yyg/b2261cee/</guid>
-      <pubDate>Mon, 19 May 2025 08:53:35 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;安装Tag-Plugins-Plus-标签外挂插件&quot;&gt;&lt;a href=&quot;#安装Tag-Plugins-Plus-标签外挂插件&quot; class=&quot;headerlink&quot; title=&quot;安装Tag Plugins Plus 标签外挂插件&quot;&gt;&lt;/a&gt;安装Tag Plugins Plus 标签外挂插件&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;安装标签外挂插件，方便之后各主要页面配置使用&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td</description>
-          
-        
-      
-      
-      
-      
+      <description>
+        <![CDATA[<h2 id="安装Tag-Plugins-Plus-标签外挂插件"><a href="#安装Tag-Plugins-Plus-标签外挂插件" class="headerlink" title="安装Tag Plugins Plus 标签外挂插件"></a>安装Tag Plugins Plus 标签外挂插件</h2><blockquote>
+<p>安装标签外挂插件，方便之后各主要页面配置使用</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td]]>
+      </description>
+      <author>云野阁</author>
       <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
-      
       <category domain="https://yyg.js.cool/categories/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</category>
-      
-      
       <category domain="https://yyg.js.cool/tags/Hexo/">Hexo</category>
-      
       <category domain="https://yyg.js.cool/tags/%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">博客教程</category>
-      
       <category domain="https://yyg.js.cool/tags/Butterfly/">Butterfly</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/b2261cee/#disqus_thread</comments>
-      
+      <enclosure url="https://api.mmp.cc/api/pcwallpaper?category=cool&amp;type=jpg" type="application/octet-stream"/>
+      <pubDate>Mon, 19 May 2025 08:53:35 GMT</pubDate>
+      <content:encoded>
+        <![CDATA[<p><img src="https://api.mmp.cc/api/pcwallpaper?category=cool&type=jpg" alt="Hexo-Butterfly美化教程-[3]建主要页面" /></p>
+<h2 id="安装Tag-Plugins-Plus-标签外挂插件"><a href="#安装Tag-Plugins-Plus-标签外挂插件" class="headerlink" title="安装Tag Plugins Plus 标签外挂插件"></a>安装Tag Plugins Plus 标签外挂插件</h2><blockquote><p>安装标签外挂插件，方便之后各主要页面配置使用</p></blockquote><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td]]>
+      </content:encoded>
     </item>
-    
     <item>
       <title>Android手机安装docker</title>
       <link>https://yyg.js.cool/yyg/46758d12/</link>
-      <guid>https://yyg.js.cool/yyg/46758d12/</guid>
-      <pubDate>Sat, 17 May 2025 11:45:50 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;Android手机使用ALPINE-TERM-安装docker&quot;&gt;&lt;a href=&quot;#Android手机使用ALPINE-TERM-安装docker&quot; class=&quot;headerlink&quot; title=&quot;Android手机使用ALPINE-TERM 安装docker&quot;&gt;&lt;/a&gt;Android手机使用ALPINE-TERM 安装docker&lt;/h2&gt;&lt;p&gt;Alpine Term 是一款基于 &lt;strong&gt;Termux&lt;/strong&gt; 的安卓应用，集成了 &lt;strong&gt;QEMU 虚拟机&lt;/strong&gt; 和 &lt;strong&gt;Alpine Linux&lt;/strong&gt;，支持在安卓手机上免 Root 运行完整的 Linux 环境，并可直接使用 Docker</description>
-          
-        
-      
-      
-      
-      
+      <description>
+        <![CDATA[<h2 id="Android手机使用ALPINE-TERM-安装docker"><a href="#Android手机使用ALPINE-TERM-安装docker" class="headerlink" title="Android手机使用ALPINE-TERM 安装docker"></a>Android手机使用ALPINE-TERM 安装docker</h2><p>Alpine Term 是一款基于 <strong>Termux</strong> 的安卓应用，集成了 <strong>QEMU 虚拟机</strong> 和 <strong>Alpine Linux</strong>，支持在安卓手机上免 Root 运行完整的 Linux 环境，并可直接使用 Docker]]>
+      </description>
+      <author>云野阁</author>
       <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/%E7%8E%A9%E6%9C%BA/">玩机</category>
-      
-      
       <category domain="https://yyg.js.cool/tags/%E7%8E%A9%E6%9C%BA/">玩机</category>
-      
       <category domain="https://yyg.js.cool/tags/Android/">Android</category>
-      
       <category domain="https://yyg.js.cool/tags/ALPINE-TERM/">ALPINE-TERM</category>
-      
       <category domain="https://yyg.js.cool/tags/Android%E6%89%8B%E6%9C%BA%E5%AE%89%E8%A3%85docker/">Android手机安装docker</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/46758d12/#disqus_thread</comments>
-      
+      <enclosure url="https://www.yumus.cn/api/?target=img&amp;brand=360&amp;type=3" type="application/octet-stream"/>
+      <pubDate>Sat, 17 May 2025 11:45:50 GMT</pubDate>
+      <content:encoded>
+        <![CDATA[<p><img src="https://www.yumus.cn/api/?target=img&brand=360&type=3" alt="Android手机安装docker" /></p>
+<h2 id="Android手机使用ALPINE-TERM-安装docker"><a href="#Android手机使用ALPINE-TERM-安装docker" class="headerlink" title="Android手机使用ALPINE-TERM 安装docker"></a>Android手机使用ALPINE-TERM 安装docker</h2><p>Alpine Term 是一款基于 <strong>Termux</strong> 的安卓应用，集成了 <strong>QEMU 虚拟机</strong> 和 <strong>Alpine Linux</strong>，支持在安卓手机上免 Root 运行完整的 Linux 环境，并可直接使用 Docker]]>
+      </content:encoded>
     </item>
-    
     <item>
       <title>Android手机安装ubuntu</title>
       <link>https://yyg.js.cool/yyg/c86be486/</link>
-      <guid>https://yyg.js.cool/yyg/c86be486/</guid>
-      <pubDate>Sat, 17 May 2025 11:45:50 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在闲置的Android旧手机（无需root）安装ubuntu&lt;/p&gt;
-&lt;h2 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h2&gt;&lt;p&gt;下载termux app，对应链接&lt;a href=&quot;https://github.com/termux/termux-app/releases&quot;&gt;https://github.com/termux/termux-app/releases&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;换成国内镜像源&lt;/p&gt;
-&lt;figure class=&quot;highlight</description>
-          
-        
-      
-      
-      
-      
+      <description>
+        <![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在闲置的Android旧手机（无需root）安装ubuntu</p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>下载termux app，对应链接<a href="https://github.com/termux/termux-app/releases">https://github.com/termux/termux-app/releases</a></p>
+<p>换成国内镜像源</p>
+<figure class="highlight]]>
+      </description>
+      <author>云野阁</author>
       <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/">漫谈</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%BC%AB%E8%B0%88/%E7%8E%A9%E6%9C%BA/">玩机</category>
-      
-      
       <category domain="https://yyg.js.cool/tags/%E7%8E%A9%E6%9C%BA/">玩机</category>
-      
       <category domain="https://yyg.js.cool/tags/termux/">termux</category>
-      
       <category domain="https://yyg.js.cool/tags/ubuntu/">ubuntu</category>
-      
       <category domain="https://yyg.js.cool/tags/Android/">Android</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/c86be486/#disqus_thread</comments>
-      
+      <enclosure url="https://wp.upx8.com/api.php?content=风景" type="application/octet-stream"/>
+      <pubDate>Sat, 17 May 2025 11:45:50 GMT</pubDate>
+      <content:encoded>
+        <![CDATA[<p><img src="https://wp.upx8.com/api.php?content=风景" alt="Android手机安装ubuntu" /></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在闲置的Android旧手机（无需root）安装ubuntu</p><h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>下载termux app，对应链接<a href="https://github.com/termux/termux-app/releases">https://github.com/termux/termux-app/releases</a></p><p>换成国内镜像源</p><figure class="highlight]]>
+      </content:encoded>
     </item>
-    
     <item>
       <title>Kubernetes知识梳理-核心组件</title>
       <link>https://yyg.js.cool/yyg/dc35290c/</link>
-      <guid>https://yyg.js.cool/yyg/dc35290c/</guid>
-      <pubDate>Sat, 17 May 2025 11:08:26 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;h2 id=&quot;pod&quot;&gt;&lt;a href=&quot;#pod&quot; class=&quot;headerlink&quot; title=&quot;pod&quot;&gt;&lt;/a&gt;pod&lt;/h2&gt;&lt;p&gt;在kubernetes中基本所有资源的一级属性都是一样的，主要包含5部分：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;apiVersion &amp;lt;string&amp;gt;&lt;/code&gt; 版本，由kubernetes内部定义，版本号必须可以用kubectl api-versions查询到&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;kind &amp;lt;string&amp;gt;&lt;/code&gt;类型，由kubernetes内部定义，版本号必须可以用kubectl api-resources查询到&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;metadata</description>
-          
-        
-      
-      
-      
-      
+      <description>
+        <![CDATA[<h2 id="pod"><a href="#pod" class="headerlink" title="pod"></a>pod</h2><p>在kubernetes中基本所有资源的一级属性都是一样的，主要包含5部分：</p>
+<ol>
+<li><code>apiVersion &lt;string&gt;</code> 版本，由kubernetes内部定义，版本号必须可以用kubectl api-versions查询到</li>
+<li><code>kind &lt;string&gt;</code>类型，由kubernetes内部定义，版本号必须可以用kubectl api-resources查询到</li>
+<li><code>metadata]]>
+      </description>
+      <author>云野阁</author>
       <category domain="https://yyg.js.cool/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/">容器化</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/">梳理总结</category>
-      
       <category domain="https://yyg.js.cool/categories/%E6%A2%B3%E7%90%86%E6%80%BB%E7%BB%93/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
-      
       <category domain="https://yyg.js.cool/categories/%E5%AE%B9%E5%99%A8%E5%8C%96/k8s/">k8s</category>
-      
-      
       <category domain="https://yyg.js.cool/tags/%E8%BF%90%E7%BB%B4/">运维</category>
-      
       <category domain="https://yyg.js.cool/tags/k8s/">k8s</category>
-      
       <category domain="https://yyg.js.cool/tags/pod/">pod</category>
-      
       <category domain="https://yyg.js.cool/tags/%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">知识梳理</category>
-      
       <category domain="https://yyg.js.cool/tags/Linux/">Linux</category>
-      
       <category domain="https://yyg.js.cool/tags/PV-PVC/">PV/PVC</category>
-      
       <category domain="https://yyg.js.cool/tags/Ingress/">Ingress</category>
-      
       <category domain="https://yyg.js.cool/tags/Service/">Service</category>
-      
-      
-      <comments>https://yyg.js.cool/yyg/dc35290c/#disqus_thread</comments>
-      
+      <enclosure url="https://random-img.pupper.cn/api" type="application/octet-stream"/>
+      <pubDate>Sat, 17 May 2025 11:08:26 GMT</pubDate>
+      <content:encoded>
+        <![CDATA[<p><img src="https://random-img.pupper.cn/api" alt="Kubernetes知识梳理-核心组件" /></p>
+<h2 id="pod"><a href="#pod" class="headerlink" title="pod"></a>pod</h2><p>在kubernetes中基本所有资源的一级属性都是一样的，主要包含5部分：</p><ol><li><code>apiVersion &lt;string&gt;</code> 版本，由kubernetes内部定义，版本号必须可以用kubectl api-versions查询到</li><li><code>kind &lt;string&gt;</code>类型，由kubernetes内部定义，版本号必须可以用kubectl api-resources查询到</li><li><code>metadata]]>
+      </content:encoded>
     </item>
-    
   </channel>
 </rss>
